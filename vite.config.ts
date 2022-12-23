@@ -12,6 +12,21 @@ export default defineConfig({
     }
   },
 
+  server: {
+    proxy: {
+      '/sign-in': {
+        target: "http://localhost:5256",
+        changeOrigin: true,
+        secure: false,
+      },
+      '/sign-out': {
+        target: "http://localhost:5256",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
+
   /**
    * NOTE: All scss files that contains variables, need to be imported globally and separately!
    * Globally because otherwise vite can't resolve the variables
