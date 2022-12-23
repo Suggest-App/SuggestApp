@@ -4,7 +4,11 @@ import SpotifyAuthButton from "@/components/auth-view/SpotifyAuthButton.vue";
 
 function spotifyAuthorization() {
   axios
-    .post("/signin", "Spotify")
+    .post("/signin", "Spotify", {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     .catch(error => {
       console.log(error)
     })
