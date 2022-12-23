@@ -16,7 +16,7 @@ function spotifyAuthorization() {
     <div class="container">
       <h1>CONNECT WITH SPOTIFY</h1>
       <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-      <SpotifyAuthButton @click="spotifyAuthorization" />
+      <SpotifyAuthButton @click.prevent="spotifyAuthorization" />
     </div>
   </section>
 </template>
