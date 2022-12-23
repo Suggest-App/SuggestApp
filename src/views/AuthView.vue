@@ -13,7 +13,7 @@ function spotifyAuthorization() {
     })
     .then((response) => {
       console.log(response)
-      //router.replace({ path: '/home' })
+      // router.push({ path: '/home' })
     })
     .catch(error => {
       console.log(error)
