@@ -1,8 +1,13 @@
-<script setup lang="ts">
+<script setup>
+import axios from "axios";
 import SpotifyAuthButton from "@/components/auth-view/SpotifyAuthButton.vue";
 
 function spotifyAuthorization() {
-
+  axios
+    .post("/sign-in", "Spotify")
+    .catch(error => {
+      console.log(error)
+    })
 }
 </script>
 
