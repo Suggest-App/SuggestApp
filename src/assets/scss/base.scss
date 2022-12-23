@@ -8,6 +8,10 @@ body, html {
    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
  }
 
+ h1, p {
+   margin: 0;
+ }
+
 @font-face {
   font-family: 'Nunito Sans';
   src: url('@/assets/fonts/NunitoSans/NunitoSans-ExtraLight.eot');
