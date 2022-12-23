@@ -1,6 +1,8 @@
 <script setup>
 import axios from "axios";
+import router from "@/router";
 import SpotifyAuthButton from "@/components/auth-view/SpotifyAuthButton.vue";
+
 
 function spotifyAuthorization() {
   axios
@@ -8,6 +10,10 @@ function spotifyAuthorization() {
       headers: {
         'Content-Type': 'application/json'
       }
+    })
+    .then((response) => {
+      console.log(response)
+      //router.replace({ path: '/home' })
     })
     .catch(error => {
       console.log(error)
