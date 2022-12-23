@@ -14,12 +14,12 @@ export default defineConfig({
 
   server: {
     proxy: {
-      '/sign-in': {
+      '/signin': {
         target: "http://localhost:5256",
         changeOrigin: true,
         secure: false,
       },
-      '/sign-out': {
+      '/signout': {
         target: "http://localhost:5256",
         changeOrigin: true,
         secure: false,
