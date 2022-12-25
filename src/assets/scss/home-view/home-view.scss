@@ -4,17 +4,27 @@
   overflow-y: scroll;
   scroll-snap-type: y mandatory; /* Vertikal Scrollen und Snap Points streng einhalten */
 
-  .container {
-    width: 100%;
+  .shuffle-card {
+    position: relative;
     height: 100vh;
+    width: 100%;
     scroll-snap-align: start; /* An der Oberkante jeder Sektion soll gestoppt werden */
+    padding: 12px;
+
+    .song-image {
+      @include bc-attr;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background-color: grey;
+      background-image: url("@/assets/images/music_placeholder.png");
+    }
   }
 
-  .container:nth-of-type(even) {
+  .shuffle-card:nth-of-type(even) {
     background: #2d2d2d;
   }
 
-  .container:nth-of-type(odd) {
+  .shuffle-card:nth-of-type(odd) {
     background: #232323;
   }
 }

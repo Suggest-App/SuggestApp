@@ -15,4 +15,10 @@
     height: 22px;
     cursor: pointer;
   }
+
+  // TODO: set color programmatically
+  .router-link-exact-active svg{
+    border-color: green;
+    color: green;
+  }
 }

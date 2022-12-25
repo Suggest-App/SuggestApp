@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import Navbar from "@/components/Navbar.vue";
+import ShuffleCard from "@/components/home-view/ShuffleCard.vue";
 </script>
 
 <template>
   <section id="home-view">
-    <div class="container" v-for="index in 25" :key="index"></div>
+    <ShuffleCard v-for="index in 25" :key="index" />
     <Navbar />
   </section>
 </template>
