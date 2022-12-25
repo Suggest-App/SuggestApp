@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HomeViewIcon from "@/components/icons/navbar/HomeViewIcon.vue";
+import ShuffleViewIcon from "@/components/icons/navbar/ShuffleViewIcon.vue";
 import RankingViewIcon from "@/components/icons/navbar/RankingViewIcon.vue";
 import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
 </script>
@@ -7,7 +7,7 @@ import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
 <template>
   <nav id="navbar">
     <RouterLink :to="{ name: 'HomeView' }">
-      <HomeViewIcon  color="#FFFFFF" />
+      <ShuffleViewIcon  color="#FFFFFF" />
       <span></span>
     </RouterLink>
     <RouterLink :to="{ name: 'RankingView' }">

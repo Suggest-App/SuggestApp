@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AuthView from "@/views/AuthView.vue";
-import HomeView from '../views/HomeView.vue'
+import ShuffleView from '@/views/ShuffleView.vue'
 import RankingView from "@/views/RankingView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 
@@ -14,8 +14,8 @@ const router = createRouter({
     },
     {
       path: '/home',
-      name: 'HomeView',
-      component: HomeView
+      name: 'ShuffleView',
+      component: ShuffleView
     },
     {
       path: '/ranking',
