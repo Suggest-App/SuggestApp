@@ -1,0 +1,21 @@
+#home-view {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* Vertikal Scrollen und Snap Points streng einhalten */
+
+  .container {
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: start; /* An der Oberkante jeder Sektion soll gestoppt werden */
+  }
+
+  .container:nth-of-type(even) {
+    background: #8cb11c;
+  }
+
+  .container:nth-of-type(odd) {
+    background: #147c85;
+  }
+}
+

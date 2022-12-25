@@ -3,7 +3,20 @@
 </script>
 
 <template>
-  <main>
-    <h1>Home View</h1>
-  </main>
+  <section id="home-view">
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container "></div>
+  </section>
 </template>
+
+<style lang="scss">
+@import "@/assets/scss/home-view.scss";
+</style>
