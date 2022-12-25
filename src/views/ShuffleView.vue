@@ -11,5 +11,5 @@ import ShuffleCard from "@/components/home-view/ShuffleCard.vue";
 </template>
 
 <style lang="scss">
-@import "@/assets/scss/home-view/home-view.scss";
+@import "@/assets/scss/shuffle-view/shuffle-view.scss";
 </style>

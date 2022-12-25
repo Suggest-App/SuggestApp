@@ -6,7 +6,7 @@ import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
 
 <template>
   <nav id="navbar">
-    <RouterLink :to="{ name: 'HomeView' }">
+    <RouterLink :to="{ name: 'ShuffleView' }">
       <ShuffleViewIcon  color="#FFFFFF" />
       <span></span>
     </RouterLink>
