@@ -23,6 +23,6 @@ import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
 
 
 
-<style>
+<style lang="scss">
 @import "@/assets/scss/navbar.scss";
 </style>
