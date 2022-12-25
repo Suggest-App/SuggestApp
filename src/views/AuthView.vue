@@ -32,5 +32,5 @@ function spotifyAuthorization() {
 </template>
 
 <style lang="scss">
-@import "@/assets/scss/auth-view.scss";
+@import "@/assets/scss/auth-view/auth-view.scss";
 </style>

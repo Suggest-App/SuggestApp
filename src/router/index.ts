@@ -1,19 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import AuthView from "@/views/AuthView.vue";
+import HomeView from '../views/HomeView.vue'
+import RankingView from "@/views/RankingView.vue";
+import ProfileView from "@/views/ProfileView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'authentication',
+      name: 'AuthView',
       component: AuthView
     },
     {
       path: '/home',
-      name: 'home',
+      name: 'HomeView',
       component: HomeView
+    },
+    {
+      path: '/ranking',
+      name: 'RankingView',
+      component: RankingView
+    },
+    {
+      path: '/profile',
+      name: 'ProfileView',
+      component: ProfileView
     }
   ]
 })
