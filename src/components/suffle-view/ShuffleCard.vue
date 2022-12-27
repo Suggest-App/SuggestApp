@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SpotifyControls from "@/components/home-view/SpotifyControls.vue";
+import SpotifyControls from "@/components/suffle-view/SpotifyControls.vue";
 </script>
 
 <template>

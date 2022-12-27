@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Navbar from "@/components/Navbar.vue";
-import ShuffleCard from "@/components/home-view/ShuffleCard.vue";
+import ShuffleCard from "@/components/suffle-view/ShuffleCard.vue";
 </script>
 
 <template>
