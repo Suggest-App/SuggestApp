@@ -2,11 +2,11 @@
 import { computed } from "vue";
 import type { PropType } from "vue";
 import SpotifyControls from "@/components/suffle-view/SpotifyControls.vue";
-import type { MediaInformation } from "@/models/MediaInformation";
+import type { Media } from "@/models/Media";
 
 const props = defineProps({
   media: {
-    type: Object as PropType<MediaInformation>,
+    type: Object as PropType<Media>,
     default: '',
   },
 })
@@ -25,8 +25,8 @@ const coverUrl = computed(() => {
         class="song-image"
         :style="{ 'background-image': coverUrl }"
     ></div>
-    <h3 class="song-title">{{ media.songTitle }}</h3>
-    <p class="artist">{{ media.artist }}</p>
+    <h3 class="song-title">{{ props.media.mediaName }}</h3>
+    <p class="artist">{{ props.media.artist }}</p>
     <SpotifyControls />
   </div>
 </template>

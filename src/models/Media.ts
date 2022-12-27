@@ -1,7 +1,7 @@
-export interface MediaInformation {
+export interface Media {
     uuid: string
     mediaUrl: string
-    songTitle: string
+    mediaName: string
     artist: string
     coverImage: string
 }
