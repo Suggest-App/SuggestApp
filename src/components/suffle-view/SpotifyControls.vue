@@ -1,10 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import PlayMedia from "@/components/icons/controls/PlayMedia.vue";
+</script>
 
 <template>
   <div class="spotify-controls">
     <div class="spotify-track"></div>
     <div class="spotify-btn-wrapper">
-      <button class="spotify-play-btn"></button>
+      <button class="spotify-play-btn">
+        <PlayMedia />
+      </button>
     </div>
   </div>
 </template>
