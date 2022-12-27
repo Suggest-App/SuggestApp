@@ -1,0 +1,32 @@
+{
+  "1": {
+    "uuid": "1",
+    "songCover": "",
+    "songTitle": "Test Song Titel",
+    "artist": "Test Künstler"
+  },
+  "2": {
+    "uuid": "2",
+    "songCover": "",
+    "songTitle": "Test Song Titel",
+    "artist": "Test Künstler"
+  },
+  "3": {
+    "uuid": "3",
+    "songCover": "",
+    "songTitle": "Test Song Titel",
+    "artist": "Test Künstler"
+  },
+  "4": {
+    "uuid": "4",
+    "songCover": "",
+    "songTitle": "Test Song Titel",
+    "artist": "Test Künstler"
+  },
+  "5": {
+    "uuid": "5",
+    "songCover": "",
+    "songTitle": "Test Song Titel",
+    "artist": "Test Künstler"
+  }
+}
