@@ -1,33 +1,17 @@
-<script setup>
-import axios from "axios";
-import router from "@/router";
+<script setup lang="ts">
 import SpotifyAuthButton from "@/components/auth-view/SpotifyAuthButton.vue";
-
-
-function spotifyAuthorization() {
-  axios
-    .post("/signin", "Spotify", {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then((response) => {
-      console.log(response)
-      // router.push({ path: '/home' })
-    })
-    .catch(error => {
-      console.log(error)
-    })
+function onSubmit() {
+  console.log('hey')
 }
 </script>
 
 <template>
   <section id="auth-view">
-    <div class="container">
+    <form action="/signin" method="post" class="container" @submit="onSubmit">
       <h1>CONNECT WITH SPOTIFY</h1>
       <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-      <SpotifyAuthButton @click.prevent="spotifyAuthorization" />
-    </div>
+      <SpotifyAuthButton />
+    </form>
   </section>
 </template>
 
