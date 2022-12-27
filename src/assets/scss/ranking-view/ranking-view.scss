@@ -13,7 +13,7 @@
     column-gap: 15px;
     margin-bottom: 12px;
     padding: 10px 10px 10px 15px;
-
+    cursor: pointer;
 
     .rank {
       font-size: 18px;
@@ -45,4 +45,11 @@
       }
     }
   }
+}
+
+#ranking-view #profile-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 25;
 }
