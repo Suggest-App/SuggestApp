@@ -12,6 +12,7 @@ const props = defineProps({
 
 <template>
   <div class="media-card">
+    <div class="rank">1</div>
     <div class="media-cover"></div>
     <div class="media-info-wrapper">
       <div class="artist">{{ props.media.artist }}</div>

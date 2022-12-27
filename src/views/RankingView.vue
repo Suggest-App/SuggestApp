@@ -22,15 +22,22 @@ const closeProfile = () => { showProfileModal.value = false }
     />
 
     <ProfileSection v-if="showProfileModal">
+      <template #heading>
+        <h2>Top 5 Song die du noch nicht kennst</h2>
+      </template>
+       <template #header>
+         <h3 class="profile-name">Benutzername</h3>
+         <div class="shared-minutes">12.682 gemeinsame Minuten gehört</div>
+       </template>
       <template #controls>
         <ArrowBack @click="closeProfile" />
       </template>
-    </ProfileSection>
+     </ProfileSection>
 
-    <Navbar />
-  </section>
-</template>
+     <Navbar />
+   </section>
+ </template>
 
-<style lang="scss">
-@import "@/assets/scss/ranking-view/ranking-view.scss";
-</style>
+ <style lang="scss">
+ @import "@/assets/scss/ranking-view/ranking-view.scss";
+ </style>

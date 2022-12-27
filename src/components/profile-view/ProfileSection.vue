@@ -6,12 +6,13 @@ import MediaCard from "@/components/profile-view/MediaCard.vue";
 
 <template>
   <section id="profile-view">
+    <slot name="heading"></slot>
     <header>
-      <slot name="controls"></slot>
       <div class="profile-image"></div>
       <div class="header-info-wrapper">
-        <h3 class="profile-name">Benutzername</h3>
+        <slot name="header"></slot>
       </div>
+      <slot name="controls"></slot>
     </header>
 
     <MediaCard

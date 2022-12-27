@@ -16,7 +16,7 @@ const props = defineProps({
     <div class="profile-image"></div>
     <div class="profile-info-wrapper">
       <p class="profile-name">{{ props.user.accountName }}</p>
-      <h3 class="shared-minutes">2.376 Minuten</h3>
+      <h3 class="shared-minutes">12.682 gemeinsame Minuten gehört</h3>
     </div>
   </div>
 </template>
