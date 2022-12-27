@@ -1,7 +1,7 @@
 export interface MediaInformation {
     uuid: string
     mediaUrl: string
-    name: string
+    songTitle: string
     artist: string
-    icon: string
+    coverImage: string
 }

@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import Navbar from "@/components/Navbar.vue";
 import ShuffleCard from "@/components/suffle-view/ShuffleCard.vue";
-import songData from "@/data/song-data.json";
+import mediaData from "@/data/media-data.json";
 </script>
 
 <template>
   <section id="home-view">
     <ShuffleCard
-        v-for="song in songData"
-        :key="song.uuid"
-        :song="song"
+        v-for="media in mediaData"
+        :key="media.uuid"
+        :media="media"
     />
     <Navbar />
   </section>
