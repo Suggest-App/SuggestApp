@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import { PropType } from "vue";
+import { User } from "@/models/User";
+
+const props = defineProps({
+  user: {
+    type: Object as PropType<User>,
+    required: true,
+  },
+})
 
 </script>
 
@@ -7,7 +16,7 @@
     <div class="rank">1</div>
     <div class="profile-image"></div>
     <div class="profile-info-wrapper">
-      <p class="profile-name">Benutzername</p>
+      <p class="profile-name">{{ props.user.accountName }}</p>
       <h3 class="shared-minutes">2.376 Minuten</h3>
     </div>
   </div>

@@ -1,0 +1,37 @@
+{
+  "1": {
+    "uuid": "1",
+    "accountName": "Benutzername",
+    "email": "test@mail.de",
+    "password": "pw",
+    "playbackRecords" : ""
+  },
+  "2": {
+    "uuid": "2",
+    "accountName": "Benutzername",
+    "email": "test@mail.de",
+    "password": "pw",
+    "playbackRecords" : ""
+  },
+  "3": {
+    "uuid": "3",
+    "accountName": "Benutzername",
+    "email": "test@mail.de",
+    "password": "pw",
+    "playbackRecords" : ""
+  },
+  "4": {
+    "uuid": "4",
+    "accountName": "Benutzername",
+    "email": "test@mail.de",
+    "password": "pw",
+    "playbackRecords" : ""
+  },
+  "5": {
+    "uuid": "5",
+    "accountName": "Benutzername",
+    "email": "test@mail.de",
+    "password": "pw",
+    "playbackRecords" : ""
+  }
+}

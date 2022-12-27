@@ -7,7 +7,7 @@ import type { Media } from "@/models/Media";
 const props = defineProps({
   media: {
     type: Object as PropType<Media>,
-    default: '',
+    required: true,
   },
 })
 
