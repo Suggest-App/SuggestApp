@@ -7,15 +7,15 @@ import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
 <template>
   <nav id="navbar">
     <RouterLink :to="{ name: 'ShuffleView' }">
-      <ShuffleViewIcon  color="#FFFFFF" />
+      <ShuffleViewIcon />
       <span></span>
     </RouterLink>
     <RouterLink :to="{ name: 'RankingView' }">
-      <RankingViewIcon color="#FFFFFF" />
+      <RankingViewIcon />
       <span></span>
     </RouterLink>
     <RouterLink :to="{ name: 'ProfileView' }">
-      <ProfileViewIcon color="#FFFFFF" />
+      <ProfileViewIcon />
       <span></span>
     </RouterLink>
   </nav>
