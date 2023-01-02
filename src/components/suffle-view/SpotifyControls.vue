@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PlayMedia from "@/components/icons/controls/PlayMedia.vue";
+import PlayMedia from "@/components/icons/controls/PlayMediaIcon.vue";
 </script>
 
 <template>

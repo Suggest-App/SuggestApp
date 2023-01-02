@@ -8,15 +8,15 @@ import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
   <nav id="navbar">
     <RouterLink :to="{ name: 'ShuffleView' }">
       <ShuffleViewIcon />
-      <span></span>
+      <span>Shuffle</span>
     </RouterLink>
     <RouterLink :to="{ name: 'RankingView' }">
       <RankingViewIcon />
-      <span></span>
+      <span>matches</span>
     </RouterLink>
     <RouterLink :to="{ name: 'ProfileView' }">
       <ProfileViewIcon />
-      <span></span>
+      <span>Profile</span>
     </RouterLink>
   </nav>
 </template>

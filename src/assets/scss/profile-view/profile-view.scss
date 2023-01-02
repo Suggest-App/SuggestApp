@@ -1,90 +1,84 @@
 #profile-view {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 15px;
-  background-color: #242424;
+  background-color: #121212;
 
   header {
-    position: relative;
-    width: calc(100% + 60px);
     display: flex;
     align-items: center;
-    column-gap: 12px;
-    margin-left: -15px;
-    padding: 8px 15px;
-    background-color: #393838;
-    margin-bottom: 25px;
+    column-gap: 18px;
+    padding: 22px 0;
+    margin-bottom: 15px;
 
     .profile-image {
       @include bc-attr;
-      width: 35px;
-      height: 35px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background-image: url("@/assets/images/profile_placeholder.png");
     }
 
-    .header-info-wrapper {
+    .profile-info {
       flex: 1;
 
-      .profile-name {
+      h2 {
+        color: #FFFFFF;
         font-size: 18px;
         font-weight: 500;
-        color: #FFFFFF;
-
+        letter-spacing: 1px;
+        margin-bottom: 4px;
       }
 
-      .listened-minutes,
-      .shared-minutes {
-        color: #FFFFFF;
-        font-weight: 500;
-        font-size: 16px;
-      }
+      p {
+        position: relative;
+        color: #BCBCBC;
+        font-size: 14px;
+        display: flex;
+        column-gap: 8px;
 
-      .shared-minutes {
-        flex: 1;
+        svg {
+          width: 15px;
+          height: 15px;
+          cursor: pointer;
+        }
       }
-    }
-
-    .arrow-back {
-      width: 18px;
     }
   }
 
-  .media-card {
-    @include flex-center-all;
+  .connected-apps-btn {
     width: 100%;
-    height: 70px;
-    column-gap: 15px;
-    padding: 10px 0;
-    border-bottom: 2px solid #393939;
+    height: 50px;
+    background-color: #1D1D1D;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    padding: 0 15px;
+    margin-bottom: 32px;
+    cursor: pointer;
 
-    .rank {
-      font-size: 18px;
-      color: #FFFFFF;
+    svg.link {
+      width: 17px;
+      height: 14px;
     }
 
-    .media-cover {
-      @include bc-attr;
-      height: 100%;
-      aspect-ratio: 1 / 1;
-      background-image: url("@/assets/images/profile_placeholder.png");
-    }
-
-    .media-info-wrapper {
-      height: 100%;
+    p {
       flex: 1;
-
-      .artist {
-        color: #FFFFFF;
-        opacity: 0.8;
-      }
-
-      .media-name {
-        color: #FFFFFF;
-        font-weight: 500;
-        font-size: 18px;
-      }
+      color: #FFFFFF;
+      font-size: 14px;
     }
+
+    svg.arrow-right {
+      height: 18px;
+    }
+  }
+
+  h3 {
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 25px;
   }
 }
