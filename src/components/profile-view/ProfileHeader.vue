@@ -30,8 +30,6 @@ const showTrackingSince = computed(() => {
 const usernameFontSize = computed(() => {
   return (showTrackingSince.value ? 18 : 24) + 'px'
 })
-
-console.log(usernameFontSize.value)
 </script>
 
 <template>
