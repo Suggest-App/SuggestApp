@@ -12,18 +12,31 @@ const props = defineProps({
 })
 
 // access of username property
+const profileImage = computed(() => {
+  return 'url(' + props.profileInformation.profileImage + ')'
+})
+
+// access of username property
 const username = computed(() => {
   return props.profileInformation.username
 })
 
 // value since when user records are getting tracked
 const trackingSince = computed(() => {
-  return props.profileInformation.tackingSince
+  // Get date object based on datetime string
+  let date = new Date(props.profileInformation.trackingSince);
+
+  // get single date values and add 0 from german pattern if necessary
+  let day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
+  let month = (date.getMonth() < 10) ? '0' + date.getMonth() : date.getMonth()
+  let year = date.getFullYear()
+
+  return day + '.' + month + '.' + year
 })
 
 // Only display tracking since phrase, if tracking value exists
 const showTrackingSince = computed(() => {
-  return props.profileInformation.tackingSince !== undefined
+  return props.profileInformation.trackingSince !== undefined
 })
 
 // Font size of username should be larger, if no tracking since value is displayed
@@ -34,9 +47,9 @@ const usernameFontSize = computed(() => {
 
 <template>
   <header>
-    <div class="profile-image"></div>
+    <div class="profile-image" :style="{ backgroundImage: profileImage }"></div>
     <div class="profile-info">
-      <h2 :style="{ 'font-size': usernameFontSize }">{{ username }}</h2>
+      <h2 :style="{ fontSize: usernameFontSize }">{{ username }}</h2>
       <p v-if="showTrackingSince">tracking since {{ trackingSince }} <InfoIcon /></p>
     </div>
   </header>
