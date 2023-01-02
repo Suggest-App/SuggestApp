@@ -19,11 +19,11 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
-      '/signout': {
+      '/user': {
         target: "http://localhost:5256",
         changeOrigin: true,
         secure: false,
-      },
+      }
     },
   },
 
