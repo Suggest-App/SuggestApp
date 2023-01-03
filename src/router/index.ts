@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AuthView from "@/views/AuthView.vue";
 import ShuffleView from '@/views/ShuffleView.vue'
-import RankingView from "@/views/RankingView.vue";
+import MatchesView from "@/views/MatchesView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 
 const router = createRouter({
@@ -19,8 +19,8 @@ const router = createRouter({
     },
     {
       path: '/ranking',
-      name: 'RankingView',
-      component: RankingView
+      name: 'MatchesView',
+      component: MatchesView
     },
     {
       path: '/profile',
