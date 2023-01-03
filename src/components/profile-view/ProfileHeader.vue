@@ -36,7 +36,7 @@ const trackingSince = computed(() => {
 
 // Only display tracking since phrase, if tracking value exists
 const showTrackingSince = computed(() => {
-  return props.profileInformation.trackingSince !== undefined
+  return props.profileInformation.trackingSince !== null
 })
 
 // Font size of username should be larger, if no tracking since value is displayed
