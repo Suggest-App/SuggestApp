@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import type { MediaSummary } from "@/models/MediaSummary";
-import {computed} from "vue";
+import { computed } from "vue";
 
 const props = defineProps({
   media: {
@@ -38,15 +38,11 @@ const albumImage = computed(() => {
 <template>
   <div class="media-container">
     <div class="rank">{{ index + 1 }}</div>
-
-
       <img
           class="media-cover"
           :src="albumImage"
           alt="album cover"
       />
-
-
     <div class="media-information">
       <p class="media-title">{{ songTitle }}</p>
       <div class="additional-media-info">

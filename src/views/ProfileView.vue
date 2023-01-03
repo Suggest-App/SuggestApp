@@ -1,36 +1,45 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
-import type { Ref } from "vue"
+import { onMounted } from "vue"
 import ProfileHeader from "@/components/profile-view/ProfileHeader.vue";
 import ConnectedAppsBtn from "@/components/profile-view/ConnectedAppsBtn.vue";
 import Navbar from "@/components/Navbar.vue";
 import Media from "@/components/Media.vue";
 import ProfileService from "@/services/ProfileService";
-import type { ProfileInformation } from "@/models/ProfileInformation";
-import type { MediaSummary } from "@/models/MediaSummary";
+import { useProfileStore } from "@/stores/ProfileStore";
+import ProfileViewSkeleton from "@/components/profile-view/ProfileViewSkeleton.vue";
 
-const profileInformation: Ref<ProfileInformation> = ref({} as ProfileInformation)
-const personalSummary: Ref<MediaSummary[]> = ref([] as MediaSummary[])
+const profileStore = useProfileStore()
+
+console.log(profileStore.profileInformation)
 
 // Fetch and generate the asset list
 onMounted(async () => {
-  profileInformation.value = await ProfileService.fetchProfileInformation()
-  personalSummary.value = await ProfileService.fetchPersonalSummary()
+  profileStore.profileInformation = await ProfileService.fetchProfileInformation()
+  profileStore.personalSummary = await ProfileService.fetchPersonalSummary()
 })
 
+console.log(profileStore.profileInformation)
 </script>
 
 <template>
   <div id="profile-view">
-    <ProfileHeader :profile-information="profileInformation" />
-    <ConnectedAppsBtn />
-    <h3>Your favorite tracks</h3>
+
+    <ProfileHeader
+        v-show="!profileStore.isLoading"
+        :profile-information="profileStore.profileInformation"
+    />
+    <ConnectedAppsBtn v-show="!profileStore.isLoading" />
+    <h3 v-show="!profileStore.isLoading" >Your favorite tracks</h3>
     <Media
-      v-for="(media ,index) in personalSummary"
+      v-show="!profileStore.isLoading"
+      v-for="(media ,index) in profileStore.personalSummary"
       :key="index"
       :media="media"
       :index="index"
     />
+
+    <ProfileViewSkeleton v-show="profileStore.isLoading" />
+
     <Navbar />
   </div>
 </template>
