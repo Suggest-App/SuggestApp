@@ -10,7 +10,7 @@ import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
       <ShuffleViewIcon />
       <span>Shuffle</span>
     </RouterLink>
-    <RouterLink :to="{ name: 'RankingView' }">
+    <RouterLink :to="{ name: 'MatchesView' }">
       <RankingViewIcon />
       <span>matches</span>
     </RouterLink>
