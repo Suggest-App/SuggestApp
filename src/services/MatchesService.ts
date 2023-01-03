@@ -4,6 +4,7 @@ import type {AxiosResponse} from "axios";
 import type {MediaSummary} from "@/models/MediaSummary";
 
 export default {
+
     async fetchMatches(): Promise<Match[]>{
         return tryGetAuthorizedInstance().get('user/matches')
             .then((response: AxiosResponse) => {
@@ -19,6 +20,7 @@ export default {
                 }
             })
     },
+
     async fetchRecommendedMedia(): Promise<MediaSummary> {
         return tryGetAuthorizedInstance().get('user/match/{userId}/recommended-media')
             .then((response: AxiosResponse) => {
