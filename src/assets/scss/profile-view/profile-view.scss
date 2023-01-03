@@ -10,16 +10,16 @@
     align-items: center;
     column-gap: 18px;
     background-color: #121212;
-    padding: 22px 0;
+    //padding: 22px 0;
 
     // Sticky Header Image
     //
-    // position: sticky;
-    // top: 0;
-    // width: calc(100% + 30px);
-    // margin-left: -15px;
-    // padding: 22px 15px;
-    // margin-bottom: 15px;
+     position: sticky;
+     top: 0;
+     width: calc(100% + 30px);
+     margin-left: -15px;
+     padding: 22px 15px;
+     margin-bottom: 15px;
 
     .profile-image {
       @include bc-attr;
