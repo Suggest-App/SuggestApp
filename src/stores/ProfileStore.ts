@@ -7,7 +7,7 @@ import type { MediaSummary } from "@/models/MediaSummary";
 export const useProfileStore = defineStore('profileStore', () => {
 
   const profileInformation: Ref<ProfileInformation> = ref({} as ProfileInformation)
-  const personalSummary: Ref<MediaSummary[]> = ref([] as MediaSummary[])
+  const personalSummary: Ref<MediaSummary[]> = ref([])
 
   const isLoading: Ref<boolean> = ref(false)
 
