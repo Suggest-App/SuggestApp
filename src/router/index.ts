@@ -3,6 +3,7 @@ import AuthView from "@/views/AuthView.vue";
 import ShuffleView from '@/views/ShuffleView.vue'
 import MatchesView from "@/views/MatchesView.vue";
 import ProfileView from "@/views/ProfileView.vue";
+import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/profile',
       name: 'ProfileView',
       component: ProfileView
+    },
+    {
+      path: '/recommended-media',
+      name: 'RecommendedMediaView',
+      component: RecommendedMediaView
     }
   ]
 })
