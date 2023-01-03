@@ -18,7 +18,7 @@ const router = createRouter({
       component: ShuffleView
     },
     {
-      path: '/ranking',
+      path: '/matches',
       name: 'MatchesView',
       component: MatchesView
     },
