@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import InfoIcon from "@/components/icons/controls/InfoIcon.vue";
-import { computed } from "vue";
-import type { PropType } from "vue";
+import { ref, computed } from "vue";
+import type { Ref, PropType } from "vue";
 import type { ProfileInformation } from "@/models/ProfileInformation";
+import {trackingSinceDate} from "@/composables/TimeCalculations";
 
 const props = defineProps({
   profileInformation: {
@@ -22,22 +23,15 @@ const username = computed(() => {
 })
 
 // value since when user records are getting tracked
+const showTrackingSince: Ref<boolean> = ref(props.profileInformation.trackingSince != null)
+
+// value since when user records are getting tracked
 const trackingSince = computed(() => {
-  // Get date object based on datetime string
-  let date = new Date(props.profileInformation.trackingSince);
-
-  // get single date values and add 0 from german pattern if necessary
-  let day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
-  let month = (date.getMonth() < 10) ? '0' + date.getMonth() : date.getMonth()
-  let year = date.getFullYear()
-
-  return day + '.' + month + '.' + year
+  return (props.profileInformation && showTrackingSince.value)
+    ? trackingSinceDate(props.profileInformation.trackingSince)
+    : ''
 })
 
-// Only display tracking since phrase, if tracking value exists
-const showTrackingSince = computed(() => {
-  return props.profileInformation.trackingSince !== null
-})
 
 // Font size of username should be larger, if no tracking since value is displayed
 const usernameFontSize = computed(() => {
