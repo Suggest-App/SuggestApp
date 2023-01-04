@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import SpotifyAuthButton from "@/components/auth-view/SpotifyAuthButton.vue";
-function onSubmit() {
-  console.log('hey')
-}
 </script>
 
 <template>

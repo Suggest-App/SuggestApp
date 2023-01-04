@@ -13,7 +13,7 @@ const props = defineProps({
     required: true
   }
 })
-console.log(props.match)
+
 const minutes:ComputedRef<string> = computed(() => {
   return props.match
       ? secondsToMinutes(props.match?.listenedTogetherSeconds)

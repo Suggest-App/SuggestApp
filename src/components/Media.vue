@@ -31,7 +31,7 @@ const isExplicit = computed(() => {
 
 // access of album image property
 const albumImage = computed(() => {
-  return props.media.albumImages[0].imageUrl
+  return props.media.albumImages[1].imageUrl
 })
 </script>
 

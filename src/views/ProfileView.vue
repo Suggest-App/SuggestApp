@@ -21,8 +21,6 @@ onMounted(async () => {
     profileStore.isLoading = false
   }
 })
-
-console.log(profileStore.isLoading)
 </script>
 
 <template>
