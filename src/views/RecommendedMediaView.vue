@@ -6,7 +6,6 @@ import ArrowLeftIcon from "@/components/icons/controls/ArrowLeftIcon.vue";
 
 <template>
   <section id="recommended-media-view">
-
     <RouterLink :to="{ name: 'MatchesView' }">
       <ArrowLeftIcon />
     </RouterLink>

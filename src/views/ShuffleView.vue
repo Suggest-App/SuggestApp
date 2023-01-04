@@ -12,4 +12,3 @@ import Navbar from "@/components/Navbar.vue";
 <style lang="scss">
 @import "@/assets/scss/shuffle-view/shuffle-view.scss";
 </style>
-@

@@ -10,7 +10,8 @@ import router from "@/router";
 const matchesStore = useMatchesStore()
 
 onMounted(async () => {
-   matchesStore.matches = await MatchesService.fetchMatches()
+  // Fetch the ordered user matches
+  matchesStore.matches = await MatchesService.fetchMatches()
 })
 </script>
 
@@ -19,7 +20,7 @@ onMounted(async () => {
     <h2>Your top matches <InfoIcon /></h2>
     <Match
         @click="router.push('/recommended-media')"
-        v-for="(match,index) in matchesStore.matches"
+        v-for="(match, index) in matchesStore.matches"
         :key="match.userId"
         :match="match"
         :index="index"

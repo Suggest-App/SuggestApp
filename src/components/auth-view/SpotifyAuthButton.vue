@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import SpotifyIcon from "@/components/icons/SpotifyIcon.vue";
 import { SpotifyColorEnum } from "@/models/enums/SpotifyColorEnum.ts";
-
-
 </script>
 
 <template>

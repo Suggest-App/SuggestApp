@@ -21,8 +21,6 @@ import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
   </nav>
 </template>
 
-
-
 <style lang="scss">
 @import "@/assets/scss/navbar.scss";
 </style>

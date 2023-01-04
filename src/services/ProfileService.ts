@@ -7,6 +7,8 @@ export default {
 
     /**
      * Fetch the users profile information
+     *
+     * @return Promise<ProfileInformation>
      */
     async fetchProfileInformation(): Promise<ProfileInformation> {
         return tryGetAuthorizedInstance().get('/user/profile-information')
@@ -24,6 +26,8 @@ export default {
 
     /**
      * Fetch the users personal summary
+     *
+     * @return Promise<MediaSummary[]>
      */
     async fetchPersonalSummary(): Promise<MediaSummary[]> {
         return tryGetAuthorizedInstance().get('/user/spotify/personal-summary')

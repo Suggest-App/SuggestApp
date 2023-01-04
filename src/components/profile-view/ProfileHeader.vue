@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import InfoIcon from "@/components/icons/controls/InfoIcon.vue";
-import { ref, computed } from "vue";
+import {ref, computed, ComputedRef} from "vue";
 import type { Ref, PropType } from "vue";
 import type { ProfileInformation } from "@/models/ProfileInformation";
 import {trackingSinceDate} from "@/composables/TimeCalculations";
@@ -12,30 +12,33 @@ const props = defineProps({
   },
 })
 
-// access of username property
-const profileImage = computed(() => {
-  return props.profileInformation.profileImage
+// Access of username property
+const profileImage: ComputedRef<string> = computed((): string => {
+  return (props.profileInformation && props.profileInformation.profileImage)
+      ? props.profileInformation.profileImage
+      : 'no profile image available'
 })
 
-// access of username property
-const username = computed(() => {
-  return props.profileInformation.username
+// Access of username property
+const username: ComputedRef<string> = computed((): string => {
+  return (props.profileInformation && props.profileInformation.username)
+      ? props.profileInformation.username
+      : 'no username available'
 })
 
-// value since when user records are getting tracked
+// Bool that indicates if tracking since should be displayed
 const showTrackingSince: Ref<boolean> = ref(props.profileInformation.trackingSince != null)
 
-// value since when user records are getting tracked
-const trackingSince = computed(() => {
+// Value since when user records are getting tracked
+const trackingSince: ComputedRef<string> = computed((): string => {
   return (props.profileInformation && showTrackingSince.value)
     ? trackingSinceDate(props.profileInformation.trackingSince)
-    : ''
+    : 'no tracking date available'
 })
 
-
 // Font size of username should be larger, if no tracking since value is displayed
-const usernameFontSize = computed(() => {
-  return (showTrackingSince.value ? 18 : 24) + 'px'
+const usernameFontSize: ComputedRef<string> = computed((): string => {
+  return ((showTrackingSince.value) ? 18 : 24) + 'px'
 })
 </script>
 

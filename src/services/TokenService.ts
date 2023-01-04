@@ -3,15 +3,20 @@ import axios from "axios";
 import router from "@/router";
 
 /**
- * Get cookie by name
+ * Try to get a cookie by its name
  *
- * @param name
+ * @param name string
+ *
+ * @return string | undefined
  */
-function getCookie(name: string) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) { // @ts-ignore
-        return parts.pop().split(';').shift();
+function getCookie(name: string): string | undefined {
+    const value = `; ${document.cookie}`
+    const parts = value.split(`; ${name}=`)
+    if (parts.length === 2) {
+        let lastElement = parts.pop()
+        return (lastElement)
+            ? lastElement.split(';').shift()
+            : undefined
     }
 }
 

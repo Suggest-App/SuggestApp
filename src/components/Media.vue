@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PropType } from "vue";
+import type {ComputedRef, PropType} from "vue";
 import type { MediaSummary } from "@/models/MediaSummary";
 import { computed } from "vue";
 
@@ -14,30 +14,41 @@ const props = defineProps({
   }
 })
 
-// access of song title property
-const songTitle = computed(() => {
-  return (props.media.songTitle) ? props.media.songTitle : 'no title'
+// Access index prop and increment it, in order to use it as rank
+const rank: ComputedRef<number> = computed((): number => {
+  return props.index + 1
 })
 
-// access of username property
-const artists = computed(() => {
-  return (props.media.allArtists) ? props.media.allArtists.join().replace(',', ', ') : 'no artists'
+// Access song title prop
+const songTitle: ComputedRef<string> = computed((): string => {
+  return (props.media && props.media.songTitle)
+      ? props.media.songTitle
+      : 'no title available'
 })
 
-// flag that indicates if title is explicit
-const isExplicit = computed(() => {
-  return props.media.explicitFlag
+// Access username prop
+const artists: ComputedRef<string> = computed((): string => {
+  return (props.media && props.media.allArtists)
+      ? props.media.allArtists.join().replace(',', ', ')
+      : 'no artists available'
 })
 
-// access of album image property
+// Flag that indicates if title is explicit
+const isExplicit: ComputedRef<boolean> = computed((): boolean => {
+  return props.media && props.media.explicitFlag
+})
+
+// Access album image prop
 const albumImage = computed(() => {
-  return props.media.albumImages[1].imageUrl
+  return (props.media && props.media.albumImages)
+      ? props.media.albumImages[1].imageUrl
+      : 'no album image available'
 })
 </script>
 
 <template>
   <div class="media-container">
-    <div class="rank">{{ index + 1 }}</div>
+    <div class="rank">{{ rank }}</div>
       <img
           class="media-cover"
           :src="albumImage"
