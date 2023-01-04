@@ -13,7 +13,7 @@ const props = defineProps({
 
 // access of username property
 const profileImage = computed(() => {
-  return 'url(' + props.profileInformation.profileImage + ')'
+  return props.profileInformation.profileImage
 })
 
 // access of username property
@@ -47,7 +47,7 @@ const usernameFontSize = computed(() => {
 
 <template>
   <header>
-    <div class="profile-image" :style="{ backgroundImage: profileImage }"></div>
+    <img class="profile-image" :src="profileImage" alt="Profile image" />
     <div class="profile-info">
       <h2 :style="{ fontSize: usernameFontSize }">{{ username }}</h2>
       <p v-if="showTrackingSince">tracking since {{ trackingSince }} <InfoIcon /></p>

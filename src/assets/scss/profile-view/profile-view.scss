@@ -24,6 +24,7 @@
       border-radius: 50%;
       background-image: url("@/assets/images/profile_placeholder.png");
       background-size: cover;
+      object-fit: cover;
     }
 
     .profile-info {
