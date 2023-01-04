@@ -9,7 +9,7 @@ export const useProfileStore = defineStore('profileStore', () => {
   const profileInformation: Ref<ProfileInformation> = ref({} as ProfileInformation)
   const personalSummary: Ref<MediaSummary[]> = ref([])
 
-  const isLoading: Ref<boolean> = ref(false)
+  const isLoading: Ref<boolean> = ref(true)
 
   return {
     profileInformation,

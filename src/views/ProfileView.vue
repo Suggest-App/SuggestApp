@@ -10,15 +10,19 @@ import ProfileViewSkeleton from "@/components/profile-view/ProfileViewSkeleton.v
 
 const profileStore = useProfileStore()
 
-console.log(profileStore.profileInformation)
-
-// Fetch and generate the asset list
 onMounted(async () => {
+
+  // Fetch all profile view related data
   profileStore.profileInformation = await ProfileService.fetchProfileInformation()
   profileStore.personalSummary = await ProfileService.fetchPersonalSummary()
+
+  // Ensure that there are is a personal summary before disabling the loading flag
+  if (profileStore.personalSummary.length !== 0) {
+    profileStore.isLoading = false
+  }
 })
 
-console.log(profileStore.profileInformation)
+console.log(profileStore.isLoading)
 </script>
 
 <template>
@@ -28,11 +32,13 @@ console.log(profileStore.profileInformation)
         v-show="!profileStore.isLoading"
         :profile-information="profileStore.profileInformation"
     />
+
     <ConnectedAppsBtn v-show="!profileStore.isLoading" />
     <h3 v-show="!profileStore.isLoading" >Your favorite tracks</h3>
+
     <Media
       v-show="!profileStore.isLoading"
-      v-for="(media ,index) in profileStore.personalSummary"
+      v-for="(media, index) in profileStore.personalSummary"
       :key="index"
       :media="media"
       :index="index"
