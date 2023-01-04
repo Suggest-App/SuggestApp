@@ -6,14 +6,10 @@
   padding: 0 15px 60px;
 
   header {
-    display: flex;
-    align-items: center;
-    column-gap: 18px;
-    background-color: #121212;
-    //padding: 22px 0;
-
-    // Sticky Header Image
-    //
+     display: flex;
+     align-items: center;
+     column-gap: 18px;
+     background-color: #121212;
      position: sticky;
      top: 0;
      width: calc(100% + 30px);

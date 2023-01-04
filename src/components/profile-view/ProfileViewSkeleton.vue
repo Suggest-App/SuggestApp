@@ -31,7 +31,7 @@
   align-items: center;
   column-gap: 18px;
   margin-bottom: 15px;
-  padding-top: 22px;
+  padding: 22px 0;
 
   .skeleton-profile-image {
     width: 64px;
