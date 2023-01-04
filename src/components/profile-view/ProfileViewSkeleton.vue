@@ -27,8 +27,7 @@
 
 <style lang="scss">
 .skeleton-header {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   column-gap: 18px;
   margin-bottom: 15px;
   padding: 22px 0;
@@ -36,7 +35,7 @@
   .skeleton-profile-image {
     width: 64px;
     height: 64px;
-    border-radius: 50%;
+    border-radius: $round-border-radius;
   }
 
   .skeleton-profile-info {
@@ -58,7 +57,7 @@
 .skeleton-connect-apps-btn {
   width: 100%;
   height: 50px;
-  border-radius: 5px;
+  border-radius: $primary-border-radius;
   margin-bottom: 32px;
 }
 
@@ -69,11 +68,10 @@
 }
 
 .skeleton-media-container {
+  @include flex-align-center;
   width: 100%;
   height: 50px;
   margin-bottom: 20px;
-  display: flex;
-  align-items: center;
   column-gap: 15px;
 
   .skeleton-rank {

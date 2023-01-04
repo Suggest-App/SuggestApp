@@ -5,7 +5,7 @@
   scroll-snap-type: y mandatory; /* Vertikal Scrollen und Snap Points streng einhalten */
   padding: 12px;
   scroll-padding-top: 12px;
-  background-color: #121212;
+  background-color: $primary-background-color;
   //background-image: url("@/assets/images/bc_2.jpg");
   //background-size: cover;
 
@@ -23,8 +23,6 @@
     width: 100%;
     scroll-snap-align: start; /* An der Oberkante jeder Sektion soll gestoppt werden */
     padding: 12px;
-    background: rgba(10, 10, 20, 0.8);
-    border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -37,18 +35,18 @@
       background-color: grey;
       background-image: url("@/assets/images/miss_you_cover.jpg");
       margin-bottom: 18px;
-      border-radius: 6px;
+      border-radius: $primary-border-radius;
     }
 
     .song-title {
-      color: #FFFFFF;
+      color: $primary-text-color;
       font-weight: 500;
       font-size: 26px;
       margin-bottom: 4px;
     }
 
     .artist {
-      color: #FFFFFF;
+      color: $primary-text-color;
       opacity: 0.8;
     }
   }
@@ -64,7 +62,7 @@
       position: relative;
       width: 100%;
       height: 6px;
-      border-radius: 6px;
+      border-radius:$primary-border-radius;
       background-color: #444;
       margin-bottom: 25px;
       margin-top: 45px;
@@ -75,8 +73,8 @@
       position: absolute;
       width: 30%;
       height: 100%;
-      background-color: grey;
-      border-radius: 6px;
+      background-color: $tertiary-background-color;
+      border-radius: $primary-border-radius;
     }
 
     .spotify-btn-wrapper {
@@ -90,7 +88,7 @@
         height: 62px;
         margin: 0 auto;
         background: rgba(2, 2, 6, 0.8);
-        border-radius: 50%;
+        border-radius: $round-border-radius;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);

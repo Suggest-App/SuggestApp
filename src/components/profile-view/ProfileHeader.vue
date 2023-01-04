@@ -12,6 +12,10 @@ const props = defineProps({
   },
 })
 
+console.log(props.profileInformation.username)
+console.log(props.profileInformation.trackingSince)
+
+
 // access of username property
 const profileImage = computed(() => {
   return props.profileInformation.profileImage
