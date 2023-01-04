@@ -27,7 +27,7 @@ export default {
      */
     async fetchPersonalSummary(): Promise<MediaSummary[]> {
         return tryGetAuthorizedInstance().get('/user/spotify/personal-summary')
-            .then((response: AxiosResponse) => response.data.reverse())
+            .then((response: AxiosResponse) => response.data)
             .catch((error) => {
                 switch (error.response.status) {
                     default:
