@@ -8,5 +8,8 @@ export const useMatchesStore = defineStore('matchesStore', () => {
   // Array that holds all user matches
   const matches: Ref<Match[]> = ref([])
 
-  return { matches }
+  // Flag that indicates if the matches are loading
+  const isLoading: Ref<boolean> = ref(true)
+
+  return { matches, isLoading }
 })
