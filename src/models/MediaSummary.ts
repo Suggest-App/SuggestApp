@@ -8,5 +8,5 @@ export interface MediaSummary {
     albumImages:     AlbumImages[],
     linkToMedia:     string,
     albumName:       string,
-    durationSeconds: number
+    releaseDate:     string
 }
