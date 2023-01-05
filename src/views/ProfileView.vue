@@ -6,14 +6,13 @@ import Navbar from "@/components/Navbar.vue";
 import Media from "@/components/Media.vue";
 import ProfileService from "@/services/ProfileService";
 import { useProfileStore } from "@/stores/ProfileStore";
+import { useMainStore } from "@/stores/MainStore";
 import ProfileViewSkeleton from "@/components/profile-view/ProfileViewSkeleton.vue";
 
 const profileStore = useProfileStore()
+const mainStore = useMainStore()
 
 onMounted(async () => {
-
-  // Fetch all profile view related data
-  profileStore.profileInformation = await ProfileService.fetchProfileInformation()
   profileStore.personalSummary = await ProfileService.fetchPersonalSummary()
 
   // Ensure that there are is a personal summary before disabling the loading flag
@@ -27,7 +26,7 @@ onMounted(async () => {
   <div id="profile-view">
 
     <ProfileHeader
-        v-show="!profileStore.isLoading"
+        v-show="!profileStore.isLoading && !mainStore.isDesktop"
         :profile-information="profileStore.profileInformation"
     />
 
