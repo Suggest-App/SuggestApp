@@ -47,6 +47,34 @@
         font-size: 14px;
         font-weight: 400;
         color: $secondary-text-color;
+        height: 16px;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 412px) {
+  .media-container {
+    height: 60px;
+
+    .rank {
+      font-size: 16px;
+    }
+
+    .media-information {
+
+      .media-title {
+        font-size: 17px;
+        margin-bottom: 6px;
+      }
+
+      .additional-media-info {
+
+        .artists {
+          font-size: 15px;
+        }
       }
     }
   }

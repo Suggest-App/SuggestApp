@@ -99,4 +99,48 @@
     }
   }
 }
+
+@media only screen and (min-width: 412px) {
+  .skeleton-header {
+    .skeleton-profile-image {
+      width: 70px;
+      height: 70px;
+    }
+
+    .skeleton-profile-info {
+      .skeleton-username {
+        width: 130px;
+      }
+
+      .skeleton-tracking-since {
+        height: 18px;
+      }
+    }
+  }
+
+  .skeleton-connect-apps-btn {
+    height: 52px;
+  }
+
+  .skeleton-media-container {
+    height: 60px;
+
+    .skeleton-rank {
+      height: 18px
+    }
+
+    .skeleton-media-information {
+
+      .skeleton-media-title {
+        width: 205px;
+        height: 20px;
+      }
+
+      .skeleton-artists {
+        width: 160px;
+        height: 17px;
+      }
+    }
+  }
+}
 </style>

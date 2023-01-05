@@ -88,3 +88,60 @@
     margin-bottom: 25px;
   }
 }
+
+
+@media only screen and (min-width: 412px) {
+  #profile-view {
+    header {
+      margin-bottom: 12px;
+
+      .profile-image {
+        width: 70px;
+        height: 70px;
+      }
+
+      .profile-info {
+
+        h2 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 15px;
+          column-gap: 10px;
+
+          svg {
+            width: 18px;
+            height: 18px;
+          }
+        }
+      }
+    }
+
+    .connected-apps-btn {
+      column-gap: 15px;
+      height: 52px;
+
+      p {
+        font-size: 16px;
+      }
+
+      svg.link {
+        width: 22px;
+        height: 17px;
+      }
+
+      svg.arrow-right {
+        height: 20px;
+      }
+    }
+
+    h3 {
+      font-size: 24px;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+}
