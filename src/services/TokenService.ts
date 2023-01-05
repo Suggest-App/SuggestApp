@@ -9,7 +9,7 @@ import router from "@/router";
  *
  * @return string | undefined
  */
-function getCookie(name: string): string | undefined {
+export function getCookie(name: string): string | undefined {
     const value = `; ${document.cookie}`
     const parts = value.split(`; ${name}=`)
     if (parts.length === 2) {
@@ -30,10 +30,12 @@ export function tryGetAuthorizedInstance(): AxiosInstance {
     const jwtCookie = getCookie('jwt')
     const instance = axios.create()
 
-    // If no token redirect to auth view
-    if (!jwtCookie) {
-        router.push('/')
-    }
+    instance.interceptors.response.use((response) => response, (error) => {
+        // If no token exists or response status is 401, redirect to auth view
+        if (!jwtCookie || error.response.status === 401) {
+            router.push('/')
+        }
+    });
 
     // Set token in axios header
     instance.defaults.headers.common['Authorization'] = 'Bearer ' + jwtCookie
