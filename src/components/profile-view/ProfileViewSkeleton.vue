@@ -1,5 +1,11 @@
+<script setup lang="ts">
+import { useMainStore } from "@/stores/MainStore";
+
+const mainStore = useMainStore()
+</script>
+
 <template>
-  <div class="skeleton-header">
+  <div v-if="!mainStore.isDesktop" class="skeleton-header">
     <div class="skeleton-profile-image sk-anim"></div>
     <div class="skeleton-profile-info">
       <div class="skeleton-username sk-anim"></div>
@@ -7,7 +13,7 @@
     </div>
   </div>
 
-  <div class="skeleton-connect-apps-btn sk-anim"></div>
+  <div v-if="!mainStore.isDesktop" class="skeleton-connect-apps-btn sk-anim"></div>
 
   <div class="skeleton-profile-heading sk-anim"></div>
 

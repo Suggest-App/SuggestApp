@@ -26,11 +26,15 @@ onMounted(async () => {
   <div id="profile-view">
 
     <ProfileHeader
-        v-show="!profileStore.isLoading && !mainStore.isDesktop"
+        v-if="!mainStore.isDesktop"
+        v-show="!profileStore.isLoading"
         :profile-information="profileStore.profileInformation"
     />
 
-    <ConnectedAppsBtn v-show="!profileStore.isLoading" />
+    <ConnectedAppsBtn
+        v-if="!mainStore.isDesktop"
+        v-show="!profileStore.isLoading"
+    />
     <h3 v-show="!profileStore.isLoading" >Your favorite tracks</h3>
 
     <Media

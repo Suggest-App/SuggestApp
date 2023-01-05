@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar.vue";
 </script>
 
 <template>
-  <section id="home-view">
+  <section id="shuffle-view">
 
     <Navbar />
   </section>
