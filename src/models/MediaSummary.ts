@@ -6,5 +6,7 @@ export interface MediaSummary {
     explicitFlag:     boolean,
     listenedSeconds: number,
     albumImages:     AlbumImages[],
-    linkToMedia:     string
+    linkToMedia:     string,
+    albumName:       string,
+    durationSeconds: number
 }
