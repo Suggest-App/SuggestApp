@@ -10,7 +10,7 @@ import Media from "@/components/Media.vue";
 const matchesStore = useMatchesStore();
 
 onMounted( async () => {
-  const route = useRoute();
+  const route = useRoute()
   const userId: string = route.params.id as string
   matchesStore.recommendedMedia = await MatchesService.fetchRecommendedMedia(userId);
 })
