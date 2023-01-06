@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import Navbar from "@/components/Navbar.vue";
+
 </script>
 
 <template>
   <section id="shuffle-view">
 
-    <Navbar />
   </section>
 </template>
 

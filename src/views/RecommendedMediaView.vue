@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Navbar from "@/components/Navbar.vue";
 import RecommendedMediaHeader from "@/components/recommended-media-view/RecommendedMediaHeader.vue";
 import ArrowLeftIcon from "@/components/icons/controls/ArrowLeftIcon.vue";
 import {onMounted} from "vue";
