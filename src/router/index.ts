@@ -5,7 +5,9 @@ import ShuffleView from '@/views/ShuffleView.vue'
 import MatchesView from "@/views/MatchesView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
+import NotFound from "@/components/NotFound.vue";
 import { getCookie } from "@/services/TokenService";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,28 +15,39 @@ const router = createRouter({
     {
       path: '/',
       name: 'AuthView',
-      component: AuthView
+      component: AuthView,
+      meta: { showNavbar: false }
     },
     {
       path: '/home',
       name: 'ShuffleView',
-      component: ShuffleView
+      component: ShuffleView,
+      meta: { showNavbar: true }
     },
     {
       path: '/matches',
       name: 'MatchesView',
-      component: MatchesView
+      component: MatchesView,
+      meta: { showNavbar: true }
     },
     {
       path: '/profile',
       name: 'ProfileView',
-      component: ProfileView
+      component: ProfileView,
+      meta: { showNavbar: true }
     },
     {
       path: '/recommended-media/:id',
       name: 'RecommendedMediaView',
-      component: RecommendedMediaView
-    }
+      component: RecommendedMediaView,
+      meta: { showNavbar: true }
+    },
+    {
+      path: "/:catchAll(.*)",
+      name: 'NotFound',
+      component: NotFound,
+      meta: { showNavbar: true }
+    },
   ]
 })
 
