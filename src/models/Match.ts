@@ -1,5 +1,5 @@
 export interface Match {
-    userId:                    number,
+    userId:                    string,
     username:                  string,
     profileImage:              string,
     listenedTogetherSeconds:   number,
