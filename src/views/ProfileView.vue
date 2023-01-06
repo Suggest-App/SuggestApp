@@ -2,7 +2,6 @@
 import { onMounted } from "vue"
 import ProfileHeader from "@/components/profile-view/ProfileHeader.vue";
 import ConnectedAppsBtn from "@/components/profile-view/ConnectedAppsBtn.vue";
-import Navbar from "@/components/Navbar.vue";
 import Media from "@/components/Media.vue";
 import ProfileService from "@/services/ProfileService";
 import { useProfileStore } from "@/stores/ProfileStore";
@@ -46,8 +45,6 @@ onMounted(async () => {
     />
 
     <ProfileViewSkeleton v-if="profileStore.isLoading" />
-
-    <Navbar />
   </div>
 </template>
 

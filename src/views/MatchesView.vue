@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Navbar from "@/components/Navbar.vue";
 import Match from "@/components/matches-view/Match.vue";
 import InfoIcon from "@/components/icons/controls/InfoIcon.vue";
 import {onMounted} from "vue";
@@ -34,8 +33,6 @@ onMounted(async () => {
     />
 
     <MatchesViewSkeleton v-if="matchesStore.isLoading" />
-
-    <Navbar />
    </section>
  </template>
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Navbar from "@/components/Navbar.vue";
 import RecommendedMediaHeader from "@/components/recommended-media-view/RecommendedMediaHeader.vue";
 import ArrowLeftIcon from "@/components/icons/controls/ArrowLeftIcon.vue";
 </script>
@@ -12,8 +11,6 @@ import ArrowLeftIcon from "@/components/icons/controls/ArrowLeftIcon.vue";
 
     <RecommendedMediaHeader />
     <h3>Those are Tobe’s favorite tracks you don’t know</h3>
-
-    <Navbar />
   </section>
 </template>
 
