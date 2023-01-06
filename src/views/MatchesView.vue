@@ -4,10 +4,15 @@ import InfoIcon from "@/components/icons/controls/InfoIcon.vue";
 import {onMounted} from "vue";
 import MatchesService from "@/services/MatchesService";
 import {useMatchesStore} from "@/stores/MatchesStore";
-import router from "@/router";
 import MatchesViewSkeleton from "@/components/matches-view/MatchesViewSkeleton.vue";
+import router from "@/router";
 
 const matchesStore = useMatchesStore()
+
+function showRecommendedMedia(match: Match){
+  matchesStore.selectedMatch = match;
+  router.push('/recommended-media');
+}
 
 onMounted(async () => {
   // Fetch the ordered user matches
@@ -25,7 +30,7 @@ onMounted(async () => {
     <h2 v-show="!matchesStore.isLoading">Your top matches <InfoIcon /></h2>
     <Match
         v-show="!matchesStore.isLoading"
-        @click="router.push('/recommended-media')"
+        @click="showRecommendedMedia(match)"
         v-for="(match, index) in matchesStore.matches"
         :key="match.userId"
         :match="match"
