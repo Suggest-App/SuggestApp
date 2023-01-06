@@ -27,7 +27,6 @@ onMounted(async () => {
     <ProfileHeader
         v-if="!mainStore.isDesktop"
         v-show="!profileStore.isLoading"
-        :profile-information="profileStore.profileInformation"
     />
 
     <ConnectedAppsBtn

@@ -8,6 +8,7 @@
   padding: 0 50px;
   background-color: $tertiary-text-color;
   justify-content: space-between;
+  z-index: 50;
 
   a {
     @include flex-center-all;

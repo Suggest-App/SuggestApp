@@ -3,7 +3,7 @@ import MobileNavbar from "@/components/MobileNavbar.vue";
 import { onMounted } from "vue";
 import { RouterView } from "vue-router";
 import { useMainStore } from "@/stores/MainStore";
-
+import DesktopNavbar from "@/components/DesktopNavbar.vue";
 
 const mainStore = useMainStore()
 
@@ -14,6 +14,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <MobileNavbar v-if="!mainStore.isDesktop" />
+  <DesktopNavbar v-if="mainStore.isDesktop" />
   <RouterView />
-  <MobileNavbar v-if="!mainStore.isDesktop"/>
 </template>

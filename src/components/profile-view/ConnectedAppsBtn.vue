@@ -10,3 +10,7 @@ import ArrowRightIcon from "@/components/icons/controls/ArrowRightIcon.vue";
     <ArrowRightIcon />
   </div>
 </template>
+
+<style scoped lang="scss">
+@import "@/assets/scss/profile-view/connect-app-btn.scss";
+</style>
