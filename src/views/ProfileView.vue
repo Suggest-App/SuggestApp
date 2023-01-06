@@ -45,7 +45,7 @@ onMounted(async () => {
       :index="index"
     />
 
-    <ProfileViewSkeleton v-show="profileStore.isLoading" />
+    <ProfileViewSkeleton v-if="profileStore.isLoading" />
 
     <Navbar />
   </div>

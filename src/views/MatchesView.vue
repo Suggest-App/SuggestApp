@@ -33,7 +33,7 @@ onMounted(async () => {
         :index="index"
     />
 
-    <MatchesViewSkeleton v-show="matchesStore.isLoading" />
+    <MatchesViewSkeleton v-if="matchesStore.isLoading" />
 
     <Navbar />
    </section>
