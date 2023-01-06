@@ -31,10 +31,12 @@ export default {
      * Fetch all media recommendations from a user match after the match has been clicked
      * Array is already ordered
      *
+     * @param userId string
+     *
      * @return Promise<MediaSummary[]>
      */
-    async fetchRecommendedMedia(userId:string): Promise<MediaSummary[]> {
-        return tryGetAuthorizedInstance().get(`user/matches/${userId}/recommended-media`)
+    async fetchRecommendedMedia(userId: string): Promise<MediaSummary[]> {
+        return tryGetAuthorizedInstance().get(`/user/matches/${userId}/recommended-media`)
             .then((response: AxiosResponse) => {
                 return response.data
             })

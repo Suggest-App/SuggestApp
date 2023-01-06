@@ -31,7 +31,7 @@ const router = createRouter({
       component: ProfileView
     },
     {
-      path: '/recommended-media',
+      path: '/recommended-media/:id',
       name: 'RecommendedMediaView',
       component: RecommendedMediaView
     }

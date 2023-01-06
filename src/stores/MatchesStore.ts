@@ -2,7 +2,6 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
 import type {Match} from "@/models/Match";
-import Media from "@/components/Media.vue";
 import type {MediaSummary} from "@/models/MediaSummary";
 
 export const useMatchesStore = defineStore('matchesStore', () => {
@@ -13,9 +12,8 @@ export const useMatchesStore = defineStore('matchesStore', () => {
   // Flag that indicates if the matches are loading
   const isLoading: Ref<boolean> = ref(true)
 
-  const selectedMatch: Ref<Match> = ref({} as Match);
-
+  // Array that holds the media from a match that the user don't know
   const recommendedMedia: Ref<MediaSummary[]> = ref([] as MediaSummary[]);
 
-  return { matches, isLoading, selectedMatch, recommendedMedia }
+  return { matches, isLoading, recommendedMedia }
 })
