@@ -20,13 +20,15 @@ onMounted( async () => {
 <template>
   <section id="recommended-media-view">
     <RecommendedMediaHeader :user-id="userId" />
-    <h3>Those are Tobe’s favorite tracks you don’t know</h3>
-    <Media
-        v-for="(media, index) in matchesStore.recommendedMedia"
-        :key="index"
-        :index="index"
-        :media="media"
-    />
+    <div class="media-scroll-container">
+      <h3>Those are Tobe’s favorite tracks you don’t know</h3>
+      <Media
+          v-for="(media, index) in matchesStore.recommendedMedia"
+          :key="index"
+          :index="index"
+          :media="media"
+      />
+    </div>
   </section>
 </template>
 

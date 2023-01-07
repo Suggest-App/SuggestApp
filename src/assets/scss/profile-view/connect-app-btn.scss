@@ -50,7 +50,8 @@
   .connected-apps-btn {
     position: absolute;
     left: 15px;
-    bottom: 0;
+    bottom: 25px;
+    margin-bottom: 0;
     column-gap: 8px;
     height: 45px;
     width: calc(100% - 30px);
@@ -74,7 +75,7 @@
   .connected-apps-btn {
     position: absolute;
     left: 15px;
-    bottom: 0;
+    bottom: 30px;
     column-gap: 15px;
     height: 45px;
     width: calc(100% - 30px);
