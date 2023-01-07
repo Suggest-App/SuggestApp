@@ -7,10 +7,6 @@
   scrollbar-width: none;  /* Firefox */
   padding: 0 15px 60px;
 
-  .arrow-left {
-    margin-top: 25px;
-  }
-
   header {
     @include flex-align-center;
     column-gap: 18px;
@@ -18,6 +14,10 @@
     padding: 18px 0 22px;
     border-bottom: 2px solid $secondary-background-color;
     margin-bottom: 22px;
+
+    .arrow-left {
+      margin-top: 5px;
+    }
 
     .profile-image {
       @include bc-attr;

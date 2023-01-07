@@ -3,7 +3,6 @@ import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useMatchesStore } from "@/stores/MatchesStore";
 import RecommendedMediaHeader from "@/components/recommended-media-view/RecommendedMediaHeader.vue";
-import ArrowLeftIcon from "@/components/icons/controls/ArrowLeftIcon.vue";
 import MatchesService from "@/services/MatchesService";
 import Media from "@/components/Media.vue";
 
@@ -20,10 +19,6 @@ onMounted( async () => {
 
 <template>
   <section id="recommended-media-view">
-    <RouterLink :to="{ name: 'MatchesView' }">
-      <ArrowLeftIcon />
-    </RouterLink>
-
     <RecommendedMediaHeader :user-id="userId" />
     <h3>Those are Tobe’s favorite tracks you don’t know</h3>
     <Media
