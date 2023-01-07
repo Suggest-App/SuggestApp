@@ -9,9 +9,11 @@ import Media from "@/components/Media.vue";
 
 const matchesStore = useMatchesStore();
 
+// Get the user id from the route
+const route = useRoute()
+const userId: string = route.params.id as string
+
 onMounted( async () => {
-  const route = useRoute()
-  const userId: string = route.params.id as string
   matchesStore.recommendedMedia = await MatchesService.fetchRecommendedMedia(userId);
 })
 </script>
@@ -22,9 +24,14 @@ onMounted( async () => {
       <ArrowLeftIcon />
     </RouterLink>
 
-    <RecommendedMediaHeader />
+    <RecommendedMediaHeader :user-id="userId" />
     <h3>Those are Tobe’s favorite tracks you don’t know</h3>
-    <Media :media="media" :index="index" v-for="(media,index) in matchesStore.recommendedMedia" />
+    <Media
+        v-for="(media, index) in matchesStore.recommendedMedia"
+        :key="index"
+        :index="index"
+        :media="media"
+    />
   </section>
 </template>
 

@@ -2,8 +2,8 @@
 import Match from "@/components/matches-view/Match.vue";
 import InfoIcon from "@/components/icons/controls/InfoIcon.vue";
 import { onMounted } from "vue";
-import MatchesService from "@/services/MatchesService";
 import { useMatchesStore } from "@/stores/MatchesStore";
+import { fetchUserMatches } from "@/composables/GenerateMaps";
 import MatchesViewSkeleton from "@/components/matches-view/MatchesViewSkeleton.vue";
 import router from "@/router";
 import { MediaSummary } from "@/models/MediaSummary";
@@ -19,7 +19,7 @@ function showRecommendedMedia(userId: string){
 
 onMounted(async () => {
   // Fetch the ordered user matches
-  matchesStore.matches = await MatchesService.fetchMatches()
+  await fetchUserMatches()
   // Always clear the recommended media
   matchesStore.recommendedMedia = [] as MediaSummary[]
   // Ensure that there are matches fetched, before disabling the loading flag
@@ -35,10 +35,9 @@ onMounted(async () => {
     <Match
         v-show="!matchesStore.isLoading"
         @click="showRecommendedMedia(match.userId)"
-        v-for="(match, index) in matchesStore.matches"
+        v-for="match in matchesStore.matches"
         :key="match.userId"
         :match="match"
-        :index="index"
     />
 
     <MatchesViewSkeleton v-if="matchesStore.isLoading" />

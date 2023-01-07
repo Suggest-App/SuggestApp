@@ -2,8 +2,8 @@
 import InfoIcon from "@/components/icons/controls/InfoIcon.vue";
 import { ref, computed, onMounted} from "vue";
 import type { Ref, ComputedRef } from "vue";
-import {trackingSinceDate} from "@/composables/TimeCalculations";
-import {useProfileStore} from "@/stores/ProfileStore";
+import { trackingSinceDate } from "@/composables/TimeCalculations";
+import { useProfileStore } from "@/stores/ProfileStore";
 import ProfileService from "@/services/ProfileService";
 
 const profileStore = useProfileStore()
