@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { computed, onMounted } from "vue";
+import type { ComputedRef } from "vue";
 import { useRoute } from "vue-router";
 import { useMatchesStore } from "@/stores/MatchesStore";
 import RecommendedMediaHeader from "@/components/recommended-media-view/RecommendedMediaHeader.vue";
@@ -7,6 +8,13 @@ import MatchesService from "@/services/MatchesService";
 import Media from "@/components/Media.vue";
 
 const matchesStore = useMatchesStore();
+
+// Access of username property
+const username: ComputedRef<string> = computed((): string => {
+  return (matchesStore.matchesMap.has(userId) && matchesStore.matchesMap.get(userId)!.username)
+      ? matchesStore.matchesMap.get(userId)!.username
+      : 'no username available'
+})
 
 // Get the user id from the route
 const route = useRoute()
@@ -21,7 +29,7 @@ onMounted( async () => {
   <section id="recommended-media-view">
     <RecommendedMediaHeader :user-id="userId" />
     <div class="media-scroll-container">
-      <h3>Those are Tobe’s favorite tracks you don’t know</h3>
+      <h3>Those are {{ username }}’s favorite tracks you don’t know</h3>
       <Media
           v-for="(media, index) in matchesStore.recommendedMedia"
           :key="index"
