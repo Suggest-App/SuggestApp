@@ -1,7 +1,7 @@
 #desktop-navbar {
   width: 35%;
   max-width: 350px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: $tertiary-text-color;
   padding: 0 15px 15px;
 

@@ -13,10 +13,6 @@ const mainStore = useMainStore()
   <nav id="desktop-navbar">
     <ProfileHeader />
 
-    <RouterLink :to="{ name: 'ShuffleView' }">
-      <ShuffleViewIcon />
-      <span>Shuffle</span>
-    </RouterLink>
     <RouterLink :to="{ name: 'MatchesView' }">
       <RankingViewIcon />
       <span>matches</span>

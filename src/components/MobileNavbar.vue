@@ -6,10 +6,6 @@ import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
 
 <template>
   <nav id="mobile-navbar">
-    <RouterLink :to="{ name: 'ShuffleView' }">
-      <ShuffleViewIcon />
-      <span>Shuffle</span>
-    </RouterLink>
     <RouterLink :to="{ name: 'MatchesView' }">
       <RankingViewIcon />
       <span>matches</span>
