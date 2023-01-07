@@ -1,8 +1,10 @@
 #recommended-media-view {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  background-color: $primary-background-color;
+  height: 100vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   padding: 0 15px 60px;
 
   .arrow-left {

@@ -1,8 +1,10 @@
 #matches-view {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  background-color: $primary-background-color;
+  height: 100vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   padding: 30px 15px 60px;
 
   h2 {
@@ -11,7 +13,7 @@
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 30px;
-    column-gap: 8px;
+    column-gap: 10px;
 
     svg {
       width: 18px;
@@ -57,5 +59,32 @@
         font-weight: 400;
       }
     }
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#matches-view::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (min-width: 412px) {
+  h2 {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #matches-view {
+    padding: 25px;
+
+    h2 {
+      font-size: 26px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  #matches-view {
+    padding: 30px;
   }
 }

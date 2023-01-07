@@ -1,9 +1,14 @@
 #desktop-navbar {
-  width: 35%;
-  max-width: 350px;
-  min-height: 100vh;
+  position: relative;
+  width: 380px;
+  height: 100vh;
   background-color: $tertiary-text-color;
   padding: 0 15px 15px;
+
+  header {
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
 
   a {
     @include flex-align-center;
@@ -50,5 +55,38 @@
   a span  {
     color: $primary-text-color;
     font-size: 15px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #desktop-navbar header {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 15px;
+    border-bottom: 2px solid $secondary-background-color;
+    padding-top: 22px;
+    margin-bottom: 22px;
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  #desktop-navbar header {
+    flex-direction: row;
+    align-items: center;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+  }
+}
+
+
+@media only screen and (min-width: 1280px) {
+  #desktop-navbar {
+    width: 430px;
+
+    a {
+      height: 50px;
+      margin-bottom: 15px;
+    }
   }
 }

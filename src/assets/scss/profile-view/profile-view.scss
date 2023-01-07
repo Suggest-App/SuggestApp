@@ -1,9 +1,11 @@
 #profile-view {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  background-color: $primary-background-color;
-  padding: 15px 15px 60px;
+  height: 100vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  padding: 30px 15px 60px;
 
   h3 {
     color: $primary-text-color;
@@ -13,9 +15,29 @@
   }
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+#profile-view::-webkit-scrollbar {
+  display: none;
+}
+
 @media only screen and (min-width: 412px) {
   h3 {
     font-size: 24px;
   }
 }
 
+@media only screen and (min-width: 768px) {
+  #profile-view {
+    padding: 25px;
+
+    h3 {
+      font-size: 26px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  #profile-view {
+    padding: 30px;
+  }
+}

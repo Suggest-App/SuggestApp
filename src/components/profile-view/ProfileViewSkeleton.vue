@@ -149,4 +149,14 @@ const mainStore = useMainStore()
     }
   }
 }
+
+@media only screen and (min-width: 768px) {
+  .skeleton-header {
+    .skeleton-profile-info {
+      .skeleton-username {
+        font-size: 26px;
+      }
+    }
+  }
+}
 </style>

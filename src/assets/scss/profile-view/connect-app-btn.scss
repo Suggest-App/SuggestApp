@@ -7,7 +7,7 @@
   align-items: center;
   column-gap: 12px;
   padding: 0 15px;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
   cursor: pointer;
 
   svg.link {
@@ -46,10 +46,38 @@
   }
 }
 
-@media only screen and (min-width: 786px) {
+@media only screen and (min-width: 768px) {
   .connected-apps-btn {
+    position: absolute;
+    left: 15px;
+    bottom: 0;
+    column-gap: 8px;
+    height: 45px;
+    width: calc(100% - 30px);
+
+    p {
+      font-size: 12px;
+    }
+
+    svg.link {
+      width: 16px;
+      height: 13px;
+    }
+
+    svg.arrow-right {
+      height: 15px;
+    }
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  .connected-apps-btn {
+    position: absolute;
+    left: 15px;
+    bottom: 0;
     column-gap: 15px;
-    height: 52px;
+    height: 45px;
+    width: calc(100% - 30px);
 
     p {
       font-size: 14px;
