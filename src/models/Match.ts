@@ -1,7 +1,8 @@
 export interface Match {
     userId:                    string,
+    rank:                      number,
     username:                  string,
     profileImage:              string,
     listenedTogetherSeconds:   number,
-    spotifyProfileUrl:         string,
+    spotifyProfileUrl:         string
 }
