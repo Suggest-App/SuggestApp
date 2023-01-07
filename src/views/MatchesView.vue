@@ -3,12 +3,14 @@ import Match from "@/components/matches-view/Match.vue";
 import InfoIcon from "@/components/icons/controls/InfoIcon.vue";
 import { onMounted } from "vue";
 import { useMatchesStore } from "@/stores/MatchesStore";
+import { useMainStore } from "@/stores/MainStore";
 import { fetchUserMatches } from "@/composables/GenerateMaps";
 import MatchesViewSkeleton from "@/components/matches-view/MatchesViewSkeleton.vue";
 import router from "@/router";
 import { MediaSummary } from "@/models/MediaSummary";
 
 const matchesStore = useMatchesStore()
+const mainStore = useMainStore()
 
 function showRecommendedMedia(userId: string){
   router.push({
@@ -32,6 +34,7 @@ onMounted(async () => {
 <template>
   <section id="matches-view">
     <h2 v-show="!matchesStore.isLoading">Your top matches <InfoIcon /></h2>
+    <p v-if="mainStore.isDesktop" class="subheading">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</p>
     <Match
         v-show="!matchesStore.isLoading"
         @click="showRecommendedMedia(match.userId)"
