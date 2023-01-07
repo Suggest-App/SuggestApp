@@ -8,16 +8,14 @@ const props = defineProps({
   match: {
     type: Object as PropType<Match>,
     required: true,
-  },
-  index: {
-    type: Number,
-    required: true
   }
 })
 
-// Access index prop and increment it, in order to use it as rank
-const rank: ComputedRef<number> = computed((): number => {
-  return props.index + 1
+// Access of rank property
+const rank: ComputedRef<string> = computed((): string => {
+  return (props.match && props.match.rank)
+      ? (props.match.rank).toString()
+      : 'no rank available'
 })
 
 // Access profile image prop
