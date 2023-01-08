@@ -16,32 +16,34 @@ const props = defineProps({
 const matchesStore = useMatchesStore()
 
 const hasMatch: Ref<boolean> = ref(matchesStore.matchesMap.has(props.userId))
-const match: Match = matchesStore.matchesMap.get(props.userId)!
+const match: Ref<Match> = ref(matchesStore.matchesMap.get(props.userId)!)
 
 // Access of profile image property
 const profileImage: ComputedRef<string> = computed((): string => {
-  return (hasMatch && match.profileImage)
-      ? match.profileImage
+  return (hasMatch.value && match.value.profileImage)
+      ? match.value.profileImage
       : 'no profile image available'
 })
 
 // Access of username property
 const username: ComputedRef<string> = computed((): string => {
-  return (hasMatch && match.username)
-      ? match.username
+  return (hasMatch.value && match.value.username)
+      ? match.value.username
       : 'no username available'
 })
 
 // Access of rank property
 const rank: ComputedRef<string> = computed((): string => {
-  return (hasMatch && match.rank)
-      ? (match.rank).toString()
+  return (hasMatch.value && match.value.rank)
+      ? (match.value.rank).toString()
       : 'no rank available'
 })
 
 // Calculate together listened minutes
 const minutes: ComputedRef<string> = computed((): string => {
-  return secondsToMinutes(match.listenedTogetherSeconds)
+  return (hasMatch.value && match.value.rank)
+      ? secondsToMinutes(match.value.listenedTogetherSeconds)
+      : 'no minutes available'
 })
 
 </script>
