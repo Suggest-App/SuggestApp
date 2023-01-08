@@ -35,18 +35,13 @@ const trackingSince: ComputedRef<string> = computed((): string => {
     ? trackingSinceDate(profileStore.profileInformation.trackingSince)
     : 'no tracking date available'
 })
-
-// Font size of username should be larger, if no tracking since value is displayed
-const usernameFontSize: ComputedRef<string> = computed((): string => {
-  return ((profileStore.profileInformation.trackingSince != null) ? 18 : 24) + 'px'
-})
 </script>
 
 <template>
   <header>
     <img class="profile-image" :src="profileImage" alt="Profile image" />
     <div class="profile-info">
-      <h2 :style="{ fontSize: usernameFontSize }">{{ username }}</h2>
+      <h2>{{ username }}</h2>
       <p v-if="profileStore.profileInformation.trackingSince != null">tracking since: {{ trackingSince }} <InfoIcon /></p>
     </div>
   </header>
