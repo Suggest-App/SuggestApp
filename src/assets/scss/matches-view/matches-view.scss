@@ -87,6 +87,12 @@
       max-width: 500px;
       color: $secondary-text-color;
       margin-bottom: 35px;
+
+      .more-info-link {
+        color: $spotify-green;
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
   }
 }
