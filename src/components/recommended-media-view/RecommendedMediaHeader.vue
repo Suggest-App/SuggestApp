@@ -41,7 +41,7 @@ const rank: ComputedRef<string> = computed((): string => {
 
 // Calculate together listened minutes
 const minutes: ComputedRef<string> = computed((): string => {
-  return (hasMatch.value && match.value.rank)
+  return (hasMatch.value && match.value.listenedTogetherSeconds)
       ? secondsToMinutes(match.value.listenedTogetherSeconds)
       : 'no minutes available'
 })
