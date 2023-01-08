@@ -12,7 +12,10 @@ import { MediaSummary } from "@/models/MediaSummary";
 const matchesStore = useMatchesStore()
 const mainStore = useMainStore()
 
-function showRecommendedMedia(userId: string){
+function showRecommendedMedia(userId: string): void {
+  // Set the loading flag to true
+  matchesStore.isLoading = true
+  // Redirect to recommended media view
   router.push({
     name: 'RecommendedMediaView',
     params: { id: userId }
@@ -34,7 +37,7 @@ onMounted(async () => {
 <template>
   <section id="matches-view">
     <h2 v-show="!matchesStore.isLoading">Your top matches <InfoIcon v-if="!mainStore.isDesktop" /></h2>
-    <p v-if="mainStore.isDesktop && !matchesStore.isLoading" class="subheading">
+    <p v-if="mainStore.isDesktop" v-show="!matchesStore.isLoading" class="subheading">
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
       <span class="more-info-link">more information</span>
     </p>

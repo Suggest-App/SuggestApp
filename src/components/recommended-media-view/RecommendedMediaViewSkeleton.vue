@@ -5,7 +5,8 @@ const mainStore = useMainStore()
 </script>
 
 <template>
-  <div v-if="!mainStore.isDesktop" class="skeleton-header">
+  <div class="skeleton-header">
+    <div class="skeleton-back-link sk-anim"></div>
     <div class="skeleton-profile-image sk-anim"></div>
     <div class="skeleton-profile-info">
       <div class="skeleton-username sk-anim"></div>
@@ -13,12 +14,11 @@ const mainStore = useMainStore()
     </div>
   </div>
 
-  <div v-if="!mainStore.isDesktop" class="skeleton-connect-apps-btn sk-anim"></div>
-
-  <div class="skeleton-profile-heading sk-anim"></div>
+  <div class="skeleton-heading sk-anim"></div>
+  <div v-if="!mainStore.isDesktop" class="skeleton-heading-second-line sk-anim"></div>
 
   <div
-      v-for="index in 12"
+      v-for="index in 7"
       :key="index"
       class="skeleton-media-container"
   >
@@ -35,7 +35,14 @@ const mainStore = useMainStore()
 .skeleton-header {
   @include flex-align-center;
   column-gap: 18px;
+  padding: 30px 0;
   margin-bottom: 30px;
+
+  .skeleton-back-link {
+    width: 15px;
+    height: 24px;
+    margin-top: 5px;
+  }
 
   .skeleton-profile-image {
     width: 64px;
@@ -59,17 +66,16 @@ const mainStore = useMainStore()
   }
 }
 
-.skeleton-connect-apps-btn {
-  width: 100%;
-  height: 50px;
-  border-radius: $primary-border-radius;
-  margin-bottom: 28px;
+.skeleton-heading {
+  width: 210px;
+  height: 28px;
+  margin-bottom: 5px;
 }
 
-.skeleton-profile-heading {
-  width: 210px;
-  height: 25px;
-  margin-bottom: 25px;
+.skeleton-heading-second-line {
+  width: 190px;
+  height: 28px;
+  margin-bottom: 22px;
 }
 
 .skeleton-media-container {
@@ -123,10 +129,6 @@ const mainStore = useMainStore()
     }
   }
 
-  .skeleton-connect-apps-btn {
-    height: 52px;
-  }
-
   .skeleton-media-container {
     height: 60px;
 
@@ -156,6 +158,18 @@ const mainStore = useMainStore()
         font-size: 26px;
       }
     }
+  }
+
+  .skeleton-heading {
+    height: 22px;
+    margin-top: 25px;
+    margin-bottom: 18px;
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  .skeleton-heading {
+    margin-top: 0;
   }
 }
 </style>

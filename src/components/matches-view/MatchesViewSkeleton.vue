@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .skeleton-heading {
   width: 205px;
   height: 20px;
