@@ -1,12 +1,20 @@
 <script setup lang="ts">
-import ShuffleViewIcon from "@/components/icons/navbar/ShuffleViewIcon.vue";
+import { computed } from "vue";
+import type { ComputedRef } from "vue";
+import { useRoute } from "vue-router";
 import RankingViewIcon from "@/components/icons/navbar/RankingViewIcon.vue";
 import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
+
+const route = useRoute()
+
+const isRecommendedView: ComputedRef<boolean> = computed((): boolean => {
+  return (route.path.includes('recommended-media'))
+})
 </script>
 
 <template>
   <nav id="mobile-navbar">
-    <RouterLink :to="{ name: 'MatchesView' }">
+    <RouterLink :to="{ name: 'MatchesView' }" :class="{ active: isRecommendedView }">
       <RankingViewIcon />
       <span>matches</span>
     </RouterLink>

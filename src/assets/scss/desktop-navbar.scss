@@ -40,15 +40,18 @@
     fill: $primary-text-color;
   }
 
-  .router-link-exact-active svg {
+  .router-link-exact-active svg,
+  a.active svg {
     fill: $spotify-green;
   }
 
-  .router-link-exact-active span {
+  .router-link-exact-active span,
+  a.active span {
     color: $spotify-green;
   }
 
-  .router-link-exact-active:before {
+  .router-link-exact-active:before,
+  a.active:before {
     background-color: $spotify-green;
   }
 
