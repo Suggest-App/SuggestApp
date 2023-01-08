@@ -34,7 +34,7 @@ onMounted(async () => {
 <template>
   <section id="matches-view">
     <h2 v-show="!matchesStore.isLoading">Your top matches <InfoIcon v-if="!mainStore.isDesktop" /></h2>
-    <p v-if="mainStore.isDesktop" class="subheading">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</p>
+    <p v-if="mainStore.isDesktop && !matchesStore.isLoading" class="subheading">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</p>
     <Match
         v-show="!matchesStore.isLoading"
         @click="showRecommendedMedia(match.userId)"
