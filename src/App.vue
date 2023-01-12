@@ -5,7 +5,6 @@ import { RouterView, useRoute } from "vue-router";
 import { useMainStore } from "@/stores/MainStore";
 import MobileNavbar from "@/components/MobileNavbar.vue";
 import DesktopNavbar from "@/components/DesktopNavbar.vue";
-import Popup from "@/components/Popup.vue";
 
 const mainStore = useMainStore()
 const route = useRoute()
@@ -27,5 +26,4 @@ onMounted(async () => {
   <MobileNavbar v-if="showNavbar && !mainStore.isDesktop" />
   <DesktopNavbar v-if="showNavbar && mainStore.isDesktop" />
   <RouterView />
-  <Popup />
 </template>

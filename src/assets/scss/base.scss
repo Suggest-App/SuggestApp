@@ -54,6 +54,13 @@ $secondary-border-radius: 2px;
 /* -------------------------------------- Mixins ------------------------------------------ */
 /********************************************************************************************/
 
+@mixin reset-swal {
+  display: block!important;
+  outline: none!important;
+  border: none!important;
+  box-shadow: none!important;
+}
+
 @mixin bc-attr {
   background-size: contain;
   background-repeat: no-repeat;
@@ -96,4 +103,21 @@ $secondary-border-radius: 2px;
   100% {
     transform: translateX(100%);
   }
+}
+
+/********************************************************************************************/
+/* ----------------------------------- Sweetalert2 ---------------------------------------- */
+/********************************************************************************************/
+
+.customSwalContainer {
+
+  .swal2-confirm,
+  .swal2-confirm:focus {
+    @include reset-swal;
+  }
+
+  .swal2-html-container {
+    line-height: 1.6;
+  }
+
 }

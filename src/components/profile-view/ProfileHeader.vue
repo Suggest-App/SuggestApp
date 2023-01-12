@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import InfoIcon from "@/components/icons/controls/InfoIcon.vue";
-import { ref, computed, onMounted} from "vue";
-import type { Ref, ComputedRef } from "vue";
-import { trackingSinceDate } from "@/composables/TimeCalculations";
-import { useProfileStore } from "@/stores/ProfileStore";
+import type {ComputedRef} from "vue";
+import {computed, onMounted} from "vue";
+import {trackingSinceDate} from "@/composables/TimeCalculations";
+import {useProfileStore} from "@/stores/ProfileStore";
 import ProfileService from "@/services/ProfileService";
-import {useMainStore} from "@/stores/MainStore";
-import {usePopupStore} from "@/stores/PopupStore";
+import {trackingSincePopup} from "@/composables/InformationPopup";
 
 const profileStore = useProfileStore()
-const popupStore = usePopupStore()
 
 onMounted(async () => {
   // Fetch the profile information, if the object is empty
@@ -39,11 +37,6 @@ const trackingSince: ComputedRef<string> = computed((): string => {
     : 'no tracking date available'
 })
 
-function openPopup(){
-  popupStore.popUp.popupIsOpen = true;
-  popupStore.popUp.popupHeading = "Hallo";
-  popupStore.popUp.popupText = "Bye";
-}
 </script>
 
 <template>
@@ -52,7 +45,7 @@ function openPopup(){
     <div class="profile-info">
       <h2>{{ username }}</h2>
       <p v-if="profileStore.profileInformation.trackingSince != null">tracking since: {{ trackingSince }}
-        <InfoIcon @click="openPopup"/>
+        <InfoIcon @click="trackingSincePopup"/>
       </p>
     </div>
   </header>

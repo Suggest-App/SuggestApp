@@ -8,6 +8,7 @@ import { fetchUserMatches } from "@/composables/GenerateMaps";
 import MatchesViewSkeleton from "@/components/matches-view/MatchesViewSkeleton.vue";
 import router from "@/router";
 import { MediaSummary } from "@/models/MediaSummary";
+import { matchesInformationPopup } from "@/composables/InformationPopup";
 
 const matchesStore = useMatchesStore()
 const mainStore = useMainStore()
@@ -39,7 +40,7 @@ onMounted(async () => {
     <h2 v-show="!matchesStore.isLoading">Your top matches <InfoIcon v-if="!mainStore.isDesktop" /></h2>
     <p v-if="mainStore.isDesktop" v-show="!matchesStore.isLoading" class="subheading">
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-      <span class="more-info-link">more information</span>
+      <span class="more-info-link" @click="matchesInformationPopup">more information</span>
     </p>
     <Match
         v-show="!matchesStore.isLoading"
