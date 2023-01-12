@@ -14,8 +14,8 @@ const mainStore = useMainStore()
 onMounted(async () => {
   profileStore.personalSummary = await ProfileService.fetchPersonalSummary()
 
-  // Ensure that there are is a personal summary before disabling the loading flag
-  if (profileStore.personalSummary.length !== 0) {
+  // Ensure that there is a personal summary before disabling the loading flag
+  if (profileStore.personalSummary.length > 0) {
     profileStore.isLoading = false
   }
 })
