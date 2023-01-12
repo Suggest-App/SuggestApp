@@ -16,12 +16,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/signin': {
-        target: "http://192.168.56.1:5256",
+        target: "http://localhost:5256",
         changeOrigin: true,
         secure: false,
       },
       '/user': {
-        target: "http://192.168.56.1:5256",
+        target: "http://localhost:5256",
         changeOrigin: true,
         secure: false,
       }
