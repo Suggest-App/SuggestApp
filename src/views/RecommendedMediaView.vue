@@ -10,9 +10,11 @@ import RecommendedMediaViewSkeleton from "@/components/recommended-media-view/Re
 
 const matchesStore = useMatchesStore();
 
+
+
 // Access of username property
 const username: ComputedRef<string> = computed((): string => {
-  return (matchesStore.matchesMap.has(userId) && matchesStore.matchesMap.get(userId)!.username)
+  return (matchesStore.matchesMap.has(userId) && matchesStore.matchesMap.get(userId))
       ? matchesStore.matchesMap.get(userId)!.username
       : 'no username available'
 })

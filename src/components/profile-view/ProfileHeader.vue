@@ -5,8 +5,11 @@ import type { Ref, ComputedRef } from "vue";
 import { trackingSinceDate } from "@/composables/TimeCalculations";
 import { useProfileStore } from "@/stores/ProfileStore";
 import ProfileService from "@/services/ProfileService";
+import {useMainStore} from "@/stores/MainStore";
+import {usePopupStore} from "@/stores/PopupStore";
 
 const profileStore = useProfileStore()
+const popupStore = usePopupStore()
 
 onMounted(async () => {
   // Fetch the profile information, if the object is empty
@@ -35,6 +38,12 @@ const trackingSince: ComputedRef<string> = computed((): string => {
     ? trackingSinceDate(profileStore.profileInformation.trackingSince)
     : 'no tracking date available'
 })
+
+function openPopup(){
+  popupStore.popUp.popupIsOpen = true;
+  popupStore.popUp.popupHeading = "Hallo";
+  popupStore.popUp.popupText = "Bye";
+}
 </script>
 
 <template>
@@ -42,7 +51,9 @@ const trackingSince: ComputedRef<string> = computed((): string => {
     <img class="profile-image" :src="profileImage" alt="Profile image" />
     <div class="profile-info">
       <h2>{{ username }}</h2>
-      <p v-if="profileStore.profileInformation.trackingSince != null">tracking since: {{ trackingSince }} <InfoIcon /></p>
+      <p v-if="profileStore.profileInformation.trackingSince != null">tracking since: {{ trackingSince }}
+        <InfoIcon @click="openPopup"/>
+      </p>
     </div>
   </header>
 </template>
