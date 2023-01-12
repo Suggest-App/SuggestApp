@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  sg-frontend:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"

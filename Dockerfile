@@ -1,7 +1,7 @@
-FROM node:lts-alpine
+FROM node:lts-alpine as builder
 
 # install simple http server for serving static content
-RUN npm install -g http-server vite
+RUN npm install -g vite
 
 # make the 'app' folder the current working directory
 WORKDIR /app
@@ -18,5 +18,15 @@ COPY . .
 # build app for production with minification
 RUN vite build
 
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
+
+FROM nginx
+
+WORKDIR /app
+
+COPY --from=builder /app/dist ./
+
+COPY nginx.conf /etc/nginx/conf.d/
+
+RUN rm /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
