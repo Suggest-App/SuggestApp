@@ -15,7 +15,8 @@ import "swiper/css/pagination";
 <template>
   <section id="auth-view">
     <div class="image-container">
-      <img src="@/../public/auth-view-background.png" alt="Suggest Background Image" />
+      <!-- import must be this way because of static PWA import -->
+      <img src="@/../public/images/auth-view-background.png" alt="Suggest Background Image" />
     </div>
     <form action="/signin" method="post" class="auth-form">
       <SuggestLogo />

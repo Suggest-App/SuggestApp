@@ -39,7 +39,7 @@
       @include bc-attr;
       height: 100%;
       aspect-ratio: 1 / 1;
-      background-image: url("@/assets/images/profile_placeholder.png");
+      background-image: url("@/../public/images/profile_placeholder.png");
       border-radius: $round-border-radius;
     }
 
