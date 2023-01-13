@@ -13,7 +13,20 @@ export default defineConfig({
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg}']
         },
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+        includeAssets: [
+            'favicon.ico',
+            'favicon-16x16.png',
+            'favicon-32x32.png',
+            'android-chrome-192x192.png',
+            'android-chrome-512x512.png',
+            'apple-touch-icon.png',
+            'mstile-150x150.png',
+            'safari-pinned-tab.svg',
+            'masked-icon.svg',
+            'auth-view-background.png',
+            'music_placeholder.png',
+            'profile_placeholder.png'
+        ],
         manifest: {
           name: 'Music Buddies',
           short_name: 'MBuddies',
