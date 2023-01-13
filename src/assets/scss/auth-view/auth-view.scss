@@ -10,12 +10,14 @@
     width: 100%;
     position: relative;
 
-    img {
+    .background-image {
+      @include bc-attr;
       width: 140%;
       position: absolute;
       left: -20%;
       bottom: 18%;
       transform: rotate(-9deg);
+      background-image: url("@/assets/images/auth-view-background.png");
     }
   }
 

@@ -16,7 +16,7 @@ import "swiper/css/pagination";
 <template>
   <section id="auth-view">
     <div class="image-container">
-      <img src="src/assets/images/auth-view-background.png" alt="Suggest background image" />
+      <div class="background-image"></div>
     </div>
     <form action="/signin" method="post" class="auth-form">
       <SuggestLogo />
