@@ -11,6 +11,21 @@
             "src": "/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+          "src": "./src/assets/images/auth-view-background.png",
+          "sizes": "1165x1503",
+          "type": "image/png"
+        },
+        {
+          "src": "./src/assets/images/music_placeholder.png",
+          "sizes": "800x800",
+          "type": "image/png"
+        },
+        {
+          "src": "./src/assets/images/profile_placeholder.png",
+          "sizes": "600x600",
+          "type": "image/png"
         }
     ],
     "theme_color": "#ffffff",

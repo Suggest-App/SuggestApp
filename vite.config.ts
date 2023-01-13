@@ -14,6 +14,7 @@ export default defineConfig({
           globPatterns: ['**/*.{js,css,html,ico,png,svg}']
         },
         includeAssets: [
+            'images/*.png',
             'favicon.ico',
             'favicon-16x16.png',
             'favicon-32x32.png',
@@ -22,10 +23,7 @@ export default defineConfig({
             'apple-touch-icon.png',
             'mstile-150x150.png',
             'safari-pinned-tab.svg',
-            'masked-icon.svg',
-            'auth-view-background.png',
-            'music_placeholder.png',
-            'profile_placeholder.png'
+            'masked-icon.svg'
         ],
         manifest: {
           name: 'Music Buddies',

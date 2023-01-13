@@ -10,14 +10,20 @@ const modules = [Pagination, Autoplay]
 // Import Swiper styles
 import 'swiper/css';
 import "swiper/css/pagination";
+import {ref} from "vue";
 
+// In order to use static assets in PWA, image must be imported in this way
+const imageContainer = ref(document.querySelector('.image-container'))
+if (imageContainer.value) {
+  imageContainer.value.innerHTML = `
+        <img src="./assets/images/auth-view-background.png" alt="Suggest Background Image" />
+    `
+}
 </script>
 
 <template>
   <section id="auth-view">
-    <div class="image-container">
-      <img src="src/assets/images/auth-view-background.png" alt="Suggest background image" />
-    </div>
+    <div class="image-container"></div>
     <form action="/signin" method="post" class="auth-form">
       <SuggestLogo />
       <swiper
