@@ -41,7 +41,7 @@ const isExplicit: ComputedRef<boolean> = computed((): boolean => {
 // Access album image prop
 const albumImage = computed(() => {
   return (props.media && props.media.albumImages)
-      ? props.media.albumImages[1].imageUrl
+      ? props.media.albumImages[0].imageUrl
       : 'no album image available'
 })
 </script>
