@@ -5,6 +5,7 @@ import ShuffleView from '@/views/ShuffleView.vue'
 import MatchesView from "@/views/MatchesView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
+import EmbeddedPlayerView from "@/views/EmbeddedPlayerView.vue";
 import NotFound from "@/components/NotFound.vue";
 import { getCookie } from "@/services/TokenService";
 
@@ -40,6 +41,12 @@ const router = createRouter({
       path: '/recommended-media/:id',
       name: 'RecommendedMediaView',
       component: RecommendedMediaView,
+      meta: { showNavbar: true }
+    },
+    {
+      path: '/player',
+      name: 'EmbeddedPlayerView',
+      component: EmbeddedPlayerView,
       meta: { showNavbar: true }
     },
     {

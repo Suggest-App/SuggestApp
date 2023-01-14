@@ -1,6 +1,7 @@
-import type { AxiosInstance } from 'axios'
+import type { AxiosInstance, AxiosResponse } from 'axios'
 import axios from "axios";
 import router from "@/router";
+import type { SpotifyToken } from "@/models/SpotifyToken";
 
 /**
  * Try to get a cookie by its name
@@ -42,4 +43,24 @@ export function tryGetAuthorizedInstance(): AxiosInstance {
 
     // return authorized instance
     return instance
+}
+
+
+/**
+ * Get the useres spotify token for the embedded player
+ *
+ * @return Promise<SpotifyToken>
+ */
+export async function getSpotifyToken(): Promise<SpotifyToken> {
+    return tryGetAuthorizedInstance().get('/user/spotify-token')
+        .then((response: AxiosResponse) => response.data)
+        .catch((error) => {
+            switch (error.response.status) {
+                default:
+                    console.log(
+                        'TokenService.ts no status case ' + error.response.status
+                    )
+                    break
+            }
+        })
 }
