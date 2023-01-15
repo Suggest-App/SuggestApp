@@ -7,6 +7,7 @@ import RankingViewIcon from "@/components/icons/navbar/RankingViewIcon.vue";
 import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
 import ProfileHeader from "@/components/profile-view/ProfileHeader.vue";
 import ConnectedAppsBtn from "@/components/profile-view/ConnectedAppsBtn.vue";
+import GearIcon from "@/components/icons/controls/GearIcon.vue";
 
 const mainStore = useMainStore()
 const route = useRoute()
@@ -27,6 +28,10 @@ const isRecommendedView: ComputedRef<boolean> = computed((): boolean => {
     <RouterLink :to="{ name: 'ProfileView' }">
       <ProfileViewIcon />
       <span>Profile</span>
+    </RouterLink>
+    <RouterLink :to="{ name: 'SettingsView' }">
+      <GearIcon />
+      <span>Settings</span>
     </RouterLink>
 
     <ConnectedAppsBtn v-if="mainStore.isDesktop" />

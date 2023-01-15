@@ -4,6 +4,7 @@ import AuthView from "@/views/AuthView.vue";
 import ShuffleView from '@/views/ShuffleView.vue'
 import MatchesView from "@/views/MatchesView.vue";
 import ProfileView from "@/views/ProfileView.vue";
+import SettingsView from "@/views/SettingsView.vue";
 import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
 import NotFound from "@/components/NotFound.vue";
 import { getCookie } from "@/services/TokenService";
@@ -37,6 +38,12 @@ const router = createRouter({
       path: '/profile',
       name: 'ProfileView',
       component: ProfileView,
+      meta: { showNavbar: true }
+    },
+    {
+      path: '/settings',
+      name: 'SettingsView',
+      component: SettingsView,
       meta: { showNavbar: true }
     },
     {

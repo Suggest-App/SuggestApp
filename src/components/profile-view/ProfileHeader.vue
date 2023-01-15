@@ -6,8 +6,11 @@ import {trackingSinceDate} from "@/composables/TimeCalculations";
 import {useProfileStore} from "@/stores/ProfileStore";
 import ProfileService from "@/services/ProfileService";
 import {trackingSincePopup} from "@/composables/InformationPopup";
+import GearIcon from "@/components/icons/controls/GearIcon.vue";
+import { useMainStore } from "@/stores/MainStore";
 
 const profileStore = useProfileStore()
+const mainStore = useMainStore()
 
 onMounted(async () => {
   // Fetch the profile information, if the object is empty
@@ -48,6 +51,10 @@ const trackingSince: ComputedRef<string> = computed((): string => {
         <InfoIcon @click="trackingSincePopup"/>
       </p>
     </div>
+    <RouterLink :to="{ name: 'SettingsView' }" v-if="!mainStore.isDesktop">
+      <GearIcon />
+    </RouterLink>
+
   </header>
 </template>
 
