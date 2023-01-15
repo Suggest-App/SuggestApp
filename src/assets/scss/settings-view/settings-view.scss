@@ -5,7 +5,7 @@
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-  padding: 0 15px;
+  padding: 0 15px 100px;
 
   header {
     @include  flex-align-center;
