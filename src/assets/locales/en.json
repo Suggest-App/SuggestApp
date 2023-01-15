@@ -1,11 +1,52 @@
 {
+  "navbar": {
+    "matches": "Matches",
+    "chats": "Chats",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "authView": {
+    "slider": {
+      "firstSlide": "Find new stunning music you don’t know,\n based on the taste of users that are\n the same as you."
+    },
+    "spotifyBtn": "Connect with Spotify"
+  },
   "profileView": {
-
+    "trackingLabel": "tracking since",
+    "connectedAppLabel": "connected app",
+    "heading": "Your favorite tracks",
+    "placeholders": {
+      "noUsername": "ro username available",
+      "noProfileImage": "ro profile image available",
+      "noMinutes": "ro minutes available"
+    }
   },
   "matchesView": {
-
+    "heading": "Your top matches",
+    "minutesLabel": "minutes listened together",
+    "infoText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor",
+    "moreInfo": "more information",
+    "placeholders": {
+      "noRank": "ro rank available",
+      "noUsername": "ro username available",
+      "noProfileImage": "ro profile image available",
+      "noMinutes": "ro minutes available"
+    }
   },
   "recommendedMediaView": {
-
+    "headingPrefix": "Those are",
+    "headingSuffix": "favorite tracks you don’t know"
+  },
+  "settingsView": {
+    "heading": "Settings",
+    "localeLable": "Select language"
+  },
+  "media": {
+    "placeholders": {
+      "noRank": "no rank available",
+      "noTitle": "no song title available",
+      "noArtists": "no artists available",
+      "noImage": "no album image available"
+    }
   }
 }

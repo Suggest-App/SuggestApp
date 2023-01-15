@@ -7,16 +7,17 @@ import RecommendedMediaHeader from "@/components/recommended-media-view/Recommen
 import MatchesService from "@/services/MatchesService";
 import Media from "@/components/Media.vue";
 import RecommendedMediaViewSkeleton from "@/components/recommended-media-view/RecommendedMediaViewSkeleton.vue";
+import {useI18n} from "vue-i18n";
+
+const { t } = useI18n()
 
 const matchesStore = useMatchesStore();
-
-
 
 // Access of username property
 const username: ComputedRef<string> = computed((): string => {
   return (matchesStore.matchesMap.has(userId) && matchesStore.matchesMap.get(userId))
       ? matchesStore.matchesMap.get(userId)!.username
-      : 'no username available'
+      : t('matchesView.placeholders.noUsername')
 })
 
 // Get the user id from the route
@@ -41,7 +42,7 @@ onMounted( async () => {
     />
 
     <div v-show="!matchesStore.isLoading" class="media-scroll-container">
-      <h3>Those are {{ username }}’s favorite tracks you don’t know</h3>
+      <h3>{{$t('recommendedMediaView.headingPrefix') }} {{ username }}’s {{ $t('recommendedMediaView.headingSuffix') }}</h3>
       <Media
           v-for="(media, index) in matchesStore.recommendedMedia"
           :key="index"

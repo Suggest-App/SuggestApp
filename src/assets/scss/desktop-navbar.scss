@@ -36,17 +36,17 @@
 
   .router-link-exact-active svg,
   a.active svg {
-    fill: #FFFFFF;
+    fill: $primary-text-color;
   }
 
   .router-link-exact-active span,
   a.active span {
-    color: #FFFFFF;
+    color: $primary-text-color;
   }
 
   .router-link-exact-active:before,
   a.active:before {
-    background-color: #FFFFFF;
+    background-color: $primary-text-color;
   }
 }
 

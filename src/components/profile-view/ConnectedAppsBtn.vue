@@ -6,7 +6,7 @@ import ArrowRightIcon from "@/components/icons/controls/ArrowRightIcon.vue";
 <template>
   <div class="connected-apps-btn">
     <LinkIcon />
-    <p>(1) connected app</p>
+    <p>(1) {{ $t('profileView.connectedAppLabel') }}</p>
     <ArrowRightIcon />
   </div>
 </template>

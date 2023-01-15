@@ -4,10 +4,8 @@ import en from '@/assets/locales/en.json'
 import de from '@/assets/locales/de.json'
 
 // Array that includes all locales
-export enum allLocales {
-  DE ='de',
-  EN = 'en'
-}
+export const allLocales: string[] = ['de', 'en']
+type Locales = 'de' | 'en'
 
 // Create Vue I18n instance.
 export const i18n = createI18n({
@@ -20,8 +18,6 @@ export const i18n = createI18n({
     de: de,
   },
 })
-
-type Locales = 'de' | 'en'
 
 /**
  * Set a specific locale lang file based on the passed local enum
@@ -42,7 +38,6 @@ export async function setLocale(locale: Locales) {
   // Set locale.
   i18n.global.locale.value = locale
 }
-
 /**
  * Load a specific locale lang file based on the passed local enum
  *
@@ -50,21 +45,21 @@ export async function setLocale(locale: Locales) {
  */
 function loadLocale(locale: Locales) {
   return fetch(`./locales/${locale}.json`)
-    .then((response) => {
-      if (response.ok) {
-        return response.json()
-      }
-      throw new Error('Something went wrong!')
-    })
-    .catch((error) => {
-      switch (error.response.status) {
-        default:
-          console.log(
-            'i18n.ts no status case ' + error.response.status
-          )
-          break
-      }
-    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        }
+        throw new Error('Something went wrong!')
+      })
+      .catch((error) => {
+        switch (error.response.status) {
+          default:
+            console.log(
+                'i18n.ts no status case ' + error.response.status
+            )
+            break
+        }
+      })
 }
 
 /**

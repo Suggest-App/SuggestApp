@@ -37,10 +37,10 @@ onMounted(async () => {
 
 <template>
   <section id="matches-view">
-    <h2 v-show="!matchesStore.isLoading">Your top matches <InfoIcon v-if="!mainStore.isDesktop" @click="matchesInformationPopup" /></h2>
+    <h2 v-show="!matchesStore.isLoading">{{ $t('matchesView.heading') }} <InfoIcon v-if="!mainStore.isDesktop" @click="matchesInformationPopup" /></h2>
     <p v-if="mainStore.isDesktop" v-show="!matchesStore.isLoading" class="subheading">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-      <span class="more-info-link" @click="matchesInformationPopup">more information</span>
+      {{ $t('matchesView.infoText') }}
+      <span class="more-info-link" @click="matchesInformationPopup">{{ $t('matchesView.moreInfo') }}</span>
     </p>
     <Match
         v-show="!matchesStore.isLoading"

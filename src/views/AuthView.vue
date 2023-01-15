@@ -3,6 +3,9 @@ import SuggestLogo from "@/components/icons/SuggestLogo.vue";
 import SpotifyAuthButton from "@/components/auth-view/SpotifyAuthButton.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Autoplay } from 'swiper';
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n()
 
 // define your modules list here
 const modules = [Pagination, Autoplay]
@@ -10,6 +13,7 @@ const modules = [Pagination, Autoplay]
 // Import Swiper styles
 import 'swiper/css';
 import "swiper/css/pagination";
+
 </script>
 
 <template>
@@ -35,21 +39,15 @@ import "swiper/css/pagination";
         >
           <swiper-slide>
             <h1>Suggest</h1>
-            <p>Find new stunning music you don’t know,
-              based on the taste of users that are
-              the same as you.</p>
+            <p>{{ $t('authView.slider.firstSlide') }}</p>
           </swiper-slide>
           <swiper-slide>
             <h1>Suggest</h1>
-            <p>Find new stunning music you don’t know,
-              based on the taste of users that are
-              the same as you.</p>
+            <p>{{ $t('authView.slider.firstSlide') }}</p>
           </swiper-slide>
           <swiper-slide>
             <h1>Suggest</h1>
-            <p>Find new stunning music you don’t know,
-              based on the taste of users that are
-              the same as you.</p>
+            <p>{{ $t('authView.slider.firstSlide') }}</p>
           </swiper-slide>
         </swiper>
         <SpotifyAuthButton />

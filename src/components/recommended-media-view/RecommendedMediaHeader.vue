@@ -5,6 +5,7 @@ import { useMatchesStore } from "@/stores/MatchesStore";
 import { Match } from "@/models/Match";
 import { secondsToMinutes } from "@/composables/TimeCalculations";
 import ArrowLeftIcon from "@/components/icons/controls/ArrowLeftIcon.vue";
+import {useI18n} from "vue-i18n";
 
 const props = defineProps({
   userId: {
@@ -12,6 +13,8 @@ const props = defineProps({
     required: true,
   },
 })
+
+const { t } = useI18n()
 
 const matchesStore = useMatchesStore()
 
@@ -22,28 +25,28 @@ const match: Ref<Match> = ref(matchesStore.matchesMap.get(props.userId)!)
 const profileImage: ComputedRef<string> = computed((): string => {
   return (hasMatch.value && match.value.profileImage)
       ? match.value.profileImage
-      : 'no profile image available'
+      : t('matchesView.placeholders.noProfileImage')
 })
 
 // Access of username property
 const username: ComputedRef<string> = computed((): string => {
   return (hasMatch.value && match.value.username)
       ? match.value.username
-      : 'no username available'
+      : t('matchesView.placeholders.noUsername')
 })
 
 // Access of rank property
 const rank: ComputedRef<string> = computed((): string => {
   return (hasMatch.value && match.value.rank)
       ? (match.value.rank).toString()
-      : 'no rank available'
+      : t('matchesView.placeholders.noRank')
 })
 
 // Calculate together listened minutes
 const minutes: ComputedRef<string> = computed((): string => {
   return (hasMatch.value && match.value.listenedTogetherSeconds)
       ? secondsToMinutes(match.value.listenedTogetherSeconds)
-      : 'no minutes available'
+      : t('matchesView.placeholders.noMinutes')
 })
 
 </script>
@@ -56,7 +59,7 @@ const minutes: ComputedRef<string> = computed((): string => {
     <img class="profile-image" :src="profileImage" alt="Profile image" />
     <div class="profile-info">
       <h2>#{{ rank }} {{ username }}</h2>
-      <p>{{ minutes }} minutes listened together</p>
+      <p>{{ minutes }} {{ $t('matchesView.minutesLabel') }}</p>
     </div>
   </header>
 </template>

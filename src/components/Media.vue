@@ -2,6 +2,9 @@
 import type {ComputedRef, PropType} from "vue";
 import type { MediaSummary } from "@/models/MediaSummary";
 import { computed } from "vue";
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps({
   media: {
@@ -23,14 +26,14 @@ const rank: ComputedRef<number> = computed((): number => {
 const songTitle: ComputedRef<string> = computed((): string => {
   return (props.media && props.media.songTitle)
       ? props.media.songTitle
-      : 'no title available'
+      : t('media.placeholders.noTitle')
 })
 
 // Access username prop
 const artists: ComputedRef<string> = computed((): string => {
   return (props.media && props.media.allArtists)
       ? props.media.allArtists.join().replace(',', ', ')
-      : 'no artists available'
+      : t('media.placeholders.noArtists')
 })
 
 // Flag that indicates if title is explicit
@@ -42,7 +45,7 @@ const isExplicit: ComputedRef<boolean> = computed((): boolean => {
 const albumImage = computed(() => {
   return (props.media && props.media.albumImages)
       ? props.media.albumImages[0].imageUrl
-      : 'no album image available'
+      : t('media.placeholders.noImage')
 })
 </script>
 

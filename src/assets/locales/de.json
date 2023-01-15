@@ -1,11 +1,52 @@
 {
+  "navbar": {
+    "matches": "Matches",
+    "chats": "Chats",
+    "profile": "Profil",
+    "settings": "Einstellungen"
+  },
+  "authView": {
+    "slider": {
+      "firstSlide": "Finde neue Songs, die du lieben wirst, basierend auf dem Geschmack von Menschen, die das selbe wie du hören."
+    },
+    "spotifyBtn": "Mit Spotify Verbinden"
+  },
   "profileView": {
-
+    "trackingLabel": "auswertung seit",
+    "connectedAppLabel": "verknüpfte apps",
+    "heading": "Deine Lieblings Titel",
+    "placeholders": {
+      "noUsername": "kein Benutzername verfügbar",
+      "noProfileImage": "kein Profilbild verfügbar",
+      "noMinutes": "keine gehörten Minuten"
+    }
   },
   "matchesView": {
-
+    "heading": "Deine Top Matches",
+    "minutesLabel": "Minuten zusammen gehört",
+    "infoText": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor",
+    "moreInfo": "mehr Informationen",
+    "placeholders": {
+      "noRank": "kein Rang verfügbar",
+      "noUsername": "kein Benutzername verfügbar",
+      "noProfileImage": "kein Profilbild verfügbar",
+      "noMinutes": "keine gemeinsam gehörten Minuten"
+    }
   },
   "recommendedMediaView": {
-
+    "headingPrefix": "Das sind",
+    "headingSuffix": "lieblings Songs, die du noch nicht kennst"
+  },
+  "settingsView": {
+    "heading": "Einstellungen",
+    "localeLable": "Sprache wählen"
+  },
+  "media": {
+    "placeholders": {
+      "noRank": "kein Rang verfügbar",
+      "noTitle": "kein Song Titel verfügbar",
+      "noArtists": "keine Künstler verfügbar",
+      "noImage": "kein Album Bild verfügbar"
+    }
   }
 }

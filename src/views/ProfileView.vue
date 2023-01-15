@@ -33,7 +33,7 @@ onMounted(async () => {
         v-if="!mainStore.isDesktop"
         v-show="!profileStore.isLoading"
     />
-    <h3 v-show="!profileStore.isLoading" >Your favorite tracks</h3>
+    <h3 v-show="!profileStore.isLoading" >{{ $t('profileView.heading') }}</h3>
 
     <Media
       v-show="!profileStore.isLoading"

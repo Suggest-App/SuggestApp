@@ -3,6 +3,9 @@ import { ref, computed } from "vue";
 import type { Ref, ComputedRef, PropType} from "vue";
 import { Match } from "@/models/Match";
 import { secondsToMinutes } from "@/composables/TimeCalculations";
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps({
   match: {
@@ -15,21 +18,21 @@ const props = defineProps({
 const rank: ComputedRef<string> = computed((): string => {
   return (props.match && props.match.rank)
       ? (props.match.rank).toString()
-      : 'no rank available'
+      : t('matchesView.placeholders.noRank')
 })
 
 // Access profile image prop
 const profileImage: ComputedRef<string> = computed((): string => {
   return (props.match && props.match.profileImage)
       ? props.match.profileImage
-      : 'no profile image available'
+      : t('matchesView.placeholders.noProfileImage')
 })
 
 // Access of username prop
 const username: ComputedRef<string> = computed((): string => {
   return (props.match && props.match.username)
       ? props.match.username
-      : 'no username available'
+      : t('matchesView.placeholders.noUsername')
 })
 
 // Bool that indicates if together listened minutes should be displayed
@@ -39,7 +42,7 @@ const showMinutes: Ref<boolean> = ref(props.match.listenedTogetherSeconds != nul
 const minutes:ComputedRef<string> = computed((): string => {
   return (props.match && showMinutes)
       ? secondsToMinutes(props.match.listenedTogetherSeconds)
-      : "no minutes available"
+      : t('matchesView.placeholders.noMinutes')
 })
 </script>
 
@@ -53,7 +56,7 @@ const minutes:ComputedRef<string> = computed((): string => {
     />
     <div class="profile-information">
       <p class="profile-name">{{ username }}</p>
-      <p class="listened-together">{{ minutes }} minutes listened together</p>
+      <p class="listened-together">{{ minutes }} {{ $t('matchesView.minutesLabel') }}</p>
     </div>
   </div>
 </template>

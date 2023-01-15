@@ -8,6 +8,9 @@ import ProfileService from "@/services/ProfileService";
 import {trackingSincePopup} from "@/composables/InformationPopup";
 import GearIcon from "@/components/icons/controls/GearIcon.vue";
 import { useMainStore } from "@/stores/MainStore";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n()
 
 const profileStore = useProfileStore()
 const mainStore = useMainStore()
@@ -23,21 +26,21 @@ onMounted(async () => {
 const profileImage: ComputedRef<string> = computed((): string => {
   return (profileStore.profileInformation && profileStore.profileInformation.profileImage)
       ? profileStore.profileInformation.profileImage
-      : 'no profile image available'
+      : t('profileView.placeholders.noProfileImage')
 })
 
 // Access of username property
 const username: ComputedRef<string> = computed((): string => {
   return (profileStore.profileInformation && profileStore.profileInformation.username)
       ? profileStore.profileInformation.username
-      : 'no username available'
+      : t('profileView.placeholders.noTitle')
 })
 
 // Value since when user records are getting tracked
 const trackingSince: ComputedRef<string> = computed((): string => {
   return (profileStore.profileInformation && profileStore.profileInformation.trackingSince != null)
     ? trackingSinceDate(profileStore.profileInformation.trackingSince)
-    : 'no tracking date available'
+    : t('profileView.placeholders.noMinutes')
 })
 
 </script>
@@ -47,7 +50,7 @@ const trackingSince: ComputedRef<string> = computed((): string => {
     <img class="profile-image" :src="profileImage" alt="Profile image" />
     <div class="profile-info">
       <h2>{{ username }}</h2>
-      <p v-if="profileStore.profileInformation.trackingSince != null">tracking since: {{ trackingSince }}
+      <p v-if="profileStore.profileInformation.trackingSince != null">{{ $t('profileView.trackingLabel') }}: {{ trackingSince }}
         <InfoIcon @click="trackingSincePopup"/>
       </p>
     </div>

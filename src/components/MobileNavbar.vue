@@ -17,15 +17,15 @@ const isRecommendedView: ComputedRef<boolean> = computed((): boolean => {
   <nav id="mobile-navbar">
     <RouterLink :to="{ name: 'MatchesView' }" :class="{ active: isRecommendedView }">
       <RankingViewIcon />
-      <span>matches</span>
+      <span>{{ $t('navbar.matches') }}</span>
     </RouterLink>
     <RouterLink :to="{ name: 'MessagesView' }">
       <MessagesViewIcon />
-      <span>Chats</span>
+      <span>{{ $t('navbar.chats') }}</span>
     </RouterLink>
     <RouterLink :to="{ name: 'ProfileView' }">
       <ProfileViewIcon />
-      <span>Profile</span>
+      <span>{{ $t('navbar.profile') }}</span>
     </RouterLink>
   </nav>
 </template>
