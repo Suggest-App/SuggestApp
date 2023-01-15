@@ -1,40 +1,44 @@
 #mobile-navbar {
-  @include flex-align-center;
+  display: flex;
+  align-items: flex-end;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 60px;
-  background-color: $tertiary-text-color;
+  height: 280px;
+  padding-bottom: 30px;
+  background-image: linear-gradient(0deg, rgba(0,0,0,1) 5%, rgba(0,0,0,0));
   justify-content: space-evenly;
   z-index: 50;
+  pointer-events: none;
 
   a {
     @include flex-center-all;
     flex-direction: column;
-    row-gap: 5px;
+    row-gap: 8px;
     text-decoration: none;
+    pointer-events: all;
   }
 
   a svg {
-    width: 20px;
-    height: 18px;
+    width: 22px;
+    height: 20px;
     cursor: pointer;
-    fill: $primary-text-color;
+    fill: #9b9b9b;
+  }
+
+  a span  {
+    color: #9b9b9b;
+    font-size: 12px;
   }
 
   .router-link-exact-active svg,
   a.active svg {
-    fill: $spotify-green;
+    fill: #FFFFFF;
   }
 
   .router-link-exact-active span,
   a.active span {
-    color: $spotify-green;
-  }
-
-  a span  {
-    color: $primary-text-color;
-    font-size: 12px;
+    color: #FFFFFF;
   }
 }
