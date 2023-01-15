@@ -21,7 +21,7 @@ const localeOptions: ComputedRef<string[]> = computed((): string[] => {
         <ArrowLeftIcon />
       </RouterLink>
 
-      <h3>{{ $t('settingsView.localeLable') }}</h3>
+      <h3>{{ $t('settingsView.heading') }}</h3>
     </header>
 
     <label class="app-locale" for="locale">

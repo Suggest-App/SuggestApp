@@ -79,9 +79,9 @@ function setSelectArrow(action: string) {
 
   svg {
     position: absolute;
-    right: 0;
+    right: 4px;
     transform: translate(-100%, -50%);
-    width: 8px;
+    width: 10px;
     height: 8px;
     top: calc(50% + 1px);
     pointer-events: none;
