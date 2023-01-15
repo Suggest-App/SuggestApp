@@ -38,13 +38,17 @@ const mainStore = useMainStore()
   column-gap: 18px;
   margin-bottom: 30px;
 
-  .skeleton-profile-image {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-  }
+    .skeleton-profile-image {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
 
-  .skeleton-profile-info {
+    .skeleton-profile-image:before {
+      border-radius: 50%;
+    }
+
+    .skeleton-profile-info {
     flex: 1;
 
     .skeleton-username {
