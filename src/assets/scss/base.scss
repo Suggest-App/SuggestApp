@@ -97,6 +97,7 @@ $secondary-border-radius: 2px;
   background: linear-gradient(to right, transparent, #31353f, transparent);
   transform: translateX(-100%);
   animation: loading 1s infinite;
+  overflow: hidden;
 }
 
 @keyframes loading {

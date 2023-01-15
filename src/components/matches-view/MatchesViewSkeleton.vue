@@ -42,10 +42,6 @@
     border-radius: 50%;
   }
 
-  .skeleton-profile-image:before {
-    border-radius: 50%;
-  }
-
   .skeleton-profile-information {
     flex: 1;
 
