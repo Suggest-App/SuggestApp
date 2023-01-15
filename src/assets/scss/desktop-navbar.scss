@@ -13,51 +13,40 @@
   a {
     @include flex-align-center;
     position: relative;
-    height: 45px;
+    height: 30px;
     column-gap: 15px;
     text-decoration: none;
     padding-left: 18px;
-    background-color: $secondary-background-color;
     border-radius: $primary-border-radius;
     margin-bottom: 12px;
   }
 
-  a:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 6px;
-    border-radius: $primary-border-radius 0 0 $primary-border-radius;
-    background-color: #2f2f2f;
-  }
 
   a svg {
     width: 20px;
     height: 18px;
     cursor: pointer;
-    fill: $primary-text-color;
+    fill: #9b9b9b;
+  }
+
+  a span  {
+    color: #9b9b9b;
+    font-size: 15px;
   }
 
   .router-link-exact-active svg,
   a.active svg {
-    fill: $spotify-green;
+    fill: #FFFFFF;
   }
 
   .router-link-exact-active span,
   a.active span {
-    color: $spotify-green;
+    color: #FFFFFF;
   }
 
   .router-link-exact-active:before,
   a.active:before {
-    background-color: $spotify-green;
-  }
-
-  a span  {
-    color: $primary-text-color;
-    font-size: 15px;
+    background-color: #FFFFFF;
   }
 }
 
@@ -88,8 +77,18 @@
     width: 430px;
 
     a {
-      height: 50px;
+      height: 35px;
       margin-bottom: 15px;
+    }
+
+
+    a svg {
+      width: 22px;
+      height: 20px;
+    }
+
+    a span  {
+      font-size: 18px;
     }
   }
 }
