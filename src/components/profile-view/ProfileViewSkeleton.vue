@@ -33,14 +33,15 @@ const mainStore = useMainStore()
 
 <style lang="scss" scoped>
 .skeleton-header {
-  @include flex-align-center;
+  display: flex;
+  align-items: center;
   column-gap: 18px;
   margin-bottom: 30px;
 
   .skeleton-profile-image {
     width: 64px;
     height: 64px;
-    border-radius: $round-border-radius;
+    border-radius: 50%;
   }
 
   .skeleton-profile-info {

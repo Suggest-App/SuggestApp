@@ -125,30 +125,3 @@ $secondary-border-radius: 2px;
 /********************************************************************************************/
 /* ------------------------------ Disable Landscape mode ---------------------------------- */
 /********************************************************************************************/
-
-@media screen and (min-aspect-ratio: 13/9) {
-  html {
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    width: 100vh;
-    overflow-x: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
-  }
-  .bw-dashboard {
-    height: inherit;
-  }
-}
-@media screen and (min-width: 1292px) {
-  html {
-    transform: none;
-    transform-origin: unset;
-    width: 100%;
-    overflow-x: unset;
-    position: relative;
-  }
-  .bw-dashboard {
-    height: 100vh;
-  }
-}

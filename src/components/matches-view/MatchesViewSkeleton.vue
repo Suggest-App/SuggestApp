@@ -24,7 +24,8 @@
 }
 
 .skeleton-profile-container {
-  @include flex-align-center;
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 62px;
   column-gap: 15px;
@@ -38,7 +39,7 @@
   .skeleton-profile-image {
     height: 100%;
     aspect-ratio: 1 / 1;
-    border-radius: $round-border-radius;
+    border-radius: 50%;
   }
 
   .skeleton-profile-information {
