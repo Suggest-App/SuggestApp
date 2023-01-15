@@ -16,7 +16,10 @@ const router = createRouter({
       path: '/',
       name: 'AuthView',
       component: AuthView,
-      meta: { showNavbar: false }
+      meta: {
+        showNavbar: false,
+        keepAlive: false
+      }
     },
     {
       path: '/home',
@@ -46,7 +49,10 @@ const router = createRouter({
       path: "/:catchAll(.*)",
       name: 'NotFound',
       component: NotFound,
-      meta: { showNavbar: false }
+      meta: {
+        showNavbar: false,
+        keepAlive: false
+      }
     },
   ]
 })
