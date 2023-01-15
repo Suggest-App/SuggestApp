@@ -8,6 +8,7 @@ import SettingsView from "@/views/SettingsView.vue";
 import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
 import NotFound from "@/components/NotFound.vue";
 import { getCookie } from "@/services/TokenService";
+import MessagesView from "@/views/MessagesView.vue";
 
 
 const router = createRouter({
@@ -38,6 +39,12 @@ const router = createRouter({
       path: '/profile',
       name: 'ProfileView',
       component: ProfileView,
+      meta: { showNavbar: true }
+    },
+    {
+      path: '/messages',
+      name: 'MessagesView',
+      component: MessagesView,
       meta: { showNavbar: true }
     },
     {

@@ -8,6 +8,7 @@ import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
 import ProfileHeader from "@/components/profile-view/ProfileHeader.vue";
 import ConnectedAppsBtn from "@/components/profile-view/ConnectedAppsBtn.vue";
 import GearIcon from "@/components/icons/controls/GearIcon.vue";
+import MessagesViewIcon from "@/components/icons/navbar/MessagesViewIcon.vue";
 
 const mainStore = useMainStore()
 const route = useRoute()
@@ -24,6 +25,10 @@ const isRecommendedView: ComputedRef<boolean> = computed((): boolean => {
     <RouterLink :to="{ name: 'MatchesView' }" :class="{ active: isRecommendedView }">
       <RankingViewIcon />
       <span>matches</span>
+    </RouterLink>
+    <RouterLink :to="{ name: 'MessagesView' }">
+      <MessagesViewIcon />
+      <span>Chats</span>
     </RouterLink>
     <RouterLink :to="{ name: 'ProfileView' }">
       <ProfileViewIcon />

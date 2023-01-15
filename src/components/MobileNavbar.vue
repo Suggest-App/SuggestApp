@@ -4,6 +4,7 @@ import type { ComputedRef } from "vue";
 import { useRoute } from "vue-router";
 import RankingViewIcon from "@/components/icons/navbar/RankingViewIcon.vue";
 import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
+import MessagesViewIcon from "@/components/icons/navbar/MessagesViewIcon.vue";
 
 const route = useRoute()
 
@@ -17,6 +18,10 @@ const isRecommendedView: ComputedRef<boolean> = computed((): boolean => {
     <RouterLink :to="{ name: 'MatchesView' }" :class="{ active: isRecommendedView }">
       <RankingViewIcon />
       <span>matches</span>
+    </RouterLink>
+    <RouterLink :to="{ name: 'MessagesView' }">
+      <MessagesViewIcon />
+      <span>Chats</span>
     </RouterLink>
     <RouterLink :to="{ name: 'ProfileView' }">
       <ProfileViewIcon />
