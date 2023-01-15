@@ -69,6 +69,7 @@ function setSelectArrow(action: string) {
 <style lang="scss">
 .select-container {
   position: relative;
+  width: 100%;
 
   select.currency {
     width: 60px;
@@ -90,5 +91,11 @@ function setSelectArrow(action: string) {
 
 .select-container.price {
   min-width: 90px;
+}
+
+@media only screen and (min-width: 768px) {
+  .select-container {
+    max-width: 300px;
+  }
 }
 </style>

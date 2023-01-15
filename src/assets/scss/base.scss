@@ -140,6 +140,7 @@ label {
 }
 
 select {
+  position: relative;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -168,3 +169,10 @@ select option {
 select:focus::-ms-value {
   background-color: transparent;
 }
+
+@media only screen and (min-width: 768px) {
+  select {
+    max-width: 300px;
+  }
+}
+

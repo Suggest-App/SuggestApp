@@ -5,8 +5,10 @@ import { computed } from "vue";
 import type { ComputedRef } from "vue";
 import { allLocales, createLocaleObject, setLocale } from '@/i18n'
 import { useI18n } from 'vue-i18n'
+import { useMainStore } from "@/stores/MainStore";
 
 const { t } = useI18n()
+const mainStore = useMainStore()
 
 // Get the currency select options
 const localeOptions: ComputedRef<string[]> = computed((): string[] => {
@@ -17,7 +19,7 @@ const localeOptions: ComputedRef<string[]> = computed((): string[] => {
 <template>
   <section id="settings-view">
     <header>
-      <RouterLink :to="{ name: 'ProfileView' }">
+      <RouterLink v-if="!mainStore.isDesktop" :to="{ name: 'ProfileView' }">
         <ArrowLeftIcon />
       </RouterLink>
 
