@@ -20,49 +20,53 @@
   }
 
   .auth-form {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
     height: 55vh;
     width: 100%;
     padding: 0 15px;
 
-    .suggest-logo {
-      width: 40px;
-      height: 51px;
-    }
-
-    .swiper {
+    .auth-form-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
       width: 100%;
-      max-width: 500px;
-      padding-bottom: 40px;
 
-      h1 {
-        color: #FFFFFF;
-        font-size: 32px;
-        letter-spacing: 1px;
-        font-weight: 500;
-        margin-top: 18px;
-        text-align: center;
+      .suggest-logo {
+        width: 40px;
+        height: 51px;
       }
 
-      p {
-        text-align: center;
-        color: $secondary-text-color;
-        line-height: 26px;
-        margin-top: 18px;
-        padding: 0 40px;
-      }
+      .swiper {
+        width: 100%;
+        max-width: 500px;
+        padding-bottom: 40px;
 
-      .swiper-pagination {
-        bottom: 0;
+        h1 {
+          color: #FFFFFF;
+          font-size: 32px;
+          letter-spacing: 1px;
+          font-weight: 500;
+          margin-top: 18px;
+          text-align: center;
+        }
 
-        .swiper-pagination-bullet {
-          width: 8px;
-          height: 8px;
-          background-color: $tertiary-background-color;
-          margin: 0 12px;
+        p {
+          text-align: center;
+          color: $secondary-text-color;
+          line-height: 26px;
+          margin-top: 18px;
+          padding: 0 40px;
+        }
+
+        .swiper-pagination {
+          bottom: 0;
+
+          .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background-color: $tertiary-background-color;
+            margin: 0 12px;
+          }
         }
       }
     }
@@ -71,6 +75,7 @@
       @include flex-center-all;
       position: relative;
       width: 100%;
+      max-width: 360px;
       height: 56px;
       background-color: $spotify-green;
       border: none;
@@ -99,14 +104,14 @@
     flex-direction: row;
 
     .image-container {
-      width: 50%;
+      width: 40%;
       height: 100vh;
 
       img {
         width: unset;
         bottom: unset;
         left: unset;
-        right: 30%;
+        right: 0;
         height: 120vh;
         top: -10vh;
         transform: rotate(0);
@@ -114,15 +119,69 @@
     }
 
     .auth-form {
-      width: 50%;
+      @include flex-center-all;
+      width: 60%;
       height: 100vh;
-
     }
   }
 }
 
 @media only screen and (min-width: 1280px) {
- #auth-view .image-container img {
-   right: 10%;
- }
+  #auth-view {
+    .image-container {
+      width: 44%;
+    }
+
+    .auth-form {
+      width: 56%;
+
+      .auth-form-wrapper {
+        width: 450px;
+
+        .suggest-logo {
+          width: 45px;
+          height: 56px;
+        }
+
+        .swiper {
+          padding-bottom: 50px;
+
+          h1 {
+            font-size: 38px;
+            margin-top: 28px;
+          }
+
+          p {
+            font-size: 20px;
+            line-height: 34px;
+            margin-top: 28px;
+            padding: 0;
+          }
+
+
+          .swiper-pagination .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            margin: 0 12px;
+          }
+        }
+      }
+
+      .spotify-oauth2-btn {
+        max-width: 390px;
+
+        svg {
+          position: absolute;
+          left: 15px;
+          top: 14px;
+          width: 28px;
+          height: 28px;
+        }
+
+        span {
+          font-size: 21px;
+        }
+      }
+    }
+  }
 }
