@@ -33,7 +33,7 @@ export function tryGetAuthorizedInstance(): AxiosInstance {
     instance.interceptors.response.use((response) => response, (error) => {
         // If no token exists or response status is 401, redirect to auth view
         if (!jwtCookie || error.response.status === 401) {
-            router.push('/')
+            router.push({ name: 'AuthView'})
         }
     });
 

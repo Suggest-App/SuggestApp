@@ -9,6 +9,7 @@ import ProfileHeader from "@/components/profile-view/ProfileHeader.vue";
 import ConnectedAppsBtn from "@/components/profile-view/ConnectedAppsBtn.vue";
 import GearIcon from "@/components/icons/controls/GearIcon.vue";
 import MessagesViewIcon from "@/components/icons/navbar/MessagesViewIcon.vue";
+import router from "@/router";
 
 const mainStore = useMainStore()
 const route = useRoute()
@@ -39,7 +40,7 @@ const isRecommendedView: ComputedRef<boolean> = computed((): boolean => {
       <span>{{ $t('navbar.settings') }}</span>
     </RouterLink>
 
-    <ConnectedAppsBtn v-if="mainStore.isDesktop" />
+    <ConnectedAppsBtn v-if="mainStore.isDesktop" @click="router.push({ name: 'ConnectedAppsView'})"/>
   </nav>
 </template>
 

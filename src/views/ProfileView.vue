@@ -7,6 +7,7 @@ import ProfileService from "@/services/ProfileService";
 import { useProfileStore } from "@/stores/ProfileStore";
 import { useMainStore } from "@/stores/MainStore";
 import ProfileViewSkeleton from "@/components/profile-view/ProfileViewSkeleton.vue";
+import router from "@/router";
 
 const profileStore = useProfileStore()
 const mainStore = useMainStore()
@@ -32,6 +33,7 @@ onMounted(async () => {
     <ConnectedAppsBtn
         v-if="!mainStore.isDesktop"
         v-show="!profileStore.isLoading"
+        @click="router.push({ name: 'ConnectedAppsView'})"
     />
     <h3 v-show="!profileStore.isLoading" >{{ $t('profileView.heading') }}</h3>
 
