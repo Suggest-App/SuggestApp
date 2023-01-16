@@ -18,7 +18,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'AuthView',
-      component: ConnectedAppsView,
+      component: AuthView,
       meta: {
         showNavbar: false,
         keepAlive: false
