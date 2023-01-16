@@ -41,6 +41,11 @@
     "heading": "Settings",
     "localeLable": "Select language"
   },
+  "connectedAppsView": {
+    "heading": "Verknüpfte Apps",
+    "connectStatus": "Connected",
+    "disconnectLink": "disconnect"
+  },
   "media": {
     "placeholders": {
       "noRank": "no rank available",

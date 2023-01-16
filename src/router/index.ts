@@ -5,6 +5,7 @@ import ShuffleView from '@/views/ShuffleView.vue'
 import MatchesView from "@/views/MatchesView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import SettingsView from "@/views/SettingsView.vue";
+import ConnectedAppsView from "@/views/ConnectedAppsView.vue";
 import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
 import NotFound from "@/components/NotFound.vue";
 import { getCookie } from "@/services/TokenService";
@@ -17,7 +18,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'AuthView',
-      component: AuthView,
+      component: ConnectedAppsView,
       meta: {
         showNavbar: false,
         keepAlive: false
@@ -54,6 +55,12 @@ const router = createRouter({
       meta: { showNavbar: true }
     },
     {
+      path: '/connected-apps',
+      name: 'ConnectedAppsView',
+      component: ConnectedAppsView,
+      meta: { showNavbar: true }
+    },
+    {
       path: '/recommended-media/:id',
       name: 'RecommendedMediaView',
       component: RecommendedMediaView,
@@ -63,10 +70,7 @@ const router = createRouter({
       path: "/:catchAll(.*)",
       name: 'NotFound',
       component: NotFound,
-      meta: {
-        showNavbar: false,
-        keepAlive: false
-      }
+      meta: { showNavbar: false }
     },
   ]
 })
