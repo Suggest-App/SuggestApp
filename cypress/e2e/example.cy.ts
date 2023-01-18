@@ -1,8 +1,9 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('My First Test', () => {
+describe('Authorize user with Spotify', () => {
   it('visits the app root url', () => {
     cy.visit('/')
-    cy.contains('h1', 'You did it!')
+    cy.get('.spotify-oauth2-btn').click()
+    cy.url().should('include', '/my-url')
   })
 })
