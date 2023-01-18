@@ -26,8 +26,10 @@
     align-items: center;
 
     p {
+      color: $primary-text-color;
       font-size: 1.2em;
       margin-right: 8px;
+      text-decoration: none;
     }
     svg {
       fill: #FFF;
