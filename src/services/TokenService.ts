@@ -21,6 +21,18 @@ export function getCookie(name: string): string | undefined {
 }
 
 /**
+ * Try to delete a cookie by its name
+ *
+ * @param name string
+ *
+ * @return void
+ */
+export function deleteCookie(name: string): void {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+
+/**
  * Get an authorized axios instance in order to get, post or patch data
  *
  * @return AxiosInstance
@@ -31,8 +43,9 @@ export function tryGetAuthorizedInstance(): AxiosInstance {
     const instance = axios.create()
 
     instance.interceptors.response.use((response) => response, (error) => {
-        // If no token exists or response status is 401, redirect to auth view
+        // If no token exists or response status is 401, delete token and redirect to auth view
         if (!jwtCookie || error.response.status === 401) {
+            deleteCookie('jwt')
             router.push({ name: 'AuthView'})
         }
     });
