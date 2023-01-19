@@ -11,7 +11,10 @@ export default defineConfig({
         registerType: 'autoUpdate',
         injectRegister: 'auto',
         workbox: {
-          globPatterns: ['**/*.{js,css,ico,png,svg}']
+          globPatterns: [
+              '**/*.{js,css,ico,png,svg}',
+              '!(*/sign-in)'
+          ]
         },
         includeAssets: [
           'images/*.png',
