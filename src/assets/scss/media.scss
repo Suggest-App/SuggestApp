@@ -22,7 +22,7 @@
     flex: 1;
 
     .media-title {
-      width: 160px;
+      width: 150px;
       font-size: 16px;
       font-weight: 500;
       color: $primary-text-color;
@@ -51,11 +51,15 @@
       }
 
       .artists {
+        width: 140px;
         font-size: 14px;
         font-weight: 400;
         color: $secondary-text-color;
         height: 16px;
+        text-overflow: ellipsis;
         overflow: hidden;
+        white-space: nowrap;
+        text-align: left;
       }
     }
   }
@@ -70,20 +74,38 @@
 }
 
 @media only screen and (min-width: 360px) {
-  .media-container .media-information .media-title {
-    width: 150px;
+  .media-container .media-information {
+    .media-title {
+      width: 150px;
+    }
+
+    .additional-media-info.artists {
+      width: 130px;
+    }
   }
 }
 
 @media only screen and (min-width: 380px) {
-  .media-container .media-information .media-title {
-    width: 170px;
+  .media-container .media-information {
+    .media-title {
+      width: 170px;
+    }
+
+    .additional-media-info.artists {
+      width: 150px;
+    }
   }
 }
 
 @media only screen and (min-width: 400px) {
-  .media-container .media-information .media-title {
-    width: 190px;
+  .media-container .media-information {
+    .media-title {
+      width: 190px;
+    }
+
+    .additional-media-info.artists {
+      width: 170px;
+    }
   }
 }
 
@@ -106,6 +128,7 @@
       .additional-media-info {
 
         .artists {
+          width: 174px;
           font-size: 15px;
         }
       }
@@ -114,104 +137,206 @@
 }
 
 @media only screen and (min-width: 420px) {
-  .media-container .media-information .media-title {
-    width: 200px;
+  .media-container .media-information {
+    .media-title {
+      width: 200px;
+    }
+
+    .additional-media-info.artists {
+      width: 180px;
+    }
   }
 }
 
 @media only screen and (min-width: 440px) {
-  .media-container .media-information .media-title {
-    width: 220px;
+  .media-container .media-information {
+    .media-title {
+      width: 220px;
+    }
+
+    .additional-media-info.artists {
+      width: 200px;
+    }
   }
 }
 
 @media only screen and (min-width: 460px) {
-  .media-container .media-information .media-title {
-    width: 240px;
+  .media-container .media-information {
+    .media-title {
+      width: 240px;
+    }
+
+    .additional-media-info.artists {
+      width: 220px;
+    }
   }
 }
 
 @media only screen and (min-width: 480px) {
-  .media-container .media-information .media-title {
-    width: 260px;
+  .media-container .media-information {
+    .media-title {
+      width: 260px;
+    }
+
+    .additional-media-info.artists {
+      width: 240px;
+    }
   }
 }
 
 @media only screen and (min-width: 500px) {
-  .media-container .media-information .media-title {
-    width: 280px;
+  .media-container .media-information {
+    .media-title {
+      width: 280px;
+    }
+
+    .additional-media-info.artists {
+      width: 260px;
+    }
   }
 }
 
 @media only screen and (min-width: 520px) {
-  .media-container .media-information .media-title {
-    width: 300px;
+  .media-container .media-information {
+    .media-title {
+      width: 300px;
+    }
+
+    .additional-media-info.artists {
+      width: 280px;
+    }
   }
 }
 
 @media only screen and (min-width: 540px) {
-  .media-container .media-information .media-title {
-    width: 320px;
+  .media-container .media-information {
+    .media-title {
+      width: 320px;
+    }
+
+    .additional-media-info.artists {
+      width: 300px;
+    }
   }
 }
 
 @media only screen and (min-width: 560px) {
-  .media-container .media-information .media-title {
-    width: 340px;
+  .media-container .media-information {
+    .media-title {
+      width: 340px;
+    }
+
+    .additional-media-info.artists {
+      width: 320px;
+    }
   }
 }
 
 @media only screen and (min-width: 580px) {
-  .media-container .media-information .media-title {
-    width: 360px;
+  .media-container .media-information {
+    .media-title {
+      width: 360px;
+    }
+
+    .additional-media-info.artists {
+      width: 340px;
+    }
   }
 }
 
 @media only screen and (min-width: 600px) {
-  .media-container .media-information .media-title {
-    width: 100%;
+  .media-container .media-information {
+    .media-title {
+      width: 100%;
+    }
+
+    .additional-media-info.artists {
+      width: 100%;
+    }
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .media-container .media-information .media-title {
-    width: 270px;
+  .media-container .media-information {
+    .media-title {
+      width: 270px;
+    }
+
+    .additional-media-info.artists {
+      width: 250px;
+    }
   }
 }
 
 @media only screen and (min-width: 780px) {
-  .media-container .media-information .media-title {
-    width: 280px;
+  .media-container .media-information {
+    .media-title {
+      width: 280px;
+    }
+
+    .additional-media-info.artists {
+      width: 260px;
+    }
   }
 }
 
 @media only screen and (min-width: 800px) {
-  .media-container .media-information .media-title {
-    width: 300px;
+  .media-container .media-information {
+    .media-title {
+      width: 300px;
+    }
+
+    .additional-media-info.artists {
+      width: 280px;
+    }
   }
 }
 
 @media only screen and (min-width: 820px) {
-  .media-container .media-information .media-title {
-    width: 320px;
+  .media-container .media-information {
+    .media-title {
+      width: 320px;
+    }
+
+    .additional-media-info.artists {
+      width: 300px;
+    }
   }
 }
 
 @media only screen and (min-width: 840px) {
-  .media-container .media-information .media-title {
-    width: 338px;
+  .media-container .media-information {
+    .media-title {
+      width: 338px;
+    }
+
+    .additional-media-info.artists {
+      width: 318px;
+    }
   }
 }
 
 @media only screen and (min-width: 860px) {
-  .media-container .media-information .media-title {
-    width: 358px;
+  .media-container .media-information {
+    .media-title {
+      width: 358px;
+    }
+
+    .additional-media-info.artists {
+      width: 338px;
+    }
   }
 }
 
 @media only screen and (min-width: 880px) {
-  .media-container .media-information .media-title {
-    width: 100%;
+  .media-container .media-information {
+    .media-title {
+      width: 100%;
+    }
+
+    .additional-media-info.artists {
+      width: 100%;
+    }
   }
 }
 
