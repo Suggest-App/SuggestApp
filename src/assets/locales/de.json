@@ -14,7 +14,7 @@
   "profileView": {
     "trackingLabel": "auswertung seit",
     "connectedAppLabel": "verknüpfte apps",
-    "heading": "Deine Lieblings Titel",
+    "heading": "Deine Lieblingstitel",
     "placeholders": {
       "noUsername": "kein Benutzername verfügbar",
       "noProfileImage": "kein Profilbild verfügbar",
@@ -35,7 +35,7 @@
   },
   "recommendedMediaView": {
     "headingPrefix": "Das sind",
-    "headingSuffix": "lieblings Songs, die du noch nicht kennst"
+    "headingSuffix": "lieblingstitel, die du noch nicht kennst"
   },
   "settingsView": {
     "heading": "Einstellungen",
