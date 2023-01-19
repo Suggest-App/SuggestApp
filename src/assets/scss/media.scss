@@ -10,6 +10,8 @@
     color: $primary-text-color;
     font-size: 14px;
     font-weight: 500;
+    width: 20px;
+    text-align: center;
   }
 
   .media-cover {
@@ -22,7 +24,7 @@
     flex: 1;
 
     .media-title {
-      width: 150px;
+      width: 140px;
       font-size: 16px;
       font-weight: 500;
       color: $primary-text-color;
@@ -51,7 +53,7 @@
       }
 
       .artists {
-        width: 140px;
+        width: 130px;
         font-size: 14px;
         font-weight: 400;
         color: $secondary-text-color;
@@ -76,11 +78,11 @@
 @media only screen and (min-width: 360px) {
   .media-container .media-information {
     .media-title {
-      width: 150px;
+      width: 140px;
     }
 
     .additional-media-info.artists {
-      width: 130px;
+      width: 120px;
     }
   }
 }
@@ -88,11 +90,11 @@
 @media only screen and (min-width: 380px) {
   .media-container .media-information {
     .media-title {
-      width: 170px;
+      width: 160px;
     }
 
     .additional-media-info.artists {
-      width: 150px;
+      width: 140px;
     }
   }
 }
@@ -100,11 +102,11 @@
 @media only screen and (min-width: 400px) {
   .media-container .media-information {
     .media-title {
-      width: 190px;
+      width: 180px;
     }
 
     .additional-media-info.artists {
-      width: 170px;
+      width: 160px;
     }
   }
 }
@@ -120,7 +122,7 @@
     .media-information {
 
       .media-title {
-        width: 194px;
+        width: 184px;
         font-size: 17px;
         margin-bottom: 6px;
       }
@@ -128,7 +130,7 @@
       .additional-media-info {
 
         .artists {
-          width: 174px;
+          width: 164px;
           font-size: 15px;
         }
       }
@@ -139,11 +141,11 @@
 @media only screen and (min-width: 420px) {
   .media-container .media-information {
     .media-title {
-      width: 200px;
+      width: 190px;
     }
 
     .additional-media-info.artists {
-      width: 180px;
+      width: 170px;
     }
   }
 }
@@ -151,11 +153,11 @@
 @media only screen and (min-width: 440px) {
   .media-container .media-information {
     .media-title {
-      width: 220px;
+      width: 210px;
     }
 
     .additional-media-info.artists {
-      width: 200px;
+      width: 190px;
     }
   }
 }
@@ -163,11 +165,11 @@
 @media only screen and (min-width: 460px) {
   .media-container .media-information {
     .media-title {
-      width: 240px;
+      width: 230px;
     }
 
     .additional-media-info.artists {
-      width: 220px;
+      width: 210px;
     }
   }
 }
@@ -175,11 +177,11 @@
 @media only screen and (min-width: 480px) {
   .media-container .media-information {
     .media-title {
-      width: 260px;
+      width: 250px;
     }
 
     .additional-media-info.artists {
-      width: 240px;
+      width: 230px;
     }
   }
 }
@@ -187,11 +189,11 @@
 @media only screen and (min-width: 500px) {
   .media-container .media-information {
     .media-title {
-      width: 280px;
+      width: 270px;
     }
 
     .additional-media-info.artists {
-      width: 260px;
+      width: 250px;
     }
   }
 }
@@ -199,11 +201,11 @@
 @media only screen and (min-width: 520px) {
   .media-container .media-information {
     .media-title {
-      width: 300px;
+      width: 290px;
     }
 
     .additional-media-info.artists {
-      width: 280px;
+      width: 270px;
     }
   }
 }
@@ -211,11 +213,11 @@
 @media only screen and (min-width: 540px) {
   .media-container .media-information {
     .media-title {
-      width: 320px;
+      width: 310px;
     }
 
     .additional-media-info.artists {
-      width: 300px;
+      width: 290px;
     }
   }
 }
@@ -223,11 +225,11 @@
 @media only screen and (min-width: 560px) {
   .media-container .media-information {
     .media-title {
-      width: 340px;
+      width: 330px;
     }
 
     .additional-media-info.artists {
-      width: 320px;
+      width: 310px;
     }
   }
 }
@@ -235,11 +237,11 @@
 @media only screen and (min-width: 580px) {
   .media-container .media-information {
     .media-title {
-      width: 360px;
+      width: 350px;
     }
 
     .additional-media-info.artists {
-      width: 340px;
+      width: 330px;
     }
   }
 }
@@ -259,6 +261,18 @@
 @media only screen and (min-width: 768px) {
   .media-container .media-information {
     .media-title {
+      width: 260px;
+    }
+
+    .additional-media-info.artists {
+      width: 240px;
+    }
+  }
+}
+
+@media only screen and (min-width: 780px) {
+  .media-container .media-information {
+    .media-title {
       width: 270px;
     }
 
@@ -268,26 +282,14 @@
   }
 }
 
-@media only screen and (min-width: 780px) {
-  .media-container .media-information {
-    .media-title {
-      width: 280px;
-    }
-
-    .additional-media-info.artists {
-      width: 260px;
-    }
-  }
-}
-
 @media only screen and (min-width: 800px) {
   .media-container .media-information {
     .media-title {
-      width: 300px;
+      width: 290px;
     }
 
     .additional-media-info.artists {
-      width: 280px;
+      width: 270px;
     }
   }
 }
@@ -295,11 +297,11 @@
 @media only screen and (min-width: 820px) {
   .media-container .media-information {
     .media-title {
-      width: 320px;
+      width: 310px;
     }
 
     .additional-media-info.artists {
-      width: 300px;
+      width: 290px;
     }
   }
 }
@@ -307,11 +309,11 @@
 @media only screen and (min-width: 840px) {
   .media-container .media-information {
     .media-title {
-      width: 338px;
+      width: 328px;
     }
 
     .additional-media-info.artists {
-      width: 318px;
+      width: 308px;
     }
   }
 }
@@ -319,11 +321,11 @@
 @media only screen and (min-width: 860px) {
   .media-container .media-information {
     .media-title {
-      width: 358px;
+      width: 348px;
     }
 
     .additional-media-info.artists {
-      width: 338px;
+      width: 328px;
     }
   }
 }
