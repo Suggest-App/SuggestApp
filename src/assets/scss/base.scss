@@ -126,10 +126,13 @@ $secondary-border-radius: 2px;
     padding-left: 15px;
     padding-right: 15px;
 
+    // Since cancel buggy is buggy
+    .swal2-cancel {
+      display: none!important;
+    }
+
     .swal2-confirm,
-    .swal2-confirm:focus,
-    .swal2-cancel,
-    .swal2-cancel:focus {
+    .swal2-confirm:focus {
       width: 100%;
       @include reset-swal;
       border-radius: 50px!important;
