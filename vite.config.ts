@@ -1,11 +1,49 @@
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
+import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-      vue()
+      vue(),
+      VitePWA({
+        registerType: 'autoUpdate',
+        injectRegister: 'auto',
+        workbox: {
+          globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+        },
+        includeAssets: [
+          'images/*.png',
+          'favicon.ico',
+          'favicon-16x16.png',
+          'favicon-32x32.png',
+          'android-chrome-192x192.png',
+          'android-chrome-512x512.png',
+          'apple-touch-icon.png',
+          'mstile-150x150.png',
+          'safari-pinned-tab.svg',
+          'masked-icon.svg'
+        ],
+        manifest: {
+          name: 'Music Buddies',
+          short_name: 'MBuddies',
+          description: 'My Awesome App description',
+          theme_color: '#121212',
+          icons: [
+            {
+              src: 'pwa-192x192.png',
+              sizes: '192x192',
+              type: 'image/png'
+            },
+            {
+              src: 'pwa-512x512.png',
+              sizes: '512x512',
+              type: 'image/png'
+            }
+          ]
+        }
+    })
   ],
   resolve: {
     alias: {
