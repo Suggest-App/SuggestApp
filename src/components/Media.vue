@@ -18,6 +18,8 @@ const props = defineProps({
   }
 })
 
+/************************** Template Variables **************************/
+
 // Access index prop and increment it, in order to use it as rank
 const rank: ComputedRef<number> = computed((): number => {
   return props.index + 1

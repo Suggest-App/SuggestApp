@@ -22,6 +22,8 @@ onMounted(async () => {
   }
 })
 
+/************************** Template Variables **************************/
+
 // Access of username property
 const profileImage: ComputedRef<string> = computed((): string => {
   return (profileStore.profileInformation && profileStore.profileInformation.profileImage)
