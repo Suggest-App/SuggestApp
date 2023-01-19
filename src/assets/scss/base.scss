@@ -59,6 +59,8 @@ $secondary-border-radius: 2px;
   outline: none!important;
   border: none!important;
   box-shadow: none!important;
+  margin: 0 !important;
+  font-weight: 400!important;
 }
 
 @mixin bc-attr {
@@ -110,7 +112,7 @@ $secondary-border-radius: 2px;
 /* ----------------------------------- Sweetalert2 ---------------------------------------- */
 /********************************************************************************************/
 
-.customSwalContainer {
+.custom-swal-container {
 
   .swal2-confirm,
   .swal2-confirm:focus {
@@ -120,6 +122,32 @@ $secondary-border-radius: 2px;
   .swal2-html-container {
     line-height: 1.6;
     color: $secondary-text-color;
+  }
+}
+
+.swal-media-container {
+
+  .swal2-confirm,
+  .swal2-confirm:focus,
+  .swal2-cancel,
+  .swal2-cancel:focus {
+    @include reset-swal;
+    flex: 1;
+    font-size: 15px!important;
+  }
+
+  .swal2-html-container {
+    line-height: 1.6;
+    color: $secondary-text-color;
+    margin: 1.25em 15px 0;
+  }
+
+  .swal2-actions {
+    width: 100%;
+    padding: 0 15px;
+    margin-top: 8px;
+    flex-direction: row;
+    column-gap: 15px;
   }
 }
 

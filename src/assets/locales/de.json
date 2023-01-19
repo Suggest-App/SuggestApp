@@ -48,6 +48,10 @@
   },
   "media": {
     "listenedMinutes": "Minuten getrackt",
+    "swalPopup": {
+      "openInSpotify": "In Spotify öffnen",
+      "cancelBtn": "nicht jetzt"
+    },
     "placeholders": {
       "noRank": "kein Rang verfügbar",
       "noTitle": "kein Song Titel verfügbar",

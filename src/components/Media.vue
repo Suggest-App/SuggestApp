@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type {ComputedRef, PropType} from "vue";
+import type { ComputedRef, PropType } from "vue";
 import type { MediaSummary } from "@/models/MediaSummary";
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { useI18n } from 'vue-i18n'
-import {secondsToMinutes} from "@/composables/TimeCalculations";
+import { secondsToMinutes } from "@/composables/TimeCalculations";
+import Swal from "sweetalert2";
 
 const { t } = useI18n()
 
@@ -17,6 +18,30 @@ const props = defineProps({
     required: true
   }
 })
+
+// The component that is getting rendered in the swal popup
+const mediaComponent = ref(null);
+
+function openSongInSpotify(): void {
+  Swal.fire({
+    showCancelButton: true,
+    // @ts-ignore
+    html: (mediaComponent.value) ? mediaComponent.value.outerHTML  : '',
+    confirmButtonText: t('media.swalPopup.openInSpotify'),
+    cancelButtonText: t('media.swalPopup.cancelBtn'),
+    iconColor: '#FA8231',
+    background: '#121212',
+    color: '#FFFFFF',
+    buttonsStyling: true,
+    customClass: 'swal-media-container',
+    confirmButtonColor: '#3bd23b',
+    cancelButtonColor: '#1d1d1d'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.open(props.media.linkToMedia)
+    }
+  })
+}
 
 /************************** Template Variables **************************/
 
@@ -60,7 +85,7 @@ const minutes: ComputedRef<string> = computed((): string => {
 </script>
 
 <template>
-  <div class="media-container">
+  <div class="media-container" ref="mediaComponent" @click="openSongInSpotify">
     <div class="rank">{{ rank }}</div>
       <img
           class="media-cover"
