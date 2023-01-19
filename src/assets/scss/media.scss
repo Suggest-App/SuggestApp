@@ -22,10 +22,14 @@
     flex: 1;
 
     .media-title {
+      width: 160px;
       font-size: 16px;
       font-weight: 500;
       color: $primary-text-color;
       margin-bottom: 5px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     .additional-media-info {
@@ -63,6 +67,23 @@
   }
 }
 
+@media only screen and (min-width: 360px) {
+  .media-container .media-information .media-title {
+    width: 150px;
+  }
+}
+
+@media only screen and (min-width: 380px) {
+  .media-container .media-information .media-title {
+    width: 170px;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  .media-container .media-information .media-title {
+    width: 190px;
+  }
+}
 
 @media only screen and (min-width: 412px) {
   .media-container {
@@ -75,6 +96,7 @@
     .media-information {
 
       .media-title {
+        width: 194px;
         font-size: 17px;
         margin-bottom: 6px;
       }
@@ -89,8 +111,111 @@
   }
 }
 
+@media only screen and (min-width: 420px) {
+  .media-container .media-information .media-title {
+    width: 200px;
+  }
+}
+
+@media only screen and (min-width: 440px) {
+  .media-container .media-information .media-title {
+    width: 220px;
+  }
+}
+
+@media only screen and (min-width: 460px) {
+  .media-container .media-information .media-title {
+    width: 240px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .media-container .media-information .media-title {
+    width: 260px;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .media-container .media-information .media-title {
+    width: 280px;
+  }
+}
+
+@media only screen and (min-width: 520px) {
+  .media-container .media-information .media-title {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 540px) {
+  .media-container .media-information .media-title {
+    width: 320px;
+  }
+}
+
+@media only screen and (min-width: 560px) {
+  .media-container .media-information .media-title {
+    width: 340px;
+  }
+}
+
+@media only screen and (min-width: 580px) {
+  .media-container .media-information .media-title {
+    width: 360px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .media-container .media-information .media-title {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .media-container .media-information .media-title {
+    width: 270px;
+  }
+}
+
+@media only screen and (min-width: 780px) {
+  .media-container .media-information .media-title {
+    width: 280px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .media-container .media-information .media-title {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 820px) {
+  .media-container .media-information .media-title {
+    width: 320px;
+  }
+}
+
+@media only screen and (min-width: 840px) {
+  .media-container .media-information .media-title {
+    width: 340px;
+  }
+}
+
+@media only screen and (min-width: 860px) {
+  .media-container .media-information .media-title {
+    width: 360px;
+  }
+}
+
+@media only screen and (min-width: 880px) {
+  .media-container .media-information .media-title {
+    width: 100%;
+  }
+}
+
 @media only screen and (min-width: 991px) {
   .media-container .listened-minutes {
     font-size: 14px;
+
   }
 }
