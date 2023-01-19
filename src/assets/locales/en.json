@@ -47,11 +47,13 @@
     "disconnectLink": "disconnect"
   },
   "media": {
+    "listenedMinutes": "Minutes listened",
     "placeholders": {
       "noRank": "no rank available",
       "noTitle": "no song title available",
       "noArtists": "no artists available",
-      "noImage": "no album image available"
+      "noImage": "no album image available",
+      "noMinutes": "no minutes available"
     }
   }
 }

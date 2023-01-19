@@ -3,6 +3,7 @@ import type {ComputedRef, PropType} from "vue";
 import type { MediaSummary } from "@/models/MediaSummary";
 import { computed } from "vue";
 import { useI18n } from 'vue-i18n'
+import {secondsToMinutes} from "@/composables/TimeCalculations";
 
 const { t } = useI18n()
 
@@ -47,6 +48,13 @@ const albumImage = computed(() => {
       ? props.media.albumImages[0].imageUrl
       : t('media.placeholders.noImage')
 })
+
+
+const minutes: ComputedRef<string> = computed((): string => {
+  return (props.media.listenedSeconds)
+      ? secondsToMinutes(props.media.listenedSeconds)
+      : t('media.placeholders.noMinutes')
+})
 </script>
 
 <template>
@@ -64,6 +72,7 @@ const albumImage = computed(() => {
         <p class="artists">{{ artists }}</p>
       </div>
     </div>
+    <span class="listened-minutes">{{ minutes }} {{ $t('media.listenedMinutes') }}</span>
   </div>
 </template>
 
