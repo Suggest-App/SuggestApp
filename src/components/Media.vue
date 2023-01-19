@@ -24,18 +24,16 @@ const mediaComponent = ref(null);
 
 function openSongInSpotify(): void {
   Swal.fire({
-    showCancelButton: true,
+    showCancelButton: false,
     // @ts-ignore
     html: (mediaComponent.value) ? mediaComponent.value.outerHTML  : '',
     confirmButtonText: t('media.swalPopup.openInSpotify'),
-    cancelButtonText: t('media.swalPopup.cancelBtn'),
     iconColor: '#FA8231',
     background: '#121212',
     color: '#FFFFFF',
     buttonsStyling: true,
     customClass: 'swal-media-container',
     confirmButtonColor: '#3bd23b',
-    cancelButtonColor: '#1d1d1d'
   }).then((result) => {
     if (result.isConfirmed) {
       window.open(props.media.linkToMedia)

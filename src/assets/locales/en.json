@@ -49,8 +49,7 @@
   "media": {
     "listenedMinutes": "Minutes tracked",
     "swalPopup": {
-      "openInSpotify": "Open in Spotify",
-      "cancelBtn": "not now"
+      "openInSpotify": "Open in Spotify"
     },
     "placeholders": {
       "noRank": "no rank available",
