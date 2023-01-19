@@ -127,9 +127,12 @@ $secondary-border-radius: 2px;
     padding-right: 15px;
 
     .swal2-confirm,
-    .swal2-confirm:focus {
+    .swal2-confirm:focus,
+    .swal2-cancel,
+    .swal2-cancel:focus {
       width: 100%;
       @include reset-swal;
+      border-radius: 50px!important;
     }
   }
 }
