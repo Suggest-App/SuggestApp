@@ -47,7 +47,7 @@
     "disconnectLink": "disconnect"
   },
   "media": {
-    "listenedMinutes": "Minutes listened",
+    "listenedMinutes": "Minutes tracked",
     "placeholders": {
       "noRank": "no rank available",
       "noTitle": "no song title available",
