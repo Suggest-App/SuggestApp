@@ -13,7 +13,6 @@ export default defineConfig({
         workbox: {
           globPatterns: [
               '**/*.{js,css,ico,png,svg}',
-              '!(*/sign-in)'
           ]
         },
         includeAssets: [
