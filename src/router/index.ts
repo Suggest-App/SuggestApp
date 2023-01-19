@@ -95,6 +95,11 @@ router.beforeEach(async (toRoute: RouteLocationNormalized): Promise<string | voi
   if (tokenRequired && !getCookie('jwt')) {
     return '/'
   }
+
+  // Auto redirect to profile, if user is already authenticated and try to visit a public page
+  if (publicPages.includes(toRoute.path) && getCookie('jwt')) {
+    return '/profile'
+  }
 })
 
 export default router
