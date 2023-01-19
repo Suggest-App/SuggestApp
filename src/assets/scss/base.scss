@@ -134,6 +134,7 @@ $secondary-border-radius: 2px;
     .swal2-confirm,
     .swal2-confirm:focus {
       width: 100%;
+      height: 46px!important;
       @include reset-swal;
       border-radius: 50px!important;
     }
