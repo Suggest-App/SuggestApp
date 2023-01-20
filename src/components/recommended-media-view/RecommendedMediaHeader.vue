@@ -25,7 +25,7 @@ const match: Ref<Match> = ref(matchesStore.matchesMap.get(props.userId)!)
 const profileImage: ComputedRef<string> = computed((): string => {
   return (hasMatch.value && match.value.profileImage)
       ? match.value.profileImage
-      : t('matchesView.placeholders.noProfileImage')
+      : '@/../../public/images/profile_placeholder.png'
 })
 
 // Access of username property

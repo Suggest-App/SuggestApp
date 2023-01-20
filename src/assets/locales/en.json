@@ -19,7 +19,6 @@
     "heading": "Your favorite tracks",
     "placeholders": {
       "noUsername": "ro username available",
-      "noProfileImage": "ro profile image available",
       "noMinutes": "ro minutes available"
     }
   },
@@ -31,7 +30,6 @@
     "placeholders": {
       "noRank": "ro rank available",
       "noUsername": "ro username available",
-      "noProfileImage": "ro profile image available",
       "noMinutes": "ro minutes available"
     }
   },

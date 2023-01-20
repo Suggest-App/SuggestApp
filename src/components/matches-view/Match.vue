@@ -25,7 +25,7 @@ const rank: ComputedRef<string> = computed((): string => {
 const profileImage: ComputedRef<string> = computed((): string => {
   return (props.match && props.match.profileImage)
       ? props.match.profileImage
-      : t('matchesView.placeholders.noProfileImage')
+      : '@/../public/images/profile_placeholder.png'
 })
 
 // Access of username prop

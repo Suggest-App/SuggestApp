@@ -28,7 +28,7 @@ onMounted(async () => {
 const profileImage: ComputedRef<string> = computed((): string => {
   return (profileStore.profileInformation && profileStore.profileInformation.profileImage)
       ? profileStore.profileInformation.profileImage
-      : t('profileView.placeholders.noProfileImage')
+      : '@/../../public/images/profile_placeholder.png'
 })
 
 // Access of username property

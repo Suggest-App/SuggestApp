@@ -19,7 +19,6 @@
     "heading": "Deine Lieblingssongs",
     "placeholders": {
       "noUsername": "kein Benutzername verfügbar",
-      "noProfileImage": "kein Profilbild verfügbar",
       "noMinutes": "keine gehörten Minuten"
     }
   },
@@ -31,7 +30,6 @@
     "placeholders": {
       "noRank": "kein Rang verfügbar",
       "noUsername": "kein Benutzername verfügbar",
-      "noProfileImage": "kein Profilbild verfügbar",
       "noMinutes": "keine gemeinsam gehörten Minuten"
     }
   },
