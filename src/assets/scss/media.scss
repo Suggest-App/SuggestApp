@@ -57,7 +57,7 @@
         font-size: 14px;
         font-weight: 400;
         color: $secondary-text-color;
-        height: 16px;
+        height: 20px;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
@@ -81,7 +81,7 @@
       width: 140px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 120px;
     }
   }
@@ -93,7 +93,7 @@
       width: 160px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 140px;
     }
   }
@@ -105,7 +105,7 @@
       width: 180px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 160px;
     }
   }
@@ -144,7 +144,7 @@
       width: 190px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 170px;
     }
   }
@@ -156,7 +156,7 @@
       width: 210px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 190px;
     }
   }
@@ -168,7 +168,7 @@
       width: 230px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 210px;
     }
   }
@@ -180,7 +180,7 @@
       width: 250px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 230px;
     }
   }
@@ -192,7 +192,7 @@
       width: 270px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 250px;
     }
   }
@@ -204,7 +204,7 @@
       width: 290px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 270px;
     }
   }
@@ -216,7 +216,7 @@
       width: 310px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 290px;
     }
   }
@@ -228,7 +228,7 @@
       width: 330px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 310px;
     }
   }
@@ -240,7 +240,7 @@
       width: 350px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 330px;
     }
   }
@@ -249,11 +249,11 @@
 @media only screen and (min-width: 600px) {
   .media-container .media-information {
     .media-title {
-      width: 100%;
+      width: 370px;
     }
 
-    .additional-media-info.artists {
-      width: 100%;
+    .additional-media-info .artists {
+      width: 350px;
     }
   }
 }
@@ -264,7 +264,7 @@
       width: 260px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 240px;
     }
   }
@@ -276,7 +276,7 @@
       width: 270px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 250px;
     }
   }
@@ -288,7 +288,7 @@
       width: 290px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 270px;
     }
   }
@@ -300,7 +300,7 @@
       width: 310px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 290px;
     }
   }
@@ -312,7 +312,7 @@
       width: 328px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 308px;
     }
   }
@@ -324,7 +324,7 @@
       width: 348px;
     }
 
-    .additional-media-info.artists {
+    .additional-media-info .artists {
       width: 328px;
     }
   }
@@ -333,11 +333,11 @@
 @media only screen and (min-width: 880px) {
   .media-container .media-information {
     .media-title {
-      width: 100%;
+      width: 368px;
     }
 
-    .additional-media-info.artists {
-      width: 100%;
+    .additional-media-info .artists {
+      width: 348px;
     }
   }
 }

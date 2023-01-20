@@ -142,6 +142,9 @@ $secondary-border-radius: 2px;
 }
 
 .swal-media-container {
+  width: 100%!important;
+  max-width: 620px!important;
+
   .swal2-confirm,
   .swal2-confirm:focus,
   .swal2-cancel,
