@@ -25,6 +25,7 @@ import "swiper/css/pagination";
     <form action="/signin" method="post" class="auth-form">
       <div class="auth-form-wrapper">
         <SuggestLogo />
+        <h1>Suggest</h1>
         <swiper
             :slides-per-view="1"
             :modules="modules"
@@ -38,16 +39,13 @@ import "swiper/css/pagination";
             }"
         >
           <swiper-slide>
-            <h1>Suggest</h1>
             <p>{{ $t('authView.slider.firstSlide') }}</p>
           </swiper-slide>
           <swiper-slide>
-            <h1>Suggest</h1>
-            <p>{{ $t('authView.slider.firstSlide') }}</p>
+            <p>{{ $t('authView.slider.secondSlide') }}</p>
           </swiper-slide>
           <swiper-slide>
-            <h1>Suggest</h1>
-            <p>{{ $t('authView.slider.firstSlide') }}</p>
+            <p>{{ $t('authView.slider.thirdSlide') }}</p>
           </swiper-slide>
         </swiper>
         <SpotifyAuthButton />
