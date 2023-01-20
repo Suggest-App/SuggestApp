@@ -145,6 +145,14 @@ $secondary-border-radius: 2px;
   width: 100%!important;
   max-width: 620px!important;
 
+  .media-container {
+    cursor: default;
+  }
+
+  .media-container:hover {
+    background-color: unset;
+  }
+
   .swal2-confirm,
   .swal2-confirm:focus,
   .swal2-cancel,

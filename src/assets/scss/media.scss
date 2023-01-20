@@ -2,7 +2,7 @@
   @include flex-align-center;
   width: 100%;
   max-width: 580px;
-  height: 50px;
+  height: 66px;
   margin-bottom: 20px;
   column-gap: 15px;
 
@@ -113,7 +113,7 @@
 
 @media only screen and (min-width: 412px) {
   .media-container {
-    height: 60px;
+    height: 76px;
 
     .rank {
       font-size: 16px;
@@ -343,8 +343,18 @@
 }
 
 @media only screen and (min-width: 991px) {
-  .media-container .listened-minutes {
-    width: 95px;
-    font-size: 14px;
+  .media-container {
+    padding: 8px;
+    margin-bottom: 12px; // 20px - 5px padding
+    border-radius: $primary-border-radius;
+    cursor: pointer;
+
+    .listened-minutes {
+      width: 95px;
+      font-size: 14px;
+    }
+  }
+  .media-container:hover {
+    background-color: $secondary-background-color;
   }
 }
