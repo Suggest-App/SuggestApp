@@ -9,7 +9,8 @@
 export function secondsToMinutes(seconds: number): string {
     let minutes: number = seconds / 60
     let roundedMinutes: number = Math.floor(minutes)
-    return roundedMinutes.toLocaleString('de-DE');
+    let formattedMinutes = roundedMinutes.toLocaleString('de-DE');
+    return (formattedMinutes === "0") ? "<1" : formattedMinutes;
 }
 
 /**
