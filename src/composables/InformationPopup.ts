@@ -1,9 +1,11 @@
 import Swal from "sweetalert2";
+import { i18n } from '@/i18n'
 
 export function trackingSincePopup(): void {
+    const { t } = i18n.global
     Swal.fire({
-        title: 'Lorem ipsum solor et si',
-        text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+        title: t('informationPopup.trackingSince.heading'),
+        text: t('informationPopup.trackingSince.text'),
         icon: 'question',
         iconColor: '#FA8231',
         background: '#1D1D1D',
@@ -11,13 +13,14 @@ export function trackingSincePopup(): void {
         buttonsStyling: true,
         customClass: 'custom-swal-container',
         confirmButtonColor: '#3bd23b',
-        confirmButtonText: 'Verstanden'
+        confirmButtonText: t('informationPopup.matches.btn'),
     })
 }
 export function matchesInformationPopup(): void {
+    const { t } = i18n.global
     Swal.fire({
-        title: 'Lorem ipsum solor et si',
-        text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+        title: t('informationPopup.matches.heading'),
+        text: t('informationPopup.matches.text'),
         icon: 'question',
         iconColor: '#FA8231',
         background: '#1D1D1D',
@@ -25,7 +28,7 @@ export function matchesInformationPopup(): void {
         buttonsStyling: true,
         customClass: 'custom-swal-container',
         confirmButtonColor: '#3bd23b',
-        confirmButtonText: 'Verstanden'
+        confirmButtonText: t('informationPopup.matches.btn'),
     })
 }
 

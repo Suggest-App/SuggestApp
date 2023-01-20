@@ -7,7 +7,9 @@
   },
   "authView": {
     "slider": {
-      "firstSlide": "Finde neue Songs, die du lieben wirst, basierend auf dem Geschmack von Menschen, die das selbe wie du hören."
+      "firstSlide": "Finde Menschen mit einem nahezu identischem Musikgeschmack.",
+      "secondSlide": "Endecke die Lieblingssongs deiner Seelenverwandten.",
+      "thirdSlide": "Wenn du möchstest, kannst du mit ihnen chatten."
     },
     "spotifyBtn": "Mit Spotify Verbinden"
   },
@@ -57,6 +59,18 @@
       "noArtists": "keine Künstler verfügbar",
       "noImage": "kein Album Bild verfügbar",
       "noMinutes": "keine Minuten verfügbar"
+    }
+  },
+  "informationPopup": {
+    "trackingSince": {
+      "heading": "Was ist mit Auswertung gemeint?",
+      "text": "Ab dem Zeitpunkt wo du bei uns registriert bist, verfolgen wir alles was du auf Spotify hörst nach. Spotify gibt uns nicht deinen gesamten Wiedergabeverlauf. In regelmäßigen Abständen gucken wir nach was du gehört hast und aktualisieren dein Profil.",
+      "btn": "Verstanden"
+    },
+    "matches": {
+      "heading": "Wie ergeben sich diese Matches?",
+      "text": "Wenn du Song A 50 Minuten gehört hast und ein anderer Nutzer den selben Song 100 Minuten gehört hat, ergibt sich daraus eine gemeinsam gehörte Zeit von 50 Minuten. Diese Rechnung nehmen wir für alle erfassten Wiedergaben vor und zeigen dir hier die Nutzer, mit der meisten gemeinsam gehörten Zeit.",
+      "btn": "Verstanden"
     }
   }
 }
