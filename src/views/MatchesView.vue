@@ -45,7 +45,6 @@ onMounted(async () => {
         :key="match.userId"
         :match="match"
     />
-
     <MatchesViewSkeleton v-if="matchesStore.isLoading" />
    </section>
  </template>
