@@ -20,8 +20,12 @@ export function secondsToMinutes(seconds: number): string {
  * @return string
  */
 export function trackingSinceDate(dateString: string): string {
-    return new Date(dateString).toLocaleString(
-        'de-DE',
-        { timeZone: 'Europe/Luxembourg' }
+    return new Date(dateString).toLocaleTimeString(
+        [],
+        {
+            day: '2-digit',
+            month:'2-digit',
+            year: 'numeric'
+        }
     ).split(',')[0]
 }
