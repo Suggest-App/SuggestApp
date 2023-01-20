@@ -19,10 +19,10 @@ const isRecommendedView: ComputedRef<boolean> = computed((): boolean => {
       <RankingViewIcon />
       <span>{{ $t('navbar.matches') }}</span>
     </RouterLink>
-    <RouterLink :to="{ name: 'MessagesView' }">
+    <!--<RouterLink :to="{ name: 'MessagesView' }">
       <MessagesViewIcon />
       <span>{{ $t('navbar.chats') }}</span>
-    </RouterLink>
+    </RouterLink>-->
     <RouterLink :to="{ name: 'ProfileView' }">
       <ProfileViewIcon />
       <span>{{ $t('navbar.profile') }}</span>
