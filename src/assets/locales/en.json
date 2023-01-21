@@ -27,7 +27,7 @@
     "minutesLabel": "minutes listened together",
     "moreInfo": "more information",
     "placeholders": {
-      "noRank": "ro rank available",
+      "noRank": "no rank available",
       "noUsername": "no username available",
       "noMinutes": "no minutes available"
     }
