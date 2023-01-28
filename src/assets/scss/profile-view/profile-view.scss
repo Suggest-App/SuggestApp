@@ -7,17 +7,42 @@
   scrollbar-width: none;  /* Firefox */
   padding: 30px 15px 100px;
 
-  h3 {
-    color: $primary-text-color;
-    font-size: 22px;
-    font-weight: bold;
+  .heading-wrapper {
+    max-width: 586px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 25px;
+
+    h3 {
+      color: $primary-text-color;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .spotify-logo {
+      height: 25px;
+    }
   }
+
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 #profile-view::-webkit-scrollbar {
   display: none;
+}
+
+@media only screen and (min-width: 390px) {
+  #profile-view .heading-wrapper {
+    h3 {
+      font-size: 20px;
+    }
+  }
+}
+
+@media only screen and (min-width: 412px) {
+  h3 {
+    font-size: 24px;
+  }
 }
 
 @media only screen and (min-width: 412px) {
@@ -30,7 +55,7 @@
   #profile-view {
     padding: 25px;
 
-    h3 {
+    .heading-wrapper h3 {
       font-size: 26px;
     }
   }
@@ -43,8 +68,12 @@
   #profile-view {
     padding: 25px 25px 25px 17px; // padding left - 8px from media container
 
-    h3 {
-      margin-left: 8px;
+    .heading-wrapper {
+      max-width: 576px;
+
+      h3 {
+        margin-left: 8px;
+      }
     }
   }
 }

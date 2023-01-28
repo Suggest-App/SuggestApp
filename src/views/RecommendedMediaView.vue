@@ -42,6 +42,13 @@ onMounted( async () => {
     />
 
     <div v-show="!matchesStore.isLoading" class="media-scroll-container">
+      <a href="http://spotify.com/" target="_blank">
+        <img
+            class="spotify-logo"
+            src="@/../public/images/Spotify_Logo_RGB_Green.png"
+            alt="Spotify Logo RGB Green"
+        />
+      </a>
       <h3>{{$t('recommendedMediaView.headingPrefix') }} {{ username }}’s {{ $t('recommendedMediaView.headingSuffix') }}</h3>
       <Media
           v-for="(media, index) in matchesStore.recommendedMedia"

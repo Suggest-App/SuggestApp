@@ -35,7 +35,17 @@ onMounted(async () => {
         v-show="!profileStore.isLoading"
         @click="router.push({ name: 'ConnectedAppsView'})"
     />
-    <h3 v-show="!profileStore.isLoading" >{{ $t('profileView.heading') }}</h3>
+
+    <div class="heading-wrapper">
+      <h3 v-show="!profileStore.isLoading" >{{ $t('profileView.heading') }}</h3>
+      <a href="http://spotify.com/" target="_blank">
+        <img
+            class="spotify-logo"
+            src="@/../public/images/Spotify_Logo_RGB_Green.png"
+            alt="Spotify Logo RGB Green"
+        />
+      </a>
+    </div>
 
     <Media
       v-show="!profileStore.isLoading"

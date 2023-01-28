@@ -16,7 +16,7 @@
   "profileView": {
     "trackingLabel": "Tracking since",
     "connectedAppLabel": "connected app",
-    "heading": "Your favorite tracks",
+    "heading": "Your favorite tracks from:",
     "placeholders": {
       "noUsername": "no username available",
       "noMinutes": "no minutes available"

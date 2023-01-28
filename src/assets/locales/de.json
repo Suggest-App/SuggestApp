@@ -16,7 +16,7 @@
   "profileView": {
     "trackingLabel": "Auswertung seit",
     "connectedAppLabel": "verknüpfte apps",
-    "heading": "Deine Lieblingssongs",
+    "heading": "Deine Lieblingssongs von:",
     "placeholders": {
       "noUsername": "kein Benutzername verfügbar",
       "noMinutes": "keine gehörten Minuten"
