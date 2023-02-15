@@ -31,7 +31,7 @@ const mainStore = useMainStore()
           <CheckIcon color="#3bd23b" />
           <span>{{ $t('connectedAppsView.connectStatus') }}</span>
         </div>
-        <div v-if="false" class="disconnect-link">
+        <div class="disconnect-link">
           {{ $t('connectedAppsView.disconnectLink') }}
         </div>
       </div>
