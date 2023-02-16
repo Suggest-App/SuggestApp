@@ -1,9 +1,6 @@
 <script setup lang="ts">
+import { disconnectUser } from "@/services/TokenService";
 import ArrowLeftIcon from "@/components/icons/controls/ArrowLeftIcon.vue";
-import BaseSelect from "@/components/inputs/BaseSelect.vue";
-import { computed } from "vue";
-import type { ComputedRef } from "vue";
-import { allLocales, createLocaleObject, setLocale } from '@/i18n'
 import { useI18n } from 'vue-i18n'
 import { useMainStore } from "@/stores/MainStore";
 import SpotifyIcon from "@/components/icons/SpotifyIcon.vue";
@@ -31,7 +28,7 @@ const mainStore = useMainStore()
           <CheckIcon color="#3bd23b" />
           <span>{{ $t('connectedAppsView.connectStatus') }}</span>
         </div>
-        <div class="disconnect-link">
+        <div class="disconnect-link" @click="disconnectUser">
           {{ $t('connectedAppsView.disconnectLink') }}
         </div>
       </div>

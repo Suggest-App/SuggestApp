@@ -2,6 +2,7 @@ import type { AxiosResponse } from 'axios';
 import type { ProfileInformation } from "@/models/ProfileInformation";
 import type { MediaSummary } from "@/models/MediaSummary";
 import { tryGetAuthorizedInstance } from "@/services/TokenService";
+import axios from "axios";
 
 export default {
 
@@ -43,4 +44,3 @@ export default {
             })
     }
 }
-

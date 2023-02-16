@@ -56,3 +56,25 @@ export function tryGetAuthorizedInstance(): AxiosInstance {
     // return authorized instance
     return instance
 }
+
+/**
+ * Disconnect a user
+ *
+ * @return Promise<void>
+ */
+export async function disconnectUser(): Promise<void> {
+    return tryGetAuthorizedInstance().delete('/user/spotify-disconnect')
+        .then(() => {
+            deleteCookie('jwt')
+            router.push('/')
+        })
+        .catch((error) => {
+            switch (error.response.status) {
+                default:
+                    console.log(
+                        'ProfileService.ts no status case ' + error.response.status
+                    )
+                    break
+            }
+        })
+}
