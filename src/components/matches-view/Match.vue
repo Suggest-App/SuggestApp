@@ -4,6 +4,7 @@ import type { Ref, ComputedRef, PropType} from "vue";
 import { Match } from "@/models/Match";
 import { secondsToMinutes } from "@/composables/TimeCalculations";
 import { useI18n } from 'vue-i18n'
+import ProfileImage from "@/components/icons/ProfileImage.vue";
 
 const { t } = useI18n()
 
@@ -22,10 +23,10 @@ const rank: ComputedRef<string> = computed((): string => {
 })
 
 // Access profile image prop
-const profileImage: ComputedRef<string> = computed((): string => {
+const profileImage: ComputedRef<string | null> = computed((): string | null => {
   return (props.match && props.match.profileImage)
       ? props.match.profileImage
-      : '@/../public/images/profile_placeholder.png'
+      : null
 })
 
 // Access of username prop
@@ -50,9 +51,14 @@ const minutes:ComputedRef<string> = computed((): string => {
   <div class="match-container">
     <div class="rank">{{ rank }}</div>
     <img
+        v-if="profileImage"
         class="profile-image"
         :src="profileImage"
         alt="Profile image"
+    />
+    <ProfileImage
+        v-if="!profileImage"
+        class="profile-image placeholder"
     />
     <div class="profile-information">
       <p class="profile-name">{{ username }}</p>
