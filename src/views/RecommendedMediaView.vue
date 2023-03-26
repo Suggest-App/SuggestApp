@@ -8,6 +8,9 @@ import MatchesService from "@/services/MatchesService";
 import Media from "@/components/Media.vue";
 import RecommendedMediaViewSkeleton from "@/components/recommended-media-view/RecommendedMediaViewSkeleton.vue";
 import {useI18n} from "vue-i18n";
+import MatchTab from "@/components/recommended-media-view/MatchTab.vue";
+import { MatchTab as MatchTabEnum } from "@/models/enums/MatchTab";
+import type { MatchTab as MatchTabEnumType } from "@/models/enums/MatchTab";
 
 const { t } = useI18n()
 
@@ -26,6 +29,10 @@ const userId: string = route.params.id as string
 
 onMounted( async () => {
   matchesStore.recommendedMedia = await MatchesService.fetchRecommendedMedia(userId);
+  matchesStore.togetherConsumedMedia = await MatchesService.fetchTogetherConsumedTracks(userId);
+
+  console.log(matchesStore.recommendedMedia)
+  console.log(matchesStore.togetherConsumedMedia)
 
   // Ensure that there are matches fetched, before disabling the loading flag
   if (matchesStore.recommendedMedia.length !== 0) {
@@ -41,7 +48,10 @@ onMounted( async () => {
         :user-id="userId"
     />
 
+    <MatchTab />
+
     <div v-show="!matchesStore.isLoading" class="media-scroll-container">
+
       <a href="http://spotify.com/" target="_blank">
         <img
             class="spotify-logo"
@@ -49,9 +59,18 @@ onMounted( async () => {
             alt="Spotify Logo RGB Green"
         />
       </a>
-      <h3>{{$t('recommendedMediaView.headingPrefix') }} {{ username }}’s {{ $t('recommendedMediaView.headingSuffix') }}</h3>
+      <h3 v-show="matchesStore.activeMatchTab === MatchTabEnum.RECOMMENDED_TAB">{{ $t('recommendedMediaView.headingPrefix') }} {{ username }}’s {{ $t('recommendedMediaView.headingSuffix') }}</h3>
+      <h3 v-show="matchesStore.activeMatchTab === MatchTabEnum.TogetherConsumedMedia">{{ $t('recommendedMediaView.togetherConsumedTracks') }}</h3>
       <Media
+          v-show="matchesStore.activeMatchTab === MatchTabEnum.RECOMMENDED_TAB"
           v-for="(media, index) in matchesStore.recommendedMedia"
+          :key="index"
+          :index="index"
+          :media="media"
+      />
+      <Media
+          v-show="matchesStore.activeMatchTab === MatchTabEnum.TogetherConsumedMedia"
+          v-for="(media, index) in matchesStore.togetherConsumedMedia"
           :key="index"
           :index="index"
           :media="media"

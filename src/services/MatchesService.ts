@@ -49,6 +49,29 @@ export default {
                         break
                 }
             })
-    }
+    },
 
+    /**
+     * Fetch all together listened tracks from a user match after the tab has been clicked
+     * Array is already ordered
+     *
+     * @param userId string
+     *
+     * @return Promise<MediaSummary[]>
+     */
+    async fetchTogetherConsumedTracks(userId: string): Promise<MediaSummary[]> {
+        return tryGetAuthorizedInstance().get(`/user/matches/${userId}/together-consumed/tracks`)
+            .then((response: AxiosResponse) => {
+                return response.data
+            })
+            .catch((error) => {
+                switch (error.response.status) {
+                    default:
+                        console.log(
+                            'MatchesService.ts no status case ' + error.response.status
+                        )
+                        break
+                }
+            })
+    }
 }

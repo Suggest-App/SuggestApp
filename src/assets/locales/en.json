@@ -34,7 +34,8 @@
   },
   "recommendedMediaView": {
     "headingPrefix": "Those are",
-    "headingSuffix": "favorite tracks you don’t know"
+    "headingSuffix": "favorite tracks you don’t know",
+    "togetherConsumedTracks": "Together Consumed Tracks"
   },
   "settingsView": {
     "heading": "Settings",
