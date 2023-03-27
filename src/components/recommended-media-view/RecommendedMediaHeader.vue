@@ -6,6 +6,7 @@ import { Match } from "@/models/Match";
 import { secondsToMinutes } from "@/composables/TimeCalculations";
 import ArrowLeftIcon from "@/components/icons/controls/ArrowLeftIcon.vue";
 import {useI18n} from "vue-i18n";
+import ProfileImage from "@/components/icons/ProfileImage.vue";
 
 const props = defineProps({
   userId: {
@@ -56,6 +57,18 @@ const minutes: ComputedRef<string> = computed((): string => {
     <RouterLink :to="{ name: 'MatchesView' }">
       <ArrowLeftIcon />
     </RouterLink>
+
+    <img
+        v-if="profileImage"
+        class="profile-image"
+        :src="profileImage"
+        alt="Profile image"
+    />
+    <ProfileImage
+        v-if="!profileImage"
+        class="profile-image placeholder"
+    />
+
     <img class="profile-image" :src="profileImage" alt="Profile image" />
     <div class="profile-info">
       <h2>#{{ rank }} {{ username }}</h2>
