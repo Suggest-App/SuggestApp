@@ -9,6 +9,7 @@ import {trackingSincePopup} from "@/composables/InformationPopup";
 import GearIcon from "@/components/icons/controls/GearIcon.vue";
 import { useMainStore } from "@/stores/MainStore";
 import { useI18n } from "vue-i18n";
+import ProfileImage from "@/components/icons/ProfileImage.vue";
 
 const { t } = useI18n()
 
@@ -25,10 +26,10 @@ onMounted(async () => {
 /************************** Template Variables **************************/
 
 // Access of username property
-const profileImage: ComputedRef<string> = computed((): string => {
+const profileImage: ComputedRef<string | null> = computed((): string| null => {
   return (profileStore.profileInformation && profileStore.profileInformation.profileImage)
       ? profileStore.profileInformation.profileImage
-      : '@/../../public/images/profile_placeholder.png'
+      : null
 })
 
 // Access of username property
@@ -49,7 +50,16 @@ const trackingSince: ComputedRef<string> = computed((): string => {
 
 <template>
   <header>
-    <img class="profile-image" :src="profileImage" alt="Profile image" />
+    <img
+        v-if="profileImage"
+        class="profile-image"
+        :src="profileImage"
+        alt="Profile image"
+    />
+    <ProfileImage
+        v-if="!profileImage"
+        class="profile-image placeholder"
+    />
     <div class="profile-info">
       <h2>{{ username }}</h2>
       <p v-if="profileStore.profileInformation.trackingSince != null">{{ $t('profileView.trackingLabel') }}: {{ trackingSince }}
