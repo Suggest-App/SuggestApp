@@ -3,7 +3,6 @@ version: "3"
 
 # for test serving of build output, does not contain a working backend
 services:
-services:
   sg-frontend:
     restart: always
     build:
