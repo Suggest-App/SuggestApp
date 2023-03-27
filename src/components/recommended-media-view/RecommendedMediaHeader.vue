@@ -23,10 +23,10 @@ const hasMatch: Ref<boolean> = ref(matchesStore.matchesMap.has(props.userId))
 const match: Ref<Match> = ref(matchesStore.matchesMap.get(props.userId)!)
 
 // Access of profile image property
-const profileImage: ComputedRef<string> = computed((): string => {
+const profileImage: ComputedRef<string | null> = computed((): string | null => {
   return (hasMatch.value && match.value.profileImage)
       ? match.value.profileImage
-      : '@/../../public/images/profile_placeholder.png'
+      : null
 })
 
 // Access of username property
@@ -68,8 +68,6 @@ const minutes: ComputedRef<string> = computed((): string => {
         v-if="!profileImage"
         class="profile-image placeholder"
     />
-
-    <img class="profile-image" :src="profileImage" alt="Profile image" />
     <div class="profile-info">
       <h2>#{{ rank }} {{ username }}</h2>
       <p>{{ minutes }} {{ $t('matchesView.minutesLabel') }}</p>
