@@ -48,7 +48,7 @@ onMounted( async () => {
         :user-id="userId"
     />
 
-    <MatchTab />
+    <MatchTab v-if="!matchesStore.isLoading" />
 
     <div v-show="!matchesStore.isLoading" class="media-scroll-container">
 

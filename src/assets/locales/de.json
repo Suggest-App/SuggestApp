@@ -35,7 +35,9 @@
   "recommendedMediaView": {
     "headingPrefix": "Das sind",
     "headingSuffix": "Lieblingssongs, die du noch nicht kennst:",
-    "togetherConsumedTracks": "Zusammen gehörte Songs"
+    "togetherConsumedTracks": "Zusammen gehörte Songs",
+    "newSongButton": "Neue",
+    "togetherConsumedBtn": "Gemeinsame"
   },
   "settingsView": {
     "heading": "Einstellungen",

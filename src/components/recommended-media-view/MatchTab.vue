@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import type { Ref } from 'vue'
+import {computed } from 'vue'
+import type { ComputedRef } from 'vue'
 import {useMatchesStore} from "@/stores/MatchesStore";
 import { MatchTab } from "@/models/enums/MatchTab";
 
 const matchesStore = useMatchesStore()
 
-const isRecommendedMediaTab: Ref<boolean> = ref(matchesStore.activeMatchTab === MatchTab.RECOMMENDED_TAB)
-const isTogetherConsumedMediaTab: Ref<boolean> = ref(matchesStore.activeMatchTab === MatchTab.TogetherConsumedMedia)
+const isRecommendedMediaTab: ComputedRef<boolean> = computed(() => matchesStore.activeMatchTab === MatchTab.RECOMMENDED_TAB)
+const isTogetherConsumedMediaTab: ComputedRef<boolean> = computed(() => matchesStore.activeMatchTab === MatchTab.TogetherConsumedMedia)
 
 </script>
 
@@ -15,14 +15,14 @@ const isTogetherConsumedMediaTab: Ref<boolean> = ref(matchesStore.activeMatchTab
 <div class="matches-tab-container">
   <div
       class="matches-tab-btn"
-      :style="{ active : isRecommendedMediaTab }"
+      :class="{ active : isRecommendedMediaTab }"
       @click="matchesStore.activeMatchTab = MatchTab.RECOMMENDED_TAB"
-  >Recommended Media</div>
+  > {{ $t('recommendedMediaView.newSongButton') }}</div>
   <div
       class="matches-tab-btn"
-      :style="{ active : isTogetherConsumedMediaTab }"
+      :class="{ active : isTogetherConsumedMediaTab }"
       @click="matchesStore.activeMatchTab = MatchTab.TogetherConsumedMedia"
-  >Together Consumed</div>
+  >{{ $t('recommendedMediaView.togetherConsumedBtn') }}</div>
 </div>
 </template>
 
@@ -31,26 +31,39 @@ const isTogetherConsumedMediaTab: Ref<boolean> = ref(matchesStore.activeMatchTab
 <style scoped lang="scss">
 .matches-tab-container {
   width: 100%;
-  height: 45px;
+  max-width: 570px;
+  height: 52px;
   border-radius: 5px;
-  padding: 10px 25px;
+  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $secondary-background-color;
+  background-color: #1c1c1c;
   margin-bottom: 15px;
+  margin-top: 15px;
 
   .matches-tab-btn {
     flex: 1;
     height: 100%;
-    background-color: $secondary-background-color;
+    background-color: #1c1c1c;
     color: $primary-text-color;
+    text-align: center;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
 
   .matches-tab-btn.active {
-    background-color: #2c2c2c;
+    background-color: #282828;
   }
 }
 
-
+@media only screen and (min-width: 991px) {
+  .matches-tab-container {
+    margin-top: 25px;
+  }
+}
 </style>
+

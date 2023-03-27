@@ -39,7 +39,9 @@ export function deleteCookie(name: string): void {
  */
 export function tryGetAuthorizedInstance(): AxiosInstance {
 
-    const jwtCookie = getCookie('jwt')
+    //const jwtCookie = getCookie('jwt')
+    const jwtCookie = 'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNWVhNTMwMy01ZWY5LTQ2OWQtMWIzZC0wOGRiMTc4NDEzODkiLCJuYW1lIjoicy5jbGFlcyIsImV4cCI6MTY4MDEyMzU5OCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MTczIiwiaWF0IjoxNjc5ODY0Mzk4LCJuYmYiOjE2Nzk4NjQzOTh9.Y-ZiUHB-OpYBGNIE6hJF9FSXi6NluXT-0ce05WQ9OlVLa3WsDUMIc6YTL9WE8OtoHmHsrzmlMqYS73WFKBojIw'
+
     const instance = axios.create()
 
     instance.interceptors.response.use((response) => response, (error) => {

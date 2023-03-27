@@ -35,7 +35,9 @@
   "recommendedMediaView": {
     "headingPrefix": "Those are",
     "headingSuffix": "favorite tracks you don’t know",
-    "togetherConsumedTracks": "Together Consumed Tracks"
+    "togetherConsumedTracks": "Together Consumed Tracks",
+    "newSongButton": "New",
+    "togetherConsumedBtn": "Same"
   },
   "settingsView": {
     "heading": "Settings",
