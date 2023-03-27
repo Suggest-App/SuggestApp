@@ -25,7 +25,7 @@ WORKDIR /app
 
 COPY --from=builder /app/dist ./
 
-COPY DataPolicy.html ./
+COPY data-policy.html ./
 
 COPY nginx.conf /etc/nginx/conf.d/
 
