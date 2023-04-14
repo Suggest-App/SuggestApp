@@ -12,6 +12,7 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
     padding-top: 20px;
+    padding-bottom: 130px;
   }
 
   .spotify-logo {
@@ -95,6 +96,7 @@
 
     .media-scroll-container {
       padding-top: 18px;
+      padding-bottom: 0;
     }
   }
 }
