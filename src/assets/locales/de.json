@@ -15,11 +15,13 @@
   },
   "profileView": {
     "trackingLabel": "Auswertung seit",
+    "lastFetched": "letzte Aktualisierung",
     "connectedAppLabel": "verknüpfte apps",
     "heading": "Deine Lieblingssongs von:",
     "placeholders": {
       "noUsername": "kein Benutzername verfügbar",
-      "noMinutes": "keine gehörten Minuten"
+      "noMinutes": "keine gehörten Minuten",
+      "noLastFetched": "noch nicht aktualisiert"
     }
   },
   "matchesView": {
@@ -66,6 +68,11 @@
       "heading": "Was ist mit Auswertung gemeint?",
       "text": "Ab dem Zeitpunkt wo du bei uns registriert bist, verfolgen wir alles was du auf Spotify hörst nach. Spotify gibt uns nicht deinen gesamten Wiedergabeverlauf. In regelmäßigen Abständen gucken wir nach was du gehört hast und aktualisieren dein Profil.",
       "btn": "Verstanden"
+    },
+    "lastFetch": {
+      "heading": "Letzte Aktualisierung",
+      "text": "Der Zeitpunk zu dem wir zuletzt deine Spotify Songhistorie aktualisierung haben.",
+      "btn": "Got it"
     },
     "matches": {
       "heading": "Wie ergeben sich diese Matches?",

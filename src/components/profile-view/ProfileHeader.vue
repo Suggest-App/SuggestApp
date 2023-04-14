@@ -2,10 +2,10 @@
 import InfoIcon from "@/components/icons/controls/InfoIcon.vue";
 import type {ComputedRef} from "vue";
 import {computed, onMounted} from "vue";
-import {trackingSinceDate} from "@/composables/TimeCalculations";
+import {lastFetchedDate, trackingSinceDate} from "@/composables/TimeCalculations";
 import {useProfileStore} from "@/stores/ProfileStore";
 import ProfileService from "@/services/ProfileService";
-import {trackingSincePopup} from "@/composables/InformationPopup";
+import {trackingSincePopup, lastFetchPopup} from "@/composables/InformationPopup";
 import GearIcon from "@/components/icons/controls/GearIcon.vue";
 import { useMainStore } from "@/stores/MainStore";
 import { useI18n } from "vue-i18n";
@@ -25,7 +25,7 @@ onMounted(async () => {
 
 /************************** Template Variables **************************/
 
-// Access of username property
+// Access of profile image property
 const profileImage: ComputedRef<string | null> = computed((): string| null => {
   return (profileStore.profileInformation && profileStore.profileInformation.profileImage)
       ? profileStore.profileInformation.profileImage
@@ -46,6 +46,13 @@ const trackingSince: ComputedRef<string> = computed((): string => {
     : t('profileView.placeholders.noMinutes')
 })
 
+// Value of the last fetched record date
+const lastFetched: ComputedRef<string> = computed((): string => {
+  return (profileStore.profileInformation && profileStore.profileInformation.lastFetched)
+      ? lastFetchedDate(profileStore.profileInformation.lastFetched)
+      : t('profileView.placeholders.noLastFetched')
+})
+
 </script>
 
 <template>
@@ -64,6 +71,9 @@ const trackingSince: ComputedRef<string> = computed((): string => {
       <h2>{{ username }}</h2>
       <p v-if="profileStore.profileInformation.trackingSince != null">{{ $t('profileView.trackingLabel') }}: {{ trackingSince }}
         <InfoIcon @click="trackingSincePopup"/>
+      </p>
+      <p v-if="profileStore.profileInformation.lastFetched != null">{{ $t('profileView.lastFetched') }}: {{ lastFetched }}
+        <InfoIcon @click="lastFetchPopup"/>
       </p>
     </div>
     <RouterLink :to="{ name: 'SettingsView' }" v-if="!mainStore.isDesktop">

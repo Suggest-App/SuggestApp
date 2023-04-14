@@ -15,11 +15,13 @@
   },
   "profileView": {
     "trackingLabel": "Tracking since",
+    "lastFetched": "last updated",
     "connectedAppLabel": "connected app",
     "heading": "Your favorite tracks from:",
     "placeholders": {
       "noUsername": "no username available",
-      "noMinutes": "no minutes available"
+      "noMinutes": "no minutes available",
+      "noLastFetched": "not updated yet"
     }
   },
   "matchesView": {
@@ -65,6 +67,11 @@
     "trackingSince": {
       "heading": "What is tracking supposed to mean?",
       "text": "From the time you are registered, we start tracking everything you listen to on spotify. You can revoke this access at any time. Spotify doesn't give us your entire history instantly, so we fetch it at regular intervals, updating your profile as we collect more information.",
+      "btn": "Got it"
+    },
+    "lastFetch": {
+      "heading": "Last update",
+      "text": "The timestamp at which we last updated your Spotify song history.",
       "btn": "Got it"
     },
     "matches": {

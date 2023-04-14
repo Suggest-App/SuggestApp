@@ -16,6 +16,22 @@ export function trackingSincePopup(): void {
         confirmButtonText: t('informationPopup.matches.btn'),
     })
 }
+
+export function lastFetchPopup(): void {
+    const { t } = i18n.global
+    Swal.fire({
+        title: t('informationPopup.lastFetch.heading'),
+        text: t('informationPopup.lastFetch.text'),
+        icon: 'question',
+        iconColor: '#FA8231',
+        background: '#1D1D1D',
+        color: '#FFFFFF',
+        buttonsStyling: true,
+        customClass: 'custom-swal-container',
+        confirmButtonColor: '#3bd23b',
+        confirmButtonText: t('informationPopup.matches.btn'),
+    })
+}
 export function matchesInformationPopup(): void {
     const { t } = i18n.global
     Swal.fire({
