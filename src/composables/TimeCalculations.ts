@@ -7,8 +7,11 @@
  * @return string
  */
 export function secondsToMinutes(seconds: number): string {
-    const date = new Date(seconds * 1000).toISOString().substring(14, 19)
-    return date;
+    if ((seconds / 100) > 100) {
+        return (seconds / 100).toString()
+    } else {
+        return new Date(seconds * 1000).toISOString().substring(14, 19)
+    }
 }
 
 /**
