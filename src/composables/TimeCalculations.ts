@@ -28,3 +28,21 @@ export function trackingSinceDate(dateString: string): string {
         }
     ).split(',')[0]
 }
+
+/**
+ * Format the last fetched datetime
+ *
+ * @param dateString string
+ *
+ * @return string
+ */
+export function lastFetchedDate(dateString: string): string {
+    return new Date(dateString).toLocaleTimeString(
+        [],
+        {
+            day: '2-digit',
+            month:'2-digit',
+            year: 'numeric'
+        }
+    ).split(',')[0]
+}
