@@ -1,68 +1,27 @@
-# Music-Buddies-Frontend
+# Suggest App
 
-This template should help get you started developing with Vue 3 in Vite.
+Find people with a nearly identical music taste and discover the favorite songs of your soulmates that you haven't heard yet.
 
-## Recommended IDE Setup
+## The Idea behind comparing track histories
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Spotify offers a sophisticated mechanism to discover new songs, but it has never been the main source of my favorite songs. Friends with whom I get along well mostly share my music taste. Thanks to them, I often find new songs that I listen to on repeat. Therefore, I came to the assumption that people with the same music taste probably get along well and their favorite songs that you don't know yet could also become yours. This assumption is the basis for the idea of the app. By comparing playback histories, users can make new contacts and find new content that they really like.
 
-## Type Support for `.vue` Imports in TS
+## Features
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- <strong>Single Sign-on</strong>\
+Registration and login with just one click. By signing up with your Spotify account, you can go directly to the app.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- <strong>Your song overview</strong>\
+We collect the songs you have listened to and list them summed up by the time you have listened to them.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+- <strong>Song suggestions</strong>\
+We compare the songs you have listened to with all users on our platform and find your next favorite song.
 
-## Customize configuration
+## How to use
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+If you want to test the App, you can visit [suggest-app.com](suggest-app.com/), or you can download the App directly from the Google Playstore.
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
-
-```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+To run this App on your local device, follow these steps:
+- clone this repository
+- install dependencies (npm install)
+- run development server (npm run dev)
