@@ -2,9 +2,9 @@
   @include flex-align-center;
   width: 100%;
   max-width: 580px;
-  height: 66px;
+  height: 50px;
   margin-bottom: 20px;
-  column-gap: 15px;
+  column-gap: 8px;
 
   .rank {
     color: $primary-text-color;
@@ -67,7 +67,7 @@
   }
 
   .listened-minutes {
-    width: 75px;
+    width: 85px;
     font-size: 12px;
     color: $secondary-text-color;
     text-align: center;
@@ -113,7 +113,7 @@
 
 @media only screen and (min-width: 412px) {
   .media-container {
-    height: 76px;
+    height: 60px;
 
     .rank {
       font-size: 16px;
@@ -163,13 +163,17 @@
 }
 
 @media only screen and (min-width: 460px) {
-  .media-container .media-information {
-    .media-title {
-      width: 230px;
-    }
+  .media-container {
+    column-gap: 16px;
 
-    .additional-media-info .artists {
-      width: 210px;
+    .media-information {
+      .media-title {
+        width: 230px;
+      }
+
+      .additional-media-info .artists {
+        width: 210px;
+      }
     }
   }
 }
@@ -333,24 +337,26 @@
 @media only screen and (min-width: 880px) {
   .media-container .media-information {
     .media-title {
-      width: 368px;
+      width: 340px;
     }
 
     .additional-media-info .artists {
-      width: 348px;
+      width: 300px;
     }
   }
 }
 
 @media only screen and (min-width: 991px) {
   .media-container {
+    height: 76px;
     padding: 8px;
     margin-bottom: 12px; // 20px - 5px padding
     border-radius: $primary-border-radius;
     cursor: pointer;
 
     .listened-minutes {
-      width: 95px;
+      display: block;
+      width: 120px;
       font-size: 14px;
     }
   }
