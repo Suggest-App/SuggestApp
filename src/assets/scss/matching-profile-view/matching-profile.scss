@@ -1,0 +1,225 @@
+.profile-navigation {
+  width: 100%;
+  padding: 25px 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  .arrow-left {
+    width: 9px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  h2 {
+    font-size: 15px;
+    font-weight: 500;
+    color: $primary-text-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .follow-button {
+    width: 72px;
+    height: 20px;
+    color: $primary-text-color;
+    font-size: 12px;
+    background-color: $secondary-background-color;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin-left: auto;
+  }
+}
+
+.profile-image-wrapper {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 25px;
+
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  .rank {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: $secondary-background-color;
+    color: $primary-text-color;
+    font-size: 10px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.profile-stats-grid {
+  width: 100%;
+  padding: 25px 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 25px;
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .value {
+      display: block;
+      color: $primary-text-color;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .label {
+      display: block;
+      color: $secondary-text-color;
+      font-size: 10px;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
+}
+
+.heading-wrapper {
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  h3 {
+    color: $primary-text-color;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  a {
+    color: $secondary-text-color;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: underline;
+  }
+
+  p {
+    color: $secondary-text-color;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.list-media {
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  margin-bottom: 15px;
+
+  .rank {
+    color: $primary-text-color;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .media-image {
+    width: 52px;
+    height: 52px;
+    background-color: grey;
+  }
+
+  .media-information {
+    flex: 1;
+
+    .title {
+      display: block;
+      color: $primary-text-color;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .artist {
+      display: block;
+      color: $secondary-text-color;
+      font-size: 10px;
+      font-weight: 500;
+    }
+  }
+
+  .tracked-time {
+    color: $primary-text-color;
+    font-size: 10px;
+    font-weight: 500;
+  }
+}
+
+.media-slider {
+  display: flex;
+  column-gap: 15px;
+  padding-left: 15px;
+  margin-bottom: 25px;
+
+  .media-slide {
+    width: 120px;
+    height: 185px;
+    background-color: $secondary-background-color;
+
+    .media-image {
+      width: 120px;
+      height: 120px;
+      background-color: grey;
+    }
+
+    .media-information {
+      padding: 8px;
+
+      .title {
+        display: block;
+        color: $primary-text-color;
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .artist {
+        display: block;
+        color: $secondary-text-color;
+        font-size: 10px;
+        font-weight: 500;
+      }
+    }
+
+    .tracking-information {
+      padding: 8px;
+
+      .user-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 5px;
+
+        span {
+          display: block;
+          color: $primary-text-color;
+          font-size: 10px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

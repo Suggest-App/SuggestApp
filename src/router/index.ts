@@ -7,6 +7,7 @@ import ProfileView from "@/views/ProfileView.vue";
 import SettingsView from "@/views/SettingsView.vue";
 import ConnectedAppsView from "@/views/ConnectedAppsView.vue";
 import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
+import MatchingProfileView from "@/views/MatchingProfileView.vue";
 import NotFound from "@/components/NotFound.vue";
 import { getCookie } from "@/services/TokenService";
 import MessagesView from "@/views/MessagesView.vue";
@@ -64,6 +65,12 @@ const router = createRouter({
       path: '/recommended-media/:id',
       name: 'RecommendedMediaView',
       component: RecommendedMediaView,
+      meta: { showNavbar: true }
+    },
+    {
+      path: '/matching-profile',
+      name: 'MatchingProfileView',
+      component: MatchingProfileView,
       meta: { showNavbar: true }
     },
     {

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@auth0/auth0-vue": "^1.0.2",
+    "@egjs/ngx-flicking": "^4.10.7",
     "axios": "^1.2.2",
     "pinia": "^2.0.28",
     "sass": "^1.57.1",
