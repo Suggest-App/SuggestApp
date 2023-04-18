@@ -69,7 +69,7 @@ onMounted( async () => {
       route="/profile"
   ></HeadingWrapper>
 
-  <MediaSlider :slides="matchesStore.togetherConsumedMedia" />
+  <MediaSlider :slides="matchesStore.togetherConsumedMedia" tracked-time="6 Std. 27 Min." />
 
   <HeadingWrapper
       heading="Tobe feiert außerdem:"
@@ -77,7 +77,7 @@ onMounted( async () => {
       route="/profile"
   ></HeadingWrapper>
 
-  <MediaSlider :slides="matchesStore.recommendedMedia" />
+  <MediaSlider :slides="matchesStore.recommendedMedia" trackedTime="0 Min."/>
 
   <HeadingWrapper
       heading="Tobe’s gesamte Songhistorie: "

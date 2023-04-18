@@ -31,7 +31,7 @@ const username: ComputedRef<string> = computed(() => {
     <RouterLink :to="{ name: 'MatchesView' }">
       <ArrowLeftIcon />
     </RouterLink>
-    <h2>This is {{ username }}</h2>
+    <h2>Das ist {{ username }}</h2>
     <button class="follow-button">Folgen</button>
   </div>
 </template>

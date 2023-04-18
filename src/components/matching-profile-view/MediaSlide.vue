@@ -12,6 +12,10 @@ const props = defineProps({
   slide: {
     type: Object as PropType<MediaSummary>,
     default: {} as MediaSummary
+  },
+  trackedTime: {
+    type: String,
+    default: ''
   }
 })
 
@@ -50,7 +54,7 @@ const artists: ComputedRef<string> = computed(() => {
     <div class="tracking-information">
       <span class="user-wrapper">
         <span class="name">Du:</span>
-        <span>6 Std. 27 Min.</span>
+        <span>{{ trackedTime }}</span>
       </span>
       <span class="user-wrapper">
         <span class="name">Tobe</span>

@@ -10,6 +10,10 @@ const props = defineProps({
   slides: {
     type: Object as PropType<MediaSummary[]>,
     default: {} as MediaSummary[]
+  },
+  trackedTime: {
+    type: String,
+    default: ''
   }
 })
 
@@ -38,6 +42,7 @@ function isActiveSlide(index: number): string {
           :key="index"
           :slide="slide"
           :class="{ active: isActiveSlide(index) }"
+          :tracked-time="trackedTime"
       />
       <div class="pseudo-slide"></div>
       <div class="pseudo-slide"></div>
