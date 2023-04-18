@@ -31,7 +31,7 @@ function showMatchingProfile(userId: string): void {
   matchesStore.isLoading = true
   // Redirect to recommended media view
   router.push({
-    name: 'MatchingProfileView',
+    name: 'RecommendedMediaView',
     params: { id: userId }
   });
 }
