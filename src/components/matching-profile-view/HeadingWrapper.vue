@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { RouterLink } from "vue-router";
-import {computed} from "vue";
+import { computed } from "vue";
 
+// Props from parent component
 const props = defineProps({
   heading: {
     type: String,

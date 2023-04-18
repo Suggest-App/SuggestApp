@@ -68,7 +68,7 @@ const router = createRouter({
       meta: { showNavbar: true }
     },
     {
-      path: '/matching-profile',
+      path: '/matching-profile/:id',
       name: 'MatchingProfileView',
       component: MatchingProfileView,
       meta: { showNavbar: true }

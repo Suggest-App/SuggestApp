@@ -13,7 +13,7 @@
   }
 
   h2 {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
     color: $primary-text-color;
     display: flex;
@@ -99,11 +99,11 @@
   padding: 0 15px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 
   h3 {
     color: $primary-text-color;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
   }
 
@@ -112,86 +112,246 @@
     font-size: 12px;
     font-weight: 500;
     text-decoration: underline;
+    line-height: 1.8;
   }
 
   p {
     color: $secondary-text-color;
     font-size: 12px;
+    line-height: 1.8;
     font-weight: 500;
     margin: 0;
   }
 }
 
-.list-media {
+.slider-wrapper {
+  position: relative;
   width: 100%;
-  padding: 0 15px;
-  display: flex;
-  align-items: center;
-  column-gap: 8px;
-  margin-bottom: 15px;
 
-  .rank {
-    color: $primary-text-color;
-    font-size: 12px;
-    font-weight: 500;
-  }
+  .media-slider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    scroll-padding: 0 15px;
+    padding: 0 15px;
+    overflow-y: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    margin-bottom: 45px;
 
-  .media-image {
-    width: 52px;
-    height: 52px;
-    background-color: grey;
-  }
+    .media-slide {
+      position: relative;
+      width: 100px;
+      height: 225px;
+      flex: none;
 
-  .media-information {
-    flex: 1;
+      .album-wrapper {
+        position: relative;
+        width: 100px;
+        height: 136px;
 
-    .title {
-      display: block;
-      color: $primary-text-color;
-      font-size: 12px;
-      font-weight: 500;
-      margin-bottom: 5px;
+        .media-image {
+          position: absolute;
+          bottom: 20px;
+          left: 0;
+          width: 100px;
+          height: 100px;
+          max-width: none;
+          background-size: contain;
+          transition: 250ms ease-out;
+          z-index: 20;
+          box-shadow: 0 -1px 3px rgba(0,0,0,0.6);
+        }
+
+        .vinyl-plate {
+          position: absolute;
+          top: 20px;
+          left: 10px;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          border: 3px solid $secondary-background-color;
+          transform: rotate(10deg);
+          transition: 350ms ease-out;
+          background-size: contain;
+          z-index: 10;
+        }
+
+        .vinyl-plate::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          width: 18px;
+          height: 18px;
+          background-color: $primary-background-color;
+          border: 3px solid $secondary-background-color;
+        }
+      }
+
+      .media-information {
+        position: relative;
+        top: -20px;
+        height: 40px;
+        width: 100px;
+        padding-top: 10px;
+        z-index: 10;
+        transition: 250ms ease-out;
+        background-color: $primary-background-color;
+
+        .title {
+          width: 100px;
+          display: block;
+          color: $primary-text-color;
+          font-size: 12px;
+          font-weight: 500;
+          margin-bottom: 2px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          transition: 100ms ease-out;
+        }
+
+        .artist {
+          display: block;
+          color: $secondary-text-color;
+          font-size: 10px;
+          font-weight: 500;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      .tracking-information {
+        position: relative;
+        width: 100px;
+        height: 42px;
+        z-index: 5;
+        padding-top: 8px;
+        transition: 350ms ease-out;
+        overflow: hidden;
+        opacity: 0;
+        top: 5px;
+
+        .user-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 3px;
+
+          span {
+            display: block;
+            color: $primary-text-color;
+            font-size: 10px;
+            font-weight: 500;
+          }
+
+          .name {
+            color: $secondary-text-color;
+          }
+        }
+      }
     }
 
-    .artist {
-      display: block;
-      color: $secondary-text-color;
-      font-size: 10px;
-      font-weight: 500;
+    .media-slide.active .album-wrapper {
+      .media-image {
+        bottom: 0;
+      }
+      .vinyl-plate {
+        top: 0;
+        transform: rotate(60deg);
+      }
+    }
+
+    .media-slide.active .media-information, {
+      top: 0;
+
+      .title {
+        color: $spotify-green;
+      }
+    }
+
+    .media-slide.active .tracking-information {
+      opacity: 1;
+      top: 0;
+    }
+
+    .pseudo-slide {
+      width: 120px;
+      height: 120px;
+      flex: none;
+    }
+
+    .spotify-btn {
+      position: absolute;
+      right: 15px;
+      bottom: 8px;
+      padding: 8px 12px 8px 8px;
+      background-color: $spotify-green;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      cursor: pointer;
+      z-index: 25;
+
+      .spotify-icon {
+        width: 15px;
+        height: 15px;
+      }
+
+      span {
+        display: block;
+        color: $primary-text-color;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+      }
     }
   }
 
-  .tracked-time {
-    color: $primary-text-color;
-    font-size: 10px;
-    font-weight: 500;
+  .media-slider > .media-slide {
+    scroll-snap-align: start;
   }
 }
 
-.media-slider {
-  display: flex;
-  column-gap: 15px;
-  padding-left: 15px;
-  margin-bottom: 25px;
 
-  .media-slide {
-    width: 120px;
-    height: 185px;
-    background-color: $secondary-background-color;
+.media-list-container {
+  width: 100%;
+  padding-bottom: 120px;
+  padding-top: 8px;
+
+  .list-media {
+    width: 100%;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    margin-bottom: 15px;
+
+    .rank {
+      color: $primary-text-color;
+      font-size: 12px;
+      font-weight: 500;
+    }
 
     .media-image {
-      width: 120px;
-      height: 120px;
+      width: 52px;
+      height: 52px;
       background-color: grey;
     }
 
     .media-information {
-      padding: 8px;
+      flex: 1;
 
       .title {
         display: block;
         color: $primary-text-color;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 500;
         margin-bottom: 5px;
       }
@@ -199,27 +359,15 @@
       .artist {
         display: block;
         color: $secondary-text-color;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 500;
       }
     }
 
-    .tracking-information {
-      padding: 8px;
-
-      .user-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 5px;
-
-        span {
-          display: block;
-          color: $primary-text-color;
-          font-size: 10px;
-          font-weight: 500;
-        }
-      }
+    .tracked-time {
+      color: $secondary-text-color;
+      font-size: 12px;
+      font-weight: 500;
     }
   }
 }

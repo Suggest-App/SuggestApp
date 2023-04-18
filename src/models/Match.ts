@@ -4,5 +4,5 @@ export interface Match {
     username:                  string,
     profileImage:              string,
     listenedTogetherSeconds:   number,
-    spotifyProfileUrl:         string
+    profileUrl:                string
 }
