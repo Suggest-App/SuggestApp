@@ -10,10 +10,9 @@ import RecommendedMediaViewSkeleton from "@/components/recommended-media-view/Re
 import {useI18n} from "vue-i18n";
 import MatchTab from "@/components/recommended-media-view/MatchTab.vue";
 import { MatchTab as MatchTabEnum } from "@/models/enums/MatchTab";
-import type { MatchTab as MatchTabEnumType } from "@/models/enums/MatchTab";
 
+// Initialize localization plugin and stores
 const { t } = useI18n()
-
 const matchesStore = useMatchesStore();
 
 // Access of username property
@@ -30,9 +29,6 @@ const userId: string = route.params.id as string
 onMounted( async () => {
   matchesStore.recommendedMedia = await MatchesService.fetchRecommendedMedia(userId);
   matchesStore.togetherConsumedMedia = await MatchesService.fetchTogetherConsumedTracks(userId);
-
-  console.log(matchesStore.recommendedMedia)
-  console.log(matchesStore.togetherConsumedMedia)
 
   // Ensure that there are matches fetched, before disabling the loading flag
   if (matchesStore.recommendedMedia.length !== 0) {

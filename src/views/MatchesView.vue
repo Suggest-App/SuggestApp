@@ -10,18 +10,9 @@ import router from "@/router";
 import { MediaSummary } from "@/models/MediaSummary";
 import { matchesInformationPopup } from "@/composables/InformationPopup";
 
+// Initialize stores
 const matchesStore = useMatchesStore()
 const mainStore = useMainStore()
-
-function showRecommendedMedia(userId: string): void {
-  // Set the loading flag to true
-  matchesStore.isLoading = true
-  // Redirect to recommended media view
-  router.push({
-    name: 'RecommendedMediaView',
-    params: { id: userId }
-  });
-}
 
 onMounted(async () => {
   // Fetch the ordered user matches
@@ -33,6 +24,17 @@ onMounted(async () => {
     matchesStore.isLoading = false
   }
 })
+
+// Show matching profile view
+function showMatchingProfile(userId: string): void {
+  // Set the loading flag to true
+  matchesStore.isLoading = true
+  // Redirect to recommended media view
+  router.push({
+    name: 'MatchingProfileView',
+    params: { id: userId }
+  });
+}
 </script>
 
 <template>
@@ -40,7 +42,7 @@ onMounted(async () => {
     <h2 v-show="!matchesStore.isLoading">{{ $t('matchesView.heading') }} <InfoIcon @click="matchesInformationPopup" /></h2>
     <Match
         v-show="!matchesStore.isLoading"
-        @click="showRecommendedMedia(match.userId)"
+        @click="showMatchingProfile(match.userId)"
         v-for="match in matchesStore.matches"
         :key="match.userId"
         :match="match"
