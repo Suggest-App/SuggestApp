@@ -5,7 +5,7 @@ import { SpotifyColorEnum } from "@/models/enums/SpotifyColorEnum";
 const props = defineProps({
   color: {
     type: Object as PropType<SpotifyColorEnum>,
-    required: true,
+    default: '#FFFFFF',
   },
 })
 </script>
