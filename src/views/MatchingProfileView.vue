@@ -13,7 +13,7 @@ import { useI18n } from "vue-i18n";
 import type { Ref } from "vue";
 import type { Match } from "@/models/Match";
 import MatchesService from "@/services/MatchesService";
-import {secondsToTime} from "@/composables/TimeCalculations";
+import {secondsToTime, trackingSinceDate} from "@/composables/TimeCalculations";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
@@ -38,16 +38,41 @@ onMounted( async () => {
   }
 })
 
+/** --------------------- Template Properties --------------------- */
+
+// The total time a users have listened to songs
+const totalListenedTime: ComputedRef<string> = computed(() => {
+  return (hasMatch.value && match.value.listenedTogetherSeconds)
+      ? secondsToTime(match.value.listenedTogetherSeconds)
+      : '-'
+})
+
+// Complete time two users have listened to the same songs
 const togetherListenedTime: ComputedRef<string> = computed(() => {
   return (hasMatch.value && match.value.listenedTogetherSeconds)
       ? secondsToTime(match.value.listenedTogetherSeconds)
-      : t('matchesView.placeholders.noMinutes')
+      : '-'
+})
+
+// Date since when the record history of a user is tracked
+const songTrackingSince: ComputedRef<string> = computed(() => {
+  return (hasMatch.value && match.value.listenedTogetherSeconds)
+      ? trackingSinceDate('2023-01-03')
+      : '-'
+})
+
+// Access the username property
+const username: ComputedRef<string> = computed(() => {
+  return (matchesStore.matchesMap.has(userId) && matchesStore.matchesMap.get(userId))
+      ? matchesStore.matchesMap.get(userId)!.username
+      : t('matchingProfileView.errors.unknownUser')
 })
 </script>
 
 <template>
   <MatchingProfileNavigation
       :user-id="userId"
+      :username="username"
   />
 
   <MatchingProfileImage
@@ -57,38 +82,38 @@ const togetherListenedTime: ComputedRef<string> = computed(() => {
 
   <ProfileStatsWrapper>
       <ProfileStat
-          value="1.206 Std. 27 Min."
-          label-text="Musik gehört<br>insgesamt"
+          :value="totalListenedTime"
+          :label-text="$t('profileStats.totalListenedTime')"
       />
       <ProfileStat
           :value="togetherListenedTime"
-          label-text="gemeinsam<br>gehörte Zeit"
+          :label-text="$t('profileStats.togetherListenedTime')"
       />
       <ProfileStat
-          value="03.01.2023"
-          label-text="Song Erfassung<br>seit dem"
+          :value="songTrackingSince"
+          :label-text="$t('profileStats.songTrackingSince')"
       />
   </ProfileStatsWrapper>
 
   <HeadingWrapper
-      heading="Songs die ihr beide feiert:"
-      label-text="Alle anzeigen"
+      :heading="$t('matchingProfileView.heading.togetherConsumed')"
+      :label-text="$t('matchingProfileView.heading.showAll')"
       route="/profile"
   ></HeadingWrapper>
 
   <MediaSlider :slides="matchesStore.togetherConsumedMedia" />
 
   <HeadingWrapper
-      heading="Tobe feiert außerdem:"
-      label-text="Alle anzeigen"
+      :heading="username + $t('matchingProfileView.heading.recommended')"
+      :label-text="$t('matchingProfileView.heading.showAll')"
       route="/profile"
   ></HeadingWrapper>
 
   <MediaSlider :slides="matchesStore.recommendedMedia" />
 
   <HeadingWrapper
-      heading="Tobe’s gesamte Songhistorie: "
-      label-text="Gehörte Zeit:"
+      :heading="username + $t('matchingProfileView.heading.completeHistory')"
+      :label-text="$t('matchingProfileView.heading.listenedTime')"
   ></HeadingWrapper>
 
   <div class="media-list-container">

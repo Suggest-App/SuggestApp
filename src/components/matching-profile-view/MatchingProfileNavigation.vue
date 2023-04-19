@@ -2,27 +2,30 @@
 import ArrowLeftIcon from "@/components/icons/controls/ArrowLeftIcon.vue";
 import { computed } from "vue";
 import type { ComputedRef } from "vue";
-import { useMatchesStore } from "@/stores/MatchesStore";
 import { useI18n } from "vue-i18n";
 import { RouterLink } from "vue-router";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
-const matchesStore = useMatchesStore();
 
 // Props from parent component
 const props = defineProps({
   userId: {
     type: String,
     required: true
+  },
+  username: {
+    type: String,
+    default: ''
   }
 })
 
-// Access the username property
-const username: ComputedRef<string> = computed(() => {
-  return (matchesStore.matchesMap.has(props.userId) && matchesStore.matchesMap.get(props.userId))
-      ? matchesStore.matchesMap.get(props.userId)!.username
-      : t('matchesView.placeholders.noUsername')
+/** --------------------- Template Properties --------------------- */
+
+const heading: ComputedRef<string> = computed(() => {
+  return (props.username === '')
+      ? t('matchingProfileView.introduction') + props.username
+      : t('matchingProfileView.errors.unknownUser')
 })
 </script>
 
@@ -31,7 +34,7 @@ const username: ComputedRef<string> = computed(() => {
     <RouterLink :to="{ name: 'MatchesView' }">
       <ArrowLeftIcon />
     </RouterLink>
-    <h2>Das ist {{ username }}</h2>
-    <button v-if="false" class="follow-button">Folgen</button>
+    <h2>{{ heading }}</h2>
+    <button v-if="false" class="follow-button">{{ $t('matchingProfileView.followBtn') }}</button>
   </div>
 </template>

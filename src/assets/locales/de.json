@@ -32,6 +32,26 @@
       "noMinutes": "keine gemeinsam gehörten Minuten"
     }
   },
+  "matchingProfileView": {
+    "followBtn": "Folgen",
+    "introduction": "Das ist ",
+    "heading": {
+      "togetherConsumed": "Songs die ihr beide feiert:",
+      "recommended": " feiert außerdem:",
+      "completeHistory": "'s gesamte Songhistorie:",
+      "showAll": "Alle anzeigen",
+      "listenedTime": "Gehörte Zeit"
+    },
+    "errors": {
+      "unknownUser": "Unbekannter Nutzer"
+    }
+  },
+  "profileStats": {
+    "totalListenedTime": "Musik gehört<br>insgesamt",
+    "togetherListenedTime": "gemeinsam<br>gehörte Zeit",
+    "songTrackingSince": "Song Erfassung<br>seit dem",
+    "lastFetch": "Letzte Aktualisierung"
+  },
   "recommendedMediaView": {
     "headingPrefix": "Das sind",
     "headingSuffix": "Lieblingssongs, die du noch nicht kennst:",

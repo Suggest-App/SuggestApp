@@ -32,6 +32,26 @@
       "noMinutes": "no minutes available"
     }
   },
+  "matchingProfileView": {
+    "followBtn": "follow",
+    "introduction": "This is ",
+    "heading": {
+      "togetherConsumed": "Songs you both love:",
+      "recommended": " also loves:",
+      "completeHistory": "'s whole track history:",
+      "showAll": "show all",
+      "listenedTime": "listened time"
+    },
+    "errors": {
+      "unknownUser": "unknown user"
+    }
+  },
+  "profileStats": {
+    "totalListenedTime": "Music belongs<br> overall.",
+    "togetherListenedTime": "time listened<br>together",
+    "songTrackingSince": "Data capture<br> since",
+    "lastFetch": "last track<br>update"
+  },
   "recommendedMediaView": {
     "headingPrefix": "Those are",
     "headingSuffix": "favorite tracks you don’t know",

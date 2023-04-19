@@ -20,6 +20,8 @@ const props = defineProps({
   }
 })
 
+/** --------------------- Template Properties --------------------- */
+
 // Access of profile image property
 const profileImage: ComputedRef<string | null> = computed(() => {
   return (props.hasMatch && props.match.profileImage)
@@ -30,8 +32,8 @@ const profileImage: ComputedRef<string | null> = computed(() => {
 // Access of rank property
 const rank: ComputedRef<string> = computed(() => {
   return (props.hasMatch && props.match.rank)
-      ? (props.match.rank).toString()
-      : t('matchesView.placeholders.noRank')
+      ? '#' + (props.match.rank).toString()
+      : '-'
 })
 </script>
 
@@ -46,6 +48,6 @@ const rank: ComputedRef<string> = computed(() => {
     <ProfileImage
         v-if="!profileImage"
     />
-    <span class="rank">#{{ rank }}</span>
+    <span class="rank">{{ rank }}</span>
   </div>
 </template>
