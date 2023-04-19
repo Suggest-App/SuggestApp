@@ -4,6 +4,10 @@ import type {Ref} from "vue";
 import type {MediaSummary} from "@/models/MediaSummary";
 import MediaSlide from "@/components/matching-profile-view/MediaSlide.vue";
 import SpotifyIcon from "@/components/icons/SpotifyIcon.vue";
+import {useI18n} from "vue-i18n";
+
+// Initialize localization plugin
+const { t } = useI18n()
 
 // Props from parent component
 const props = defineProps({
@@ -42,8 +46,8 @@ function isActiveSlide(index: number): string {
       <div class="pseudo-slide"></div>
       <div class="pseudo-slide"></div>
       <div class="spotify-btn">
-        <SpotifyIcon color="#FFFFFF" />
-        <span>In Spotify öffnen</span>
+        <SpotifyIcon />
+        <span>{{ $t('matchingProfileView.openInSpotify') }}</span>
       </div>
     </div>
   </div>

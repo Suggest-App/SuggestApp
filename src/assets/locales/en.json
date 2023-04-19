@@ -35,6 +35,7 @@
   "matchingProfileView": {
     "followBtn": "follow",
     "introduction": "This is ",
+    "openInSpotify": "Open in Spotify",
     "heading": {
       "togetherConsumed": "Songs you both love:",
       "recommended": " also loves:",
