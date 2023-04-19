@@ -5,7 +5,6 @@ import {computed, ComputedRef} from "vue";
 import {useI18n} from "vue-i18n";
 import {secondsToTime} from "@/composables/TimeCalculations";
 
-
 // Initialize localization plugin
 const { t } = useI18n()
 
@@ -15,6 +14,8 @@ const props = defineProps({
     default: {} as MediaSummary
   }
 })
+
+/** --------------------- Template Properties --------------------- */
 
 // Access media image url
 const albumImage: ComputedRef<string> = computed(() => {
@@ -36,6 +37,20 @@ const artists: ComputedRef<string> = computed(() => {
       ? props.slide.allArtists.join().replace(',', ', ')
       : t('media.placeholders.noArtists')
 })
+
+// Access the listened seconds of your own account
+const ownListenedSeconds: ComputedRef<string> = computed(() => {
+  return (props.slide && props.slide.listenedSeconds)
+      ? secondsToTime(props.slide.listenedSeconds)
+      : '-'
+})
+
+// Access the listened seconds of your match
+const matchesListenedSeconds: ComputedRef<string> = computed(() => {
+  return (props.slide && props.slide.listenedSeconds)
+      ? secondsToTime(props.slide.listenedSeconds)
+      : '-'
+})
 </script>
 
 <template>
@@ -50,12 +65,12 @@ const artists: ComputedRef<string> = computed(() => {
     </div>
     <div class="tracking-information">
       <span class="user-wrapper">
-        <span class="name">Du:</span>
-        <span>6 Std. 27 Min.</span>
+        <span class="name">{{ $t('matchingProfileView.trackingInformation.you') }}</span>
+        <span>{{ ownListenedSeconds }}</span>
       </span>
       <span class="user-wrapper">
-        <span class="name">Tobe</span>
-        <span>3 Std. 6 Min.</span>
+        <span class="name">{{ $t('matchingProfileView.trackingInformation.match') }}</span>
+        <span>{{ matchesListenedSeconds }}</span>
       </span>
     </div>
   </div>

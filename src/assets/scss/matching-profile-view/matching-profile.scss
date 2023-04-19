@@ -141,25 +141,26 @@
     overflow-y: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
     margin-bottom: 45px;
 
     .media-slide {
       position: relative;
-      width: 100px;
-      height: 225px;
+      width: 130px;
+      height: 265px;
       flex: none;
 
       .album-wrapper {
         position: relative;
-        width: 100px;
-        height: 136px;
+        width: 130px;
+        height: 176px;
 
         .media-image {
           position: absolute;
           bottom: 20px;
           left: 0;
-          width: 100px;
-          height: 100px;
+          width: 130px;
+          height: 130px;
           max-width: none;
           background-size: contain;
           transition: 250ms ease-out;
@@ -169,10 +170,10 @@
 
         .vinyl-plate {
           position: absolute;
-          top: 20px;
+          top: 30px;
           left: 10px;
-          width: 80px;
-          height: 80px;
+          width: 110px;
+          height: 110px;
           border-radius: 50%;
           border: 3px solid $secondary-background-color;
           transform: rotate(10deg);
@@ -188,8 +189,8 @@
           left: 50%;
           transform: translate(-50%, -50%);
           border-radius: 50%;
-          width: 18px;
-          height: 18px;
+          width: 30px;
+          height: 30px;
           background-color: $primary-background-color;
           border: 3px solid $secondary-background-color;
         }
@@ -199,17 +200,17 @@
         position: relative;
         top: -20px;
         height: 40px;
-        width: 100px;
+        width: 130px;
         padding-top: 10px;
         z-index: 10;
         transition: 250ms ease-out;
         background-color: $primary-background-color;
 
         .title {
-          width: 100px;
+          width: 130px;
           display: block;
           color: $primary-text-color;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 500;
           margin-bottom: 2px;
           overflow: hidden;
@@ -221,7 +222,7 @@
         .artist {
           display: block;
           color: $secondary-text-color;
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 500;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -231,10 +232,10 @@
 
       .tracking-information {
         position: relative;
-        width: 100px;
+        width: 130px;
         height: 42px;
         z-index: 5;
-        padding-top: 8px;
+        padding-top: 10px;
         transition: 350ms ease-out;
         overflow: hidden;
         opacity: 0;
@@ -292,7 +293,7 @@
     .spotify-btn {
       position: absolute;
       right: 15px;
-      bottom: 8px;
+      bottom: 6px;
       padding: 8px 12px 8px 8px;
       background-color: $spotify-green;
       border-radius: 100px;

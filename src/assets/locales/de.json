@@ -43,6 +43,10 @@
       "showAll": "Alle anzeigen",
       "listenedTime": "Gehörte Zeit"
     },
+    "trackingInformation": {
+      "you": "Du:",
+      "match": "Match:"
+    },
     "errors": {
       "unknownUser": "Unbekannter Nutzer"
     }

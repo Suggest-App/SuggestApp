@@ -24,7 +24,7 @@ const activeSlideIndex: Ref<number> = ref(0)
 function scrollEvent(event: any) {
   if (event.target) {
     let scrollPosition = event.target.scrollLeft
-    activeSlideIndex.value = Math.ceil(scrollPosition / 115)
+    activeSlideIndex.value = Math.ceil(scrollPosition / 145)
   }
 }
 

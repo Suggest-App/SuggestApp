@@ -23,7 +23,7 @@ const props = defineProps({
 /** --------------------- Template Properties --------------------- */
 
 const heading: ComputedRef<string> = computed(() => {
-  return (props.username === '')
+  return (props.username)
       ? t('matchingProfileView.introduction') + props.username
       : t('matchingProfileView.errors.unknownUser')
 })
