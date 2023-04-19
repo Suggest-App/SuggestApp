@@ -114,7 +114,7 @@ const username: ComputedRef<string> = computed(() => {
       :heading="username + $t('matchingProfileView.heading.completeHistory')"
   ></HeadingWrapper>
 
-  <MediaListWrapper />
+  <MediaListWrapper :media-list="matchesStore.togetherConsumedMedia" />
 
 </template>
 

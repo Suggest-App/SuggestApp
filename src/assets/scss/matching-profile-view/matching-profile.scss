@@ -1,6 +1,6 @@
 .profile-navigation {
   width: 100%;
-  padding: 25px 15px;
+  padding: 25px 15px 0;
   display: grid;
   grid-template-columns: 0.1fr 1fr 0.1fr;
 
@@ -13,9 +13,6 @@
   }
 
   h2 {
-    font-size: 22px;
-    font-weight: 500;
-    color: $primary-text-color;
     display: flex;
     align-items: center;
     justify-content: center;
