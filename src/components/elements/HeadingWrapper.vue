@@ -48,12 +48,12 @@ const showLabel = computed(() =>
   padding: 0 15px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 
   h3 {
     color: $primary-text-color;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: bold;
   }
 
   a {

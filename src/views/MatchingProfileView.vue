@@ -112,7 +112,6 @@ const username: ComputedRef<string> = computed(() => {
 
   <HeadingWrapper
       :heading="username + $t('matchingProfileView.heading.completeHistory')"
-      :label-text="$t('matchingProfileView.heading.listenedTime')"
   ></HeadingWrapper>
 
   <MediaListWrapper />
