@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import MatchingProfileNavigation from "@/components/matching-profile-view/MatchingProfileNavigation.vue";
-import HeadingWrapper from "@/components/matching-profile-view/HeadingWrapper.vue";
-import ProfileStat from "@/components/matching-profile-view/ProfileStat.vue";
-import ListMedia from "@/components/matching-profile-view/ListMedia.vue";
-import MediaSlider from "@/components/matching-profile-view/MediaSlider.vue";
+import HeadingWrapper from "@/components/elements/HeadingWrapper.vue";
+import ProfileStat from "@/components/elements/ProfileStat.vue";
+import ListMedia from "@/components/media/ListMedia.vue";
+import MediaSlider from "@/components/media/MediaSlider.vue";
 import MatchingProfileImage from "@/components/matching-profile-view/MatchingProfileImage.vue";
-import ProfileStatsWrapper from "@/components/matching-profile-view/ProfileStatsWrapper.vue";
+import ProfileStatsWrapper from "@/components/elements/ProfileStatsWrapper.vue";
 import {computed, ComputedRef, onMounted, ref} from "vue";
 import { useRoute } from "vue-router";
 import { useMatchesStore } from "@/stores/MatchesStore";
@@ -14,6 +14,7 @@ import type { Ref } from "vue";
 import type { Match } from "@/models/Match";
 import MatchesService from "@/services/MatchesService";
 import {secondsToTime, trackingSinceDate} from "@/composables/TimeCalculations";
+import MediaListWrapper from "@/components/media/MediaListWrapper.vue";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
@@ -97,7 +98,6 @@ const username: ComputedRef<string> = computed(() => {
 
   <HeadingWrapper
       :heading="$t('matchingProfileView.heading.togetherConsumed')"
-      :label-text="$t('matchingProfileView.heading.showAll')"
       route="/profile"
   ></HeadingWrapper>
 
@@ -105,7 +105,6 @@ const username: ComputedRef<string> = computed(() => {
 
   <HeadingWrapper
       :heading="username + $t('matchingProfileView.heading.recommended')"
-      :label-text="$t('matchingProfileView.heading.showAll')"
       route="/profile"
   ></HeadingWrapper>
 
@@ -116,18 +115,10 @@ const username: ComputedRef<string> = computed(() => {
       :label-text="$t('matchingProfileView.heading.listenedTime')"
   ></HeadingWrapper>
 
-  <div class="media-list-container">
-    <ListMedia
-        v-for="(media, index) in matchesStore.togetherConsumedMedia"
-        :key="index"
-        :media="media"
-        :index="index"
-    />
-  </div>
+  <MediaListWrapper />
 
 </template>
 
 <style lang="scss">
-@import "@/assets/scss/redesign-theme.scss";
 @import "@/assets/scss/matching-profile-view/matching-profile.scss";
 </style>

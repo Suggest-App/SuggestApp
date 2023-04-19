@@ -5,7 +5,7 @@ import { useRoute } from "vue-router";
 import { useMatchesStore } from "@/stores/MatchesStore";
 import RecommendedMediaHeader from "@/components/recommended-media-view/RecommendedMediaHeader.vue";
 import MatchesService from "@/services/MatchesService";
-import Media from "@/components/Media.vue";
+import Media from "@/components/media/Media.vue";
 import RecommendedMediaViewSkeleton from "@/components/recommended-media-view/RecommendedMediaViewSkeleton.vue";
 import {useI18n} from "vue-i18n";
 import MatchTab from "@/components/recommended-media-view/MatchTab.vue";

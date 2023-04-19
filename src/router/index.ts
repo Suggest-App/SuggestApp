@@ -8,7 +8,7 @@ import SettingsView from "@/views/SettingsView.vue";
 import ConnectedAppsView from "@/views/ConnectedAppsView.vue";
 import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
 import MatchingProfileView from "@/views/MatchingProfileView.vue";
-import NotFound from "@/components/NotFound.vue";
+import NotFound from "@/components/elements/NotFound.vue";
 import { getCookie } from "@/services/TokenService";
 import MessagesView from "@/views/MessagesView.vue";
 

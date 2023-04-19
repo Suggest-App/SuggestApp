@@ -41,3 +41,37 @@ const showLabel = computed(() =>
     <p v-if="showLabel">{{ labelText }}</p>
   </div>
 </template>
+
+<style lang="scss">
+.heading-wrapper {
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  h3 {
+    color: $primary-text-color;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  a {
+    color: $secondary-text-color;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: underline;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  p {
+    color: $secondary-text-color;
+    font-size: 12px;
+    line-height: 1.8;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+  }
+}
+</style>

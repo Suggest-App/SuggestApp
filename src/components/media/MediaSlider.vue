@@ -2,7 +2,7 @@
 import {ref, PropType} from "vue";
 import type {Ref} from "vue";
 import type {MediaSummary} from "@/models/MediaSummary";
-import MediaSlide from "@/components/matching-profile-view/MediaSlide.vue";
+import MediaSlide from "@/components/media/MediaSlide.vue";
 import SpotifyIcon from "@/components/icons/SpotifyIcon.vue";
 import {useI18n} from "vue-i18n";
 
@@ -45,7 +45,7 @@ function isActiveSlide(index: number): string {
       />
       <div class="pseudo-slide"></div>
       <div class="pseudo-slide"></div>
-      <div class="spotify-btn">
+      <div v-if="false" class="spotify-btn">
         <SpotifyIcon />
         <span>{{ $t('matchingProfileView.openInSpotify') }}</span>
       </div>
@@ -53,8 +53,6 @@ function isActiveSlide(index: number): string {
   </div>
 </template>
 
-<style>
-h1 {
-  color: #FFFFFF;
-}
+<style lang="scss">
+@import "@/assets/scss/media/media-slider.scss";
 </style>

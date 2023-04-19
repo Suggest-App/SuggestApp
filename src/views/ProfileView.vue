@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from "vue"
 import ProfileHeader from "@/components/profile-view/ProfileHeader.vue";
-import ConnectedAppsBtn from "@/components/profile-view/ConnectedAppsBtn.vue";
-import Media from "@/components/Media.vue";
+import ConnectedAppsBtn from "@/components/elements/ConnectedAppsBtn.vue";
+import Media from "@/components/media/Media.vue";
 import ProfileService from "@/services/ProfileService";
 import { useProfileStore } from "@/stores/ProfileStore";
 import { useMainStore } from "@/stores/MainStore";

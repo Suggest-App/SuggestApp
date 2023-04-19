@@ -3,8 +3,8 @@ import { computed, onMounted } from "vue";
 import type { ComputedRef } from "vue";
 import { RouterView, useRoute } from "vue-router";
 import { useMainStore } from "@/stores/MainStore";
-import MobileNavbar from "@/components/MobileNavbar.vue";
-import DesktopNavbar from "@/components/DesktopNavbar.vue";
+import MobileNavbar from "@/components/navigation/MobileNavbar.vue";
+import DesktopNavbar from "@/components/navigation/DesktopNavbar.vue";
 
 const mainStore = useMainStore()
 const route = useRoute()

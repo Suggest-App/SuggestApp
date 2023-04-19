@@ -6,7 +6,7 @@ import { useRoute } from "vue-router";
 import RankingViewIcon from "@/components/icons/navbar/RankingViewIcon.vue";
 import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
 import ProfileHeader from "@/components/profile-view/ProfileHeader.vue";
-import ConnectedAppsBtn from "@/components/profile-view/ConnectedAppsBtn.vue";
+import ConnectedAppsBtn from "@/components/elements/ConnectedAppsBtn.vue";
 import GearIcon from "@/components/icons/controls/GearIcon.vue";
 import MessagesViewIcon from "@/components/icons/navbar/MessagesViewIcon.vue";
 import router from "@/router";
