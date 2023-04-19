@@ -7,11 +7,24 @@
  * @return string
  */
 export function secondsToMinutes(seconds: number): string {
-    if ((seconds / 100) > 100) {
-        return (seconds / 100).toString()
-    } else {
-        return new Date(seconds * 1000).toISOString().substring(14, 19)
+    let hours: number = seconds / 3600
+
+    // Display only seconds
+    if (hours * 60 < 1) {
+        return seconds + 'Sek.'
     }
+
+    // Display minutes and seconds
+    if (hours < 1) {
+        return Math.floor(hours * 60) + ' Min. ' + Math.floor(((hours * 60) % 1) * 60) + ' Sek.'
+    }
+
+    // Display hours and minutes
+    if (hours >= 1) {
+        return Math.floor(hours) + ' Std. ' + Math.floor((hours % 1) * 60) + ' Min.'
+    }
+
+    return '-'
 }
 
 /**
