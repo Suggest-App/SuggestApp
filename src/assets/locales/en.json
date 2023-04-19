@@ -24,7 +24,7 @@
   },
   "matchesView": {
     "heading": "Your top matches",
-    "minutesLabel": "minutes listened together",
+    "minutesLabel": "listened together",
     "moreInfo": "more information",
     "placeholders": {
       "noRank": "no rank available",
