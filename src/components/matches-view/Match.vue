@@ -2,7 +2,7 @@
 import { ref, computed } from "vue";
 import type { Ref, ComputedRef, PropType} from "vue";
 import { Match } from "@/models/Match";
-import { secondsToMinutes } from "@/composables/TimeCalculations";
+import { secondsToTime } from "@/composables/TimeCalculations";
 import { useI18n } from 'vue-i18n'
 import ProfileImage from "@/components/icons/ProfileImage.vue";
 
@@ -42,7 +42,7 @@ const showMinutes: Ref<boolean> = ref(props.match.listenedTogetherSeconds != nul
 // Value of how much  minutes both have listened together
 const minutes:ComputedRef<string> = computed((): string => {
   return (props.match && showMinutes)
-      ? secondsToMinutes(props.match.listenedTogetherSeconds)
+      ? secondsToTime(props.match.listenedTogetherSeconds)
       : t('matchesView.placeholders.noMinutes')
 })
 </script>

@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 import type { Ref, ComputedRef } from "vue";
 import { useMatchesStore } from "@/stores/MatchesStore";
 import { Match } from "@/models/Match";
-import { secondsToMinutes } from "@/composables/TimeCalculations";
+import { secondsToTime } from "@/composables/TimeCalculations";
 import ArrowLeftIcon from "@/components/icons/controls/ArrowLeftIcon.vue";
 import {useI18n} from "vue-i18n";
 import ProfileImage from "@/components/icons/ProfileImage.vue";
@@ -46,7 +46,7 @@ const rank: ComputedRef<string> = computed((): string => {
 // Calculate together listened minutes
 const minutes: ComputedRef<string> = computed((): string => {
   return (hasMatch.value && match.value.listenedTogetherSeconds)
-      ? secondsToMinutes(match.value.listenedTogetherSeconds)
+      ? secondsToTime(match.value.listenedTogetherSeconds)
       : t('matchesView.placeholders.noMinutes')
 })
 

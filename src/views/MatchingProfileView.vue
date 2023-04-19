@@ -6,13 +6,14 @@ import ListMedia from "@/components/matching-profile-view/ListMedia.vue";
 import MediaSlider from "@/components/matching-profile-view/MediaSlider.vue";
 import MatchingProfileImage from "@/components/matching-profile-view/MatchingProfileImage.vue";
 import ProfileStatsWrapper from "@/components/matching-profile-view/ProfileStatsWrapper.vue";
-import { onMounted, ref} from "vue";
+import {computed, ComputedRef, onMounted, ref} from "vue";
 import { useRoute } from "vue-router";
 import { useMatchesStore } from "@/stores/MatchesStore";
 import { useI18n } from "vue-i18n";
 import type { Ref } from "vue";
 import type { Match } from "@/models/Match";
 import MatchesService from "@/services/MatchesService";
+import {secondsToTime} from "@/composables/TimeCalculations";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
@@ -36,6 +37,12 @@ onMounted( async () => {
     matchesStore.isLoading = false
   }
 })
+
+const togetherListenedTime: ComputedRef<string> = computed(() => {
+  return (hasMatch.value && match.value.listenedTogetherSeconds)
+      ? secondsToTime(match.value.listenedTogetherSeconds)
+      : t('matchesView.placeholders.noMinutes')
+})
 </script>
 
 <template>
@@ -54,7 +61,7 @@ onMounted( async () => {
           label-text="Musik gehört<br>insgesamt"
       />
       <ProfileStat
-          value="6 Std. 27 Min."
+          :value="togetherListenedTime"
           label-text="gemeinsam<br>gehörte Zeit"
       />
       <ProfileStat
@@ -69,7 +76,7 @@ onMounted( async () => {
       route="/profile"
   ></HeadingWrapper>
 
-  <MediaSlider :slides="matchesStore.togetherConsumedMedia" tracked-time="6 Std. 27 Min." />
+  <MediaSlider :slides="matchesStore.togetherConsumedMedia" />
 
   <HeadingWrapper
       heading="Tobe feiert außerdem:"
@@ -77,11 +84,11 @@ onMounted( async () => {
       route="/profile"
   ></HeadingWrapper>
 
-  <MediaSlider :slides="matchesStore.recommendedMedia" trackedTime="0 Min."/>
+  <MediaSlider :slides="matchesStore.recommendedMedia" />
 
   <HeadingWrapper
       heading="Tobe’s gesamte Songhistorie: "
-      label-text="gehörte Zeit:"
+      label-text="Gehörte Zeit:"
   ></HeadingWrapper>
 
   <div class="media-list-container">

@@ -330,18 +330,21 @@
     padding: 0 15px;
     display: flex;
     align-items: center;
-    column-gap: 15px;
+    column-gap: 10px;
     margin-bottom: 15px;
 
     .rank {
-      color: $primary-text-color;
+      width: 20px;
+      display: flex;
+      justify-content: center;
+      color: $secondary-text-color;
       font-size: 12px;
       font-weight: 500;
     }
 
     .media-image {
-      width: 52px;
-      height: 52px;
+      width: 55px;
+      height: 55px;
       background-color: grey;
     }
 

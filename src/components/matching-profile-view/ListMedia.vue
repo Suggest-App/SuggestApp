@@ -2,7 +2,7 @@
 import type {PropType} from "vue";
 import type {MediaSummary} from "@/models/MediaSummary";
 import {computed, ComputedRef} from "vue";
-import {secondsToMinutes} from "@/composables/TimeCalculations";
+import {secondsToTime} from "@/composables/TimeCalculations";
 import {useI18n} from "vue-i18n";
 
 // Initialize localization plugin
@@ -20,20 +20,6 @@ const props =  defineProps({
 })
 
 /************************** Template Variables **************************/
-
-// Access index prop and increment it, in order to use it as rank
-const rank: ComputedRef<string> = computed(() => {
-  const stringRank: string = (props.index + 1).toString()
-  switch (stringRank.length) {
-    default:
-    case 1:
-      return '00' + stringRank
-    case 2:
-      return '0' + stringRank
-    case 3:
-      return stringRank
-  }
-})
 
 // Access song title prop
 const songTitle: ComputedRef<string> = computed(() => {
@@ -64,14 +50,14 @@ const albumImage: ComputedRef<string> = computed(() => {
 // Time listened to a specific media
 const trackedTime: ComputedRef<string> = computed(() => {
   return (props.media.listenedSeconds)
-      ? secondsToMinutes(props.media.listenedSeconds)
+      ? secondsToTime(props.media.listenedSeconds)
       : t('media.placeholders.noMinutes')
 })
 </script>
 
 <template>
   <div class="list-media">
-    <span class="rank">{{ rank }}</span>
+    <span class="rank">{{ index + 1 }}</span>
     <img class="media-image" :src="albumImage" :alt="songTitle" />
     <div class="media-information">
       <span class="title">{{ songTitle }}</span>
@@ -80,6 +66,6 @@ const trackedTime: ComputedRef<string> = computed(() => {
         <span>{{ artists }}</span>
       </span>
     </div>
-    <div class="tracked-time">6 Std. 27 Min.</div>
+    <div class="tracked-time">{{ trackedTime }}</div>
   </div>
 </template>

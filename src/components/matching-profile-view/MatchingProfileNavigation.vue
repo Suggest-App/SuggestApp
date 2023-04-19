@@ -32,6 +32,6 @@ const username: ComputedRef<string> = computed(() => {
       <ArrowLeftIcon />
     </RouterLink>
     <h2>Das ist {{ username }}</h2>
-    <button class="follow-button">Folgen</button>
+    <button v-if="false" class="follow-button">Folgen</button>
   </div>
 </template>

@@ -3,6 +3,7 @@ import type { PropType } from "vue";
 import type {MediaSummary} from "@/models/MediaSummary";
 import {computed, ComputedRef} from "vue";
 import {useI18n} from "vue-i18n";
+import {secondsToTime} from "@/composables/TimeCalculations";
 
 
 // Initialize localization plugin
@@ -12,10 +13,6 @@ const props = defineProps({
   slide: {
     type: Object as PropType<MediaSummary>,
     default: {} as MediaSummary
-  },
-  trackedTime: {
-    type: String,
-    default: ''
   }
 })
 
@@ -54,7 +51,7 @@ const artists: ComputedRef<string> = computed(() => {
     <div class="tracking-information">
       <span class="user-wrapper">
         <span class="name">Du:</span>
-        <span>{{ trackedTime }}</span>
+        <span>6 Std. 27 Min.</span>
       </span>
       <span class="user-wrapper">
         <span class="name">Tobe</span>

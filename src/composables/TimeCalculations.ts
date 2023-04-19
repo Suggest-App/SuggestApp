@@ -7,7 +7,7 @@ import {i18n} from "@/i18n";
  *
  * @return string
  */
-export function secondsToMinutes(seconds: number): string {
+export function secondsToTime(seconds: number): string {
     let hours: number = seconds / 3600
 
     let activeLocale = i18n.global.locale.value
