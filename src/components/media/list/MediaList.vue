@@ -15,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="base-wrapper">
+  <div class="base-wrapper media-list">
     <MediaListElement
         v-show="!mainStore.isLoading"
         v-for="(media, index) in mediaList"
@@ -32,3 +32,5 @@ defineProps({
     />
   </div>
 </template>
+
+

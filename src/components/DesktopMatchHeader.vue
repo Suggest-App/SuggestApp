@@ -51,8 +51,10 @@ defineProps({
 <style lang="scss">
 .base-wrapper.match-header {
   @include flex-center-y;
+  flex-wrap: wrap;
   max-width: unset;
   column-gap: 25px;
+  row-gap: 45px;
   margin-bottom: 70px;
 
   .profile-image {

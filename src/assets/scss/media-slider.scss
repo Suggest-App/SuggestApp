@@ -161,14 +161,22 @@ h1 {
   }
 }
 
+.slider-wrapper.sk-anim .media-slider .media-slide .album-wrapper .media-image {
+  box-shadow: unset;
+}
+
 @media only screen and (min-width: 768px) {
+  .slider-wrapper .media-slider .media-slide .media-information {
+    background-color: #222;
+  }
+}
+
+@media only screen and (min-width: 991px) {
   .slider-wrapper .media-slider {
     scroll-padding: 0 45px;
     padding: 0 45px;
-
-    .media-slide .media-information {
-      background-color: #222;
-    }
   }
 }
+
+
 

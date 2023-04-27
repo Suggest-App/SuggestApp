@@ -52,7 +52,7 @@ function isActiveSlide(index: number): string {
       <!-- Skeleton loader -->
       <MediaSlide
           v-show="mainStore.isLoading"
-          v-for="index in 10"
+          v-for="index in 14"
           :key="index"
       />
 

@@ -113,7 +113,7 @@ export const useMatchesStore = defineStore('matchesStore', () => {
 
     // Fetch the media summary, if the matches property is empty
     if (tempMatch.getMediaSummary().length === 0) {
-      const mediaSummary = await MatchesService.fetchMatchSummary(userId, 10);
+      const mediaSummary = await MatchesService.fetchMatchSummary(userId, 100);
       tempMatch.setMediaSummary(mediaSummary)
     }
 

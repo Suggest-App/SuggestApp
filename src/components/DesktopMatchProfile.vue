@@ -22,9 +22,6 @@ defineProps({
     <template #left>
       <GoBackIcon @click="router.push({ name: 'matches'})" />
     </template>
-    <template #middle>
-      <h2>{{ $t('matchingProfileView.goBack') }}</h2>
-    </template>
   </ProfileTopNavigation>
 
   <DesktopMatchHeader :match="match" />

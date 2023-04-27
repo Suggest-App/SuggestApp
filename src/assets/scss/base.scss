@@ -68,7 +68,6 @@ $wrapper-bottom-margin: 35px;
 .base-wrapper {
     position: relative;
     width: 100%;
-    max-width: 600px;
     padding: 0 $wrapper-padding-x;
     margin: 0 auto $wrapper-bottom-margin;
 }
@@ -89,6 +88,7 @@ $wrapper-bottom-margin: 35px;
     .base-wrapper {
         margin: 0 0 $wrapper-bottom-margin;
         padding: 0 45px;
+        max-width: 600px;
     }
 }
 

@@ -29,6 +29,7 @@ defineProps({
 .base-wrapper.nav-grid {
   display: grid;
   grid-template-columns: 0.4fr 1fr 0.4fr;
+  max-width: unset;
 
   .left, .middle, .right {
     @include flex-center-y;
