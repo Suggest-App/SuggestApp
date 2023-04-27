@@ -32,7 +32,9 @@ function scrollEvent(event: any) {
 
 // Check if slide is active
 function isActiveSlide(index: number): string {
-  return (activeSlideIndex.value === index) ? 'active': ''
+  return (activeSlideIndex.value === index && !mainStore.isDesktop)
+      ? 'active'
+      : ''
 }
 </script>
 
@@ -57,8 +59,8 @@ function isActiveSlide(index: number): string {
           :key="index"
       />
 
-      <div class="pseudo-slide"></div>
-      <div class="pseudo-slide"></div>
+      <div class="pseudo-slide" v-if="!mainStore.isDesktop"></div>
+      <div class="pseudo-slide" v-if="!mainStore.isDesktop"></div>
     </div>
   </div>
 </template>

@@ -144,19 +144,7 @@ a.active span {
 /* --------------------------------- Hide All Scrollbars ---------------------------------- */
 /********************************************************************************************/
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-::-webkit-scrollbar {
-    display: none;
-}
 
-/* Keep scrolling functionality */
-/* Add overflow-y property to the element where you want scrolling */
-/* For example, if you want scrolling for a div with class 'scrollable' */
-.media-slider {
-    overflow-y: scroll;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
 
 /********************************************************************************************/
 /* -------------------------------------- Mixins ------------------------------------------ */

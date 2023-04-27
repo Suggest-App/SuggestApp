@@ -22,7 +22,7 @@ defineProps({
     <UserImage :image-src="match.getProfileImgSrc()" />
 
     <div class="match-info">
-      <span class="rank">{{ $t('matchingProfileView.rank') }} #{{ match.getRank() }}</span>
+      <span class="rank" v-if="match.getRank() !== 0">{{ $t('matchingProfileView.rank') }} #{{ match.getRank() }}</span>
       <h2>{{ match.getUsername() }}</h2>
     </div>
 

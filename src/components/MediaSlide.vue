@@ -78,10 +78,16 @@ function openInSpotify(): void {
     window.open(props.slide.linkToMedia)
   }
 }
+
+const isHovered: Ref<boolean> = ref(false)
 </script>
 
 <template>
-  <div class="media-slide">
+  <div class="media-slide"
+       :class="{ active: isHovered}"
+       @mouseenter="isHovered = true"
+       @mouseleave="isHovered = false"
+  >
     <div class="album-wrapper" @click="window.open(linkToMedia)">
       <img
           v-show="!mainStore.isLoading"

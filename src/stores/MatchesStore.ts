@@ -81,6 +81,7 @@ export const useMatchesStore = defineStore('matchesStore', () => {
       console.log('fetch match info')
       const matchInformation = await MatchesService.fetchMatchInformation(userId);
       tempMatch.setTotalListenedTime(matchInformation.totalListenedSeconds)
+      tempMatch.setTogetherListenedTime(matchInformation.totalTogetherListenedSeconds as number)
       tempMatch.setTrackingSince(matchInformation.trackingSince)
       tempMatch.setLastFetched(matchInformation.latestFetch)
       tempMatch.setUsername(matchInformation.username)
@@ -90,14 +91,14 @@ export const useMatchesStore = defineStore('matchesStore', () => {
     // Fetch the together consumed media, if the matches property is empty
     if (tempMatch.getTogetherConsumedMedia().length === 0) {
       console.log('fetch together media')
-      const togetherConsumedMedia = await MatchesService.fetchTogetherConsumedMedia(userId, 18);
+      const togetherConsumedMedia = await MatchesService.fetchTogetherConsumedMedia(userId, 50);
       tempMatch.setTogetherConsumedMedia(togetherConsumedMedia)
     }
 
     // Fetch the recommended media, if the matches property is empty
     if (tempMatch.getRecommendedMedia().length === 0) {
       console.log('fetch recommended media')
-      const recommendedMedia = await MatchesService.fetchRecommendedMedia(userId, 18);
+      const recommendedMedia = await MatchesService.fetchRecommendedMedia(userId, 50);
       tempMatch.setRecommendedMedia(recommendedMedia)
     }
 
