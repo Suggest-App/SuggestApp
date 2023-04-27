@@ -1,8 +1,7 @@
 import type { AxiosResponse } from 'axios';
 import type { ProfileInformation } from "@/models/ProfileInformation";
-import type { MediaSummary } from "@/models/MediaSummary";
+import type { Media } from "@/models/Media";
 import { tryGetAuthorizedInstance } from "@/services/TokenService";
-import axios from "axios";
 
 export default {
 
@@ -28,9 +27,9 @@ export default {
     /**
      * Fetch the users personal summary
      *
-     * @return Promise<MediaSummary[]>
+     * @return Promise<Media[]>
      */
-    async fetchPersonalSummary(): Promise<MediaSummary[]> {
+    async fetchPersonalSummary(): Promise<Media[]> {
         return tryGetAuthorizedInstance().get('/user/spotify/personal-summary')
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {

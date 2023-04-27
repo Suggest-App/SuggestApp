@@ -1,96 +1,107 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteLocationNormalized } from 'vue-router'
-import AuthView from "@/views/AuthView.vue";
-import ShuffleView from '@/views/ShuffleView.vue'
-import MatchesView from "@/views/MatchesView.vue";
+import { getCookie } from "@/services/TokenService";
+import AuthView from '@/views/AuthView.vue'
 import ProfileView from "@/views/ProfileView.vue";
+import MatchesView from "@/views/MatchesView.vue";
+import MatchingProfileView from "@/views/MatchingProfileView.vue";
 import SettingsView from "@/views/SettingsView.vue";
 import ConnectedAppsView from "@/views/ConnectedAppsView.vue";
-import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
-import MatchingProfileView from "@/views/MatchingProfileView.vue";
-import NotFound from "@/components/elements/NotFound.vue";
-import { getCookie } from "@/services/TokenService";
-import MessagesView from "@/views/MessagesView.vue";
-
+import NotFoundView from "@/views/NotFoundView.vue";
+import {useMainStore} from "@/stores/MainStore";
+import AllMediaView from "@/views/AllMediaView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'AuthView',
+      name: 'auth',
       component: AuthView,
       meta: {
         showNavbar: false,
-        keepAlive: false
+        requiresUid: false
       }
     },
     {
-      path: '/home',
-      name: 'ShuffleView',
-      component: ShuffleView,
-      meta: { showNavbar: true }
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView,
+      meta: {
+        showNavbar: true,
+        requiresUid: false
+      }
     },
     {
       path: '/matches',
-      name: 'MatchesView',
+      name: 'matches',
       component: MatchesView,
-      meta: { showNavbar: true }
-    },
-    {
-      path: '/profile',
-      name: 'ProfileView',
-      component: ProfileView,
-      meta: { showNavbar: true }
-    },
-    {
-      path: '/messages',
-      name: 'MessagesView',
-      component: MessagesView,
-      meta: { showNavbar: true }
-    },
-    {
-      path: '/settings',
-      name: 'SettingsView',
-      component: SettingsView,
-      meta: { showNavbar: true }
-    },
-    {
-      path: '/connected-apps',
-      name: 'ConnectedAppsView',
-      component: ConnectedAppsView,
-      meta: { showNavbar: true }
-    },
-    {
-      path: '/recommended-media/:id',
-      name: 'RecommendedMediaView',
-      component: RecommendedMediaView,
-      meta: { showNavbar: true }
+      meta: {
+        showNavbar: true,
+        requiresUid: false
+      }
     },
     {
       path: '/matching-profile/:id',
-      name: 'MatchingProfileView',
+      name: 'matching-profile',
       component: MatchingProfileView,
-      meta: { showNavbar: true }
+      meta: {
+        showNavbar: true,
+        requiresUid: true
+      }
+    },
+    {
+      path: '/all-media/:id',
+      name: 'all-media',
+      component: AllMediaView,
+      meta: {
+        showNavbar: true,
+        requiresUid: true
+      }
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: SettingsView,
+      meta: {
+        showNavbar: true,
+        requiresUid: false
+      }
+    },
+    {
+      path: '/connected-apps',
+      name: 'connected-apps',
+      component: ConnectedAppsView,
+      meta: {
+        showNavbar: true,
+        requiresUid: false
+      }
     },
     {
       path: "/:catchAll(.*)",
       name: 'NotFound',
-      component: NotFound,
-      meta: { showNavbar: false }
+      component: NotFoundView,
+      meta: {
+        showNavbar: false,
+        requiresUid: false
+      }
     },
   ]
 })
 
 /**
  * Check before each router view change, if the user has a valid token
- * If no redirect him to auth view
+ * If not redirect him to auth view
  *
  * @param toRoute RouteLocationNormalized
  *
  * @return Promise<string | void>
  */
 router.beforeEach(async (toRoute: RouteLocationNormalized): Promise<string | void> => {
+
+  // Always set the loading flag to true if route changes
+  const mainStore = useMainStore()
+  mainStore.isLoading = true
 
   // all pages that doesn't require authorization
   const publicPages = ['/']

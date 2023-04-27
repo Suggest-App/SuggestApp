@@ -1,56 +1,47 @@
 <script setup lang="ts">
-import Match from "@/components/matches-view/Match.vue";
-import InfoIcon from "@/components/icons/controls/InfoIcon.vue";
-import { onMounted } from "vue";
+import HeadingWrapper from "@/components/HeadingWrapper.vue";
+import MatchWrapper from "@/components/MatchWrapper.vue";
+import router from "@/router";
+import MatchesService from "@/services/MatchesService";
+import {computed, onMounted} from "vue";
+import type {ComputedRef} from "vue";
 import { useMatchesStore } from "@/stores/MatchesStore";
 import { useMainStore } from "@/stores/MainStore";
-import { fetchUserMatches } from "@/composables/GenerateMaps";
-import MatchesViewSkeleton from "@/components/matches-view/MatchesViewSkeleton.vue";
-import router from "@/router";
-import { MediaSummary } from "@/models/MediaSummary";
-import { matchesInformationPopup } from "@/composables/InformationPopup";
+import {UserMatch} from "@/classes/UserMatch";
 
 // Initialize stores
-const matchesStore = useMatchesStore()
 const mainStore = useMainStore()
+const matchesStore = useMatchesStore()
 
 onMounted(async () => {
-  // Fetch the ordered user matches
-  await fetchUserMatches()
-  // Always clear the recommended media
-  matchesStore.recommendedMedia = [] as MediaSummary[]
-  // Ensure that there are matches fetched, before disabling the loading flag
-  if (matchesStore.matches.length !== 0) {
-    matchesStore.isLoading = false
-  }
+  // Generate the matches map and then disable the loading flag
+  await matchesStore.generateMatchesMap()
+      .then(() => mainStore.isLoading = false)
+      .catch(e => console.log(e))
 })
 
-// Show matching profile view
+// The user matches map from the matches store
+const matchesMap: ComputedRef<Map<string, UserMatch>> = computed(
+    () => matchesStore.matchesMap
+)
+
+// Redirect to matching profile view when a match has been clicked
 function showMatchingProfile(userId: string): void {
-  // Set the loading flag to true
-  matchesStore.isLoading = true
-  // Redirect to recommended media view
   router.push({
-    name: 'RecommendedMediaView',
+    name: 'matching-profile',
     params: { id: userId }
   });
 }
 </script>
 
-<template>
-  <section id="matches-view">
-    <h2 v-show="!matchesStore.isLoading">{{ $t('matchesView.heading') }} <InfoIcon @click="matchesInformationPopup" /></h2>
-    <Match
-        v-show="!matchesStore.isLoading"
-        @click="showMatchingProfile(match.userId)"
-        v-for="match in matchesStore.matches"
-        :key="match.userId"
+<template id="matches-view">
+  <main>
+    <HeadingWrapper :heading="$t('headingWrapper.heading.topMatches')" />
+    <MatchWrapper
+        v-for="[key, match] in matchesMap"
+        :key="key"
         :match="match"
+        @click="showMatchingProfile(match.getUserId())"
     />
-    <MatchesViewSkeleton v-if="matchesStore.isLoading" />
-   </section>
- </template>
-
- <style lang="scss">
- @import "@/assets/scss/matches-view/matches-view.scss";
- </style>
+  </main>
+</template>

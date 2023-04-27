@@ -3,7 +3,8 @@
     "matches": "Matches",
     "chats": "Chats",
     "profile": "Profile",
-    "settings": "Settings"
+    "settings": "Settings",
+    "connection": "Connected Apps"
   },
   "authView": {
     "slider": {
@@ -13,36 +14,21 @@
     },
     "spotifyBtn": "Connect with Spotify"
   },
-  "profileView": {
-    "trackingLabel": "Tracking since",
-    "connectedAppLabel": "connected app",
-    "heading": "Your favorite tracks from:",
-    "placeholders": {
-      "noUsername": "no username available",
-      "noMinutes": "no minutes available"
-    }
+  "settingsView": {
+    "heading": "Settings",
+    "localeLable": "Language"
   },
-  "matchesView": {
-    "heading": "Your top matches",
-    "minutesLabel": "listened together",
-    "moreInfo": "more information",
-    "placeholders": {
-      "noRank": "no rank available",
-      "noUsername": "no username available",
-      "noMinutes": "no minutes available"
-    }
+  "connectedAppsView": {
+    "heading": "Connected Apps",
+    "connectStatus": "Connected",
+    "disconnectLink": "disconnect"
   },
   "matchingProfileView": {
     "followBtn": "follow",
     "introduction": "This is ",
+    "goBack": "Go Back",
+    "rank": "Rank",
     "openInSpotify": "Open in Spotify",
-    "heading": {
-      "togetherConsumed": "Songs you both love:",
-      "recommended": " also loves:",
-      "completeHistory": "'s whole track history:",
-      "showAll": "show all",
-      "listenedTime": "listened time"
-    },
     "trackingInformation": {
       "you": "You:",
       "match": "Match:"
@@ -51,51 +37,24 @@
       "unknownUser": "unknown user"
     }
   },
-  "profileStats": {
+  "headingWrapper": {
+    "heading": {
+      "topMatches": "Your top matches",
+      "togetherConsumed": "Songs you both love:",
+      "recommendedMedia": " also loves:",
+      "othersCompleteHistory": "'s whole track history:",
+      "personalCompleteHistory": "Your complete track history: "
+    },
+    "label": {
+      "showAll": "show all",
+      "listenedTime": "listened time",
+      "listenedTogether": "listened together"
+    }
+  },
+  "profileInfo": {
     "totalListenedTime": "Music belongs<br> overall.",
     "togetherListenedTime": "time listened<br>together",
     "songTrackingSince": "Data capture<br> since",
     "lastFetch": "last track<br>update"
-  },
-  "recommendedMediaView": {
-    "headingPrefix": "Those are",
-    "headingSuffix": "favorite tracks you don’t know",
-    "togetherConsumedTracks": "Together Consumed Tracks",
-    "newSongButton": "New",
-    "togetherConsumedBtn": "Same"
-  },
-  "settingsView": {
-    "heading": "Settings",
-    "localeLable": "Select language"
-  },
-  "connectedAppsView": {
-    "heading": "Connected apps",
-    "connectStatus": "Connected",
-    "disconnectLink": "disconnect"
-  },
-  "media": {
-    "listenedMinutes": "Minutes tracked",
-    "swalPopup": {
-      "openInSpotify": "Open in Spotify"
-    },
-    "placeholders": {
-      "noRank": "no rank available",
-      "noTitle": "no song title available",
-      "noArtists": "no artists available",
-      "noImage": "no album image available",
-      "noMinutes": "no minutes available"
-    }
-  },
-  "informationPopup": {
-    "trackingSince": {
-      "heading": "What is tracking supposed to mean?",
-      "text": "From the time you are registered, we start tracking everything you listen to on spotify. You can revoke this access at any time. Spotify doesn't give us your entire history instantly, so we fetch it at regular intervals, updating your profile as we collect more information.",
-      "btn": "Got it"
-    },
-    "matches": {
-      "heading": "How do these matches come about?",
-      "text": "Lets say you listened to song a for 50 minutes, another user listened to the same song for 100 minute. This would result in you having listened to it together for 50 minutes. We do this calculation for all tracked playbacks of all registered users. The users, that spend their time listening to music most similar to yours, are your matches.",
-      "btn": "Got it"
-    }
   }
 }

@@ -1,123 +1,84 @@
 <script lang="ts" setup>
-import MatchingProfileNavigation from "@/components/matching-profile-view/MatchingProfileNavigation.vue";
-import HeadingWrapper from "@/components/elements/HeadingWrapper.vue";
-import ProfileStat from "@/components/elements/ProfileStat.vue";
-import ListMedia from "@/components/media/ListMedia.vue";
-import MediaSlider from "@/components/media/MediaSlider.vue";
-import MatchingProfileImage from "@/components/matching-profile-view/MatchingProfileImage.vue";
-import ProfileStatsWrapper from "@/components/elements/ProfileStatsWrapper.vue";
-import {computed, ComputedRef, onMounted, ref} from "vue";
-import { useRoute } from "vue-router";
-import { useMatchesStore } from "@/stores/MatchesStore";
-import { useI18n } from "vue-i18n";
-import type { Ref } from "vue";
-import type { Match } from "@/models/Match";
-import MatchesService from "@/services/MatchesService";
-import {secondsToTime, trackingSinceDate} from "@/composables/TimeCalculations";
-import MediaListWrapper from "@/components/media/MediaListWrapper.vue";
+import MediaList from "@/components/media/list/MediaList.vue";
+import HeadingWrapper from "@/components/HeadingWrapper.vue";
+import MediaSlider from "@/components/MediaSlider.vue";
+import {computed, onMounted} from "vue";
+import type {ComputedRef} from "vue";
+import {useMatchesStore} from "@/stores/MatchesStore";
+import {useI18n} from "vue-i18n";
+import {useMainStore} from "@/stores/MainStore";
+import {UserMatch} from "@/classes/UserMatch";
+import {useRoute} from "vue-router";
+import MobileMatchProfile from "@/components/MobileMatchProfile.vue";
+import DesktopMatchProfile from "@/components/DesktopMatchProfile.vue";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
-const matchesStore = useMatchesStore();
+const mainStore = useMainStore()
+const matchesStore = useMatchesStore()
 
 // Get the user id from the current route
 const route = useRoute()
 const userId: string = route.params.id as string
 
-// Match related variables
-const hasMatch: Ref<boolean> = ref(matchesStore.matchesMap.has(userId))
-const match: Ref<Match> = ref(matchesStore.matchesMap.get(userId) as Match)
-
-// Fetch media data after profile has been mounted
-onMounted( async () => {
-  matchesStore.recommendedMedia = await MatchesService.fetchRecommendedMedia(userId);
-  matchesStore.togetherConsumedMedia = await MatchesService.fetchTogetherConsumedTracks(userId);
-
-  // Ensure that there are matches fetched, before disabling the loading flag
-  if (matchesStore.recommendedMedia.length !== 0) {
-    matchesStore.isLoading = false
-  }
+onMounted(async () => {
+  // Fetch the user match properties and update the UserMach object from the map based on its uid
+  await matchesStore.fetchUserMatchProperties(userId)
+      .then(() => mainStore.isLoading = false)
+      .catch(e => console.log(e))
 })
 
-/** --------------------- Template Properties --------------------- */
-
-// The total time a users have listened to songs
-const totalListenedTime: ComputedRef<string> = computed(() => {
-  return (hasMatch.value && match.value.listenedTogetherSeconds)
-      ? secondsToTime(match.value.listenedTogetherSeconds)
-      : '-'
-})
-
-// Complete time two users have listened to the same songs
-const togetherListenedTime: ComputedRef<string> = computed(() => {
-  return (hasMatch.value && match.value.listenedTogetherSeconds)
-      ? secondsToTime(match.value.listenedTogetherSeconds)
-      : '-'
-})
-
-// Date since when the record history of a user is tracked
-const songTrackingSince: ComputedRef<string> = computed(() => {
-  return (hasMatch.value && match.value.listenedTogetherSeconds)
-      ? trackingSinceDate('2023-01-03')
-      : '-'
-})
-
-// Access the username property
-const username: ComputedRef<string> = computed(() => {
-  return (matchesStore.matchesMap.has(userId) && matchesStore.matchesMap.get(userId))
-      ? matchesStore.matchesMap.get(userId)!.username
-      : t('matchingProfileView.errors.unknownUser')
-})
+// Get the user match from the map by its uid
+const match: ComputedRef<UserMatch> = computed(
+    () => matchesStore.getUserMatchByUid(userId)
+)
 </script>
 
 <template>
-  <MatchingProfileNavigation
-      :user-id="userId"
-      :username="username"
-  />
+  <main id="matching-profile-view">
+    <MobileMatchProfile :match="match" v-if="!mainStore.isDesktop" />
+    <DesktopMatchProfile :match="match" v-if="mainStore.isDesktop" />
 
-  <MatchingProfileImage
-      :has-match="hasMatch"
-      :match="match"
-  />
+    <HeadingWrapper
+        :heading="$t('headingWrapper.heading.togetherConsumed')"
+        :has-max-width="false"
+    >
+      <template #label>
+        <RouterLink :to="{ name: 'all-media', params: { userId: match.getUserId() } }">
+          {{ $t('headingWrapper.label.showAll') }}
+        </RouterLink>
+      </template>
+    </HeadingWrapper>
 
-  <ProfileStatsWrapper>
-      <ProfileStat
-          :value="totalListenedTime"
-          :label-text="$t('profileStats.totalListenedTime')"
-      />
-      <ProfileStat
-          :value="togetherListenedTime"
-          :label-text="$t('profileStats.togetherListenedTime')"
-      />
-      <ProfileStat
-          :value="songTrackingSince"
-          :label-text="$t('profileStats.songTrackingSince')"
-      />
-  </ProfileStatsWrapper>
+    <MediaSlider :slides="match.getTogetherConsumedMedia()" />
 
-  <HeadingWrapper
-      :heading="$t('matchingProfileView.heading.togetherConsumed')"
-      route="/profile"
-  ></HeadingWrapper>
+    <HeadingWrapper
+        :heading="match.getUsername() + $t('headingWrapper.heading.recommendedMedia')"
+        :has-max-width="false"
+    >
+      <template #label>
+        <RouterLink :to="{ name: 'all-media', params: { userId: match.getUserId() } }">
+          {{ $t('headingWrapper.label.showAll') }}
+        </RouterLink>
+      </template>
+    </HeadingWrapper>
 
-  <MediaSlider :slides="matchesStore.togetherConsumedMedia" />
+    <MediaSlider :slides="match.getRecommendedMedia()" />
 
-  <HeadingWrapper
-      :heading="username + $t('matchingProfileView.heading.recommended')"
-      route="/profile"
-  ></HeadingWrapper>
+    <HeadingWrapper :heading="match.getUsername() + $t('headingWrapper.heading.othersCompleteHistory')">
+      <template #label>
+        <span>{{ $t('headingWrapper.label.listenedTime') }}</span>
+      </template>
+    </HeadingWrapper>
 
-  <MediaSlider :slides="matchesStore.recommendedMedia" />
-
-  <HeadingWrapper
-      :heading="username + $t('matchingProfileView.heading.completeHistory')"
-  ></HeadingWrapper>
-
-  <MediaListWrapper :media-list="matchesStore.togetherConsumedMedia" />
-
+    <MediaList :media-list="match.getMediaSummary()" />
+  </main>
 </template>
 
 <style lang="scss">
-@import "@/assets/scss/matching-profile-view/matching-profile.scss";
+@media only screen and (min-width: 768px) {
+  #matching-profile-view {
+    overflow-x: hidden;
+  }
+}
 </style>

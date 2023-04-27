@@ -1,0 +1,190 @@
+/********************************************************************************************/
+/* -------------------------- Base Skeleton Animation Styles ------------------------------ */
+/********************************************************************************************/
+
+@keyframes loading {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@mixin base-sk {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+@mixin sk-wrapper-padding {
+    width: calc(100% - (2 * $wrapper-padding-x));
+    left: $wrapper-padding-x;
+}
+
+
+@mixin base-sk-after {
+    @include base-sk;
+    background-color: $primary-background-color;
+    z-index: 5;
+}
+
+@mixin base-sk-before {
+    @include base-sk;
+    background: linear-gradient(to right, transparent, #31353f, transparent);
+    transform: translateX(-100%);
+    animation: loading 1s infinite;
+    overflow: hidden;
+    z-index: 10;
+}
+
+/********************************************************************************************/
+/* ------------------------------- Profile View Elements ---------------------------------- */
+/********************************************************************************************/
+
+// Profile Top Navigation
+.base-wrapper.nav-grid.sk-anim .arrow-left,
+.base-wrapper.nav-grid.sk-anim h2,
+.base-wrapper.nav-grid.sk-anim .nav-btn,
+
+// Profile Image
+.image-wrapper.sk-anim,
+
+// Profile Info Column
+.info-column.sk-anim .value,
+.info-column.sk-anim .label,
+
+// Heading Wrapper
+.base-wrapper.heading.sk-anim h2,
+.base-wrapper.heading.sk-anim span,
+.base-wrapper.heading.sk-anim a,
+
+// Match Wrapper
+.base-wrapper.match.sk-anim .user-image-wrapper,
+.base-wrapper.match.sk-anim .rank,
+.base-wrapper.match.sk-anim .username,
+.base-wrapper.match.sk-anim .time,
+
+// Media Slider Element
+.slider-wrapper.sk-anim .media-slide .media-image,
+.slider-wrapper.sk-anim .media-slide .title,
+.slider-wrapper.sk-anim .media-slide .artist,
+
+// Media List Element
+.media-element-wrapper.sk-anim .rank,
+.media-element-wrapper.sk-anim .media-image-wrapper,
+.media-element-wrapper.sk-anim .title,
+.media-element-wrapper.sk-anim .artists,
+.media-element-wrapper.sk-anim .time {
+    position: relative;
+    overflow: hidden;
+}
+
+/********************************************************************/
+
+// Profile Top Navigation
+.base-wrapper.nav-grid.sk-anim .arrow-left::after,
+.base-wrapper.nav-grid.sk-anim h2::after,
+.base-wrapper.nav-grid.sk-anim .nav-btn::after,
+
+// Profile Image
+.image-wrapper.sk-anim::after,
+
+// Profile Info Column
+.info-column.sk-anim .value::after,
+.info-column.sk-anim .label::after,
+
+// Heading Wrapper
+.base-wrapper.heading.sk-anim h2::after,
+.base-wrapper.heading.sk-anim span::after,
+.base-wrapper.heading.sk-anim a::after,
+
+// Match Wrapper
+.base-wrapper.match.sk-anim .user-image-wrapper::after,
+.base-wrapper.match.sk-anim .rank::after,
+.base-wrapper.match.sk-anim .username::after,
+.base-wrapper.match.sk-anim .time::after,
+
+// Media Slider Element
+.slider-wrapper.sk-anim .media-slide .media-image::after,
+.slider-wrapper.sk-anim .media-slide .title::after,
+.slider-wrapper.sk-anim .media-slide .artist::after,
+
+// Media List Element
+.media-element-wrapper.sk-anim .rank::after,
+.media-element-wrapper.sk-anim .media-image-wrapper::after,
+.media-element-wrapper.sk-anim .title::after,
+.media-element-wrapper.sk-anim .artists::after,
+.media-element-wrapper.sk-anim .time::after {
+    @include base-sk-after;
+}
+
+/********************************************************************/
+
+// Profile Top Navigation
+.base-wrapper.nav-grid.sk-anim .arrow-left::before,
+.base-wrapper.nav-grid.sk-anim h2::before,
+.base-wrapper.nav-grid.sk-anim .nav-btn::before,
+
+// Profile Image
+.image-wrapper.sk-anim::before,
+
+// Profile Info Column
+.info-column.sk-anim .value::before,
+.info-column.sk-anim .label::before,
+
+// Heading Wrapper
+.base-wrapper.heading.sk-anim h2::before,
+.base-wrapper.heading.sk-anim span::before,
+.base-wrapper.heading.sk-anim a::before,
+
+// Match Wrapper
+.base-wrapper.match.sk-anim .user-image-wrapper::before,
+.base-wrapper.match.sk-anim .rank::before,
+.base-wrapper.match.sk-anim .username::before,
+.base-wrapper.match.sk-anim .time::before,
+
+// Media Slider Element
+.slider-wrapper.sk-anim .media-slide .media-image::before,
+.slider-wrapper.sk-anim .media-slide .title::before,
+.slider-wrapper.sk-anim .media-slide .artist::before,
+
+// Media List Element
+.media-element-wrapper.sk-anim .rank::before,
+.media-element-wrapper.sk-anim .media-image-wrapper::before,
+.media-element-wrapper.sk-anim .title::before,
+.media-element-wrapper.sk-anim .artists::before,
+.media-element-wrapper.sk-anim .time::before {
+    @include base-sk-before;
+}
+
+/*********************** Special Treatment *************************/
+
+// Profile Image
+.image-wrapper.sk-anim,
+.base-wrapper.match.sk-anim .user-image-wrapper,
+.base-wrapper.nav-grid .nav-btn.sk-anim {
+    border-radius: 50%;
+    outline: 8px solid $primary-background-color;
+}
+
+// User Image (Match)
+.base-wrapper.match.sk-anim .user-image-wrapper .profile-image,
+.image-wrapper.sk-anim .profile-image {
+    width: 90%;
+    height: 90%;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+// Media Slider Element
+.slider-wrapper.sk-anim .media-slider {
+    overflow: hidden;
+}
+.slider-wrapper.sk-anim .media-slide .title {
+    width: 120px;
+}
+.slider-wrapper.sk-anim .media-slide .artist {
+    width: 85px;
+}

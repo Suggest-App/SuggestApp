@@ -18,15 +18,11 @@
           "type": "image/png"
         },
         {
-          "src": "./public/images/music_placeholder.png",
-          "sizes": "800x800",
+          "src": "./public/images/MediaImagePlaceholder.jpg",
+          "sizes": "200x200",
           "type": "image/png"
         },
-        {
-          "src": "./public/images/profile_placeholder.png",
-          "sizes": "600x600",
-          "type": "image/png"
-        }
+
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",

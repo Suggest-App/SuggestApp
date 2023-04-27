@@ -1,23 +1,56 @@
-import { ref } from 'vue'
+import {ref, } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { ProfileInformation } from "@/models/ProfileInformation";
-import type { MediaSummary } from "@/models/MediaSummary";
+import { User } from "@/classes/User";
+import ProfileService from "@/services/ProfileService";
 
 export const useProfileStore = defineStore('profileStore', () => {
 
-  // The users own profile information
-  const profileInformation: Ref<ProfileInformation> = ref({} as ProfileInformation)
+  // The own user profile object
+  const profile: Ref<User> = ref(new User()) as Ref<User>
 
-  // The users own personal summary (most heard tracks)
-  const personalSummary: Ref<MediaSummary[]> = ref([])
+  /**
+   * Fill the user profile object with the fetched data
+   *
+   * @return Promise<void>
+   */
+  async function fetchUserProfile(): Promise<void> {
 
-  // Flag that indicates if the personal summary is loading
-  const isLoading: Ref<boolean> = ref(true)
+    // Bool that indicates, if profile infos need to be fetched
+    const fetchProfileInfo =
+        !profile.value.getUsername() ||
+        !profile.value.getProfileImgSrc() ||
+        !profile.value.getTotalListenedTime() ||
+        !profile.value.getTrackingSince() ||
+        !profile.value.getLastFetched()
+
+    // If there are infos that need to be fetched
+    if (fetchProfileInfo) {
+
+      // Fetch profile information and the personal media summary
+      const information = await ProfileService.fetchProfileInformation()
+      const summary = await ProfileService.fetchPersonalSummary()
+
+      // Initialize new User object
+      const user = new User()
+
+      // Set the User properties, from the /profile-information endpoint
+      user.setUsername(information.username)
+      user.setProfileImgSrc(information.profileImage)
+      user.setTotalListenedTime(information.totalListenedSeconds)
+      user.setTrackingSince(information.trackingSince)
+      user.setLastFetched(information.lastFetch)
+
+      // Set the media array from the /personal-summary endpoint
+      user.setMediaSummary(summary)
+
+      // Overwrite the profile ref
+      profile.value = user
+    }
+  }
 
   return {
-    profileInformation,
-    personalSummary,
-    isLoading
+    profile,
+    fetchUserProfile
   }
 })

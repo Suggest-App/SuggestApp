@@ -1,0 +1,187 @@
+#auth-view {
+  @include flex-center-xy;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  .image-container {
+    height: 45vh;
+    width: 100%;
+    position: relative;
+
+    img {
+      width: 140%;
+      position: absolute;
+      left: -20%;
+      bottom: 18%;
+      transform: rotate(-9deg);
+    }
+  }
+
+  .auth-form {
+    height: 55vh;
+    width: 100%;
+    padding: 0 15px;
+
+    .auth-form-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+
+      .suggest-logo {
+        width: 40px;
+        height: 51px;
+      }
+
+      h1 {
+        color: $primary-text-color;
+        font-size: 32px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        margin-top: 18px;
+        text-align: center;
+      }
+
+      .swiper {
+        width: 100%;
+        max-width: 430px;
+        padding-bottom: 40px;
+
+        p {
+          text-align: center;
+          color: $secondary-text-color;
+          line-height: 26px;
+          margin-top: 18px;
+          padding: 0 40px;
+        }
+
+        .swiper-pagination {
+          bottom: 0;
+
+          .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background-color: #D9D9D9;
+            margin: 0 12px;
+          }
+        }
+      }
+    }
+
+    .spotify-oauth2-btn {
+      @include flex-center-xy;
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      height: 52px;
+      background-color: $spotify-green;
+      border: none;
+      border-radius: 50px;
+      margin-top: 70px;
+      cursor: pointer;
+
+      svg {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+        width: 25px;
+        height: 25px;
+      }
+
+      span {
+        color: $primary-text-color;
+        font-size: $font-size-xl;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #auth-view {
+    flex-direction: row;
+
+    .image-container {
+      width: 40%;
+      height: 100vh;
+
+      img {
+        width: unset;
+        bottom: unset;
+        left: unset;
+        right: 0;
+        height: 120vh;
+        top: -10vh;
+        transform: rotate(0);
+      }
+    }
+
+    .auth-form {
+      @include flex-center-xy;
+      width: 60%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  #auth-view {
+    .image-container {
+      width: 44%;
+    }
+
+    .auth-form {
+      width: 56%;
+
+      .auth-form-wrapper {
+        width: 450px;
+
+        .suggest-logo {
+          width: 45px;
+          height: 56px;
+        }
+
+        h1 {
+          font-size: 38px;
+          margin-top: 28px;
+        }
+
+        .swiper {
+          padding-bottom: 50px;
+
+          p {
+            font-size: 20px;
+            line-height: 34px;
+            margin-top: 28px;
+            padding: 0;
+          }
+
+
+          .swiper-pagination .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            margin: 0 12px;
+          }
+        }
+      }
+
+      .spotify-oauth2-btn {
+        max-width: 390px;
+
+        svg {
+          position: absolute;
+          left: 15px;
+          top: 14px;
+          width: 28px;
+          height: 28px;
+        }
+
+        span {
+          font-size: 21px;
+        }
+      }
+    }
+  }
+}

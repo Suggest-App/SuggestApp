@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import SuggestLogo from "@/components/icons/SuggestLogo.vue";
-import SpotifyAuthButton from "@/components/auth-view/SpotifyAuthButton.vue";
+import SpotifyAuthButton from "@/components/SpotifyAuthButton.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Autoplay } from 'swiper';
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n()
 
 // define your modules list here
 const modules = [Pagination, Autoplay]
@@ -13,7 +10,6 @@ const modules = [Pagination, Autoplay]
 // Import Swiper styles
 import 'swiper/css';
 import "swiper/css/pagination";
-
 </script>
 
 <template>
@@ -55,5 +51,5 @@ import "swiper/css/pagination";
 </template>
 
 <style lang="scss">
-@import "@/assets/scss/auth-view/auth-view.scss";
+@import "@/assets/scss/auth-view.scss";
 </style>

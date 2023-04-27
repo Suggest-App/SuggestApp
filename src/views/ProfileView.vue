@@ -1,64 +1,78 @@
 <script setup lang="ts">
-import { onMounted } from "vue"
-import ProfileHeader from "@/components/profile-view/ProfileHeader.vue";
-import ConnectedAppsBtn from "@/components/elements/ConnectedAppsBtn.vue";
-import Media from "@/components/media/Media.vue";
-import ProfileService from "@/services/ProfileService";
 import { useProfileStore } from "@/stores/ProfileStore";
 import { useMainStore } from "@/stores/MainStore";
-import ProfileViewSkeleton from "@/components/profile-view/ProfileViewSkeleton.vue";
-import router from "@/router";
+import {computed, onMounted} from "vue";
+import type { ComputedRef } from "vue";
+import HeadingWrapper from "@/components/HeadingWrapper.vue";
+import ProfileImageWrapper from "@/components/ProfileImageWrapper.vue";
+import ProfileInfoColumn from "@/components/ProfileInfoColumn.vue";
+import MediaList from "@/components/media/list/MediaList.vue";
+import ProfileInfoGrid from "@/components/ProfileInfoGrid.vue";
+import ProfileTopNavigation from "@/components/ProfileTopNavigation.vue";
+import SettingsButton from "@/components/icons/SettingsButton.vue";
+import ConnectedAppsBtn from "@/components/icons/ConnectedAppsBtn.vue";
+import { User } from "@/classes/User";
 
-const profileStore = useProfileStore()
 const mainStore = useMainStore()
+const profileStore = useProfileStore()
 
 onMounted(async () => {
-  profileStore.personalSummary = await ProfileService.fetchPersonalSummary()
-
-  // Ensure that there is a personal summary before disabling the loading flag
-  if (profileStore.personalSummary.length > 0) {
-    profileStore.isLoading = false
-  }
+  // Fetch the profile information and set the user object properties
+  await profileStore.fetchUserProfile()
+      .then(() => mainStore.isLoading = false)
+      .catch(e => console.log(e))
 })
+
+// The user profile object from the store
+const profile: ComputedRef<User> = computed(() => (
+  profileStore.profile as User
+))
 </script>
 
 <template>
-  <div id="profile-view">
-
-    <ProfileHeader
+  <main id="profile-view">
+    <ProfileTopNavigation
         v-if="!mainStore.isDesktop"
-        v-show="!profileStore.isLoading"
+        :has-loading-anim="true"
+    >
+      <template #right>
+        <RouterLink :to="{ name: 'connected-apps' }">
+          <ConnectedAppsBtn />
+        </RouterLink>
+        <RouterLink :to="{ name: 'settings' }">
+          <SettingsButton />
+        </RouterLink>
+      </template>
+    </ProfileTopNavigation>
+
+    <ProfileImageWrapper
+        v-if="!mainStore.isDesktop"
+        :image-src="profile.getProfileImgSrc()"
     />
 
-    <ConnectedAppsBtn
-        v-if="!mainStore.isDesktop"
-        v-show="!profileStore.isLoading"
-        @click="router.push({ name: 'ConnectedAppsView'})"
-    />
-
-    <div class="heading-wrapper">
-      <h3 v-show="!profileStore.isLoading" >{{ $t('profileView.heading') }}</h3>
-      <a href="http://spotify.com/" target="_blank">
-        <img
-            class="spotify-logo"
-            src="@/../public/images/Spotify_Logo_RGB_Green.png"
-            alt="Spotify Logo RGB Green"
+    <ProfileInfoGrid v-if="!mainStore.isDesktop">
+      <template #columns>
+        <ProfileInfoColumn
+            :label-text="$t('profileInfo.totalListenedTime')"
+            :value="profile.getTotalListenedTime()"
         />
-      </a>
-    </div>
+        <ProfileInfoColumn
+            :label-text="$t('profileInfo.songTrackingSince')"
+            :value="profile.getTrackingSince()"
+        />
+        <ProfileInfoColumn
+            :label-text="$t('profileInfo.lastFetch')"
+            :value="profile.getLastFetched()"
+        />
+      </template>
+    </ProfileInfoGrid>
 
-    <Media
-      v-show="!profileStore.isLoading"
-      v-for="(media, index) in profileStore.personalSummary"
-      :key="index"
-      :media="media"
-      :index="index"
-    />
+    <HeadingWrapper :heading="$t('headingWrapper.heading.personalCompleteHistory')">
+      <template #label>
+        <span>{{ $t('headingWrapper.label.listenedTime') }}</span>
+      </template>
+    </HeadingWrapper>
 
-    <ProfileViewSkeleton v-if="profileStore.isLoading" />
-  </div>
+    <MediaList :media-list="profile.getMediaSummary()" />
+  </main>
 </template>
-
-<style lang="scss">
-@import "@/assets/scss/profile-view/profile-view.scss";
-</style>

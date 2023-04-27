@@ -3,7 +3,8 @@
     "matches": "Matches",
     "chats": "Chats",
     "profile": "Profil",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "connection": "Verknüpfte Apps"
   },
   "authView": {
     "slider": {
@@ -13,36 +14,21 @@
     },
     "spotifyBtn": "Mit Spotify Verbinden"
   },
-  "profileView": {
-    "trackingLabel": "Auswertung seit",
-    "connectedAppLabel": "verknüpfte apps",
-    "heading": "Deine Lieblingssongs von:",
-    "placeholders": {
-      "noUsername": "kein Benutzername verfügbar",
-      "noMinutes": "keine gehörten Minuten"
-    }
+  "settingsView": {
+    "heading": "Einstellungen",
+    "localeLable": "Sprache"
   },
-  "matchesView": {
-    "heading": "Deine Top Matches",
-    "minutesLabel": "das selbe gehört",
-    "moreInfo": "mehr Informationen",
-    "placeholders": {
-      "noRank": "kein Rang verfügbar",
-      "noUsername": "kein Benutzername verfügbar",
-      "noMinutes": "keine gemeinsam gehörten Minuten"
-    }
+  "connectedAppsView": {
+    "heading": "Verknüpfte Apps",
+    "connectStatus": "Verbunden",
+    "disconnectLink": "auflösen"
   },
   "matchingProfileView": {
     "followBtn": "Folgen",
     "introduction": "Das ist ",
+    "goBack": "Zurück",
+    "rank": "Platz",
     "openInSpotify": "In Spotify öffnen",
-    "heading": {
-      "togetherConsumed": "Songs die ihr beide feiert:",
-      "recommended": " feiert außerdem:",
-      "completeHistory": "'s gesamte Songhistorie:",
-      "showAll": "Alle anzeigen",
-      "listenedTime": "Gehörte Zeit"
-    },
     "trackingInformation": {
       "you": "Du:",
       "match": "Match:"
@@ -51,51 +37,24 @@
       "unknownUser": "Unbekannter Nutzer"
     }
   },
-  "profileStats": {
+  "headingWrapper": {
+    "heading": {
+      "topMatches": "Deine Top Matches",
+      "togetherConsumed": "Songs die ihr beide feiert:",
+      "recommendedMedia": " feiert außerdem:",
+      "othersCompleteHistory": "'s gesamte Songhistorie:",
+      "personalCompleteHistory": "Deine gesamte Songhistorie: "
+    },
+    "label": {
+      "showAll": "Alle anzeigen",
+      "listenedTime": "Gehörte Zeit",
+      "listenedTogether": "das selbe gehört"
+    }
+  },
+  "profileInfo": {
     "totalListenedTime": "Musik gehört<br>insgesamt",
     "togetherListenedTime": "gemeinsam<br>gehörte Zeit",
     "songTrackingSince": "Song Erfassung<br>seit dem",
-    "lastFetch": "Letzte Aktualisierung"
-  },
-  "recommendedMediaView": {
-    "headingPrefix": "Das sind",
-    "headingSuffix": "Lieblingssongs, die du noch nicht kennst:",
-    "togetherConsumedTracks": "Zusammen gehörte Songs",
-    "newSongButton": "Neue",
-    "togetherConsumedBtn": "Gemeinsame"
-  },
-  "settingsView": {
-    "heading": "Einstellungen",
-    "localeLable": "Sprache wählen"
-  },
-  "connectedAppsView": {
-    "heading": "Verknüpfte Apps",
-    "connectStatus": "Verbunden",
-    "disconnectLink": "auflösen"
-  },
-  "media": {
-    "listenedMinutes": "Minuten erfasst",
-    "swalPopup": {
-      "openInSpotify": "In Spotify öffnen"
-    },
-    "placeholders": {
-      "noRank": "kein Rang verfügbar",
-      "noTitle": "kein Song Titel verfügbar",
-      "noArtists": "keine Künstler verfügbar",
-      "noImage": "kein Album Bild verfügbar",
-      "noMinutes": "keine Minuten verfügbar"
-    }
-  },
-  "informationPopup": {
-    "trackingSince": {
-      "heading": "Was ist mit Auswertung gemeint?",
-      "text": "Ab dem Zeitpunkt wo du bei uns registriert bist, verfolgen wir alles was du auf Spotify hörst nach. Spotify gibt uns nicht deinen gesamten Wiedergabeverlauf. In regelmäßigen Abständen gucken wir nach was du gehört hast und aktualisieren dein Profil.",
-      "btn": "Verstanden"
-    },
-    "matches": {
-      "heading": "Wie ergeben sich diese Matches?",
-      "text": "Wenn du Song A 50 Minuten gehört hast und ein anderer Nutzer den selben Song 100 Minuten gehört hat, ergibt sich daraus eine gemeinsam gehörte Zeit von 50 Minuten. Diese Rechnung nehmen wir für alle erfassten Wiedergaben vor und zeigen dir hier die Nutzer, mit der meisten gemeinsam gehörten Zeit.",
-      "btn": "Verstanden"
-    }
+    "lastFetch": "Letzte<br>Aktualisierung"
   }
 }

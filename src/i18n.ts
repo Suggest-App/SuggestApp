@@ -1,13 +1,16 @@
-// @ts-ignore
 import { createI18n } from 'vue-i18n'
+// @ts-ignore
 import en from '@/assets/locales/en.json'
+// @ts-ign
 import de from '@/assets/locales/de.json'
 
-// Array that includes all locales
-export const allLocales: string[] = ['de', 'en']
-type Locales = 'de' | 'en'
+type Locale = 'de' | 'en'
 
-// Create Vue I18n instance.
+// Array that includes all locales for select field
+export const allLocales: Locale[] = ['de', 'en']
+
+
+// Create Vue i18n instance.
 export const i18n = createI18n({
   legacy: false,
   globalInjection: true,
@@ -24,7 +27,7 @@ export const i18n = createI18n({
  *
  * @param locale
  */
-export async function setLocale(locale: Locales) {
+export async function setLocale(locale: Locale) {
   // Load locale if not available yet.
   if (!i18n.global.availableLocales.includes(locale)) {
     const messages = await loadLocale(locale)
@@ -43,7 +46,7 @@ export async function setLocale(locale: Locales) {
  *
  * @param locale Locales
  */
-function loadLocale(locale: Locales) {
+function loadLocale(locale: Locale) {
   return fetch(`./locales/${locale}.json`)
       .then((response) => {
         if (response.ok) {
