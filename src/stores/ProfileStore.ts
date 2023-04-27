@@ -39,7 +39,7 @@ export const useProfileStore = defineStore('profileStore', () => {
       user.setProfileImgSrc(information.profileImage)
       user.setTotalListenedTime(information.totalListenedSeconds)
       user.setTrackingSince(information.trackingSince)
-      user.setLastFetched(information.lastFetch)
+      user.setLastFetched(information.latestFetch)
 
       // Set the media array from the /personal-summary endpoint
       user.setMediaSummary(summary)

@@ -141,8 +141,7 @@ export class User {
      * @return void
      */
     public setLastFetched(date: string): void {
-        const lastFetched = formatDateString(date);
-        this.lastFetch = (lastFetched !== 'Invalid Date') ? lastFetched : '-';
+        this.lastFetch = formatDateString(date)
     }
 
     /**

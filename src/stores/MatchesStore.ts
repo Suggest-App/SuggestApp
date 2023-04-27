@@ -94,7 +94,7 @@ export const useMatchesStore = defineStore('matchesStore', () => {
 
       tempMatch.setTotalListenedTime(matchInformation.totalListenedSeconds)
       tempMatch.setTrackingSince(matchInformation.trackingSince)
-      tempMatch.setLastFetched(matchInformation.lastFetch)
+      tempMatch.setLastFetched(matchInformation.latestFetch)
       tempMatch.setUsername(matchInformation.username)
       tempMatch.setProfileImgSrc(matchInformation.profileImage)
     }

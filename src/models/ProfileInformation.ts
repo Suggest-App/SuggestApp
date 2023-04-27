@@ -3,5 +3,5 @@ export interface ProfileInformation {
     profileImage: string
     totalListenedSeconds: number
     trackingSince: string
-    lastFetch: string
+    latestFetch: string
 }

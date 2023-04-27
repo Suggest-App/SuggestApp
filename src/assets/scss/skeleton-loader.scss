@@ -169,11 +169,6 @@
     outline: 8px solid $primary-background-color;
 }
 
-.info-column.sk-anim .label:before {
-    width: calc(100% - 30px);
-    left: 30px;
-}
-
 // User Image (Match)
 .base-wrapper.match.sk-anim .user-image-wrapper .profile-image,
 .image-wrapper.sk-anim .profile-image {
