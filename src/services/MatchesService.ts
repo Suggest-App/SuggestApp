@@ -12,8 +12,9 @@ export default {
      *
      * @return Promise<Match[]>
      */
-    async fetchMatches(): Promise<Match[]>{
-        return tryGetAuthorizedInstance().get('user/matches')
+    async fetchMatches(limit: number = 0): Promise<Match[]>{
+        const limitParam = (limit > 0) ? '?limit='+limit : ''
+        return tryGetAuthorizedInstance().get(`user/matches${limitParam}`)
             .then((response: AxiosResponse) => {
                 return response.data
             })

@@ -25,7 +25,7 @@ export const useMatchesStore = defineStore('matchesStore', () => {
     if (matchesMap.size <= 1) {
 
       // Fetch the ordered user matches
-      const allMatches = await MatchesService.fetchMatches()
+      const allMatches = await MatchesService.fetchMatches(100)
 
       for (const match of allMatches) {
         // Initialize new UserMatch object
@@ -91,14 +91,14 @@ export const useMatchesStore = defineStore('matchesStore', () => {
     // Fetch the together consumed media, if the matches property is empty
     if (tempMatch.getTogetherConsumedMedia().length === 0) {
       console.log('fetch together media')
-      const togetherConsumedMedia = await MatchesService.fetchTogetherConsumedMedia(userId, 50);
+      const togetherConsumedMedia = await MatchesService.fetchTogetherConsumedMedia(userId, 100);
       tempMatch.setTogetherConsumedMedia(togetherConsumedMedia)
     }
 
     // Fetch the recommended media, if the matches property is empty
     if (tempMatch.getRecommendedMedia().length === 0) {
       console.log('fetch recommended media')
-      const recommendedMedia = await MatchesService.fetchRecommendedMedia(userId, 50);
+      const recommendedMedia = await MatchesService.fetchRecommendedMedia(userId, 100);
       tempMatch.setRecommendedMedia(recommendedMedia)
     }
 
