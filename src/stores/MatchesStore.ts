@@ -19,22 +19,28 @@ export const useMatchesStore = defineStore('matchesStore', () => {
    */
   async function generateMatchesMap(): Promise<void> {
 
-    // Fetch the ordered user matches
-    const allMatches = await MatchesService.fetchMatches()
+    // Fetch matches, if the map is empty or if only one user is in it.
+    // After reloading in a match related view, matches map will initially be empty. But there will always be an empty user object returned.
+    // Because this empty object is getting populated and set in the map, the map will have size 1 after returning to the matches view
+    if (matchesMap.size <= 1) {
 
-    for (const match of allMatches) {
-      // Initialize new UserMatch object
-      const userMatch = new UserMatch()
+      // Fetch the ordered user matches
+      const allMatches = await MatchesService.fetchMatches()
 
-      // Set the UserMatch properties, from the matches endpoint
-      userMatch.setUserId(match.userId)
-      userMatch.setRank(match.rank)
-      userMatch.setUsername(match.username)
-      userMatch.setProfileImgSrc(match.profileImage)
-      userMatch.setTogetherListenedTime(match.listenedTogetherSeconds)
+      for (const match of allMatches) {
+        // Initialize new UserMatch object
+        const userMatch = new UserMatch()
 
-      // Set the UserMatch object into the matchesMap
-      matchesMap.set(match.userId, userMatch)
+        // Set the UserMatch properties, from the matches endpoint
+        userMatch.setUserId(match.userId)
+        userMatch.setRank(match.rank)
+        userMatch.setUsername(match.username)
+        userMatch.setProfileImgSrc(match.profileImage)
+        userMatch.setTogetherListenedTime(match.listenedTogetherSeconds)
+
+        // Set the UserMatch object into the matchesMap
+        matchesMap.set(match.userId, userMatch)
+      }
     }
   }
 
@@ -70,28 +76,10 @@ export const useMatchesStore = defineStore('matchesStore', () => {
     // Get the UserMatch object from the matchesMap
     const tempMatch = getUserMatchByUid(userId)
 
-    // On page reload matches need to be fetched, if the user is in a matches related view
-    if (tempMatch.getUserId() === '') {
-      const allMatches = await MatchesService.fetchMatches();
-      // Iterate all matches a find the user with the id from the current route
-      for (const match of allMatches) {
-        if (match.userId === userId) {
-          // Set the missing properties
-          tempMatch.setUserId(match.userId)
-          tempMatch.setRank(match.rank)
-          tempMatch.setTotalListenedTime(match.listenedTogetherSeconds)
-        }
-      }
-    }
-
     // Fetch and set the UserMatch information from the /profile-information endpoint, if not already set
-    if (
-        tempMatch.getUsername() === '' ||
-        tempMatch.getTotalListenedTime() === '' ||
-        tempMatch.getTrackingSince() === ''
-    ) {
+    if (tempMatch.getTotalListenedTime() === '') {
+      console.log('fetch match info')
       const matchInformation = await MatchesService.fetchMatchInformation(userId);
-
       tempMatch.setTotalListenedTime(matchInformation.totalListenedSeconds)
       tempMatch.setTrackingSince(matchInformation.trackingSince)
       tempMatch.setLastFetched(matchInformation.latestFetch)
@@ -101,18 +89,21 @@ export const useMatchesStore = defineStore('matchesStore', () => {
 
     // Fetch the together consumed media, if the matches property is empty
     if (tempMatch.getTogetherConsumedMedia().length === 0) {
+      console.log('fetch together media')
       const togetherConsumedMedia = await MatchesService.fetchTogetherConsumedMedia(userId, 18);
       tempMatch.setTogetherConsumedMedia(togetherConsumedMedia)
     }
 
     // Fetch the recommended media, if the matches property is empty
     if (tempMatch.getRecommendedMedia().length === 0) {
+      console.log('fetch recommended media')
       const recommendedMedia = await MatchesService.fetchRecommendedMedia(userId, 18);
       tempMatch.setRecommendedMedia(recommendedMedia)
     }
 
     // Fetch the media summary, if the matches property is empty
     if (tempMatch.getMediaSummary().length === 0) {
+      console.log('fetch media summary')
       const mediaSummary = await MatchesService.fetchMatchSummary(userId, 100);
       tempMatch.setMediaSummary(mediaSummary)
     }

@@ -14,10 +14,10 @@ const mainStore = useMainStore()
 const matchesStore = useMatchesStore()
 
 onMounted(async () => {
-  // Generate the matches map and then disable the loading flag
-  await matchesStore.generateMatchesMap()
-      .then(() => mainStore.isLoading = false)
-      .catch(e => console.log(e))
+    // Generate the matches map and then disable the loading flag
+    await matchesStore.generateMatchesMap()
+        .then(() => mainStore.isLoading = false)
+        .catch(e => console.log(e))
 })
 
 // The user matches map from the matches store

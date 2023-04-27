@@ -7,7 +7,7 @@ import ProfileService from "@/services/ProfileService";
 export const useProfileStore = defineStore('profileStore', () => {
 
   // The own user profile object
-  const profile: Ref<User> = ref(new User()) as Ref<User>
+  const profile: Ref<User | null> = ref(null)
 
   /**
    * Fill the user profile object with the fetched data
@@ -16,16 +16,8 @@ export const useProfileStore = defineStore('profileStore', () => {
    */
   async function fetchUserProfile(): Promise<void> {
 
-    // Bool that indicates, if profile infos need to be fetched
-    const fetchProfileInfo =
-        !profile.value.getUsername() ||
-        !profile.value.getProfileImgSrc() ||
-        !profile.value.getTotalListenedTime() ||
-        !profile.value.getTrackingSince() ||
-        !profile.value.getLastFetched()
-
-    // If there are infos that need to be fetched
-    if (fetchProfileInfo) {
+    // Ensure that the profile has not already been fetched
+    if (!(profile.value instanceof User)) {
 
       // Fetch profile information and the personal media summary
       const information = await ProfileService.fetchProfileInformation()

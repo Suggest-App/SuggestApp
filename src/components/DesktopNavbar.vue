@@ -25,9 +25,9 @@ onMounted(async () => {
 })
 
 // The user profile object from the store
-const profile: ComputedRef<User> = computed(() => (
-    profileStore.profile as User
-))
+const profile: ComputedRef<User> = computed(() => {
+  return (profileStore.profile instanceof User) ? profileStore.profile : new User()
+})
 
 // Bool that indicates, if the matches icon should be active, when matching profile is viewed
 const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
