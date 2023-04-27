@@ -57,16 +57,10 @@ const trackedTime: ComputedRef<string> = computed(() => {
       ? secondsToTime(props.media.listenedSeconds)
       : ''
 })
-
-function openInSpotify(): void {
-  if (props.media && props.media.linkToMedia) {
-    window.open(props.media.linkToMedia)
-  }
-}
 </script>
 
 <template>
-  <div class="media-element-wrapper" :class="{ 'sk-anim': mainStore.isLoading }" @click="openInSpotify">
+  <a :href="props.media.linkToMedia" class="media-element-wrapper" :class="{ 'sk-anim': mainStore.isLoading }">
     <span class="rank">{{ index + 1 }}</span>
     <MediaImage :src="mediaImage" />
     <ListMediaElementInfo
@@ -75,7 +69,7 @@ function openInSpotify(): void {
       :is-explicit="isExplicit"
     />
     <span class="time">{{ trackedTime }}</span>
-  </div>
+  </a>
 
 </template>
 
