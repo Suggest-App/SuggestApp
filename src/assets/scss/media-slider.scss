@@ -48,12 +48,18 @@ h1 {
           left: 10px;
           width: 110px;
           height: 110px;
-          border-radius: 50%;
           border: 3px solid $secondary-background-color;
+          border-radius: 50%;
           transform: rotate(10deg);
           transition: 350ms ease-out;
-          object-fit: contain;
           z-index: 10;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+          }
         }
 
         .vinyl-plate::before {

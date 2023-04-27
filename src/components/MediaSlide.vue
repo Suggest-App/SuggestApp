@@ -83,13 +83,13 @@ function openInSpotify(): void {
           class="media-image"
           @click="openInSpotify"
       ></div>
-      <img
-          v-show="!mainStore.isLoading"
+      <div
           class="vinyl-plate"
-          v-lazy="mediaImageSrc"
-          :alt="songTitle"
+          v-show="!mainStore.isLoading"
           @click="window.open(slide.linkToMedia)"
-      />
+      >
+        <img v-lazy="mediaImageSrc" :alt="songTitle"/>
+      </div>
     </div>
     <div class="media-information">
       <span class="title">{{ songTitle }}</span>

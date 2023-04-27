@@ -101,13 +101,13 @@ export const useMatchesStore = defineStore('matchesStore', () => {
 
     // Fetch the together consumed media, if the matches property is empty
     if (tempMatch.getTogetherConsumedMedia().length === 0) {
-      const togetherConsumedMedia = await MatchesService.fetchTogetherConsumedMedia(userId, 10);
+      const togetherConsumedMedia = await MatchesService.fetchTogetherConsumedMedia(userId, 18);
       tempMatch.setTogetherConsumedMedia(togetherConsumedMedia)
     }
 
     // Fetch the recommended media, if the matches property is empty
     if (tempMatch.getRecommendedMedia().length === 0) {
-      const recommendedMedia = await MatchesService.fetchRecommendedMedia(userId, 10);
+      const recommendedMedia = await MatchesService.fetchRecommendedMedia(userId, 18);
       tempMatch.setRecommendedMedia(recommendedMedia)
     }
 
