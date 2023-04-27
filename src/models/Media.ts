@@ -5,6 +5,8 @@ export interface Media {
     allArtists:      string[],
     explicitFlag:     boolean,
     listenedSeconds: number,
+    listenedSecondsMatch: number,
+    listenedSecondsYou: number | null,
     albumImages:     MediaImage[],
     linkToMedia:     string,
     albumName:       string,

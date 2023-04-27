@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import MediaSlide from "@/components/MediaSlide.vue";
-import {onMounted, ref} from "vue";
+import {ref} from "vue";
 import type { Ref, PropType} from "vue";
 import type { Media } from "@/models/Media";
 import { useI18n } from "vue-i18n";
 import { useMainStore } from "@/stores/MainStore";
+
 
 // Initialize localization plugin and stores
 const { t } = useI18n()

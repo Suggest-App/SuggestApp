@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { computed } from "vue";
-import type { PropType,ComputedRef } from "vue";
+import {computed, ref } from "vue";
+import type { PropType,ComputedRef,Ref } from "vue";
 import type { Media } from "@/models/Media";
 import { useI18n } from "vue-i18n";
 import { secondsToTime } from "@/composables/MediaInformationFormatting";
 import { useMainStore } from "@/stores/MainStore";
+
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
@@ -47,15 +48,26 @@ const artists: ComputedRef<string> = computed(() => {
       : 'artist unknown'
 })
 
+const showListenedSecondsYou: Ref<boolean> = ref(true)
+
 // Access the listened seconds of your own account
-const ownListenedSeconds: ComputedRef<string> = computed(() => {
-  return (props.slide && props.slide.listenedSeconds)
-      ? secondsToTime(props.slide.listenedSeconds)
+const listenedSecondsYou: ComputedRef<string> = computed(() => {
+  if (props.slide && props.slide.listenedSecondsYou === null) {
+    showListenedSecondsYou.value = false
+    return '-'
+  }
+  return secondsToTime(props.slide.listenedSecondsYou as number)
+})
+
+// Access the listened seconds of your match
+const listenedSecondsMatch: ComputedRef<string> = computed(() => {
+  return (props.slide && props.slide.listenedSecondsMatch)
+      ? secondsToTime(props.slide.listenedSecondsMatch)
       : '-'
 })
 
 // Access the listened seconds of your match
-const matchesListenedSeconds: ComputedRef<string> = computed(() => {
+const listenedSeconds: ComputedRef<string> = computed(() => {
   return (props.slide && props.slide.listenedSeconds)
       ? secondsToTime(props.slide.listenedSeconds)
       : '-'
@@ -96,13 +108,20 @@ function openInSpotify(): void {
       <span class="artist">{{ artists }}</span>
     </div>
     <div class="tracking-information">
-      <span class="user-wrapper">
+      <span v-if="showListenedSecondsYou" class="user-wrapper">
         <span class="name">{{ $t('matchingProfileView.trackingInformation.you') }}</span>
-        <span>{{ ownListenedSeconds }}</span>
+        <span>{{ listenedSecondsYou }}</span>
       </span>
-      <span class="user-wrapper">
+
+
+      <span v-if="showListenedSecondsYou" class="user-wrapper">
         <span class="name">{{ $t('matchingProfileView.trackingInformation.match') }}</span>
-        <span>{{ matchesListenedSeconds }}</span>
+        <span>{{ listenedSecondsMatch }}</span>
+      </span>
+
+      <span v-if="!showListenedSecondsYou" class="user-wrapper">
+        <span class="name">{{ $t('matchingProfileView.trackingInformation.match') }}</span>
+        <span>{{ listenedSeconds }}</span>
       </span>
     </div>
   </div>
