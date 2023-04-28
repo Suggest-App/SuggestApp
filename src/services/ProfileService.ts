@@ -41,5 +41,26 @@ export default {
                         break
                 }
             })
+    },
+
+    /**
+     * Patch the user settings (locale)
+     *
+     * @param locale 'en' | 'de'
+     *
+     * @return Promise<void>
+     */
+    async patchUserSettings(locale: 'en' | 'de'): Promise<void> {
+        return tryGetAuthorizedInstance().patch('/user/settings', { 'language': locale })
+            .then((response: AxiosResponse) => response.data)
+            .catch((error) => {
+                switch (error.response.status) {
+                    default:
+                        console.log(
+                            'ProfileService.ts no status case ' + error.response.status
+                        )
+                        break
+                }
+            })
     }
 }

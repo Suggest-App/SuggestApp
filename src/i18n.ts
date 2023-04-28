@@ -3,12 +3,12 @@ import { createI18n } from 'vue-i18n'
 import en from '@/assets/locales/en.json'
 // @ts-ign
 import de from '@/assets/locales/de.json'
+import ProfileService from "@/services/ProfileService";
 
 type Locale = 'de' | 'en'
 
 // Array that includes all locales for select field
 export const allLocales: Locale[] = ['de', 'en']
-
 
 // Create Vue i18n instance.
 export const i18n = createI18n({
@@ -25,9 +25,12 @@ export const i18n = createI18n({
 /**
  * Set a specific locale lang file based on the passed local enum
  *
- * @param locale
+ * @param locale Locale
+ * @param patch boolean
+ *
+ * @return Promise<void>
  */
-export async function setLocale(locale: Locale) {
+export async function setLocale(locale: Locale, patch: boolean = true): Promise<void> {
   // Load locale if not available yet.
   if (!i18n.global.availableLocales.includes(locale)) {
     const messages = await loadLocale(locale)
@@ -40,7 +43,13 @@ export async function setLocale(locale: Locale) {
   }
   // Set locale.
   i18n.global.locale.value = locale
+
+  // Only patch if locale is getting set by user manually
+  if (patch) {
+    await ProfileService.patchUserSettings(locale)
+  }
 }
+
 /**
  * Load a specific locale lang file based on the passed local enum
  *

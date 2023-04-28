@@ -5,4 +5,5 @@ export interface ProfileInformation {
     totalTogetherListenedSeconds: number | null
     trackingSince: string
     latestFetch: string
+    language: 'en' | 'de'
 }

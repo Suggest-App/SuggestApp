@@ -1,13 +1,17 @@
 import {ref, } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
+import { useMainStore } from "@/stores/MainStore";
 import { User } from "@/classes/User";
 import ProfileService from "@/services/ProfileService";
+import { setLocale } from "@/i18n";
 
 export const useProfileStore = defineStore('profileStore', () => {
 
   // The own user profile object
   const profile: Ref<User | null> = ref(null)
+
+  const activeLocale: Ref<'en' | 'de'> = ref('de')
 
   /**
    * Fill the user profile object with the fetched data
@@ -22,6 +26,9 @@ export const useProfileStore = defineStore('profileStore', () => {
       // Fetch profile information and the personal media summary
       const information = await ProfileService.fetchProfileInformation()
       const summary = await ProfileService.fetchPersonalSummary()
+
+      // Set user locale
+      await setLocale(information.language, false)
 
       // Initialize new User object
       const user = new User()
