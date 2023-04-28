@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import MediaList from "@/components/media/list/MediaList.vue";
 import HeadingWrapper from "@/components/HeadingWrapper.vue";
-import MediaSlider from "@/components/MediaSlider.vue";
+import MediaSlider from "@/components/media/slider/MediaSlider.vue";
 import {computed, onMounted} from "vue";
 import type {ComputedRef} from "vue";
 import {useMatchesStore} from "@/stores/MatchesStore";

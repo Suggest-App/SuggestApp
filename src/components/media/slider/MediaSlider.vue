@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import MediaSlide from "@/components/MediaSlide.vue";
+import MediaSlide from "@/components/media/slider/MediaSlide.vue";
 import {ref} from "vue";
 import type { Ref, PropType} from "vue";
 import type { Media } from "@/models/Media";
