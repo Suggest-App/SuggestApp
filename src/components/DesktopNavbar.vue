@@ -116,6 +116,7 @@ const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
 @media only screen and (min-width: 991px) {
   #desktop-navbar {
     max-width: 450px;
+    padding-top: 45px;
 
     .base-wrapper {
       padding: 0 $wrapper-padding-x;
