@@ -33,3 +33,11 @@ const localeOptions: ComputedRef<string[]> = computed((): string[] => {
     />
   </main>
 </template>
+
+<style lang="scss">
+@media only screen and (min-width: 991px) {
+  .base-wrapper.nav-grid {
+    margin-bottom: 78px;
+  }
+}
+</style>

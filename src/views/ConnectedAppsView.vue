@@ -20,3 +20,11 @@ import ConnectedApp from "@/components/ConnectedApp.vue";
     <ConnectedApp />
   </main>
 </template>
+
+<style lang="scss">
+@media only screen and (min-width: 991px) {
+  .base-wrapper.nav-grid {
+    margin-bottom: 65px;
+  }
+}
+</style>
