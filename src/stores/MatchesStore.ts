@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 import { UserMatch } from "@/classes/UserMatch";
 import {useRoute} from "vue-router";
 import MatchesService from "@/services/MatchesService";
+import router from "@/router";
 
 export const useMatchesStore = defineStore('matchesStore', () => {
 
@@ -78,7 +79,6 @@ export const useMatchesStore = defineStore('matchesStore', () => {
 
     // Fetch and set the UserMatch information from the /profile-information endpoint, if not already set
     if (tempMatch.getTotalListenedTime() === '') {
-      console.log('fetch match info')
       const matchInformation = await MatchesService.fetchMatchInformation(userId);
       tempMatch.setTotalListenedTime(matchInformation.totalListenedSeconds)
       tempMatch.setTogetherListenedTime(matchInformation.totalTogetherListenedSeconds as number)
@@ -90,21 +90,18 @@ export const useMatchesStore = defineStore('matchesStore', () => {
 
     // Fetch the together consumed media, if the matches property is empty
     if (tempMatch.getTogetherConsumedMedia().length === 0) {
-      console.log('fetch together media')
       const togetherConsumedMedia = await MatchesService.fetchTogetherConsumedMedia(userId, 100);
       tempMatch.setTogetherConsumedMedia(togetherConsumedMedia)
     }
 
     // Fetch the recommended media, if the matches property is empty
     if (tempMatch.getRecommendedMedia().length === 0) {
-      console.log('fetch recommended media')
       const recommendedMedia = await MatchesService.fetchRecommendedMedia(userId, 100);
       tempMatch.setRecommendedMedia(recommendedMedia)
     }
 
     // Fetch the media summary, if the matches property is empty
     if (tempMatch.getMediaSummary().length === 0) {
-      console.log('fetch media summary')
       const mediaSummary = await MatchesService.fetchMatchSummary(userId, 100);
       tempMatch.setMediaSummary(mediaSummary)
     }
@@ -112,10 +109,44 @@ export const useMatchesStore = defineStore('matchesStore', () => {
     matchesMap.set(userId, tempMatch)
   }
 
+  /**
+   * Fetch a specific media list from a user and set it
+   *
+   * @param userId string
+   * @param apiEndpoint string
+   *
+   * @return Promise<void>
+   */
+  async function fetchAllMedia(
+      userId: string,
+      apiEndpoint: string
+  ): Promise<void> {
+
+    // Get the UserMatch object from the matchesMap
+    const tempMatch = getUserMatchByUid(userId)
+
+    switch (apiEndpoint) {
+      case "/together-consumed":
+        tempMatch.setTogetherConsumedMedia(
+            await MatchesService.fetchTogetherConsumedMedia(userId)
+        )
+        break;
+      case "/recommended-media":
+        tempMatch.setRecommendedMedia(
+            await MatchesService.fetchRecommendedMedia(userId)
+        )
+        break;
+      default:
+        await router.push({ name: 'matching-profile', params: { id: userId } })
+        break;
+    }
+  }
+
   return {
     matchesMap,
     getUserMatchByUid,
     fetchUserMatchProperties,
-    generateMatchesMap
+    generateMatchesMap,
+    fetchAllMedia
   }
 })

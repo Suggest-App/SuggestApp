@@ -5,6 +5,7 @@ import type { Media } from "@/models/Media";
 import { useI18n } from "vue-i18n";
 import { secondsToTime } from "@/composables/MediaInformationFormatting";
 import { useMainStore } from "@/stores/MainStore";
+import ListMediaElementInfo from "@/components/media/list/ListMediaElementInfo.vue";
 
 
 // Initialize localization plugin and stores
@@ -20,64 +21,45 @@ const props = defineProps({
 
 /** --------------------- Template Properties --------------------- */
 
+const slide:ComputedRef<Media> = computed(
+    () => props.slide
+)
+
 // Access media image url
-const mediaImageSrc: ComputedRef<string> = computed(() => {
-  return (props.slide && props.slide.albumImages)
-      ? props.slide.albumImages[1].imageUrl
-      : ''
-})
+const mediaImageSrc: ComputedRef<string> = computed(
+    () => slide.value.albumImages[1].imageUrl
+)
 
 // Access song title
-const songTitle: ComputedRef<string> = computed(() => {
-  return (props.slide && props.slide.songTitle)
-      ? props.slide.songTitle
-      : 'song title unknown'
-})
-
-// Access song title
-const linkToMedia: ComputedRef<string> = computed(() => {
-  return (props.slide && props.slide.linkToMedia)
-      ? props.slide.linkToMedia
-      : 'media link unknown'
-})
+const linkToMedia: ComputedRef<string> = computed(
+    () => slide.value.linkToMedia
+)
 
 // Access username
-const artists: ComputedRef<string> = computed(() => {
-  return (props.slide && props.slide.allArtists)
-      ? props.slide.allArtists.join().replace(',', ', ')
-      : 'artist unknown'
-})
+const artists: ComputedRef<string> = computed(
+    () => slide.value.allArtists.join().replace(',', ', ')
+)
 
 const showListenedSecondsYou: Ref<boolean> = ref(true)
 
 // Access the listened seconds of your own account
 const listenedSecondsYou: ComputedRef<string> = computed(() => {
-  if (props.slide && props.slide.listenedSecondsYou === null) {
+  if (slide.value.listenedSecondsYou === null) {
     showListenedSecondsYou.value = false
     return '-'
   }
-  return secondsToTime(props.slide.listenedSecondsYou as number)
+  return secondsToTime(slide.value.listenedSecondsYou as number)
 })
 
 // Access the listened seconds of your match
-const listenedSecondsMatch: ComputedRef<string> = computed(() => {
-  return (props.slide && props.slide.listenedSecondsMatch)
-      ? secondsToTime(props.slide.listenedSecondsMatch)
-      : '-'
-})
+const listenedSecondsMatch: ComputedRef<string> = computed(
+    () => secondsToTime(slide.value.listenedSecondsMatch)
+)
 
 // Access the listened seconds of your match
-const listenedSeconds: ComputedRef<string> = computed(() => {
-  return (props.slide && props.slide.listenedSeconds)
-      ? secondsToTime(props.slide.listenedSeconds)
-      : '-'
-})
-
-function openInSpotify(): void {
-  if (props.slide && props.slide.linkToMedia) {
-    window.open(props.slide.linkToMedia)
-  }
-}
+const listenedSeconds: ComputedRef<string> = computed(
+    () => secondsToTime(slide.value.listenedSeconds)
+)
 
 const isHovered: Ref<boolean> = ref(false)
 </script>
@@ -89,28 +71,35 @@ const isHovered: Ref<boolean> = ref(false)
        @mouseleave="isHovered = false"
   >
     <div class="album-wrapper" @click="window.open(linkToMedia)">
-      <img
-          v-show="!mainStore.isLoading"
-          class="media-image"
-          v-lazy="mediaImageSrc"
-          :alt="songTitle"
-          @click="openInSpotify"
-      />
-      <div
-          v-show="mainStore.isLoading"
-          class="media-image"
-          @click="openInSpotify"
-      ></div>
+      <a :href="slide.linkToMedia">
+        <img
+            v-show="!mainStore.isLoading"
+            class="media-image"
+            v-lazy="mediaImageSrc"
+            :alt="slide.songTitle"
+        />
+        <div
+            v-show="mainStore.isLoading"
+            class="media-image"
+        ></div>
+      </a>
       <div
           class="vinyl-plate"
           v-show="!mainStore.isLoading"
           @click="window.open(slide.linkToMedia)"
       >
-        <img v-lazy="mediaImageSrc" :alt="songTitle"/>
+        <img v-lazy="mediaImageSrc" :alt="slide.songTitle"/>
       </div>
     </div>
+
+    <ListMediaElementInfo
+        :artists="artists"
+        :song-title="slide.songTitle"
+        :is-explicit="slide.explicitFlag"
+    />
+
     <div class="media-information">
-      <span class="title">{{ songTitle }}</span>
+      <span class="title">{{ slide.songTitle }}</span>
       <span class="artist">{{ artists }}</span>
     </div>
     <div class="tracking-information">

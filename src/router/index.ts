@@ -51,7 +51,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/all-media/:id',
+      path: '/all-media/:endpoint/:id',
       name: 'all-media',
       component: AllMediaView,
       meta: {

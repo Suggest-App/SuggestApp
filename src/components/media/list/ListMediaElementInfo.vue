@@ -30,6 +30,7 @@ defineProps({
 <style lang="scss">
 .song-info {
   flex: 1;
+  margin-bottom: 15px;
 
   .title {
     font-size: $font-size-m;

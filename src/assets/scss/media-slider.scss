@@ -98,6 +98,7 @@ h1 {
 
         .artist {
           font-size: $font-size-s;
+          color: $secondary-text-color;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
