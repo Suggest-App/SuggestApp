@@ -19,7 +19,7 @@ onMounted(async () => {
   // Check after mound if window with is desktop
   mainStore.isDesktop = (window.innerWidth >= 768)
 
-  // setCookie('jwt', 'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNDY0ODhkZi0wMDgyLTRkZGYtZThlNC0wOGRiNDY2ZmM0MmIiLCJuYW1lIjoicy5jbGFlcyIsImV4cCI6MTY4Mjg0MjA0NywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MTczIiwiaWF0IjoxNjgyNTgyODQ3LCJuYmYiOjE2ODI1ODI4NDd9.PhD9ObHJ54sU01iT9X2M_8_1bf5gQhu-KNHGZI1vHkD6-XrxYPh7diJ0I-vHLCKtW5fE9jZ3GuyLMAC-Jgih6g', 7)
+  setCookie('jwt', 'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NDc4NjllZi1kNTcxLTQ4ZWUtYjc0NC01YTIwZjQ2NjllOTciLCJuYW1lIjoicy5jbGFlcyIsImV4cCI6MTY4MzIxNzI3MywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MTczIiwiaWF0IjoxNjgyOTU4MDczLCJuYmYiOjE2ODI5NTgwNzN9.rL-gRuQg699Q2p1dQb9sAZxouftZjvLaxeQYS_WEMqdGrh7XzyikpKvQUceuo1ITu_lWEitXTUot49ug2eUJzA', 7)
 })
 </script>
 

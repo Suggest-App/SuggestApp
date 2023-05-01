@@ -35,6 +35,10 @@ defineProps({
   .title {
     font-size: $font-size-m;
     margin-bottom: 5px;
+    width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .artist-wrapper {
@@ -46,9 +50,7 @@ defineProps({
       color: $secondary-text-color;
       font-size: $font-size-s;
       overflow: hidden;
-      teoverflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;;
+      text-overflow: ellipsis;
       white-space: nowrap;
     }
 

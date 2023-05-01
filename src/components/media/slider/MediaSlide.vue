@@ -26,19 +26,28 @@ const slide:ComputedRef<Media> = computed(
 )
 
 // Access media image url
-const mediaImageSrc: ComputedRef<string> = computed(
-    () => slide.value.albumImages[1].imageUrl
-)
+const mediaImageSrc: ComputedRef<string> = computed(() =>{
+  if (slide.value.albumImages) {
+    return slide.value.albumImages[1].imageUrl
+  }
+  return ''
+})
 
 // Access song title
-const linkToMedia: ComputedRef<string> = computed(
-    () => slide.value.linkToMedia
-)
+const linkToMedia: ComputedRef<string> = computed(() => {
+  if (slide.value.linkToMedia) {
+    return slide.value.linkToMedia
+  }
+  return ''
+})
 
 // Access username
-const artists: ComputedRef<string> = computed(
-    () => slide.value.allArtists.join().replace(',', ', ')
-)
+const artists: ComputedRef<string> = computed(() => {
+  if (slide.value.allArtists) {
+    return slide.value.allArtists.join().replace(',', ', ')
+  }
+  return ''
+})
 
 const showListenedSecondsYou: Ref<boolean> = ref(true)
 

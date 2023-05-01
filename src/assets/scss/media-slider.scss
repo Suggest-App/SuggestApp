@@ -21,7 +21,7 @@ h1 {
     .media-slide {
       position: relative;
       width: 130px;
-      height: 265px;
+      height: 280px;
       flex: none;
 
       .album-wrapper {
@@ -87,13 +87,14 @@ h1 {
         background-color: $primary-background-color;
 
         .title {
-          width: 130px;
+          width: 110px;
           font-size: $font-size-m;
           margin-bottom: 2px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           transition: 100ms ease-out;
+
         }
 
         .artist {
