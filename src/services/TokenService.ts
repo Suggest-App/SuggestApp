@@ -69,6 +69,32 @@ export function tryGetAuthorizedInstance(): AxiosInstance {
 }
 
 /**
+ * Check if a user is valid
+ *
+ * @return Promise<void>
+ */
+export async function validateUser(): Promise<void> {
+    return tryGetAuthorizedInstance().get('/user/valid')
+        .then(resp => {
+            console.log(resp.data)
+            if (!resp.data) {
+                console.log('drin')
+                deleteCookie('jwt')
+                router.push('/')
+            }
+        })
+        .catch((error) => {
+            switch (error.response.status) {
+                default:
+                    console.log(
+                        'ProfileService.ts no status case ' + error.response.status
+                    )
+                    break
+            }
+        })
+}
+
+/**
  * Disconnect a user
  *
  * @return Promise<void>
