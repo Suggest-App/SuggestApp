@@ -101,11 +101,10 @@ const isHovered: Ref<boolean> = ref(false)
       </div>
     </div>
 
-    <ListMediaElementInfo
-        :artists="artists"
-        :song-title="slide.songTitle"
-        :is-explicit="slide.explicitFlag"
-    />
+    <div class="media-information">
+      <span class="title">{{ slide.songTitle }}</span>
+      <span class="artist">{{ artists }}</span>
+    </div>
 
     <div class="tracking-information">
       <span v-if="showListenedSecondsYou" class="user-wrapper">
