@@ -44,7 +44,7 @@ const match: ComputedRef<UserMatch> = computed(
         :has-max-width="false"
     >
       <template #label>
-        <RouterLink :to="{ name: 'all-media', params: { endpoint: '/together-consumed', id: match.getUserId() }}">
+        <RouterLink v-if="false" :to="{ name: 'all-media', params: { endpoint: '/together-consumed', id: match.getUserId() }}">
           {{ $t('headingWrapper.label.showAll') }}
         </RouterLink>
       </template>
@@ -57,7 +57,7 @@ const match: ComputedRef<UserMatch> = computed(
         :has-max-width="false"
     >
       <template #label>
-        <RouterLink :to="{ name: 'all-media', params: { endpoint: '/recommended-media', id: match.getUserId() } }">
+        <RouterLink v-if="false" :to="{ name: 'all-media', params: { endpoint: '/recommended-media', id: match.getUserId() } }">
           {{ $t('headingWrapper.label.showAll') }}
         </RouterLink>
       </template>
