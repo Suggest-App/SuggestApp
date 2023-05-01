@@ -98,10 +98,6 @@ const isHovered: Ref<boolean> = ref(false)
         :is-explicit="slide.explicitFlag"
     />
 
-    <div class="media-information">
-      <span class="title">{{ slide.songTitle }}</span>
-      <span class="artist">{{ artists }}</span>
-    </div>
     <div class="tracking-information">
       <span v-if="showListenedSecondsYou" class="user-wrapper">
         <span class="name">{{ $t('matchingProfileView.trackingInformation.you') }}</span>
