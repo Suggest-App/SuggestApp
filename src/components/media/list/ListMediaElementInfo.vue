@@ -42,8 +42,14 @@ defineProps({
     column-gap: 5px;
 
     .artists {
+      width: 110px;
       color: $secondary-text-color;
       font-size: $font-size-s;
+      overflow: hidden;
+      teoverflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;;
+      white-space: nowrap;
     }
 
     .explicit {
