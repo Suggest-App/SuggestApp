@@ -20,6 +20,7 @@
   }
 
   .auth-form {
+    position: relative;
     height: 55vh;
     width: 100%;
     padding: 0 15px;
@@ -72,9 +73,12 @@
     }
 
     .spotify-oauth2-btn {
+      position: absolute;
+      bottom: 55px;
+      left: 50%;
+      transform: translateX(-50%);
       @include flex-center-xy;
-      position: relative;
-      width: 100%;
+      width: calc(100% - 30px);
       max-width: 360px;
       height: 52px;
       background-color: $spotify-green;
