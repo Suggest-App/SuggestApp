@@ -27,7 +27,7 @@ trigger:
 
 kind: pipeline
 type: ssh
-name: deploy_prod
+name: deploy_dev
 
 server:
   host:
