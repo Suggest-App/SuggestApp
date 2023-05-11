@@ -77,9 +77,7 @@ export function tryGetAuthorizedInstance(): AxiosInstance {
 export async function validateUser(): Promise<void> {
     return tryGetAuthorizedInstance().get('/user/valid')
         .then(resp => {
-            console.log(resp.data)
             if (!resp.data) {
-                console.log('drin')
                 deleteCookie('jwt')
                 router.push('/')
             }
