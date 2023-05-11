@@ -7,6 +7,8 @@ import MobileNavbar from "@/components/MobileNavbar.vue";
 import { setCookie, validateUser} from "@/services/TokenService";
 import DesktopNavbar from "@/components/DesktopNavbar.vue";
 
+console.log(import.meta.env)
+
 const mainStore = useMainStore()
 const route = useRoute()
 
