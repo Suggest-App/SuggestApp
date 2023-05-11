@@ -44,8 +44,8 @@ import "swiper/css/pagination";
             <p>{{ $t('authView.slider.thirdSlide') }}</p>
           </swiper-slide>
         </swiper>
-        <SpotifyAuthButton />
       </div>
+      <SpotifyAuthButton />
     </form>
   </section>
 </template>
