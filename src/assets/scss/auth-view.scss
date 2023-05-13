@@ -72,15 +72,15 @@
     }
 
     .spotify-oauth2-btn {
-      @include flex-center-xy;
       position: relative;
-      width: 100%;
+      @include flex-center-xy;
+      width: calc(100% - 30px);
       max-width: 360px;
       height: 52px;
       background-color: $spotify-green;
       border: none;
       border-radius: 50px;
-      margin-top: 70px;
+      margin: 30px auto 0;
       cursor: pointer;
 
       svg {
