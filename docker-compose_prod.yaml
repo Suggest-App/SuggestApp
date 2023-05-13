@@ -5,6 +5,8 @@ services:
     restart: always
     build:
       dockerfile: Dockerfile
+      args:
+        STAGE: prod
     networks:
       - jitcom_net
 

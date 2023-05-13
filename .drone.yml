@@ -1,6 +1,6 @@
 kind: pipeline
 type: ssh
-name: deploy_pull_frontend
+name: deploy_prod_frontend
 
 server:
   host:
@@ -27,7 +27,7 @@ trigger:
 
 kind: pipeline
 type: ssh
-name: deploy_dev_frontend
+name: deploy_prod
 
 server:
   host:

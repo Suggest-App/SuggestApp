@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteLocationNormalized } from 'vue-router'
 import { getCookie } from "@/services/TokenService";
 import AuthView from '@/views/AuthView.vue'
+import DevAuthView from '@/views/DevAuthView.vue'
 import ProfileView from "@/views/ProfileView.vue";
 import MatchesView from "@/views/MatchesView.vue";
 import MatchingProfileView from "@/views/MatchingProfileView.vue";
@@ -17,7 +18,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'auth',
-      component: AuthView,
+      component: (import.meta.env.VITE_STAGE === 'dev') ? DevAuthView : AuthView,
       meta: {
         showNavbar: false,
         requiresUid: false

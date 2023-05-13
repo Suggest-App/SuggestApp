@@ -1,6 +1,7 @@
 import type { AxiosInstance } from 'axios'
 import axios from "axios";
 import router from "@/router";
+import type { DevUser } from "@/models/DevUser";
 
 /**
  * Try to get a cookie by its name
@@ -76,9 +77,7 @@ export function tryGetAuthorizedInstance(): AxiosInstance {
 export async function validateUser(): Promise<void> {
     return tryGetAuthorizedInstance().get('/user/valid')
         .then(resp => {
-            console.log(resp.data)
             if (!resp.data) {
-                console.log('drin')
                 deleteCookie('jwt')
                 router.push('/')
             }
@@ -87,12 +86,56 @@ export async function validateUser(): Promise<void> {
             switch (error.response.status) {
                 default:
                     console.log(
-                        'ProfileService.ts no status case ' + error.response.status
+                        'TokenService.ts no status case ' + error.response.status
                     )
                     break
             }
         })
 }
+
+/**
+ * Get all User Accounts
+ *
+ * @param pw string
+ *
+ * @return Promise<DevUser[]>
+ */
+export async function getUsersAccounts(pw: string): Promise<DevUser[]> {
+    return axios.get(`/admin/list-users/${pw}`)
+        .then(resp => resp.data)
+        .catch((error) => {
+            switch (error.response.status) {
+                default:
+                    console.log(
+                        'TokenService.ts no status case ' + error.response.status
+                    )
+                    break
+            }
+        })
+}
+
+/**
+ * Get a user token by its id
+ *
+ * @param uid string
+ * @param pw string
+ *
+ * @return Promise<string>
+ */
+export async function getUserToken(uid: string, pw: string): Promise<string> {
+    return axios.get(`/admin/get-token/${uid}/${pw}`)
+        .then(resp => resp.data)
+        .catch((error) => {
+            switch (error.response.status) {
+                default:
+                    console.log(
+                        'TokenService.ts no status case ' + error.response.status
+                    )
+                    break
+            }
+        })
+}
+
 
 /**
  * Disconnect a user

@@ -1,5 +1,7 @@
 FROM node:lts-alpine as builder
 
+ARG STAGE
+
 # install simple http server for serving static content
 RUN npm install -g vite
 
@@ -16,7 +18,7 @@ RUN npm install
 COPY . .
 
 # build app for production with minification
-RUN vite build
+RUN vite build --mode $STAGE
 
 
 FROM nginx
