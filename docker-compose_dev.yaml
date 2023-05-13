@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  dev-sg-frontend:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+    networks:
+      - jitcom_net
+
+networks:
+  jitcom_net:
+    external: true
