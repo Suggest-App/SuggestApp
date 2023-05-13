@@ -1,6 +1,6 @@
 kind: pipeline
 type: ssh
-name: deploy_pull_frontend
+name: deploy_prod_frontend
 
 server:
   host:
