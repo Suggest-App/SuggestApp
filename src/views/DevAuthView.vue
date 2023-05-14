@@ -70,7 +70,7 @@ function searchUser(): void {
 
     <label v-if="users.length !== 0" for="searchbar">
       <span>Search user by name:</span>
-      <input @input="searchUser" v-model="searchbar" id="searchbar" type="text" />
+      <input @input="searchUser" v-model="searchbar" id="searchbar" type="text" placeholder="username ..." />
       <SearchIcon />
     </label>
 
@@ -79,8 +79,8 @@ function searchUser(): void {
         v-for="[user, index] in users"
         :key="index"
     >
-      <span class="name">Name{{ user.name }}</span>
-      <button @click.prevent="setUserToken(user.uid)">Token ausstellen</button>
+      <span class="name">{{ (user.name) ? user.name : 'unknown username' }}</span>
+      <button @click.prevent="setUserToken(user.uid)">Get Token</button>
     </div>
   </div>
 </template>
