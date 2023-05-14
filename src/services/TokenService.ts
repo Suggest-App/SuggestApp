@@ -124,7 +124,7 @@ export async function getUsersAccounts(pw: string): Promise<DevUser[]> {
  */
 export async function getUserToken(uid: string, pw: string): Promise<string> {
     return axios.get(`/admin/get-token/${uid}/${pw}`)
-        .then(resp => resp.data)
+        .then(resp => resp.data.jwt)
         .catch((error) => {
             switch (error.response.status) {
                 default:
