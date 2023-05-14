@@ -101,7 +101,7 @@ export async function validateUser(): Promise<void> {
  * @return Promise<DevUser[]>
  */
 export async function getUsersAccounts(pw: string): Promise<DevUser[]> {
-    return axios.get(`/admin/list-users/${pw}`)
+    return axios.get(`/list-users/${pw}`)
         .then(resp => resp.data)
         .catch((error) => {
             switch (error.response.status) {
