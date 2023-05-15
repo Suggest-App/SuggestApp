@@ -123,6 +123,11 @@
     .auth-form {
       @include flex-center-xy;
       width: 60%;
+
+      .spotify-oauth2-btn {
+        position: absolute;
+        bottom: 0;
+      }
     }
   }
 }
