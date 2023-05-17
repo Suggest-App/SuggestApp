@@ -83,6 +83,13 @@ const profile: ComputedRef<User> = computed(() => {
             :media="media"
         />
       </template>
+      <template #skeleton-elements>
+        <MediaListElement
+            v-show="mainStore.isLoading"
+            v-for="index in 10"
+            :key="index"
+        />
+      </template>
     </MediaList>
   </main>
 </template>

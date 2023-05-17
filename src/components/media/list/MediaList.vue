@@ -7,13 +7,7 @@ const mainStore = useMainStore()
 <template>
   <div class="base-wrapper media-list">
     <slot name="media-elements"></slot>
-    <slot name="skeleton-elements">
-      <MediaListElement
-          v-show="mainStore.isLoading"
-          v-for="index in 10"
-          :key="index"
-      />
-    </slot>
+    <slot name="skeleton-elements"></slot>
   </div>
 </template>
 
