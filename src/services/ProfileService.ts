@@ -50,7 +50,7 @@ export default {
      * @return Promise<RecommendedMedia[]>
      */
     async fetchRecommendedMediaSummary(): Promise<RecommendedMedia[]> {
-        return tryGetAuthorizedInstance().get('/user/matches/recommended-media')
+        return tryGetAuthorizedInstance().get('/user/matches/recommended-media?limit=100')
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {
                 switch (error.response.status) {

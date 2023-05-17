@@ -12,6 +12,7 @@ import {UserMatch} from "@/classes/UserMatch";
 import {useRoute} from "vue-router";
 import MobileMatchProfile from "@/components/MobileMatchProfile.vue";
 import DesktopMatchProfile from "@/components/DesktopMatchProfile.vue";
+import {secondsToTime} from "@/composables/MediaInformationFormatting";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
@@ -33,6 +34,13 @@ onMounted(async () => {
 const match: ComputedRef<UserMatch> = computed(
     () => matchesStore.getUserMatchByUid(userId)
 )
+
+// calculate listened time
+function getListenedTime(seconds: number) {
+  return (seconds)
+      ? secondsToTime(seconds)
+      : ''
+}
 </script>
 
 <template>
@@ -80,7 +88,11 @@ const match: ComputedRef<UserMatch> = computed(
             :key="index"
             :index="index"
             :media="media"
-        />
+        >
+          <template #right>
+            <span class="time">{{ getListenedTime(media.listenedSeconds) }}</span>
+          </template>
+        </MediaListElement>
       </template>
       <template #skeleton-elements>
         <MediaListElement

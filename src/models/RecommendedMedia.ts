@@ -2,7 +2,7 @@ import type { MediaImage } from "@/models/MediaImage";
 
 export interface RecommendedMedia {
     orderValue: number
-    userName: string
+    username: string
     profileUrl: string
     albumImages:     MediaImage[]
     linkToMedia:     string

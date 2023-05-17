@@ -50,13 +50,6 @@ const mediaImage: ComputedRef<string> = computed(() => {
       ? props.media.albumImages[0].imageUrl
       : ''
 })
-
-// Time listened to a specific media
-const trackedTime: ComputedRef<string> = computed(() => {
-  return (props.media.listenedSeconds)
-      ? secondsToTime(props.media.listenedSeconds)
-      : ''
-})
 </script>
 
 <template>
@@ -68,7 +61,7 @@ const trackedTime: ComputedRef<string> = computed(() => {
       :artists="artists"
       :is-explicit="isExplicit"
     />
-    <span class="time">{{ trackedTime }}</span>
+    <slot name="right"></slot>
   </a>
 
 </template>

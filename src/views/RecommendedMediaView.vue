@@ -7,6 +7,7 @@ import HeadingWrapper from "@/components/HeadingWrapper.vue";
 import MediaList from "@/components/media/list/MediaList.vue";
 import MediaListElement from "@/components/media/list/MediaListElement.vue";
 import { User } from "@/classes/User";
+import MediaListElementMatchInfo from "@/components/MediaListElementMatchInfo.vue";
 
 const mainStore = useMainStore()
 const profileStore = useProfileStore()
@@ -29,7 +30,7 @@ const profile: ComputedRef<User> = computed(() => {
 
     <HeadingWrapper :heading="$t('headingWrapper.heading.allMatchesRecommendation')">
       <template #label>
-        <span>{{ $t('headingWrapper.label.listenedBy') }}</span>
+        <span class="label">{{ $t('headingWrapper.label.listenedBy') }}</span>
       </template>
     </HeadingWrapper>
 
@@ -41,7 +42,11 @@ const profile: ComputedRef<User> = computed(() => {
             :key="index"
             :index="index"
             :media="media"
-        />
+        >
+          <template #right>
+            <MediaListElementMatchInfo :media="media"/>
+          </template>
+        </MediaListElement>
       </template>
       <template #skeleton-elements>
         <MediaListElement
@@ -53,3 +58,10 @@ const profile: ComputedRef<User> = computed(() => {
     </MediaList>
   </main>
 </template>
+
+<style lang="scss">
+.base-wrapper.heading .label {
+  width: 110px;
+  text-align: center;
+}
+</style>
