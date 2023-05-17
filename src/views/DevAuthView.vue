@@ -26,6 +26,7 @@ onMounted(async () => {
   if (cookie !== undefined) {
     users.value = await getUsersAccounts(password.value)
     filteredUserArray.value = users.value
+    console.log(filteredUserArray)
   }
 })
 
