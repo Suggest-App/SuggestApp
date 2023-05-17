@@ -12,6 +12,7 @@ import {useProfileStore} from "@/stores/ProfileStore";
 import SettingsIcon from "@/components/icons/SettingsIcon.vue";
 import ConnectionIcon from "@/components/icons/ConnectionIcon.vue";
 import {useMainStore} from "@/stores/MainStore";
+import RecommendedMediaViewIcon from "@/components/icons/navbar/RecommendedMediaViewIcon.vue";
 
 const route = useRoute()
 const mainStore = useMainStore()
@@ -56,6 +57,11 @@ const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
         />
       </template>
     </ProfileInfoGrid>
+
+    <RouterLink :to="{ name: 'recommended-media' }" :class="{ active: inMatchingProfileView }">
+      <RecommendedMediaViewIcon />
+      <span>{{ $t('navbar.recommendedMedia') }}</span>
+    </RouterLink>
 
     <RouterLink :to="{ name: 'matches' }" :class="{ active: inMatchingProfileView }">
       <MatchesViewIcon />

@@ -4,6 +4,7 @@ import type { ComputedRef } from "vue";
 import { useRoute } from "vue-router";
 import MatchesViewIcon from "@/components/icons/navbar/MatchesViewIcon.vue";
 import ProfileViewIcon from "@/components/icons/navbar/ProfileViewIcon.vue";
+import RecommendedMediaViewIcon from "@/components/icons/navbar/RecommendedMediaViewIcon.vue";
 
 const route = useRoute()
 
@@ -14,6 +15,11 @@ const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
 
 <template>
   <nav id="mobile-navbar">
+
+    <RouterLink :to="{ name: 'recommended-media' }">
+      <RecommendedMediaViewIcon />
+      <span>{{ $t('navbar.recommendedMedia') }}</span>
+    </RouterLink>
 
     <RouterLink :to="{ name: 'matches' }" :class="{ active: inMatchingProfileView }">
       <MatchesViewIcon />

@@ -1,6 +1,7 @@
 {
   "navbar": {
     "matches": "Matches",
+    "recommendedMedia": "Explore",
     "chats": "Chats",
     "profile": "Profile",
     "settings": "Settings",
@@ -42,11 +43,13 @@
       "togetherConsumed": "Songs you both love:",
       "recommendedMedia": " also loves:",
       "othersCompleteHistory": "'s whole track history:",
-      "personalCompleteHistory": "Your complete track history: "
+      "personalCompleteHistory": "Your complete track history: ",
+      "allMatchesRecommendation": "Songs you will love: "
     },
     "label": {
       "showAll": "show all",
       "listenedTime": "listened time",
+      "listenedBy": "listened by",
       "listenedTogether": "listened together"
     }
   },
