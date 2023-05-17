@@ -4,13 +4,7 @@ import { useMainStore } from "@/stores/MainStore";
 import {computed, onMounted} from "vue";
 import type { ComputedRef } from "vue";
 import HeadingWrapper from "@/components/HeadingWrapper.vue";
-import ProfileImageWrapper from "@/components/ProfileImageWrapper.vue";
-import ProfileInfoColumn from "@/components/ProfileInfoColumn.vue";
 import MediaList from "@/components/media/list/MediaList.vue";
-import ProfileInfoGrid from "@/components/ProfileInfoGrid.vue";
-import ProfileTopNavigation from "@/components/ProfileTopNavigation.vue";
-import SettingsButton from "@/components/icons/SettingsButton.vue";
-import ConnectedAppsBtn from "@/components/icons/ConnectedAppsBtn.vue";
 import { User } from "@/classes/User";
 
 const mainStore = useMainStore()
@@ -38,6 +32,23 @@ const profile: ComputedRef<User> = computed(() => {
       </template>
     </HeadingWrapper>
 
-    <MediaList :media-list="profile.getRecommendedMediaSummary()" />
+    <MediaList>
+      <template #media-elements>
+        <MediaListElement
+            v-show="!mainStore.isLoading"
+            v-for="(media, index) in profile.getRecommendedMediaSummary()"
+            :key="index"
+            :index="index"
+            :media="media"
+        />
+      </template>
+      <template #skeleton-elements>
+        <MediaListElement
+            v-show="mainStore.isLoading"
+            v-for="index in 10"
+            :key="index"
+        />
+      </template>
+    </MediaList>
   </main>
 </template>

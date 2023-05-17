@@ -71,7 +71,17 @@ const match: ComputedRef<UserMatch> = computed(
       </template>
     </HeadingWrapper>
 
-    <MediaList :media-list="match.getMediaSummary()" />
+    <MediaList>
+      <template #media-elements>
+        <MediaListElement
+            v-show="!mainStore.isLoading"
+            v-for="(media, index) in match.getMediaSummary()"
+            :key="index"
+            :index="index"
+            :media="media"
+        />
+      </template>
+    </MediaList>
   </main>
 </template>
 

@@ -73,6 +73,16 @@ const profile: ComputedRef<User> = computed(() => {
       </template>
     </HeadingWrapper>
 
-    <MediaList :media-list="profile.getMediaSummary()" />
+    <MediaList>
+      <template #media-elements>
+        <MediaListElement
+            v-show="!mainStore.isLoading"
+            v-for="(media, index) in profile.getMediaSummary()"
+            :key="index"
+            :index="index"
+            :media="media"
+        />
+      </template>
+    </MediaList>
   </main>
 </template>
