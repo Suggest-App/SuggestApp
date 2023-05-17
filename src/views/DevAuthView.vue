@@ -17,8 +17,8 @@ const searchbar: Ref<string> = ref('')
 const showPassword: Ref<boolean> = ref(false)
 
 // Users array that is getting rendered
-const users: Ref<DevUser[]> = ref([])
-const filteredUserArray: Ref<DevUser[]> = ref([])
+const users: Ref<DevUser[]> = ref({} as DevUser[])
+const filteredUserArray: Ref<DevUser[]> = ref({} as DevUser[])
 
 // Fetch all user accounts on mount, if admin pw cookie isset
 onMounted(async () => {
@@ -77,7 +77,7 @@ function searchUser(): void {
 
     <div
         class="user"
-        v-for="[user, index] in users"
+        v-for="[user, index] in filteredUserArray"
         :key="index"
     >
       <span class="name">{{ (user.name) ? user.name : 'unknown username' }}</span>
