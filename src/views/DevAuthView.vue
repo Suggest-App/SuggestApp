@@ -54,7 +54,7 @@ function searchUser(): void {
     filteredUserArray.value = users.value
   } else {
     filteredUserArray.value = users.value.filter(function (el: DevUser) {
-      return el.name.includes(searchbar.value)
+      return el.name.toLowerCase().includes(searchbar.value.toLowerCase())
     });
   }
 }
