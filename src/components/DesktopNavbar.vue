@@ -13,6 +13,7 @@ import SettingsIcon from "@/components/icons/SettingsIcon.vue";
 import ConnectionIcon from "@/components/icons/ConnectionIcon.vue";
 import {useMainStore} from "@/stores/MainStore";
 import RecommendedMediaViewIcon from "@/components/icons/navbar/RecommendedMediaViewIcon.vue";
+import { deleteCookie } from "@/services/TokenService";
 
 const route = useRoute()
 const mainStore = useMainStore()
@@ -85,7 +86,7 @@ const isDevEnvironment = computed(() => (import.meta.env.VITE_STAGE === 'dev'))
       <span>{{ $t('navbar.connection') }}</span>
     </RouterLink>
 
-    <RouterLink v-if="isDevEnvironment" :to="{ name: 'auth' }">
+    <RouterLink @click="deleteCookie('jwt')" v-if="isDevEnvironment" :to="{ name: 'auth' }">
       <ConnectionIcon />
       <span>{{ $t('navbar.logout') }}</span>
     </RouterLink>
