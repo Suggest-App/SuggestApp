@@ -5,7 +5,8 @@
     "chats": "Chats",
     "profile": "Profile",
     "settings": "Settings",
-    "connection": "Connected Apps"
+    "connection": "Connected Apps",
+    "logout": "change user"
   },
   "authView": {
     "slider": {

@@ -34,6 +34,8 @@ const profile: ComputedRef<User> = computed(() => {
 const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
   return (route.path.includes('matching-profile'))
 })
+
+const isDevEnvironment = computed(() => (import.meta.env.VITE_STAGE === 'dev'))
 </script>
 
 <template>
@@ -81,6 +83,11 @@ const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
     <RouterLink :to="{ name: 'connected-apps' }">
       <ConnectionIcon />
       <span>{{ $t('navbar.connection') }}</span>
+    </RouterLink>
+
+    <RouterLink v-if="isDevEnvironment" :to="{ name: 'auth' }">
+      <ConnectionIcon />
+      <span>{{ $t('navbar.logout') }}</span>
     </RouterLink>
 
   </nav>
