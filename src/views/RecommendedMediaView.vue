@@ -5,6 +5,7 @@ import {computed, onMounted} from "vue";
 import type { ComputedRef } from "vue";
 import HeadingWrapper from "@/components/HeadingWrapper.vue";
 import MediaList from "@/components/media/list/MediaList.vue";
+import MediaListElement from "@/components/media/list/MediaListElement.vue";
 import { User } from "@/classes/User";
 
 const mainStore = useMainStore()

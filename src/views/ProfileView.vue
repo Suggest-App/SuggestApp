@@ -7,6 +7,7 @@ import HeadingWrapper from "@/components/HeadingWrapper.vue";
 import ProfileImageWrapper from "@/components/ProfileImageWrapper.vue";
 import ProfileInfoColumn from "@/components/ProfileInfoColumn.vue";
 import MediaList from "@/components/media/list/MediaList.vue";
+import MediaListElement from "@/components/media/list/MediaListElement.vue";
 import ProfileInfoGrid from "@/components/ProfileInfoGrid.vue";
 import ProfileTopNavigation from "@/components/ProfileTopNavigation.vue";
 import SettingsButton from "@/components/icons/SettingsButton.vue";

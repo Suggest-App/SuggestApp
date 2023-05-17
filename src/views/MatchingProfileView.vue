@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import MediaList from "@/components/media/list/MediaList.vue";
+import MediaListElement from "@/components/media/list/MediaListElement.vue";
 import HeadingWrapper from "@/components/HeadingWrapper.vue";
 import MediaSlider from "@/components/media/slider/MediaSlider.vue";
 import {computed, onMounted} from "vue";
