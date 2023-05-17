@@ -77,11 +77,11 @@ function searchUser(): void {
 
     <div
         class="user"
-        v-for="[user, index] in filteredUserArray"
-        :key="index"
+        v-for="user in filteredUserArray"
+        :key="user.userId"
     >
       <span class="name">{{ (user.name) ? user.name : 'unknown username' }}</span>
-      <button @click.prevent="setUserToken(user.uid)">Get Token</button>
+      <button @click.prevent="setUserToken(user.userId)">Get Token</button>
     </div>
   </div>
 </template>
