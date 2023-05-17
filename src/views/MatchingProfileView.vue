@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import MediaList from "@/components/media/list/MediaList.vue";
+import MediaListElement from "@/components/media/list/MediaListElement.vue";
 import HeadingWrapper from "@/components/HeadingWrapper.vue";
 import MediaSlider from "@/components/media/slider/MediaSlider.vue";
 import {computed, onMounted} from "vue";
@@ -11,6 +12,7 @@ import {UserMatch} from "@/classes/UserMatch";
 import {useRoute} from "vue-router";
 import MobileMatchProfile from "@/components/MobileMatchProfile.vue";
 import DesktopMatchProfile from "@/components/DesktopMatchProfile.vue";
+import {secondsToTime} from "@/composables/MediaInformationFormatting";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
@@ -32,6 +34,13 @@ onMounted(async () => {
 const match: ComputedRef<UserMatch> = computed(
     () => matchesStore.getUserMatchByUid(userId)
 )
+
+// calculate listened time
+function getListenedTime(seconds: number) {
+  return (seconds)
+      ? secondsToTime(seconds)
+      : ''
+}
 </script>
 
 <template>
@@ -71,7 +80,28 @@ const match: ComputedRef<UserMatch> = computed(
       </template>
     </HeadingWrapper>
 
-    <MediaList :media-list="match.getMediaSummary()" />
+    <MediaList>
+      <template #media-elements>
+        <MediaListElement
+            v-show="!mainStore.isLoading"
+            v-for="(media, index) in match.getMediaSummary()"
+            :key="index"
+            :index="index"
+            :media="media"
+        >
+          <template #right>
+            <span class="time">{{ getListenedTime(media.listenedSeconds) }}</span>
+          </template>
+        </MediaListElement>
+      </template>
+      <template #skeleton-elements>
+        <MediaListElement
+            v-show="mainStore.isLoading"
+            v-for="index in 10"
+            :key="index"
+        />
+      </template>
+    </MediaList>
   </main>
 </template>
 

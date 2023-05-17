@@ -101,8 +101,10 @@ export async function validateUser(): Promise<void> {
  * @return Promise<DevUser[]>
  */
 export async function getUsersAccounts(pw: string): Promise<DevUser[]> {
-    return axios.get(`/list-users/${pw}`)
-        .then(resp => resp.data)
+    return axios.get(`/admin/list-users/${pw}`)
+        .then(resp => {
+            return resp.data
+        })
         .catch((error) => {
             switch (error.response.status) {
                 default:
@@ -124,7 +126,7 @@ export async function getUsersAccounts(pw: string): Promise<DevUser[]> {
  */
 export async function getUserToken(uid: string, pw: string): Promise<string> {
     return axios.get(`/admin/get-token/${uid}/${pw}`)
-        .then(resp => resp.data)
+        .then(resp => resp.data.jwt)
         .catch((error) => {
             switch (error.response.status) {
                 default:

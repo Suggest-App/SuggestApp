@@ -7,11 +7,13 @@ import HeadingWrapper from "@/components/HeadingWrapper.vue";
 import ProfileImageWrapper from "@/components/ProfileImageWrapper.vue";
 import ProfileInfoColumn from "@/components/ProfileInfoColumn.vue";
 import MediaList from "@/components/media/list/MediaList.vue";
+import MediaListElement from "@/components/media/list/MediaListElement.vue";
 import ProfileInfoGrid from "@/components/ProfileInfoGrid.vue";
 import ProfileTopNavigation from "@/components/ProfileTopNavigation.vue";
 import SettingsButton from "@/components/icons/SettingsButton.vue";
 import ConnectedAppsBtn from "@/components/icons/ConnectedAppsBtn.vue";
 import { User } from "@/classes/User";
+import {secondsToTime} from "@/composables/MediaInformationFormatting";
 
 const mainStore = useMainStore()
 const profileStore = useProfileStore()
@@ -27,6 +29,13 @@ onMounted(async () => {
 const profile: ComputedRef<User> = computed(() => {
   return (profileStore.profile instanceof User) ? profileStore.profile : new User()
 })
+
+// calculate listened time
+function getListenedTime(seconds: number) {
+  return (seconds)
+      ? secondsToTime(seconds)
+      : ''
+}
 </script>
 
 <template>
@@ -73,6 +82,27 @@ const profile: ComputedRef<User> = computed(() => {
       </template>
     </HeadingWrapper>
 
-    <MediaList :media-list="profile.getMediaSummary()" />
+    <MediaList>
+      <template #media-elements>
+        <MediaListElement
+            v-show="!mainStore.isLoading"
+            v-for="(media, index) in profile.getMediaSummary()"
+            :key="index"
+            :index="index"
+            :media="media"
+        >
+          <template #right>
+            <span class="time">{{ getListenedTime(media.listenedSeconds) }}</span>
+          </template>
+        </MediaListElement>
+      </template>
+      <template #skeleton-elements>
+        <MediaListElement
+            v-show="mainStore.isLoading"
+            v-for="index in 10"
+            :key="index"
+        />
+      </template>
+    </MediaList>
   </main>
 </template>

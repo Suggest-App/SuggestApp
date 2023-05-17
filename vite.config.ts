@@ -65,6 +65,16 @@ export default defineConfig({
         target: "https://suggest-app.com",
         changeOrigin: true,
         secure: false,
+      },
+      '/admin': {
+        target: "https://dev.suggest-app.com",
+        changeOrigin: true,
+        secure: false,
+      },
+      '/list-users': {
+        target: "https://dev.suggest-app.com",
+        changeOrigin: true,
+        secure: false,
       }
     },
   },

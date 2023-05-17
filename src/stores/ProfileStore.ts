@@ -48,8 +48,26 @@ export const useProfileStore = defineStore('profileStore', () => {
     }
   }
 
+  /**
+   * Fill the user profile object with the fetched data
+   *
+   * @return Promise<void>
+   */
+  async function fetchRecommendedMediaSummary(): Promise<void> {
+    const recommendedMedia = await ProfileService.fetchRecommendedMediaSummary()
+
+    if(!profile.value) {
+      await fetchUserProfile()
+    }
+
+    if(profile.value && recommendedMedia.length !== 0) {
+      profile.value.setRecommendedMediaSummary(recommendedMedia)
+    }
+  }
+
   return {
     profile,
-    fetchUserProfile
+    fetchUserProfile,
+    fetchRecommendedMediaSummary
   }
 })

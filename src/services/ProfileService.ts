@@ -2,6 +2,7 @@ import type { AxiosResponse } from 'axios';
 import type { ProfileInformation } from "@/models/ProfileInformation";
 import type { Media } from "@/models/Media";
 import { tryGetAuthorizedInstance } from "@/services/TokenService";
+import type {RecommendedMedia} from "@/models/RecommendedMedia";
 
 export default {
 
@@ -31,6 +32,25 @@ export default {
      */
     async fetchPersonalSummary(): Promise<Media[]> {
         return tryGetAuthorizedInstance().get('/user/spotify/personal-summary')
+            .then((response: AxiosResponse) => response.data)
+            .catch((error) => {
+                switch (error.response.status) {
+                    default:
+                        console.log(
+                            'ProfileService.ts no status case ' + error.response.status
+                        )
+                        break
+                }
+            })
+    },
+
+    /**
+     * Fetch the users recommended media from all user matches
+     *
+     * @return Promise<RecommendedMedia[]>
+     */
+    async fetchRecommendedMediaSummary(): Promise<RecommendedMedia[]> {
+        return tryGetAuthorizedInstance().get('/user/matches/recommended-media?limit=100')
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {
                 switch (error.response.status) {

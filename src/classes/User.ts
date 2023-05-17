@@ -1,4 +1,5 @@
 import type { Media } from "@/models/Media";
+import type { RecommendedMedia } from "@/models/RecommendedMedia";
 import { formatDateString, secondsToTime } from "@/composables/MediaInformationFormatting";
 
 export class User {
@@ -23,6 +24,9 @@ export class User {
 
     /** @var array of media items represent the personal spotify track history */
     protected mediaSummary: Media[] = []
+
+    /** @var array of media recommendations from all user matches in one list */
+    protected recommendedMediaSummary: RecommendedMedia[] = []
 
     /**
      * Get the id of this user
@@ -147,7 +151,7 @@ export class User {
     /**
      * Get an array of media items that represent the personal spotify track history
      *
-     * @return number
+     * @return Media[]
      */
     public getMediaSummary(): Media[] {
         return this.mediaSummary;
@@ -162,5 +166,25 @@ export class User {
      */
     public setMediaSummary(mediaArray: Media[]): void {
         this.mediaSummary = mediaArray;
+    }
+
+    /**
+     * Get an array of recommended media items from all user matches
+     *
+     * @return RecommendedMedia
+     */
+    public getRecommendedMediaSummary(): RecommendedMedia[] {
+        return this.recommendedMediaSummary;
+    }
+
+    /**
+     * Set an array of recommended media items from all user matches
+     *
+     * @param mediaArray RecommendedMedia[]
+     *
+     * @return void
+     */
+    public setRecommendedMediaSummary(mediaArray: RecommendedMedia[]): void {
+        this.recommendedMediaSummary = mediaArray;
     }
 }
