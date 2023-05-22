@@ -62,24 +62,37 @@ const isArchive: Ref<boolean> = ref(route.name === 'archive')
 // Check if media select flag is active, if so don't redirect and instead call hide or restore endpoint
 function clickMedia(event: Event, mediaId: string) {
   if (profileStore.selectMediaFlag || isArchive.value) {
-    event.preventDefault()
+    event.preventDefault();
 
     if (isArchive.value) {
-      MediaService.restoreClickedMedia(mediaId)
+      MediaService.restoreClickedMedia(mediaId);
 
       // Ensure that the media is getting removed from the store array
       if (profileStore.profile) {
-        let hiddenMedia = profileStore.profile.getHiddenMedia()
-        hiddenMedia.splice(hiddenMedia.findIndex(media => media.mediumId === mediaId));
+        let hiddenMedia = profileStore.profile.getHiddenMedia();
+        let filteredMediaIndex = hiddenMedia.findIndex(media => media.mediumId === mediaId);
+
+
+
+        // Remove the specific media item using splice
+        if (filteredMediaIndex > -1) {
+          hiddenMedia.splice(filteredMediaIndex, 0);
+          console.log(filteredMediaIndex);
+          console.log(hiddenMedia);
+        } else if (filteredMediaIndex === 0) {
+          hiddenMedia = []
+        }
+
+        profileStore.profile.setHiddenMedia(hiddenMedia);
       }
 
-      profileStore.hiddenMediaCount--
+      profileStore.hiddenMediaCount--;
     } else {
-      MediaService.hideClickedMedia(mediaId)
-      profileStore.hiddenMediaCount++
+      MediaService.hideClickedMedia(mediaId);
+      profileStore.hiddenMediaCount++;
     }
 
-    showMedia.value = false
+    showMedia.value = false;
   }
 }
 
