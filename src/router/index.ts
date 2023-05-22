@@ -8,6 +8,7 @@ import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
 import MatchesView from "@/views/MatchesView.vue";
 import MatchingProfileView from "@/views/MatchingProfileView.vue";
 import SettingsView from "@/views/SettingsView.vue";
+import ArchiveView from "@/views/ArchiveView.vue";
 import ConnectedAppsView from "@/views/ConnectedAppsView.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
 import {useMainStore} from "@/stores/MainStore";
@@ -69,6 +70,15 @@ const router = createRouter({
       meta: {
         showNavbar: true,
         requiresUid: true
+      }
+    },
+    {
+      path: '/archive',
+      name: 'archive',
+      component: ArchiveView,
+      meta: {
+        showNavbar: true,
+        requiresUid: false
       }
     },
     {

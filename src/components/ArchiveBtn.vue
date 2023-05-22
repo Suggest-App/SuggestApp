@@ -1,13 +1,16 @@
 <script lang="ts" setup>
 import ArchiveIcon from "@/components/icons/ArchiveIcon.vue";
+import {useProfileStore} from "@/stores/ProfileStore";
+
+const profileStore = useProfileStore()
 </script>
 
 <template>
-  <div class="archive-btn">
+  <RouterLink :to="{ name : 'archive' }" class="archive-btn">
     <ArchiveIcon />
-    <span class="hidden-count">15</span>
+    <span class="hidden-count">{{ profileStore.hiddenMediaCount }}</span>
     <span>{{ $t('archiveBtnText') }}</span>
-  </div>
+  </RouterLink>
 </template>
 
 <style lang="scss">
@@ -30,6 +33,7 @@ import ArchiveIcon from "@/components/icons/ArchiveIcon.vue";
     width: 18px;
     height: 18px;
     margin-top: -4px;
+    fill: #FFFFFF;
   }
 
   .hidden-count {

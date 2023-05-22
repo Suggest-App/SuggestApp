@@ -26,6 +26,9 @@
     "disconnectLink": "disconnect"
   },
   "archiveBtnText": "manage hidden media",
+  "archiveView": {
+    "heading": "Hidden Media"
+  },
   "matchingProfileView": {
     "followBtn": "follow",
     "introduction": "This is ",

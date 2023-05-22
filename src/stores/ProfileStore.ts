@@ -12,6 +12,7 @@ export const useProfileStore = defineStore('profileStore', () => {
   const profile: Ref<User | null> = ref(null)
 
   const selectMediaFlag: Ref<boolean> = ref(false)
+  const hiddenMediaCount: Ref<number> = ref(0)
 
   /**
    * Fill the user profile object with the fetched data
@@ -65,10 +66,29 @@ export const useProfileStore = defineStore('profileStore', () => {
     }
   }
 
+  /**
+   * Fill the user profile object with the fetched data
+   *
+   * @return Promise<void>
+   */
+  async function fetchHiddenMedia(): Promise<void> {
+    const hiddenMedia = await ProfileService.fetchHiddenMedia()
+
+    if(!profile.value) {
+      await fetchUserProfile()
+    }
+
+    if(profile.value && hiddenMedia.length !== 0) {
+      profile.value.setHiddenMedia(hiddenMedia)
+    }
+  }
+
   return {
     profile,
     selectMediaFlag,
+    hiddenMediaCount,
     fetchUserProfile,
-    fetchRecommendedMediaSummary
+    fetchRecommendedMediaSummary,
+    fetchHiddenMedia
   }
 })

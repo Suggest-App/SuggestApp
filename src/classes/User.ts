@@ -25,6 +25,9 @@ export class User {
     /** @var array of media items represent the personal spotify track history */
     protected mediaSummary: Media[] = []
 
+    /** @var array of all media items that are hidden */
+    protected hiddenMedia: Media[] = []
+
     /** @var array of media recommendations from all user matches in one list */
     protected recommendedMediaSummary: RecommendedMedia[] = []
 
@@ -186,5 +189,25 @@ export class User {
      */
     public setRecommendedMediaSummary(mediaArray: RecommendedMedia[]): void {
         this.recommendedMediaSummary = mediaArray;
+    }
+
+    /**
+     * Get the array of hidden media items
+     *
+     * @return Media[]
+     */
+    public getHiddenMedia(): Media[] {
+        return this.hiddenMedia;
+    }
+
+    /**
+     * Set the array of hidden media items
+     *
+     * @param mediaArray Media[]
+     *
+     * @return void
+     */
+    public setHiddenMedia(mediaArray: Media[]): void {
+        this.hiddenMedia = mediaArray;
     }
 }

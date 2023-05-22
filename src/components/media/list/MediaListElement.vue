@@ -9,11 +9,13 @@ import MediaImage from "@/components/media/list/MediaListImage.vue";
 import ListMediaElementInfo from "@/components/media/list/ListMediaElementInfo.vue";
 import {useProfileStore} from "@/stores/ProfileStore";
 import MediaService from "@/services/MediaService";
+import {useRoute} from "vue-router";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
 const mainStore = useMainStore()
 const profileStore = useProfileStore()
+const route = useRoute();
 
 const props =  defineProps({
   media: {
@@ -54,17 +56,27 @@ const mediaImage: ComputedRef<string> = computed(() => {
       : ''
 })
 
-
 const showMedia: Ref<boolean> = ref(true)
+const isArchive: Ref<boolean> = ref(route.name === 'archive')
 
-// Check if media select flag is active, if so don't redirect and instead call hide endpoint
+// Check if media select flag is active, if so don't redirect and instead call hide or restore endpoint
 function clickMedia(event: Event, mediaId: string) {
   if (profileStore.selectMediaFlag) {
     event.preventDefault()
-    MediaService.hideClickedMedia(mediaId)
+
+    if (isArchive) {
+      MediaService.restoreClickedMedia(mediaId)
+      profileStore.hiddenMediaCount++
+    } else {
+      MediaService.hideClickedMedia(mediaId)
+      profileStore.hiddenMediaCount++
+    }
+
     showMedia.value = false
   }
 }
+
+
 </script>
 
 <template>
@@ -75,8 +87,14 @@ function clickMedia(event: Event, mediaId: string) {
       :href="props.media.linkToMedia"
       @click="clickMedia($event, props.media.mediumId)"
   >
-    <span v-show="!profileStore.selectMediaFlag" class="rank">{{ index + 1 }}</span>
-    <span v-show="profileStore.selectMediaFlag" class="hide-media-btn">-</span>
+    <span v-show="!profileStore.selectMediaFlag && !isArchive" class="rank">{{ index + 1 }}</span>
+    <span
+        v-show="!mainStore.isLoading && (profileStore.selectMediaFlag || isArchive)"
+        class="archive-action"
+        :class="(isArchive) ? 'restore' : 'hide'"
+    >
+      {{ (isArchive) ? '+' : '-' }}
+    </span>
     <MediaImage :src="mediaImage" />
     <ListMediaElementInfo
       :song-title="songTitle"
@@ -100,16 +118,23 @@ function clickMedia(event: Event, mediaId: string) {
     font-size: $font-size-s;
   }
 
-  .hide-media-btn {
+  .archive-action {
     width: 20px;
     height: 20px;
     pointer-events: none;
     border-radius: 50%;
-    background-color: #ff4d4d;
     color: #FFFFFF;
     font-weight: 600;
     text-align: center;
     line-height: 16px;
+  }
+
+  .archive-action.hide {
+    background-color: #ff4d4d;
+  }
+
+  .archive-action.restore {
+    background-color: #0be881;
   }
 
   .time {
