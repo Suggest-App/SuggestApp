@@ -67,9 +67,7 @@ function clickMedia(event: Event, mediaId: string) {
     if (isArchive.value) {
       MediaService.restoreClickedMedia(mediaId)
       profileStore.hiddenMediaCount++
-      console.log(isArchive.value)
     } else {
-      console.log('test')
       MediaService.hideClickedMedia(mediaId)
       profileStore.hiddenMediaCount++
     }
