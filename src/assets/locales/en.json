@@ -6,7 +6,8 @@
     "profile": "Profile",
     "settings": "Settings",
     "connection": "Connected Apps",
-    "logout": "change user"
+    "logout": "change user",
+    "archive": "archive"
   },
   "authView": {
     "slider": {
@@ -25,9 +26,13 @@
     "connectStatus": "Connected",
     "disconnectLink": "disconnect"
   },
+  "profileView": {
+    "archiveActionText": "hide songs"
+  },
   "archiveBtnText": "manage hidden media",
   "archiveView": {
-    "heading": "Hidden Media"
+    "heading": "Hidden Media",
+    "noMedia": "no archived songs yet"
   },
   "matchingProfileView": {
     "followBtn": "follow",

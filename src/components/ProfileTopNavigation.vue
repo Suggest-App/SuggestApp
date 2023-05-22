@@ -45,7 +45,8 @@ defineProps({
     h2 {
       width: 100%;
       text-align: center;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 16px;
     }
   }
 
@@ -66,6 +67,10 @@ defineProps({
     column-gap: 25px;
     max-width: unset;
     margin-bottom: 35px;
+
+    .middle h2 {
+
+    }
   }
 }
 </style>

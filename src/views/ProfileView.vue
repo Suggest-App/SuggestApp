@@ -15,7 +15,7 @@ import ConnectedAppsBtn from "@/components/icons/ConnectedAppsBtn.vue";
 import { User } from "@/classes/User";
 import {secondsToTime} from "@/composables/MediaInformationFormatting";
 import HideMediaIcon from "@/components/icons/HideMediaIcon.vue";
-import HiddenMediaBtn from "@/components/ArchiveBtn.vue";
+import ArchiveBtn from "@/components/ArchiveBtn.vue";
 
 const mainStore = useMainStore()
 const profileStore = useProfileStore()
@@ -85,7 +85,7 @@ function getListenedTime(seconds: number) {
       </template>
     </HeadingWrapper>
 
-    <HiddenMediaBtn v-show="profileStore.selectMediaFlag" />
+    <ArchiveBtn v-show="profileStore.selectMediaFlag && !mainStore.isDesktop" />
 
     <MediaList>
       <template #media-elements>

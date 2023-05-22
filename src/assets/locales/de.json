@@ -6,7 +6,8 @@
     "profile": "Profil",
     "settings": "Einstellungen",
     "connection": "Verknüpfte Apps",
-    "logout": "Nutzer Wechseln"
+    "logout": "Nutzer Wechseln",
+    "archive": "Archiv"
   },
   "authView": {
     "slider": {
@@ -25,9 +26,13 @@
     "connectStatus": "Verbunden",
     "disconnectLink": "auflösen"
   },
+  "profileView": {
+    "archiveActionText": "Songs ausblenden"
+  },
   "archiveBtnText": "Ausgeblendete Songs verwalten",
   "archiveView": {
-    "heading": "Ausgeblendete Songs"
+    "heading": "Ausgeblendete Songs",
+    "noMedia": "Noch keine archivierten Songs"
   },
   "matchingProfileView": {
     "followBtn": "Folgen",

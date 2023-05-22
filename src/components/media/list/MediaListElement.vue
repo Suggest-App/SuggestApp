@@ -61,12 +61,19 @@ const isArchive: Ref<boolean> = ref(route.name === 'archive')
 
 // Check if media select flag is active, if so don't redirect and instead call hide or restore endpoint
 function clickMedia(event: Event, mediaId: string) {
-  if (profileStore.selectMediaFlag) {
+  if (profileStore.selectMediaFlag || isArchive.value) {
     event.preventDefault()
 
     if (isArchive.value) {
       MediaService.restoreClickedMedia(mediaId)
-      profileStore.hiddenMediaCount++
+
+      // Ensure that the media is getting removed from the store array
+      if (profileStore.profile) {
+        let hiddenMedia = profileStore.profile.getHiddenMedia()
+        hiddenMedia.splice(hiddenMedia.findIndex(media => media.mediumId === mediaId),0);
+      }
+
+      profileStore.hiddenMediaCount--
     } else {
       MediaService.hideClickedMedia(mediaId)
       profileStore.hiddenMediaCount++
@@ -87,13 +94,13 @@ function clickMedia(event: Event, mediaId: string) {
       :href="props.media.linkToMedia"
       @click="clickMedia($event, props.media.mediumId)"
   >
-    <span v-show="!profileStore.selectMediaFlag && !isArchive.value" class="rank">{{ index + 1 }}</span>
+    <span v-show="!profileStore.selectMediaFlag && !isArchive" class="rank">{{ index + 1 }}</span>
     <span
-        v-show="!mainStore.isLoading && (profileStore.selectMediaFlag || isArchive.value)"
+        v-show="!mainStore.isLoading && (profileStore.selectMediaFlag || isArchive)"
         class="archive-action"
-        :class="(isArchive.value) ? 'restore' : 'hide'"
+        :class="(isArchive) ? 'restore' : 'hide'"
     >
-      {{ (isArchive.value) ? '+' : '-' }}
+      {{ (isArchive) ? '+' : '-' }}
     </span>
     <MediaImage :src="mediaImage" />
     <ListMediaElementInfo
@@ -134,7 +141,7 @@ function clickMedia(event: Event, mediaId: string) {
   }
 
   .archive-action.restore {
-    background-color: #0be881;
+    background-color: #43bb83;
   }
 
   .time {

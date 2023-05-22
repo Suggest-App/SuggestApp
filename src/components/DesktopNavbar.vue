@@ -13,6 +13,9 @@ import SettingsIcon from "@/components/icons/SettingsIcon.vue";
 import ConnectionIcon from "@/components/icons/ConnectionIcon.vue";
 import {useMainStore} from "@/stores/MainStore";
 import RecommendedMediaViewIcon from "@/components/icons/navbar/RecommendedMediaViewIcon.vue";
+import ArchiveIcon from "@/components/icons/ArchiveIcon.vue";
+import EyeSlashIcon from "@/components/icons/EyeSlashIcon.vue";
+import HideMediaIcon from "@/components/icons/HideMediaIcon.vue";
 
 const route = useRoute()
 const mainStore = useMainStore()
@@ -33,6 +36,10 @@ const profile: ComputedRef<User> = computed(() => {
 // Bool that indicates, if the matches icon should be active, when matching profile is viewed
 const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
   return (route.path.includes('matching-profile'))
+})
+
+const showArchiveAction: ComputedRef<boolean> = computed(() => {
+  return (route.name === 'profile')
 })
 </script>
 
@@ -82,6 +89,16 @@ const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
       <ConnectionIcon />
       <span>{{ $t('navbar.connection') }}</span>
     </RouterLink>
+
+    <RouterLink :to="{ name: 'archive' }">
+      <ArchiveIcon stroke-w/>
+      <span>{{ $t('navbar.archive') }}</span>
+      <span class="archive-count" v-if="profileStore.hiddenMediaCount > 0">{{ profileStore.hiddenMediaCount  }}</span>
+      <span class="hide-media-btn" :class="{ active : profileStore.selectMediaFlag}" v-show="showArchiveAction" @click.prevent="profileStore.selectMediaFlag = !profileStore.selectMediaFlag">
+        <EyeSlashIcon />
+        <span>{{ $t('profileView.archiveActionText') }}</span>
+      </span>
+    </RouterLink>
   </nav>
 </template>
 
@@ -100,12 +117,14 @@ const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
   }
 
   a {
+    position: relative;
     width: 100%;
     @include flex-center-y;
     justify-content: flex-start;
     column-gap: 12px;
-    margin-bottom: $wrapper-bottom-margin;
+    margin-bottom: calc($wrapper-bottom-margin - 6px);
     padding: 0 45px;
+    height: 26px;
   }
 
   svg:not(.profile-image) {
@@ -115,6 +134,51 @@ const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
 
   a span {
     font-size: $font-size-m;
+  }
+
+  .archive-count {
+    position: absolute;
+    bottom: -7px;
+    left: 57px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #FA8231;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 14px;
+    color: #FFFFFF;
+  }
+
+  .hide-media-btn {
+    @include flex-center-xy;
+    column-gap: 10px;
+    height: 100%;
+    background-color: #202020;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto;
+
+    span {
+      font-size: 12px;
+      color: #FFFFFF;
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+      fill: #FFFFFF;
+    }
+  }
+
+  .hide-media-btn.active {
+    background-color: #2b2b2b;
+  }
+
+  .hide-media-btn:hover {
+    background-color: #2b2b2b;
   }
 }
 
