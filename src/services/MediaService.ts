@@ -2,11 +2,9 @@ import { tryGetAuthorizedInstance } from "@/services/TokenService";
 
 export default {
     hideClickedMedia(mediaId: string, origin: string = 'personalHistory'): void {
-        tryGetAuthorizedInstance().delete('/user/hidden-media', {
-            data: {
-                mediumId: mediaId,
-                origin: origin
-            }
+        tryGetAuthorizedInstance().post('/user/hidden-media', {
+            mediumId: mediaId,
+            origin: origin
         })
         .catch((error) => {
             switch (error.response.status) {
