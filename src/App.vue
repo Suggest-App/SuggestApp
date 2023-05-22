@@ -4,7 +4,7 @@ import type { ComputedRef } from "vue";
 import { RouterView, useRoute } from 'vue-router'
 import { useMainStore } from "@/stores/MainStore";
 import MobileNavbar from "@/components/MobileNavbar.vue";
-import { setCookie, validateUser} from "@/services/TokenService";
+import {checkUrlToken, setCookie, validateUser} from "@/services/TokenService";
 import DesktopNavbar from "@/components/DesktopNavbar.vue";
 
 console.log(import.meta.env)
@@ -21,6 +21,7 @@ onMounted(async () => {
   // Check after mound if window with is desktop
   mainStore.isDesktop = (window.innerWidth >= 768)
   await validateUser()
+  await checkUrlToken()
 })
 </script>
 
