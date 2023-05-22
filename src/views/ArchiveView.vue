@@ -18,7 +18,6 @@ onMounted(async () => {
   await profileStore.fetchHiddenMedia()
       .then(() => mainStore.isLoading = false)
       .catch(e => console.log(e))
-
 })
 
 // The user profile object from the store

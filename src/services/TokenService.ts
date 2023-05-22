@@ -2,6 +2,7 @@ import type { AxiosInstance } from 'axios'
 import axios from "axios";
 import router from "@/router";
 import type { DevUser } from "@/models/DevUser";
+import {useRoute} from "vue-router";
 
 /**
  * Try to get a cookie by its name
@@ -21,7 +22,7 @@ export function getCookie(name: string): string | undefined {
     }
 }
 
-export function setCookie(name: string, value: string,days: number) {
+export function setCookie(name: string, value: string, days: number = 30) {
     var expires = "";
     if (days) {
         var date = new Date();
@@ -75,11 +76,38 @@ export function tryGetAuthorizedInstance(): AxiosInstance {
  * @return Promise<void>
  */
 export async function validateUser(): Promise<void> {
+    await checkUrlToken()
     return tryGetAuthorizedInstance().get('/user/valid')
         .then(resp => {
             if (!resp.data) {
                 deleteCookie('jwt')
                 router.push('/')
+            }
+        })
+        .catch((error) => {
+            switch (error.response.status) {
+                default:
+                    console.log(
+                        'TokenService.ts no status case ' + error.response.status
+                    )
+                    break
+            }
+        })
+}
+
+/**
+ *
+ *
+ * @return Promise<void>
+ */
+export async function checkUrlToken(): Promise<void> {
+    const route = useRoute()
+    const token = (route.params && route.params) ? route.params.token : ''
+    axios.get(`/url/token/${token}`)
+        .then(resp => {
+            if (resp.data) {
+                setCookie('jwt', resp.data)
+                router.push({ name: 'profile'})
             }
         })
         .catch((error) => {
