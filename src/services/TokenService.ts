@@ -102,7 +102,7 @@ export async function validateUser(): Promise<void> {
 export async function checkUrlToken(): Promise<void> {
     const route = useRoute()
     const token = (route.params && route.params) ? route.params.loginToken : ''
-    axios.get(`/login-with-token/${token}`)
+    axios.get(`/admin/login-with-token/${token}`)
         .then(resp => {
             if (resp.data.jwt && resp.data.jwt !== '') {
                 setCookie('jwt', resp.data.jwt)
