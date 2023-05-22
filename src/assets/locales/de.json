@@ -25,6 +25,7 @@
     "connectStatus": "Verbunden",
     "disconnectLink": "auflösen"
   },
+  "archiveBtnText": "Ausgeblendete Songs verwalten",
   "matchingProfileView": {
     "followBtn": "Folgen",
     "introduction": "Das ist ",

@@ -25,6 +25,7 @@
     "connectStatus": "Connected",
     "disconnectLink": "disconnect"
   },
+  "archiveBtnText": "manage hidden media",
   "matchingProfileView": {
     "followBtn": "follow",
     "introduction": "This is ",
