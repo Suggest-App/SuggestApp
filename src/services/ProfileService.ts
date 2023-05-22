@@ -64,6 +64,25 @@ export default {
     },
 
     /**
+     * Fetch the hidden media from all user
+     *
+     * @return Promise<Media[]>
+     */
+    async fetchHiddenMedia(): Promise<Media[]> {
+        return tryGetAuthorizedInstance().get('/user/profile/hidden-media')
+            .then((response: AxiosResponse) => response.data)
+            .catch((error) => {
+                switch (error.response.status) {
+                    default:
+                        console.log(
+                            'ProfileService.ts no status case ' + error.response.status
+                        )
+                        break
+                }
+            })
+    },
+
+    /**
      * Patch the user settings (locale)
      *
      * @param locale 'en' | 'de'

@@ -13,4 +13,17 @@ export default {
                 }
             })
     },
+
+    restoreClickedMedia(mediaId: string): void {
+        tryGetAuthorizedInstance().get(`/profile/restore-media/${mediaId}`)
+            .catch((error) => {
+                switch (error.response.status) {
+                    default:
+                        console.log(
+                            'ProfileService.ts no status case ' + error.response.status
+                        )
+                        break
+                }
+            })
+    },
 }
