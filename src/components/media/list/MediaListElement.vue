@@ -118,23 +118,16 @@ function clickMedia(event: Event, mediaId: string) {
     font-size: $font-size-s;
   }
 
-  .archive-action {
+  .hide-media-btn {
     width: 20px;
     height: 20px;
     pointer-events: none;
     border-radius: 50%;
+    background-color: #ff4d4d;
     color: #FFFFFF;
     font-weight: 600;
     text-align: center;
     line-height: 16px;
-  }
-
-  .archive-action.hide {
-    background-color: #ff4d4d;
-  }
-
-  .archive-action.restore {
-    background-color: #0be881;
   }
 
   .time {
