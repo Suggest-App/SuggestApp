@@ -70,7 +70,7 @@ function clickMedia(event: Event, mediaId: string) {
       // Ensure that the media is getting removed from the store array
       if (profileStore.profile) {
         let hiddenMedia = profileStore.profile.getHiddenMedia()
-        hiddenMedia.splice(hiddenMedia.findIndex(media => media.mediumId === mediaId),0);
+        hiddenMedia.splice(hiddenMedia.findIndex(media => media.mediumId === mediaId));
       }
 
       profileStore.hiddenMediaCount--
