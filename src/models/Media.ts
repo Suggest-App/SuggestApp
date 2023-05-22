@@ -1,6 +1,7 @@
 import type { MediaImage } from "@/models/MediaImage";
 
 export interface Media {
+    mediumId:        string,
     songTitle:       string,
     allArtists:      string[],
     explicitFlag:     boolean,

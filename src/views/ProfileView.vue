@@ -14,6 +14,7 @@ import SettingsButton from "@/components/icons/SettingsButton.vue";
 import ConnectedAppsBtn from "@/components/icons/ConnectedAppsBtn.vue";
 import { User } from "@/classes/User";
 import {secondsToTime} from "@/composables/MediaInformationFormatting";
+import HideMediaIcon from "@/components/icons/HideMediaIcon.vue";
 
 const mainStore = useMainStore()
 const profileStore = useProfileStore()
@@ -45,6 +46,7 @@ function getListenedTime(seconds: number) {
         :has-loading-anim="true"
     >
       <template #right>
+        <HideMediaIcon />
         <RouterLink :to="{ name: 'connected-apps' }">
           <ConnectedAppsBtn />
         </RouterLink>

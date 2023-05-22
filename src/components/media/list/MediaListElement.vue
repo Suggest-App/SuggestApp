@@ -1,16 +1,19 @@
 <script lang="ts" setup>
-import type { PropType, ComputedRef } from "vue";
+import type {PropType, ComputedRef, Ref} from "vue";
 import type { Media } from "@/models/Media";
-import { computed } from "vue";
+import {computed, onMounted, ref} from "vue";
 import { secondsToTime } from "@/composables/MediaInformationFormatting";
 import { useI18n } from "vue-i18n";
 import { useMainStore } from "@/stores/MainStore";
 import MediaImage from "@/components/media/list/MediaListImage.vue";
 import ListMediaElementInfo from "@/components/media/list/ListMediaElementInfo.vue";
+import {useProfileStore} from "@/stores/ProfileStore";
+import MediaService from "@/services/MediaService";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
 const mainStore = useMainStore()
+const profileStore = useProfileStore()
 
 const props =  defineProps({
   media: {
@@ -50,11 +53,30 @@ const mediaImage: ComputedRef<string> = computed(() => {
       ? props.media.albumImages[0].imageUrl
       : ''
 })
+
+
+const showMedia: Ref<boolean> = ref(true)
+
+// Check if media select flag is active, if so don't redirect and instead call hide endpoint
+function clickMedia(event: Event, mediaId: string) {
+  if (profileStore.selectMediaFlag) {
+    event.preventDefault()
+    MediaService.hideClickedMedia(mediaId)
+    showMedia.value = false
+  }
+}
 </script>
 
 <template>
-  <a :href="props.media.linkToMedia" class="media-element-wrapper" :class="{ 'sk-anim': mainStore.isLoading }">
-    <span class="rank">{{ index + 1 }}</span>
+  <a
+      v-show="showMedia"
+      class="media-element-wrapper"
+      :class="{ 'sk-anim': mainStore.isLoading }"
+      :href="props.media.linkToMedia"
+      @click="clickMedia($event, props.media.mediumId)"
+  >
+    <span v-show="!profileStore.selectMediaFlag" class="rank">{{ index + 1 }}</span>
+    <span v-show="profileStore.selectMediaFlag" class="hide-media-btn">-</span>
     <MediaImage :src="mediaImage" />
     <ListMediaElementInfo
       :song-title="songTitle"
@@ -76,6 +98,18 @@ const mediaImage: ComputedRef<string> = computed(() => {
     @include flex-center-xy;
     width: 20px;
     font-size: $font-size-s;
+  }
+
+  .hide-media-btn {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    border-radius: 50%;
+    background-color: #ff4d4d;
+    color: #FFFFFF;
+    font-weight: 600;
+    text-align: center;
+    line-height: 16px;
   }
 
   .time {

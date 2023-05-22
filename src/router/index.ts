@@ -12,6 +12,7 @@ import ConnectedAppsView from "@/views/ConnectedAppsView.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
 import {useMainStore} from "@/stores/MainStore";
 import AllMediaView from "@/views/AllMediaView.vue";
+import {useProfileStore} from "@/stores/ProfileStore";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -114,6 +115,9 @@ router.beforeEach(async (toRoute: RouteLocationNormalized): Promise<string | voi
   const mainStore = useMainStore()
   mainStore.isLoading = true
 
+  // Reset ui flags
+  resetFlags()
+
   // all pages that doesn't require authorization
   const publicPages = ['/']
 
@@ -130,5 +134,11 @@ router.beforeEach(async (toRoute: RouteLocationNormalized): Promise<string | voi
     return '/profile'
   }
 })
+
+// Reset all frontend flags that interact with the ui
+function resetFlags() {
+  const profileStore = useProfileStore()
+  profileStore.selectMediaFlag = false
+}
 
 export default router

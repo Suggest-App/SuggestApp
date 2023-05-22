@@ -11,7 +11,7 @@ export const useProfileStore = defineStore('profileStore', () => {
   // The own user profile object
   const profile: Ref<User | null> = ref(null)
 
-  const activeLocale: Ref<'en' | 'de'> = ref('de')
+  const selectMediaFlag: Ref<boolean> = ref(false)
 
   /**
    * Fill the user profile object with the fetched data
@@ -67,6 +67,7 @@ export const useProfileStore = defineStore('profileStore', () => {
 
   return {
     profile,
+    selectMediaFlag,
     fetchUserProfile,
     fetchRecommendedMediaSummary
   }
