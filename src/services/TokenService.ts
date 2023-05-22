@@ -76,7 +76,7 @@ export function tryGetAuthorizedInstance(): AxiosInstance {
  * @return Promise<void>
  */
 export async function validateUser(): Promise<void> {
-    await checkUrlToken()
+    //await checkUrlToken()
     return tryGetAuthorizedInstance().get('/user/valid')
         .then(resp => {
             if (!resp.data) {
