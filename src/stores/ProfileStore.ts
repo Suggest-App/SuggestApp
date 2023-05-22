@@ -44,7 +44,7 @@ export const useProfileStore = defineStore('profileStore', () => {
       // Set the media array from the /personal-summary endpoint
       user.setMediaSummary(summary)
 
-      await fetchHiddenMedia()
+      //await fetchHiddenMedia()
 
       // Overwrite the profile ref
       profile.value = user
