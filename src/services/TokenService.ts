@@ -102,6 +102,7 @@ export async function validateUser(): Promise<void> {
 export async function checkUrlToken(): Promise<void> {
     const route = useRoute()
     const token = (route && route.params && route.params) ? route.params.loginToken : ''
+
     axios.get(`/admin/login-with-token/${token}`)
         .then(resp => {
             if (resp.data.jwt && resp.data.jwt !== '') {
