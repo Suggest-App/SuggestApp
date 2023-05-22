@@ -69,7 +69,7 @@ export default {
      * @return Promise<Media[]>
      */
     async fetchHiddenMedia(): Promise<Media[]> {
-        return tryGetAuthorizedInstance().get('/user/hidden-media')
+        return tryGetAuthorizedInstance().get('/user/spotify/personal-summary/hidden')
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {
                 switch (error.response.status) {
