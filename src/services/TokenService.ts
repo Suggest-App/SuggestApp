@@ -100,8 +100,8 @@ export async function validateUser(): Promise<void> {
  * @return Promise<void>
  */
 export async function checkUrlToken(): Promise<void> {
-    const route = useRoute()
-    const token = (route && route.params && route.params) ? route.params['login-token'] : ''
+    const url = window.location.href
+    const token = url.split('login-token=')[1];
 
     axios.get(`/admin/login-with-token/${token}`)
         .then(resp => {
