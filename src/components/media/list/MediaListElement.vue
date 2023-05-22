@@ -57,7 +57,7 @@ const mediaImage: ComputedRef<string> = computed(() => {
 })
 
 const showMedia: Ref<boolean> = ref(true)
-const isArchive.value: Ref<boolean> = ref(route.name === 'archive')
+const isArchive: Ref<boolean> = ref(route.name === 'archive')
 
 // Check if media select flag is active, if so don't redirect and instead call hide or restore endpoint
 function clickMedia(event: Event, mediaId: string) {
