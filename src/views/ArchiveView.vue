@@ -6,19 +6,12 @@ import ProfileTopNavigation from "@/components/ProfileTopNavigation.vue";
 import GoBackIcon from "@/components/icons/GoBackIcon.vue";
 import { useMainStore } from "@/stores/MainStore";
 import {secondsToTime} from "@/composables/MediaInformationFormatting";
-import {computed, ComputedRef, onMounted} from "vue";
+import {computed, ComputedRef} from "vue";
 import { User } from "@/classes/User";
 import { useProfileStore } from "@/stores/ProfileStore";
 
 const mainStore = useMainStore()
 const profileStore = useProfileStore()
-
-onMounted(async () => {
-  // Fetch the hidden media
-  await profileStore.fetchHiddenMedia()
-      .then(() => mainStore.isLoading = false)
-      .catch(e => console.log(e))
-})
 
 // The user profile object from the store
 const profile: ComputedRef<User> = computed(() => {
