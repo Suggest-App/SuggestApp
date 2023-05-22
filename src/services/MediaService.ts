@@ -2,7 +2,7 @@ import { tryGetAuthorizedInstance } from "@/services/TokenService";
 
 export default {
     hideClickedMedia(mediaId: string, origin: string = 'personalHistory'): void {
-        tryGetAuthorizedInstance().post('/user/hidden-media', {
+        tryGetAuthorizedInstance().post('/user/hide-media', {
             mediumId: mediaId,
             origin: origin
         })
@@ -18,7 +18,7 @@ export default {
     },
 
     restoreClickedMedia(mediaId: string, origin: string = 'personalHistory'): void {
-        tryGetAuthorizedInstance().delete('/user/hidden-media', {
+        tryGetAuthorizedInstance().delete('/user/hide-media', {
             data: {
                 mediumId: mediaId,
                 origin: origin
