@@ -17,7 +17,7 @@ const mainStore = useMainStore()
 const profileStore = useProfileStore()
 const route = useRoute();
 
-const props =  defineProps({
+const props = defineProps({
   media: {
     type: Object as PropType<Media>,
     default: {} as Media
@@ -58,17 +58,27 @@ const mediaImage: ComputedRef<string> = computed(() => {
 
 const showMedia: Ref<boolean> = ref(true)
 const isArchive: Ref<boolean> = ref(route.name === 'archive')
+const isProfile: Ref<boolean> = ref(route.name === 'profile')
+const isRecommendedMedia: Ref<boolean> = ref(route.name === 'recommended-media')
+const mediaOrigin: Ref<string> = ref((props.media.origin) ? props.media.origin : '')
 
 // Check if media select flag is active, if so don't redirect and instead call hide or restore endpoint
-function clickMedia(event: Event, mediaId: string) {
+function clickMedia(event: Event, mediaId: string, origin: string) {
   if (profileStore.selectMediaFlag || isArchive.value) {
     event.preventDefault();
 
     if (isArchive.value) {
-      MediaService.restoreClickedMedia(mediaId);
+      MediaService.restoreClickedMedia(mediaId, mediaOrigin.value);
       profileStore.hiddenMediaCount--;
-    } else {
-      MediaService.hideClickedMedia(mediaId);
+    }
+
+    if (isRecommendedMedia.value) {
+      MediaService.hideClickedMedia(mediaId, mediaOrigin.value);
+      profileStore.hiddenMediaCount++;
+    }
+
+    if (isProfile.value) {
+      MediaService.hideClickedMedia(mediaId, mediaOrigin.value);
       profileStore.hiddenMediaCount++;
     }
 

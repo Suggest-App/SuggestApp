@@ -17,7 +17,7 @@ export default {
         })
     },
 
-    restoreClickedMedia(mediaId: string, origin: string = 'personalHistory'): void {
+    restoreClickedMedia(mediaId: string, origin: string): void {
         tryGetAuthorizedInstance().delete('/user/hide-media', {
             data: {
                 mediumId: mediaId,

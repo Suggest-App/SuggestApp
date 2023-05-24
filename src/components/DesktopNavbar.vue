@@ -39,7 +39,7 @@ const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
 })
 
 const showArchiveAction: ComputedRef<boolean> = computed(() => {
-  return (route.name === 'profile')
+  return (route.name === 'profile' || route.name === 'recommended-media')
 })
 </script>
 
@@ -65,7 +65,7 @@ const showArchiveAction: ComputedRef<boolean> = computed(() => {
       </template>
     </ProfileInfoGrid>
 
-    <RouterLink :to="{ name: 'recommended-media' }" :class="{ active: inMatchingProfileView }">
+    <RouterLink :to="{ name: 'recommended-media' }">
       <RecommendedMediaViewIcon />
       <span>{{ $t('navbar.recommendedMedia') }}</span>
     </RouterLink>
