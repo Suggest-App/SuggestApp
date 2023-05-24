@@ -12,5 +12,6 @@ export interface Media {
     linkToMedia:          string,
     albumName:            string,
     releaseDate:          string
-    origin:               string
+    hiddenOrigin:         string
+    hidden:               boolean
 }

@@ -25,6 +25,10 @@ const props = defineProps({
   index: {
     type: Number,
     default: 0
+  },
+  defaultOrigin: {
+    type: String,
+    default: ''
   }
 })
 
@@ -60,7 +64,7 @@ const showMedia: Ref<boolean> = ref(true)
 const isArchive: Ref<boolean> = ref(route.name === 'archive')
 const isProfile: Ref<boolean> = ref(route.name === 'profile')
 const isRecommendedMedia: Ref<boolean> = ref(route.name === 'recommended-media')
-const mediaOrigin: Ref<string> = ref((props.media.origin) ? props.media.origin : '')
+const mediaOrigin: Ref<string> = ref((props.media.hiddenOrigin) ? props.media.hiddenOrigin : props.defaultOrigin)
 
 // Check if media select flag is active, if so don't redirect and instead call hide or restore endpoint
 function clickMedia(event: Event, mediaId: string, origin: string) {

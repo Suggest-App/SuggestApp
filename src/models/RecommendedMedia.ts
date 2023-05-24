@@ -11,5 +11,6 @@ export interface RecommendedMedia {
     songTitle:            string
     allArtists:           string[]
     listenedSecondsMatch: number
-    origin:               string
+    hiddenOrigin:         string
+    hidden:               boolean
 }

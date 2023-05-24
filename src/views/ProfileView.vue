@@ -95,6 +95,7 @@ function getListenedTime(seconds: number) {
             :key="index"
             :index="index"
             :media="media"
+            default-origin="personalSummary"
         >
           <template #right>
             <span class="time">{{ getListenedTime(media.listenedSeconds) }}</span>

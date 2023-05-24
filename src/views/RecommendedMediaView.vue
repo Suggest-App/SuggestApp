@@ -42,6 +42,7 @@ const profile: ComputedRef<User> = computed(() => {
             :key="index"
             :index="index"
             :media="media"
+            default-origin="discover"
         >
           <template #right>
             <MediaListElementMatchInfo :media="media"/>
