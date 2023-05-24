@@ -66,7 +66,7 @@ export default {
      */
     async fetchTogetherConsumedMedia(userId: string, limit: number = 0): Promise<TogetherMedia[]> {
         const limitParam = (limit > 0) ? '?limit='+limit : ''
-        return tryGetAuthorizedInstance().get(`/user/matches/${userId}/together-consumed/tracks${limitParam}`)
+        return tryGetAuthorizedInstance().get(`/user/matches/${userId}/together-media${limitParam}`)
             .then((response: AxiosResponse) => {
                 return response.data
             })
@@ -117,7 +117,7 @@ export default {
      */
     async fetchMatchSummary(userId: string, limit: number = 0): Promise<ProfileMedia[]> {
         const limitParam = (limit > 0) ? '?limit='+limit : ''
-        return tryGetAuthorizedInstance().get(`/user/spotify/personal-summary/${userId}${limitParam}`)
+        return tryGetAuthorizedInstance().get(`/user/spotify/profile-media/${userId}${limitParam}`)
             .then((response: AxiosResponse) => {
                 return response.data
             })

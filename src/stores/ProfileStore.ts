@@ -27,7 +27,7 @@ export const useProfileStore = defineStore('profileStore', () => {
 
       // Fetch profile information and the personal media summary
       const information = await ProfileService.fetchProfileInformation()
-      const summary = await ProfileService.fetchPersonalSummary()
+      const summary = await ProfileService.profileMedia()
       const hiddenMedia = await ProfileService.fetchHiddenMedia()
 
       // Set user locale
@@ -61,7 +61,7 @@ export const useProfileStore = defineStore('profileStore', () => {
    * @return Promise<void>
    */
   async function getDiscoverMediaSummary(): Promise<void> {
-    const recommendedMedia = await ProfileService.fetchDiscoverMediaSummary()
+    const recommendedMedia = await ProfileService.fetchDiscoverMedia()
 
     if(!profile.value) {
       await fetchUserProfile()

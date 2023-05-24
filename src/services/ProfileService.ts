@@ -32,8 +32,8 @@ export default {
      *
      * @return Promise<Media[]>
      */
-    async fetchPersonalSummary(): Promise<ProfileMedia[]> {
-        return tryGetAuthorizedInstance().get('/user/spotify/personal-summary')
+    async profileMedia(): Promise<ProfileMedia[]> {
+        return tryGetAuthorizedInstance().get('/user/spotify/profile-media')
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {
                 switch (error.response.status) {
@@ -51,8 +51,8 @@ export default {
      *
      * @return Promise<DiscoverMedia[]>
      */
-    async fetchDiscoverMediaSummary(): Promise<DiscoverMedia[]> {
-        return tryGetAuthorizedInstance().get('/user/matches/recommended-media?limit=100')
+    async fetchDiscoverMedia(): Promise<DiscoverMedia[]> {
+        return tryGetAuthorizedInstance().get('/user/matches/discover-media?limit=100')
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {
                 switch (error.response.status) {
@@ -71,7 +71,7 @@ export default {
      * @return Promise<Media[]>
      */
     async fetchHiddenMedia(): Promise<HiddenMedia[]> {
-        return tryGetAuthorizedInstance().get('/user/spotify/personal-summary/hidden')
+        return tryGetAuthorizedInstance().get('/user/spotify/hidden-media')
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {
                 switch (error.response.status) {
