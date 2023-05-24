@@ -67,7 +67,7 @@ const isRecommendedMedia: Ref<boolean> = ref(route.name === 'recommended-media')
 const mediaOrigin: Ref<string> = ref((props.media.hiddenOrigin) ? props.media.hiddenOrigin : props.defaultOrigin)
 
 // Check if media select flag is active, if so don't redirect and instead call hide or restore endpoint
-function clickMedia(event: Event, mediaId: string, origin: string) {
+function clickMedia(event: Event, mediaId: string) {
   if (profileStore.selectMediaFlag || isArchive.value) {
     event.preventDefault();
 
