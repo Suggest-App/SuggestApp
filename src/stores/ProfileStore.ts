@@ -82,13 +82,11 @@ export const useProfileStore = defineStore('profileStore', () => {
     const profileStore = useProfileStore()
     const hiddenMedia = await ProfileService.fetchHiddenMedia()
 
-    if(!profile.value) {
-      await fetchUserProfile()
-    }
-
-    if(profile.value && hiddenMedia.length !== 0) {
+    if(profile.value) {
       profile.value.setHiddenMedia(hiddenMedia)
       profileStore.hiddenMediaCount = hiddenMedia.length
+    } else {
+      await fetchUserProfile()
     }
   }
 

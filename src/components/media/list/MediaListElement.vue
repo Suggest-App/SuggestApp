@@ -66,26 +66,6 @@ function clickMedia(event: Event, mediaId: string) {
 
     if (isArchive.value) {
       MediaService.restoreClickedMedia(mediaId);
-
-      // Ensure that the media is getting removed from the store array
-      if (profileStore.profile) {
-        let hiddenMedia = profileStore.profile.getHiddenMedia();
-        let filteredMediaIndex = hiddenMedia.findIndex(media => media.mediumId === mediaId);
-
-
-
-        // Remove the specific media item using splice
-        if (filteredMediaIndex > -1) {
-          hiddenMedia.splice(filteredMediaIndex, 0);
-          console.log(filteredMediaIndex);
-          console.log(hiddenMedia);
-        } else if (filteredMediaIndex === 0) {
-          hiddenMedia = []
-        }
-
-        profileStore.profile.setHiddenMedia(hiddenMedia);
-      }
-
       profileStore.hiddenMediaCount--;
     } else {
       MediaService.hideClickedMedia(mediaId);

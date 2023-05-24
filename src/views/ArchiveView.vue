@@ -19,10 +19,6 @@ onMounted(async () => {
   await profileStore.fetchHiddenMedia()
       .then(() => mainStore.isLoading = false)
       .catch(e => console.log(e))
-
-  if (profileStore.profile) {
-    console.log(profileStore.profile.getHiddenMedia())
-  }
 })
 
 // The user profile object from the store
@@ -39,7 +35,7 @@ function getListenedTime(seconds: number) {
 </script>
 
 <template>
-  <main :class="{ active : profileStore.hiddenMediaCount <= 0 }">
+  <main :class="{ active : profileStore.hiddenMediaCount <= 0 && !mainStore.isLoading }">
     <ProfileTopNavigation v-show="!profileStore.hiddenMediaCount <= 0">
       <template #left>
         <GoBackIcon @click="router.push({ name: 'profile'})" />
@@ -65,7 +61,6 @@ function getListenedTime(seconds: number) {
       </template>
       <template #skeleton-elements>
         <MediaListElement
-            v-if="profileStore.hiddenMediaCount.length < 1"
             v-show="mainStore.isLoading"
             v-for="index in 10"
             :key="index"
@@ -73,8 +68,8 @@ function getListenedTime(seconds: number) {
       </template>
     </MediaList>
 
-    <ArchiveIcon v-show="profileStore.hiddenMediaCount <= 0" />
-    <p v-show="profileStore.hiddenMediaCount <= 0" class="empty-archive-text">{{ $t('archiveView.noMedia') }}</p>
+    <ArchiveIcon v-show="profileStore.hiddenMediaCount < 1 && !mainStore.isLoading" />
+    <p v-show="profileStore.hiddenMediaCount < 1 && !mainStore.isLoading" class="empty-archive-text">{{ $t('archiveView.noMedia') }}</p>
   </main>
 </template>
 
