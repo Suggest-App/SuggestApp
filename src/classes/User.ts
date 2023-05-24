@@ -1,5 +1,5 @@
 import type { Media } from "@/models/Media";
-import type { RecommendedMedia } from "@/models/RecommendedMedia";
+import type { DiscoverMedia } from "@/models/DiscoverMedia";
 import { formatDateString, secondsToTime } from "@/composables/MediaInformationFormatting";
 
 export class User {
@@ -29,7 +29,7 @@ export class User {
     protected hiddenMedia: Media[] = []
 
     /** @var array of media recommendations from all user matches in one list */
-    protected recommendedMediaSummary: RecommendedMedia[] = []
+    protected recommendedMediaSummary: DiscoverMedia[] = []
 
     /**
      * Get the id of this user
@@ -174,20 +174,20 @@ export class User {
     /**
      * Get an array of recommended media items from all user matches
      *
-     * @return RecommendedMedia
+     * @return DiscoverMedia
      */
-    public getRecommendedMediaSummary(): RecommendedMedia[] {
+    public getRecommendedMediaSummary(): DiscoverMedia[] {
         return this.recommendedMediaSummary;
     }
 
     /**
      * Set an array of recommended media items from all user matches
      *
-     * @param mediaArray RecommendedMedia[]
+     * @param mediaArray DiscoverMedia[]
      *
      * @return void
      */
-    public setRecommendedMediaSummary(mediaArray: RecommendedMedia[]): void {
+    public setRecommendedMediaSummary(mediaArray: DiscoverMedia[]): void {
         this.recommendedMediaSummary = mediaArray;
     }
 

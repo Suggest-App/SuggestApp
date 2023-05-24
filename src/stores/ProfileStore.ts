@@ -1,7 +1,6 @@
 import {ref, } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
-import { useMainStore } from "@/stores/MainStore";
 import { User } from "@/classes/User";
 import ProfileService from "@/services/ProfileService";
 import { setLocale } from "@/i18n";
@@ -61,8 +60,8 @@ export const useProfileStore = defineStore('profileStore', () => {
    *
    * @return Promise<void>
    */
-  async function fetchRecommendedMediaSummary(): Promise<void> {
-    const recommendedMedia = await ProfileService.fetchRecommendedMediaSummary()
+  async function getDiscoverMediaSummary(): Promise<void> {
+    const recommendedMedia = await ProfileService.fetchDiscoverMediaSummary()
 
     if(!profile.value) {
       await fetchUserProfile()
@@ -95,7 +94,7 @@ export const useProfileStore = defineStore('profileStore', () => {
     selectMediaFlag,
     hiddenMediaCount,
     fetchUserProfile,
-    fetchRecommendedMediaSummary,
+    getDiscoverMediaSummary,
     fetchHiddenMedia
   }
 })

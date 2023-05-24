@@ -63,7 +63,7 @@ const mediaImage: ComputedRef<string> = computed(() => {
 const showMedia: Ref<boolean> = ref(true)
 const isArchive: Ref<boolean> = ref(route.name === 'archive')
 const isProfile: Ref<boolean> = ref(route.name === 'profile')
-const isRecommendedMedia: Ref<boolean> = ref(route.name === 'recommended-media')
+const isRecommendedMedia: Ref<boolean> = ref(route.name === 'discover')
 const mediaOrigin: Ref<string> = ref((props.media.hiddenOrigin) ? props.media.hiddenOrigin : props.defaultOrigin)
 
 // Check if media select flag is active, if so don't redirect and instead call hide or restore endpoint

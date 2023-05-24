@@ -12,7 +12,7 @@ import {useProfileStore} from "@/stores/ProfileStore";
 import SettingsIcon from "@/components/icons/SettingsIcon.vue";
 import ConnectionIcon from "@/components/icons/ConnectionIcon.vue";
 import {useMainStore} from "@/stores/MainStore";
-import RecommendedMediaViewIcon from "@/components/icons/navbar/RecommendedMediaViewIcon.vue";
+import DiscoverMediaViewIcon from "@/components/icons/navbar/DiscoverMediaViewIcon.vue";
 import ArchiveIcon from "@/components/icons/ArchiveIcon.vue";
 import EyeSlashIcon from "@/components/icons/EyeSlashIcon.vue";
 import HideMediaIcon from "@/components/icons/HideMediaIcon.vue";
@@ -39,7 +39,7 @@ const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
 })
 
 const showArchiveAction: ComputedRef<boolean> = computed(() => {
-  return (route.name === 'profile' || route.name === 'recommended-media')
+  return (route.name === 'profile' || route.name === 'discover')
 })
 </script>
 
@@ -65,8 +65,8 @@ const showArchiveAction: ComputedRef<boolean> = computed(() => {
       </template>
     </ProfileInfoGrid>
 
-    <RouterLink :to="{ name: 'recommended-media' }">
-      <RecommendedMediaViewIcon />
+    <RouterLink :to="{ name: 'discover' }">
+      <DiscoverMediaViewIcon />
       <span>{{ $t('navbar.recommendedMedia') }}</span>
     </RouterLink>
 

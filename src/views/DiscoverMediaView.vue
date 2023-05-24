@@ -14,7 +14,7 @@ const profileStore = useProfileStore()
 
 onMounted(async () => {
   // Fetch the profile information and set the user object properties
-  await profileStore.fetchRecommendedMediaSummary()
+  await profileStore.getDiscoverMediaSummary()
       .then(() => mainStore.isLoading = false)
       .catch(e => console.log(e))
 })

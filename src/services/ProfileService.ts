@@ -2,7 +2,9 @@ import type { AxiosResponse } from 'axios';
 import type { ProfileInformation } from "@/models/ProfileInformation";
 import type { Media } from "@/models/Media";
 import { tryGetAuthorizedInstance } from "@/services/TokenService";
-import type {RecommendedMedia} from "@/models/RecommendedMedia";
+import type {DiscoverMedia} from "@/models/DiscoverMedia";
+import type {ProfileMedia} from "@/models/ProfileMedia";
+import type {HiddenMedia} from "@/models/HiddenMedia";
 
 export default {
 
@@ -30,7 +32,7 @@ export default {
      *
      * @return Promise<Media[]>
      */
-    async fetchPersonalSummary(): Promise<Media[]> {
+    async fetchPersonalSummary(): Promise<ProfileMedia[]> {
         return tryGetAuthorizedInstance().get('/user/spotify/personal-summary')
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {
@@ -47,9 +49,9 @@ export default {
     /**
      * Fetch the users recommended media from all user matches
      *
-     * @return Promise<RecommendedMedia[]>
+     * @return Promise<DiscoverMedia[]>
      */
-    async fetchRecommendedMediaSummary(): Promise<RecommendedMedia[]> {
+    async fetchDiscoverMediaSummary(): Promise<DiscoverMedia[]> {
         return tryGetAuthorizedInstance().get('/user/matches/recommended-media?limit=100')
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {
@@ -68,7 +70,7 @@ export default {
      *
      * @return Promise<Media[]>
      */
-    async fetchHiddenMedia(): Promise<Media[]> {
+    async fetchHiddenMedia(): Promise<HiddenMedia[]> {
         return tryGetAuthorizedInstance().get('/user/spotify/personal-summary/hidden')
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {

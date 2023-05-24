@@ -3,6 +3,9 @@ import { tryGetAuthorizedInstance } from "@/services/TokenService";
 import type { AxiosResponse } from "axios";
 import type { Media } from "@/models/Media";
 import type { ProfileInformation } from "@/models/ProfileInformation";
+import type {ProfileMedia} from "@/models/ProfileMedia";
+import type { DiscoverMedia } from "@/models/DiscoverMedia";
+import type {TogetherMedia} from "@/models/TogetherMedia";
 
 export default {
 
@@ -53,17 +56,17 @@ export default {
     },
 
     /**
-     * Fetch all media recommendations from a user match after the match has been clicked
+     * Fetch all together listened tracks from a user match after the tab has been clicked
      * Array is already ordered
      *
      * @param userId string
      * @param limit number (default of 0 won't limit the query)
      *
-     * @return Promise<Media[]>
+     * @return Promise<TogetherMedia[]>
      */
-    async fetchRecommendedMedia(userId: string, limit: number = 0): Promise<Media[]> {
+    async fetchTogetherConsumedMedia(userId: string, limit: number = 0): Promise<TogetherMedia[]> {
         const limitParam = (limit > 0) ? '?limit='+limit : ''
-        return tryGetAuthorizedInstance().get(`/user/matches/${userId}/recommended-media${limitParam}`)
+        return tryGetAuthorizedInstance().get(`/user/matches/${userId}/together-consumed/tracks${limitParam}`)
             .then((response: AxiosResponse) => {
                 return response.data
             })
@@ -79,17 +82,17 @@ export default {
     },
 
     /**
-     * Fetch all together listened tracks from a user match after the tab has been clicked
+     * Fetch all media recommendations from a user match after the match has been clicked
      * Array is already ordered
      *
      * @param userId string
      * @param limit number (default of 0 won't limit the query)
      *
-     * @return Promise<Media[]>
+     * @return Promise<ProfileMedia[]>
      */
-    async fetchTogetherConsumedMedia(userId: string, limit: number = 0): Promise<Media[]> {
+    async fetchRecommendedMedia(userId: string, limit: number = 0): Promise<ProfileMedia[]> {
         const limitParam = (limit > 0) ? '?limit='+limit : ''
-        return tryGetAuthorizedInstance().get(`/user/matches/${userId}/together-consumed/tracks${limitParam}`)
+        return tryGetAuthorizedInstance().get(`/user/matches/${userId}/recommended-media${limitParam}`)
             .then((response: AxiosResponse) => {
                 return response.data
             })
@@ -112,7 +115,7 @@ export default {
      *
      * @return Promise<Media[]>
      */
-    async fetchMatchSummary(userId: string, limit: number = 0): Promise<Media[]> {
+    async fetchMatchSummary(userId: string, limit: number = 0): Promise<ProfileMedia[]> {
         const limitParam = (limit > 0) ? '?limit='+limit : ''
         return tryGetAuthorizedInstance().get(`/user/spotify/personal-summary/${userId}${limitParam}`)
             .then((response: AxiosResponse) => {

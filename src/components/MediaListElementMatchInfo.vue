@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import type {ComputedRef, PropType} from "vue";
-import type {RecommendedMedia} from "@/models/RecommendedMedia";
+import type {DiscoverMedia} from "@/models/DiscoverMedia";
 import {secondsToTime} from "@/composables/MediaInformationFormatting";
 import {computed} from "vue";
 import ProfileImagePlaceholder from "@/components/icons/ProfileImagePlaceholder.vue";
 
 const props = defineProps({
   media: {
-    type: Object as PropType<RecommendedMedia>,
-    default: {} as RecommendedMedia
+    type: Object as PropType<DiscoverMedia>,
+    default: {} as DiscoverMedia
   }
 })
 

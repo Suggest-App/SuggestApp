@@ -4,7 +4,7 @@ import { getCookie } from "@/services/TokenService";
 import AuthView from '@/views/AuthView.vue'
 import DevAuthView from '@/views/DevAuthView.vue'
 import ProfileView from "@/views/ProfileView.vue";
-import RecommendedMediaView from "@/views/RecommendedMediaView.vue";
+import DiscoverMediaView from "@/views/DiscoverMediaView.vue";
 import MatchesView from "@/views/MatchesView.vue";
 import MatchingProfileView from "@/views/MatchingProfileView.vue";
 import SettingsView from "@/views/SettingsView.vue";
@@ -46,9 +46,9 @@ const router = createRouter({
       }
     },
     {
-      path: '/recommended-media',
-      name: 'recommended-media',
-      component: RecommendedMediaView,
+      path: '/discover',
+      name: 'discover',
+      component: DiscoverMediaView,
       meta: {
         showNavbar: true,
         requiresUid: false
