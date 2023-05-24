@@ -59,7 +59,7 @@ function getListenedTime(seconds: number) {
       </template>
     </HeadingWrapper>
 
-    <MediaSlider :slides="match.getTogetherConsumedMedia()" />
+    <MediaSlider :slides="match.getTogetherConsumedMedia()" media-type="together" />
 
     <HeadingWrapper
         :heading="match.getUsername() + $t('headingWrapper.heading.recommendedMedia')"
@@ -72,7 +72,7 @@ function getListenedTime(seconds: number) {
       </template>
     </HeadingWrapper>
 
-    <MediaSlider :slides="match.getRecommendedMedia()" />
+    <MediaSlider :slides="match.getRecommendedMedia()" media-type="profile" />
 
     <HeadingWrapper :heading="match.getUsername() + $t('headingWrapper.heading.othersCompleteHistory')">
       <template #label>

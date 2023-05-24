@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import MediaSlide from "@/components/media/slider/MediaSlide.vue";
-import {ref} from "vue";
+import { ref} from "vue";
 import type { Ref, PropType} from "vue";
 import type { Media } from "@/models/Media";
 import { useI18n } from "vue-i18n";
 import { useMainStore } from "@/stores/MainStore";
+import {secondsToTime} from "@/composables/MediaInformationFormatting";
 
 
 // Initialize localization plugin and stores
@@ -12,10 +13,14 @@ const { t } = useI18n()
 const mainStore = useMainStore()
 
 // Props from parent component
-defineProps({
+const props = defineProps({
   slides: {
     type: Object as PropType<Media[]>,
     default: {} as Media[]
+  },
+  mediaType: {
+    type: String,
+    required: true
   }
 })
 
@@ -36,6 +41,7 @@ function isActiveSlide(index: number): string {
       ? 'active'
       : ''
 }
+
 </script>
 
 <template>
@@ -50,7 +56,25 @@ function isActiveSlide(index: number): string {
           :key="index"
           :slide="slide"
           :class="{ active: isActiveSlide(index) }"
-      />
+      >
+        <template #tracking-information>
+
+          <span v-if="mediaType === 'together'" class="user-wrapper">
+            <span class="name">{{ $t('matchingProfileView.trackingInformation.you') }}</span>
+            <span>{{ secondsToTime(slide.listenedSeconds) }}</span>
+          </span>
+
+          <span v-if="mediaType === 'together'" class="user-wrapper">
+            <span class="name">{{ $t('matchingProfileView.trackingInformation.match') }}</span>
+            <span>{{ secondsToTime(slide.listenedSecondsMatch) }}</span>
+          </span>
+
+          <span v-if="mediaType === 'profile'" class="user-wrapper">
+            <span class="name">{{ $t('matchingProfileView.trackingInformation.match') }}</span>
+            <span>{{ secondsToTime(slide.listenedSeconds) }}</span>
+          </span>
+        </template>
+      </MediaSlide>
 
       <!-- Skeleton loader -->
       <MediaSlide

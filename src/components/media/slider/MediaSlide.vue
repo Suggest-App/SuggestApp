@@ -6,6 +6,8 @@ import { useI18n } from "vue-i18n";
 import { secondsToTime } from "@/composables/MediaInformationFormatting";
 import { useMainStore } from "@/stores/MainStore";
 import ListMediaElementInfo from "@/components/media/list/ListMediaElementInfo.vue";
+import type {ProfileMedia} from "@/models/ProfileMedia";
+import type {TogetherMedia} from "@/models/TogetherMedia";
 
 
 // Initialize localization plugin and stores
@@ -14,7 +16,7 @@ const mainStore = useMainStore()
 
 const props = defineProps({
   slide: {
-    type: Object as PropType<Media>,
+    type: Object as PropType<ProfileMedia | TogetherMedia>,
     default: {} as Media
   }
 })
@@ -48,27 +50,6 @@ const artists: ComputedRef<string> = computed(() => {
   }
   return ''
 })
-
-const showListenedSecondsYou: Ref<boolean> = ref(true)
-
-// Access the listened seconds of your own account
-const listenedSecondsYou: ComputedRef<string> = computed(() => {
-  if (slide.value.listenedSecondsYou === null) {
-    showListenedSecondsYou.value = false
-    return '-'
-  }
-  return secondsToTime(slide.value.listenedSecondsYou as number)
-})
-
-// Access the listened seconds of your match
-const listenedSecondsMatch: ComputedRef<string> = computed(
-    () => secondsToTime(slide.value.listenedSecondsMatch)
-)
-
-// Access the listened seconds of your match
-const listenedSeconds: ComputedRef<string> = computed(
-    () => secondsToTime(slide.value.listenedSeconds)
-)
 
 const isHovered: Ref<boolean> = ref(false)
 </script>
@@ -107,21 +88,7 @@ const isHovered: Ref<boolean> = ref(false)
     </div>
 
     <div class="tracking-information">
-      <span v-if="showListenedSecondsYou" class="user-wrapper">
-        <span class="name">{{ $t('matchingProfileView.trackingInformation.you') }}</span>
-        <span>{{ listenedSecondsYou }}</span>
-      </span>
-
-
-      <span v-if="showListenedSecondsYou" class="user-wrapper">
-        <span class="name">{{ $t('matchingProfileView.trackingInformation.match') }}</span>
-        <span>{{ listenedSecondsMatch }}</span>
-      </span>
-
-      <span v-if="!showListenedSecondsYou" class="user-wrapper">
-        <span class="name">{{ $t('matchingProfileView.trackingInformation.match') }}</span>
-        <span>{{ listenedSeconds }}</span>
-      </span>
+      <slot name="tracking-information"></slot>
     </div>
   </div>
 </template>

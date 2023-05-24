@@ -14,8 +14,8 @@ const props = defineProps({
 
 // calculate listened time
 const listenedTime: ComputedRef<string> = computed(() => {
-  return (props.media && props.media.listenedSecondsMatch)
-      ? secondsToTime(props.media.listenedSecondsMatch)
+  return (props.media && props.media.listenedSeconds)
+      ? secondsToTime(props.media.listenedSeconds)
       : ''
 })
 </script>
