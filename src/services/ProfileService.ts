@@ -30,10 +30,17 @@ export default {
     /**
      * Fetch the users personal summary
      *
+     * @param filterDate
+     *
      * @return Promise<Media[]>
      */
-    async profileMedia(): Promise<ProfileMedia[]> {
-        return tryGetAuthorizedInstance().get('/user/spotify/profile-media')
+    async fetchProfileMedia(filterDate: string = ''): Promise<ProfileMedia[]> {
+
+        const endpoint = (filterDate !== '')
+            ? `/user/spotify/profile-media?limit-date="${filterDate}"`
+            : '/user/spotify/profile-media'
+
+        return tryGetAuthorizedInstance().get(endpoint)
             .then((response: AxiosResponse) => response.data)
             .catch((error) => {
                 switch (error.response.status) {

@@ -16,6 +16,7 @@ import { User } from "@/classes/User";
 import {secondsToTime} from "@/composables/MediaInformationFormatting";
 import HideMediaIcon from "@/components/icons/HideMediaIcon.vue";
 import ArchiveBtn from "@/components/ArchiveBtn.vue";
+import DateFilter from "@/components/DateFilter.vue";
 
 const mainStore = useMainStore()
 const profileStore = useProfileStore()
@@ -84,6 +85,8 @@ function getListenedTime(seconds: number) {
         <span>{{ $t('headingWrapper.label.listenedTime') }}</span>
       </template>
     </HeadingWrapper>
+
+    <DateFilter />
 
     <ArchiveBtn v-show="profileStore.selectMediaFlag && !mainStore.isDesktop" />
 
