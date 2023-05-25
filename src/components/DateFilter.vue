@@ -11,10 +11,10 @@ function filterDate(date: string) {
 
 <template>
   <div class="base-wrapper date-filter">
-    <div class="filter" :class="{ active : profileStore.listFilterDate === '1W'}" @click="filterDate('1W')">1W</div>
-    <div class="filter" :class="{ active : profileStore.listFilterDate === '1M'}" @click="filterDate('1M')">1M</div>
-    <div class="filter" :class="{ active : profileStore.listFilterDate === '1Y'}" @click="filterDate('1Y')">1J</div>
     <div class="filter" :class="{ active : profileStore.listFilterDate === ''}" @click="filterDate('')">Max</div>
+    <div class="filter" :class="{ active : profileStore.listFilterDate === '1Y'}" @click="filterDate('1Y')">1J</div>
+    <div class="filter" :class="{ active : profileStore.listFilterDate === '1M'}" @click="filterDate('1M')">1M</div>
+    <div class="filter" :class="{ active : profileStore.listFilterDate === '1W'}" @click="filterDate('1W')">1W</div>
   </div>
 </template>
 
