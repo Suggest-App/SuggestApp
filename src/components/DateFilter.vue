@@ -22,6 +22,7 @@ function filterDate(date: string) {
 .base-wrapper.date-filter {
   display: flex;
   justify-content: space-between;
+  max-width: 390px;
 
   .filter {
     width: 70px;

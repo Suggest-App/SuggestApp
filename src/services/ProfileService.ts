@@ -37,7 +37,7 @@ export default {
     async fetchProfileMedia(filterDate: string = ''): Promise<ProfileMedia[]> {
 
         const endpoint = (filterDate !== '')
-            ? `/user/spotify/profile-media?limit-date="${filterDate}"`
+            ? `/user/spotify/profile-media?limit-key="${filterDate}"`
             : '/user/spotify/profile-media'
 
         return tryGetAuthorizedInstance().get(endpoint)
