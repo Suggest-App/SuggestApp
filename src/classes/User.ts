@@ -1,6 +1,8 @@
 import type { Media } from "@/models/Media";
 import type { DiscoverMedia } from "@/models/DiscoverMedia";
 import { formatDateString, secondsToTime } from "@/composables/MediaInformationFormatting";
+import type {ProfileMedia} from "@/models/ProfileMedia";
+import type {HiddenMedia} from "@/models/HiddenMedia";
 
 export class User {
 
@@ -23,13 +25,13 @@ export class User {
     protected lastFetch: string = ''
 
     /** @var array of media items represent the personal spotify track history */
-    protected mediaSummary: Media[] = []
+    protected mediaSummary: ProfileMedia[] = []
 
     /** @var array of all media items that are hidden */
-    protected hiddenMedia: Media[] = []
+    protected hiddenMedia: HiddenMedia[] = []
 
     /** @var array of media recommendations from all user matches in one list */
-    protected recommendedMediaSummary: DiscoverMedia[] = []
+    protected discoverMediaSummary: DiscoverMedia[] = []
 
     /**
      * Get the id of this user
@@ -154,41 +156,41 @@ export class User {
     /**
      * Get an array of media items that represent the personal spotify track history
      *
-     * @return Media[]
+     * @return ProfileMedia[]
      */
-    public getMediaSummary(): Media[] {
+    public getMediaSummary(): ProfileMedia[] {
         return this.mediaSummary;
     }
 
     /**
      * Set an array of media items that represent the personal spotify track history
      *
-     * @param mediaArray Media[]
+     * @param mediaArray ProfileMedia[]
      *
      * @return void
      */
-    public setMediaSummary(mediaArray: Media[]): void {
+    public setMediaSummary(mediaArray: ProfileMedia[]): void {
         this.mediaSummary = mediaArray;
     }
 
     /**
-     * Get an array of recommended media items from all user matches
+     * Get an array of discover media items from all user matches
      *
      * @return DiscoverMedia
      */
-    public getRecommendedMediaSummary(): DiscoverMedia[] {
-        return this.recommendedMediaSummary;
+    public getDiscoverMediaSummary(): DiscoverMedia[] {
+        return this.discoverMediaSummary;
     }
 
     /**
-     * Set an array of recommended media items from all user matches
+     * Set an array of discover media items from all user matches
      *
      * @param mediaArray DiscoverMedia[]
      *
      * @return void
      */
-    public setRecommendedMediaSummary(mediaArray: DiscoverMedia[]): void {
-        this.recommendedMediaSummary = mediaArray;
+    public setDiscoverMediaSummary(mediaArray: DiscoverMedia[]): void {
+        this.discoverMediaSummary = mediaArray;
     }
 
     /**
@@ -196,7 +198,7 @@ export class User {
      *
      * @return Media[]
      */
-    public getHiddenMedia(): Media[] {
+    public getHiddenMedia(): HiddenMedia[] {
         return this.hiddenMedia;
     }
 
@@ -207,7 +209,7 @@ export class User {
      *
      * @return void
      */
-    public setHiddenMedia(mediaArray: Media[]): void {
+    public setHiddenMedia(mediaArray: HiddenMedia[]): void {
         this.hiddenMedia = mediaArray;
     }
 }

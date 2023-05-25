@@ -38,7 +38,7 @@ const profile: ComputedRef<User> = computed(() => {
       <template #media-elements>
         <MediaListElement
             v-show="!mainStore.isLoading"
-            v-for="(media, index) in profile.getRecommendedMediaSummary()"
+            v-for="(media, index) in profile.getDiscoverMediaSummary()"
             :key="index"
             :index="index"
             :media="media"

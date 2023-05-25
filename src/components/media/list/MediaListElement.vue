@@ -10,6 +10,8 @@ import ListMediaElementInfo from "@/components/media/list/ListMediaElementInfo.v
 import {useProfileStore} from "@/stores/ProfileStore";
 import MediaService from "@/services/MediaService";
 import {useRoute} from "vue-router";
+import type {HiddenMedia} from "@/models/HiddenMedia";
+import type {DiscoverMedia} from "@/models/DiscoverMedia";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
@@ -63,7 +65,7 @@ const mediaImage: ComputedRef<string> = computed(() => {
 const showMedia: Ref<boolean> = ref(true)
 const isArchive: Ref<boolean> = ref(route.name === 'archive')
 const isProfile: Ref<boolean> = ref(route.name === 'profile')
-const isRecommendedMedia: Ref<boolean> = ref(route.name === 'discover')
+const isDiscoverMedia: Ref<boolean> = ref(route.name === 'discover')
 const mediaOrigin: Ref<string> = ref((props.media.hiddenOrigin) ? props.media.hiddenOrigin : props.defaultOrigin)
 
 // Check if media select flag is active, if so don't redirect and instead call hide or restore endpoint
@@ -76,14 +78,28 @@ function clickMedia(event: Event, mediaId: string) {
       profileStore.hiddenMediaCount--;
     }
 
-    if (isRecommendedMedia.value) {
+    if (isDiscoverMedia.value) {
       MediaService.hideClickedMedia(mediaId, mediaOrigin.value);
-      profileStore.hiddenMediaCount++;
+
+      if (profileStore.profile) {
+        let discoverMedia = profileStore.profile.getDiscoverMediaSummary()
+        const index = discoverMedia.findIndex(x => x.mediumId === mediaId);
+        discoverMedia.splice(index, 1)
+        profileStore.profile.setDiscoverMediaSummary(discoverMedia)
+        profileStore.hiddenMediaCount++;
+      }
     }
 
     if (isProfile.value) {
       MediaService.hideClickedMedia(mediaId, mediaOrigin.value);
-      profileStore.hiddenMediaCount++;
+
+      if (profileStore.profile) {
+        let profileMedia = profileStore.profile.getMediaSummary()
+        const index = profileMedia.findIndex(x => x.mediumId === mediaId);
+        profileMedia.splice(index, 1)
+        profileStore.profile.setMediaSummary(profileMedia)
+        profileStore.hiddenMediaCount++;
+      }
     }
 
     showMedia.value = false;

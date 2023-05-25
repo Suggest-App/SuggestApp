@@ -27,7 +27,6 @@ export const useProfileStore = defineStore('profileStore', () => {
 
       // Fetch profile information and the personal media summary
       const information = await ProfileService.fetchProfileInformation()
-      const summary = await ProfileService.profileMedia()
       const hiddenMedia = await ProfileService.fetchHiddenMedia()
 
       // Set user locale
@@ -43,15 +42,18 @@ export const useProfileStore = defineStore('profileStore', () => {
       user.setTrackingSince(information.trackingSince)
       user.setLastFetched(information.latestFetch)
 
-      // Set the media array from the /personal-summary endpoint
-      user.setMediaSummary(summary)
-
       // Fetch hidden media
       user.setHiddenMedia(hiddenMedia)
       profileStore.hiddenMediaCount = hiddenMedia.length
 
       // Overwrite the profile ref
       profile.value = user
+    }
+
+    if (profileStore.profile) {
+      const summary = await ProfileService.profileMedia()
+      // Set the media array from the /personal-summary endpoint
+      profileStore.profile.setMediaSummary(summary)
     }
   }
 
@@ -68,7 +70,7 @@ export const useProfileStore = defineStore('profileStore', () => {
     }
 
     if(profile.value && recommendedMedia.length !== 0) {
-      profile.value.setRecommendedMediaSummary(recommendedMedia)
+      profile.value.setDiscoverMediaSummary(recommendedMedia)
     }
   }
 
