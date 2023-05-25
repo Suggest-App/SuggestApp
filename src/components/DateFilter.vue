@@ -23,6 +23,7 @@ function filterDate(date: string) {
   display: flex;
   justify-content: space-between;
   max-width: 390px;
+  margin: 0 0 35px;
 
   .filter {
     width: 70px;
