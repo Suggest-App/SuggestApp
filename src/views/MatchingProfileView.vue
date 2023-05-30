@@ -14,6 +14,7 @@ import MobileMatchProfile from "@/components/MobileMatchProfile.vue";
 import DateFilter from "@/components/DateFilter.vue";
 import DesktopMatchProfile from "@/components/DesktopMatchProfile.vue";
 import {secondsToTime} from "@/composables/MediaInformationFormatting";
+import BpmFilter from "@/components/BpmFilter.vue";
 
 // Initialize localization plugin and stores
 const { t } = useI18n()
@@ -48,6 +49,8 @@ function getListenedTime(seconds: number) {
   <main id="matching-profile-view">
     <MobileMatchProfile :match="match" v-if="!mainStore.isDesktop" />
     <DesktopMatchProfile :match="match" v-if="mainStore.isDesktop" />
+
+    <BpmFilter />
 
     <HeadingWrapper
         :heading="$t('headingWrapper.heading.togetherConsumed')"
