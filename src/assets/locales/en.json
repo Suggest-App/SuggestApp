@@ -60,7 +60,8 @@
       "showAll": "show all",
       "listenedTime": "listened time",
       "listenedBy": "listened by",
-      "listenedTogether": "listened together"
+      "listenedTogether": "listened together",
+      "hide": "hide"
     }
   },
   "profileInfo": {

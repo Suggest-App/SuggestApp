@@ -9,7 +9,10 @@ import DiscoverMediaViewIcon from "@/components/icons/navbar/DiscoverMediaViewIc
 const route = useRoute()
 
 const inMatchingProfileView: ComputedRef<boolean> = computed((): boolean => {
-  return (route.path.includes('matching-profile'))
+  if (route) {
+    return (route.path.includes('matching-profile'))
+  }
+  return false
 })
 </script>
 

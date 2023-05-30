@@ -60,7 +60,8 @@
       "showAll": "Alle anzeigen",
       "listenedTime": "Gehörte Zeit",
       "listenedBy": "Gehört von",
-      "listenedTogether": "das selbe gehört"
+      "listenedTogether": "das selbe gehört",
+      "hide": "ausblenden"
     }
   },
   "profileInfo": {

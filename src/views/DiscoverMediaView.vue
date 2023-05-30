@@ -8,6 +8,8 @@ import MediaList from "@/components/media/list/MediaList.vue";
 import MediaListElement from "@/components/media/list/MediaListElement.vue";
 import { User } from "@/classes/User";
 import MediaListElementMatchInfo from "@/components/MediaListElementMatchInfo.vue";
+import HideMediaIcon from "@/components/icons/HideMediaIcon.vue"
+import ArchiveBtn from "@/components/ArchiveBtn.vue"
 
 const mainStore = useMainStore()
 const profileStore = useProfileStore()
@@ -30,9 +32,14 @@ const profile: ComputedRef<User> = computed(() => {
 
     <HeadingWrapper :heading="$t('headingWrapper.heading.allMatchesRecommendation')">
       <template #label>
-        <span class="label">{{ $t('headingWrapper.label.listenedBy') }}</span>
+        <span class="hide-icon-wrapper">
+          <HideMediaIcon />
+          <span class="label">{{ $t('headingWrapper.label.hide') }}</span>
+        </span>
       </template>
     </HeadingWrapper>
+
+    <ArchiveBtn v-show="profileStore.selectMediaFlag && !mainStore.isDesktop" />
 
     <MediaList>
       <template #media-elements>
@@ -64,5 +71,11 @@ const profile: ComputedRef<User> = computed(() => {
 .base-wrapper.heading .label {
   width: 110px;
   text-align: center;
+}
+
+.hide-icon-wrapper {
+  @include flex-center-xy;
+  flex-direction: column;
+  row-gap: 4px;
 }
 </style>
