@@ -8,6 +8,7 @@ import type {Media} from "@/models/Media";
 import type {ProfileMedia} from "@/models/ProfileMedia";
 import {useProfileStore} from "@/stores/ProfileStore";
 import {useMatchesStore} from "@/stores/MatchesStore";
+import {User} from "@/classes/User";
 
 export const useMainStore = defineStore('mainStore', () => {
 
@@ -38,13 +39,12 @@ export const useMainStore = defineStore('mainStore', () => {
    * Update the media summary after date filter change
    *
    * @param view string
+   * @param profileStore any
+   * @param matchesStore any
    *
    * @return @void
    */
-   async function updateListFilter(view: string): Promise<void> {
-      const profileStore = useProfileStore()
-      const matchesStore = useMatchesStore()
-
+   async function updateListFilter(view: string, profileStore: any, matchesStore: any): Promise<void> {
       switch (view) {
           case 'profile':
               if (profileStore.profile) {
@@ -59,7 +59,6 @@ export const useMainStore = defineStore('mainStore', () => {
               break
       }
    }
-
 
     return { isDesktop, isLoading, listFilterDate, updateListFilter }
 })

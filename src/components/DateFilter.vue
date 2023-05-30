@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import {useMainStore} from "@/stores/MainStore";
+import {useProfileStore} from "@/stores/ProfileStore";
+import {useMatchesStore} from "@/stores/MatchesStore";
 
 const mainStore = useMainStore()
+const profileStore = useProfileStore()
+const matchesStore = useMatchesStore()
 
 
 const props = defineProps({
@@ -13,7 +17,7 @@ const props = defineProps({
 
 function filterDate(date: string) {
   mainStore.listFilterDate = date
-  mainStore.updateListFilter(props.view)
+  mainStore.updateListFilter(props.view, profileStore, matchesStore)
 }
 </script>
 
