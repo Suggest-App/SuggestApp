@@ -112,12 +112,14 @@ export default {
      *
      * @param userId string
      * @param limit number (default of 0 won't limit the query)
+     * @param filterDate string
      *
      * @return Promise<Media[]>
      */
-    async fetchMatchSummary(userId: string, limit: number = 0): Promise<ProfileMedia[]> {
+    async fetchMatchSummary(userId: string, limit: number = 0, filterDate: string = ''): Promise<ProfileMedia[]> {
         const limitParam = (limit > 0) ? '?limit='+limit : ''
-        return tryGetAuthorizedInstance().get(`/user/spotify/profile-media/${userId}${limitParam}`)
+        const filterParam = (filterDate !== '') ? '&limit-key='+filterDate : ''
+        return tryGetAuthorizedInstance().get(`/user/spotify/profile-media/${userId}${limitParam}${filterParam}`)
             .then((response: AxiosResponse) => {
                 return response.data
             })

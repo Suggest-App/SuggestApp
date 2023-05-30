@@ -11,6 +11,7 @@ import {useMainStore} from "@/stores/MainStore";
 import {UserMatch} from "@/classes/UserMatch";
 import {useRoute} from "vue-router";
 import MobileMatchProfile from "@/components/MobileMatchProfile.vue";
+import DateFilter from "@/components/DateFilter.vue";
 import DesktopMatchProfile from "@/components/DesktopMatchProfile.vue";
 import {secondsToTime} from "@/composables/MediaInformationFormatting";
 
@@ -79,6 +80,8 @@ function getListenedTime(seconds: number) {
         <span>{{ $t('headingWrapper.label.listenedTime') }}</span>
       </template>
     </HeadingWrapper>
+
+    <DateFilter view="matching-profile" />
 
     <MediaList>
       <template #media-elements>

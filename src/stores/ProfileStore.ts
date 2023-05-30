@@ -1,4 +1,4 @@
-import {ref, } from 'vue'
+import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
 import { User } from "@/classes/User";
@@ -12,8 +12,6 @@ export const useProfileStore = defineStore('profileStore', () => {
 
   const selectMediaFlag: Ref<boolean> = ref(false)
   const hiddenMediaCount: Ref<number> = ref((profile.value) ? profile.value.getHiddenMedia().length : 0)
-
-  const listFilterDate: Ref<string> = ref('')
 
   /**
    * Fill the user profile object with the fetched data
@@ -93,22 +91,12 @@ export const useProfileStore = defineStore('profileStore', () => {
     }
   }
 
-  async function updateMediaSummary() {
-    if (profile.value instanceof User) {
-      const summary = await ProfileService.fetchProfileMedia(listFilterDate.value)
-      // Set the media array from the /personal-summary endpoint
-     profile.value.setMediaSummary(summary)
-    }
-  }
-
   return {
     profile,
     selectMediaFlag,
     hiddenMediaCount,
-    listFilterDate,
     fetchUserProfile,
     getDiscoverMediaSummary,
-    fetchHiddenMedia,
-    updateMediaSummary
+    fetchHiddenMedia
   }
 })

@@ -86,7 +86,7 @@ function getListenedTime(seconds: number) {
       </template>
     </HeadingWrapper>
 
-    <DateFilter />
+    <DateFilter view="profile" />
 
     <ArchiveBtn v-show="profileStore.selectMediaFlag && !mainStore.isDesktop" />
 

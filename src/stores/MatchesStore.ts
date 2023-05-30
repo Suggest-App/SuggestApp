@@ -1,8 +1,6 @@
-import {reactive, ref} from 'vue'
-import type { Ref } from 'vue'
+import {reactive} from 'vue'
 import { defineStore } from 'pinia'
 import { UserMatch } from "@/classes/UserMatch";
-import {useRoute} from "vue-router";
 import MatchesService from "@/services/MatchesService";
 import router from "@/router";
 

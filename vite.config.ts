@@ -56,13 +56,13 @@ export default defineConfig({
     proxy: {
       '/signin': {
         //target: "http://localhost:5256",
-        target: "https://suggest-app.com",
+        target: "https://dev.suggest-app.com",
         //target: "http://188.68.62.150:4214",
         changeOrigin: true,
         secure: false,
       },
       '/user': {
-        target: "https://suggest-app.com",
+        target: "https://dev.suggest-app.com",
         changeOrigin: true,
         secure: false,
       },

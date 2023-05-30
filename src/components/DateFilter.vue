@@ -1,20 +1,28 @@
 <script lang="ts" setup>
-import {useProfileStore} from "@/stores/ProfileStore";
+import {useMainStore} from "@/stores/MainStore";
 
-const profileStore = useProfileStore()
+const mainStore = useMainStore()
+
+
+const props = defineProps({
+  view: {
+    type: String,
+    default: 'profile'
+  }
+})
 
 function filterDate(date: string) {
-  profileStore.listFilterDate = date
-  profileStore.updateMediaSummary()
+  mainStore.listFilterDate = date
+  mainStore.updateListFilter(props.view)
 }
 </script>
 
 <template>
   <div class="base-wrapper date-filter">
-    <div class="filter" :class="{ active : profileStore.listFilterDate === ''}" @click="filterDate('')">Max</div>
-    <div class="filter" :class="{ active : profileStore.listFilterDate === '1Y'}" @click="filterDate('1Y')">1J</div>
-    <div class="filter" :class="{ active : profileStore.listFilterDate === '1M'}" @click="filterDate('1M')">1M</div>
-    <div class="filter" :class="{ active : profileStore.listFilterDate === '1W'}" @click="filterDate('1W')">1W</div>
+    <div class="filter" :class="{ active : mainStore.listFilterDate === ''}"   @click="filterDate('')">Max</div>
+    <div class="filter" :class="{ active : mainStore.listFilterDate === '1Y'}" @click="filterDate('1Y')">1J</div>
+    <div class="filter" :class="{ active : mainStore.listFilterDate === '1M'}" @click="filterDate('1M')">1M</div>
+    <div class="filter" :class="{ active : mainStore.listFilterDate === '1W'}" @click="filterDate('1W')">1W</div>
   </div>
 </template>
 
